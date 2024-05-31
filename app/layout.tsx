@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={myFont.className}>
         <main className="relative">
 
-        <div className="fixed top-0 right-0 bg-yellow-300 z-40 h-[100px] w-[200px] flex justify-center">
+        <div className="fixed top-11 right-4 animate-bounce rounded-2xl overflow-hidden bg-yellow-300 z-40 h-[100px] w-[200px] flex justify-center">
           <Photo src="/underconstruction.png" width="w-[200px]" height="h-[100px]" alt="" borderRadius="" objectFit="" ></Photo>
         </div>
 
