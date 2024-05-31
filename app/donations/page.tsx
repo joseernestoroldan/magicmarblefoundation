@@ -12,13 +12,22 @@ const DonationsPage = () => {
     <div className="flex flex-col-reverse lg:flex-row">
       <div className="w-full lg:w-1/2 p-4 hidden md:flex justify-center items-center">
         <div className="md:w-[600px] md:h-[400px] lg:max-w-[800px] lg:h-[700px]  relative p-10 md:p-1 flex justify-center items-center">
-          <VideoFrame
-            src="https://www.youtube.com/embed/_cj-XrMSUWM?autoplay=1&mute=1"
-            bg={"bg-white"}
-          />
+          <div className="w-full flex flex-col justify-center items-center">
+            <VideoFrame
+              src="https://www.youtube.com/embed/y2xP3mCkCSU?autoplay=1&mute=1"
+              bg={"bg-white"}
+            />
+            <p className="text-gray-500 text-justify">
+              100% of your donation goes directly to the commuters we serve.
+              Humans in need of food, medical care, educational or non-humans in
+              need of rescue, sterilization and advocacy for both. With zero
+              administrative salaries and low administrative cost, we ensure
+              your donation makes a real impact.
+            </p>
+          </div>
         </div>
       </div>
-      <div className="w-full flex flex-col lg:w-1/2">
+      <div className="w-full flex flex-col items-center lg:w-1/2">
         <div className="mt-4 md:mt-10 lg:mt-24">
           <HeadingCenterAnimation>
             <Heading
@@ -30,7 +39,7 @@ const DonationsPage = () => {
             />
           </HeadingCenterAnimation>
         </div>
-        <p className="w-full lg:w-full indent-6 text-justify text-gray-500 p-8">
+        <p className="w-full lg:w-full indent-6 text-justify text-xl text-gray-500 p-8">
           Your donation is 100% dedicated to those we serve, whether they are
           humans in need of food, medical care, or education, or non-human
           animals in need of rescue, sterilization, and advocacy. With our
