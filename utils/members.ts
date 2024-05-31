@@ -24,48 +24,21 @@ export const board = [
 
 export const countryCoordinator = [
   {
-    name: "Jennifer George",
-    post: "President & Founder",
+    name: "Dash Meizler",
+    post: "country coordinator for Uganda and advisory",
     email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
+    body: "Fahd Kharim Ssevume, widely recognized by his alias Dash Meizler, stands as a distinguished figure celebrated for his unwavering commitment to humanitarianism and fervent advocacy for animal rights. Renowned as the founder of the Podrska Foundation, Dash Meizler has played a pivotal role in propelling the vegan movement forward, leaving an indelible mark on the landscape of compassionate living. Dash Meizler's remarkable affinity for both human and non-human animals has served as a driving force behind his contributions to the cause of veganism. His ambitions are worldwide, and he embodies principles that are perfectly aligned with magic marble Marble Foundation's purpose of high-level, productive, and long-term transformation.",
+    image: "/countryUganda.webp"
   },
-  {
-    name: "Jennifer George",
-    post: "President & Founder",
-    email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
-  },
-  {
-    name: "Jennifer George",
-    post: "President & Founder",
-    email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
-  },
+
 ];
 
 export const advisoryBoard = [
   {
-    name: "Jennifer George",
-    post: "President & Founder",
+    name: "Dash Meizler",
+    post: "country coordinator for Uganda and advisory",
     email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
-  },
-  {
-    name: "Jennifer George",
-    post: "President & Founder",
-    email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
-  },
-  {
-    name: "Jennifer George",
-    post: "President & Founder",
-    email: "Jennifer@email.com",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-    image: ""
+    body: "Fahd Kharim Ssevume, widely recognized by his alias Dash Meizler, stands as a distinguished figure celebrated for his unwavering commitment to humanitarianism and fervent advocacy for animal rights. Renowned as the founder of the Podrska Foundation, Dash Meizler has played a pivotal role in propelling the vegan movement forward, leaving an indelible mark on the landscape of compassionate living. Dash Meizler's remarkable affinity for both human and non-human animals has served as a driving force behind his contributions to the cause of veganism. His ambitions are worldwide, and he embodies principles that are perfectly aligned with magic marble Marble Foundation's purpose of high-level, productive, and long-term transformation.",
+    image: "/countryUganda.webp"
   },
 ];

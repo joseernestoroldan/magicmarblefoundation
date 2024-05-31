@@ -16,8 +16,8 @@ const CardTeam = ({image, name, post, email, body }: CardTeamProps) => {
         />
       </div>
       <div className="basis-1 md:basis-3/5 flex flex-col justify-start items-center ">
-        <h1 className="text-black text-2xl text-center md:text-left font-semibold py-2 w-full">{name}</h1>
-        <h2 className="text-center md:text-left w-full">{post}</h2>
+        <h1 className="text-black text-2xl text-center md:text-left font-semibold py-2 w-full capitalize">{name}</h1>
+        <h2 className="text-center md:text-left w-full capitalize">{post}</h2>
         <p className="text-black text-lg font-medium py-2 text-center md:text-left w-full">{email}</p>
         <p className="py-2 text-justify w-full">{body}</p>
       </div>
