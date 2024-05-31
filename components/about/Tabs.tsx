@@ -15,6 +15,7 @@ export function TabsTeam() {
         {board.map((member) => {
           return (
             <CardTeam
+              image={member.image}
               name={member.name}
               post={member.post}
               email={member.email}
@@ -28,6 +29,7 @@ export function TabsTeam() {
         {countryCoordinator.map((member) => {
           return (
             <CardTeam
+              image={member.image}
               name={member.name}
               post={member.post}
               email={member.email}
@@ -42,6 +44,7 @@ export function TabsTeam() {
         {advisoryBoard.map((member) => {
           return (
             <CardTeam
+              image={member.image}
               name={member.name}
               post={member.post}
               email={member.email}

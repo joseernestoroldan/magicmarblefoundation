@@ -77,6 +77,7 @@ export type PhotoProps = {
 };
 
 export type CardTeamProps = {
+  image: string;
   name: string;
   post: string;
   email: string;
