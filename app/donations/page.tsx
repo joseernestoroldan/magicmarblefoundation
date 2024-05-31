@@ -5,14 +5,14 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Paypal from "@/components/payments/paypal";
 import Venmo from "@/components/payments/venmo";
 import VideoFrame from "@/components/videoFrame/videoframe";
-import Image from "next/image";
+
 
 const DonationsPage = () => {
   return (
     <div className="flex flex-col-reverse lg:flex-row">
-      <div className="w-full lg:w-1/2 p-4 hidden md:flex justify-center items-center">
-        <div className="md:w-[600px] md:h-[400px] lg:max-w-[800px] lg:h-[700px]  relative p-10 md:p-1 flex justify-center items-center">
-          <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full lg:w-1/2 p-4 hidden md:flex justify-center items-center ">
+        <div className="md:w-[600px] md:h-[400px] lg:max-w-[900px] lg:h-[800px]  relative p-10 md:p-1 flex justify-center items-center ">
+          <div className="w-full flex flex-col justify-center  items-stretch ">
             <VideoFrame
               src="https://www.youtube.com/embed/y2xP3mCkCSU?autoplay=1&mute=1"
               bg={"bg-white"}
@@ -27,7 +27,7 @@ const DonationsPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center lg:w-1/2">
+      <div className="w-full flex flex-col items-center lg:w-1/2 bg">
         <div className="mt-4 md:mt-10 lg:mt-24">
           <HeadingCenterAnimation>
             <Heading

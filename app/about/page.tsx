@@ -22,11 +22,6 @@ const AboutPage = () => {
         <Container>
           <FocusAreas />
         </Container>
-
-        <Container>
-          <GridDIaries />
-        </Container>
-
         <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
           <BannerParallax
             title="Our Mission"

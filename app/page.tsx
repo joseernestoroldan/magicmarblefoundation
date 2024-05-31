@@ -4,6 +4,7 @@ import BannerParallax from "@/components/parallax/bannerParallax/bannerParallax"
 import Banner from "@/components/banner/banner";
 import OurProjects from "@/components/ourprojects/OurProjects";
 import Donations from "@/components/home/donations/Donations";
+import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 
 const HomePage = async () => {
   return (
@@ -18,6 +19,8 @@ const HomePage = async () => {
           justify="text-center"
         />
       </ParallaxContainer>
+
+      <GridDIaries />
 
       <MagicFrame bg="bg-white" />
       <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
