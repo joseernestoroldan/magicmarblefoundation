@@ -29,9 +29,9 @@ const Donations = () => {
           duration={20}
         >
           <BannerDonation
-            url="bg-[url('/RescueMission.webp')]"
-            title="Lorem ipsum dolor sit amet."
-            message="Lorem ipsum dolor sit, amet consectetur adipisicing."
+            url="bg-[url('/trainning.webp')]"
+            title="Advanced Veterinary Skills Training"
+            message="Help Homeless Animals Receive Better Care"
           />
         </BannerAnimation>
 
