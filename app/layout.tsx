@@ -2,16 +2,16 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/Footer";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
+import Photo from "@/components/photo/photo";
 
 
-const myFont = localFont({ src: '../public/bellmedium.woff2' })
+const myFont = localFont({ src: "../public/bellmedium.woff2" });
 
 export const metadata: Metadata = {
   title: "Magic Marble Foundation",
   description: "Magic Marble Foundation WebPage",
 };
-
 
 export default function RootLayout({
   children,
@@ -20,15 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
-   
       <body className={myFont.className}>
-        <Navbar/>
-        <div className="w-full" >{children}</div>
-        <Footer/>
+        <main className="relative">
+
+        <div className="fixed top-0 right-0 bg-yellow-300 z-40 h-[100px] w-[200px] flex justify-center">
+          <Photo src="/underconstruction.png" width="w-[200px]" height="h-[100px]" alt="" borderRadius="" objectFit="" ></Photo>
+        </div>
+
+          <Navbar />
+          <div className="w-full">{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );
 }
-
-
