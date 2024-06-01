@@ -8,7 +8,7 @@ const Menu = ({ disposition, space }: menuProps) => {
       {menuItems.map((item) => (
         <Link key={item.title} href={item.link}>
           <li
-            className="cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-xl font-medium"
+            className="cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium"
            
           >
             {item.title}

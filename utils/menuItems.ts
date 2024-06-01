@@ -1,4 +1,4 @@
-import { title } from "process";
+
 
 export const menuItems = [
   {title: "Home", link: "/"},
@@ -6,4 +6,5 @@ export const menuItems = [
   { title: "About Us", link: "/about" },
   { title: "Gallery", link: "/gallery" },
   { title: "Magic Diaries", link: "/diaries" },
+  { title: "Join Us", link: "/getinvolved" },
 ];
