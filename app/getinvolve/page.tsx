@@ -39,7 +39,7 @@ const GetInvolvePage = () => {
         <p className="text-white text-xl text-justify indent-6 font-normal">
           Become a Community Relief Champion by contributing to our initiatives
           aimed at supporting communities in times of need. Your donation can
-          provide immediate relief, whether it's through emergency aid,
+          provide immediate relief, whether it is through emergency aid,
           rebuilding efforts, or sustainable community development projects.
         </p>
 
@@ -80,7 +80,7 @@ const GetInvolvePage = () => {
         </span>
 
         <p className="text-white text-xl text-justify indent-6 font-normal">
-          Whether you're passionate about hands-on involvement or contributing
+          Whether you are passionate about hands-on involvement or contributing
           from afar, our volunteer opportunities cater to various skill sets.
           Engage in international projects or participate in local events that
           amplify our impact on both humans and non-humans.
