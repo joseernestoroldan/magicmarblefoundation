@@ -3,7 +3,7 @@ export const landingImages = [
     id: 1,
     url: "/carecurrivulum.webp",
     message: "C.A.R.E Curriculum",
-    link: "/projects/project/4cf1531f-9b04-42fe-898f-434226605eed",
+    link: "4cf1531f-9b04-42fe-898f-434226605eed",
   },
   {
     id: 2,
