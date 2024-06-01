@@ -18,11 +18,7 @@ const DonationsPage = () => {
               bg={"bg-white"}
             />
             <p className="text-gray-500 text-justify">
-              100% of your donation goes directly to the commuters we serve.
-              Humans in need of food, medical care, educational or non-humans in
-              need of rescue, sterilization and advocacy for both. With zero
-              administrative salaries and low administrative cost, we ensure
-              your donation makes a real impact.
+  
             </p>
           </div>
         </div>

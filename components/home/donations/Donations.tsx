@@ -37,7 +37,7 @@ const Donations = () => {
 
         <BannerAnimation
           initial={0}
-          times={[0.50, 0.51, 0.82, 0.85]}
+          times={[0.51, 0.52, 0.82, 0.85]}
           opacity={[0, 1, 1, 0]}
           duration={20}
         >
