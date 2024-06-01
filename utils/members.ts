@@ -27,7 +27,7 @@ export const countryCoordinator = [
     name: "Dash Meizler",
     post: "Uganda country coordinator",
     email: "MMFUganda@gmail.com",
-    body: "Fahd Kharim Ssevume, widely recognized by his alias Dash Meizler, stands as a distinguished figure celebrated for his unwavering commitment to humanitarianism and fervent advocacy for animal rights. Renowned as the founder of the Podrska Foundation, Dash Meizler has played a pivotal role in propelling the vegan movement forward, leaving an indelible mark on the landscape of compassionate living. Dash Meizler's remarkable affinity for both human and non-human animals has served as a driving force behind his contributions to the cause of veganism. His ambitions are worldwide, and he embodies principles that are perfectly aligned with Magic Marble Foundation’s purpose of high-level, productive, and long-term transformation.",
+    body: "Fahd Kharim Ssevume, widely recognized by his alias Dash Meizler, stands as a distinguished figure celebrated for his unwavering commitment to humanitarianism and fervent advocacy for animal rights. Renowned as the founder of the Podrska Foundation, Dash Meizler has played a pivotal role in propelling the vegan movement forward. Dash Meizler's remarkable affinity for both human and non-human animals has served as a driving force behind his contributions to the cause of veganism. His ambitions are worldwide, and he embodies principles that are perfectly aligned with Magic Marble Foundation’s purpose of high-level, productive, and long-term transformation.",
     image: "/countryUganda.webp"
   },
 

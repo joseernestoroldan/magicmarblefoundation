@@ -14,7 +14,7 @@ export default async function PhotoModal({
   return (
     <Modal>
       <Image
-        className="object-contain max-w-[1200px] mx-auto"
+        className="object-contain max-w-[1000px] mx-auto"
         src={photo[0].mainImage}
         fill
         alt="magic marble foundation"
