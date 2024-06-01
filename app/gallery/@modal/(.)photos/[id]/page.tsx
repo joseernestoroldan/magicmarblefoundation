@@ -18,6 +18,7 @@ export default async function PhotoModal({
         src={photo[0].mainImage}
         fill
         alt="magic marble foundation"
+        priority
       />
 
       <div className="flex flex-col justify-between absolute z-10 top-[10px] left-[0px] space-y-4 w-full">

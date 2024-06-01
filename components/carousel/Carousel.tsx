@@ -50,6 +50,7 @@ export function CarouselPlugin({ images }: carouselProps) {
                   src={image.url}
                   fill
                   alt=""
+                  priority
                 />
               </div>
             </div>

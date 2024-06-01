@@ -55,6 +55,7 @@ const GalleryPage = async () => {
                     src={photograph.mainImage}
                     fill
                     alt="magic marble foundation"
+                    priority
                   />
                 </div>
               </Link>
