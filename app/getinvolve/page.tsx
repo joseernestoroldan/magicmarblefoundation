@@ -1,7 +1,3 @@
-import Heading from "@/components/headings/heading";
-import HeadingAboutAnimation from "@/components/headingsAnimations/HeadingAboutAnimation";
-import ParallaxContainer from "@/components/parallax/parallax";
-import { url } from "inspector";
 import React from "react";
 
 const GetInvolvePage = () => {
