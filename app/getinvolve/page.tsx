@@ -8,7 +8,7 @@ const GetInvolvePage = () => {
           Be the Catalyst for Change
         </h1>
 
-        <h2 className="text-white text-4xl text-justify font-semibold">
+        <h2 className="text-white text-3xl text-justify font-semibold">
           Join Our Global Movement for Compassion
         </h2>
 
