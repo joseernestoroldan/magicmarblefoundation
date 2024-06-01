@@ -31,8 +31,17 @@ export const countryCoordinator = [
     image: "/countryUganda.webp"
   },
 
-];
+  {
+    name: " Kilamu Sherpa",
+    post: "Nepal country coordinator",
+    email: "Jennifer@email.com",
+    body: "Kilamu Sherpa, the country coordinator for our charity in Nepal, brings invaluable expertise gained from years of hands-on experience as an impassioned animal rescuer. With a lifelong commitment to rescuing street animals dating back to her childhood, Kilamu's deep-seated compassion for both humans and animals informs her leadership style. Her dedication to serving those in need has left an indelible mark on our efforts to create positive change in Nepal.",
+    image: ""
+  },
 
+
+];
+ 
 export const advisoryBoard = [
   {
     name: "Dash Meizler",
