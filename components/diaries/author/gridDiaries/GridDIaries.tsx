@@ -1,5 +1,3 @@
-import { getAllData } from "@/client";
-import EnterElement from "@/components/animations/enterElement/EnterElement";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
@@ -26,7 +24,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
             center="flex justify-center "
           />
         </div>
-        <EnterElement>
+   
           <Container>
             <LayoutY>
               <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-8 md:space-y-0 max-w-5xl space-x-0 md:space-x-4">
@@ -42,7 +40,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
               </div>
             </LayoutY>
           </Container>
-        </EnterElement>
+
       </EnterSection>
     </HeadingCenterAnimation>
   );

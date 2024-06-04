@@ -5,10 +5,11 @@ import EnterElement from "@/components/animations/enterElement/EnterElement";
 import Link from "next/link";
 import BannerDonation from "./BannerDonation";
 import BannerAnimation from "./BannerAnimation";
+import EnterSection from "@/components/animations/enterSection/EnterSection";
 
 const Donations = () => {
   return (
-    <EnterElement>
+    <EnterSection>
       <div className="relative bg-white w-full h-[800px] overflow-hidden">
         <BannerAnimation
           initial={0}
@@ -71,7 +72,7 @@ const Donations = () => {
           </Link>
         </div>
       </div>
-    </EnterElement>
+    </EnterSection>
   );
 };
 
