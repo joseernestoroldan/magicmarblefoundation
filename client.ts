@@ -19,7 +19,7 @@ const getData = async (query: string) => {
 };
 
 export const getAllData = async (myquery: string) => {
-  const query = groq`*[_type == '${myquery}']{
+  const query = groq`*[_type == '${myquery}'] | order(_createdAt desc){
         _id,
         publishedAt,
         title,
@@ -30,13 +30,14 @@ export const getAllData = async (myquery: string) => {
         body,
         contenido,
         alt,
+        _createdAt,
   }`;
 
   const data = await getData(query);
   return data;
 };
 
-export const getOne= async (myquery: string) => {
+export const getOne = async (myquery: string) => {
   const query = groq`*[_id == '${myquery}']{
     _id,
     publishedAt,
@@ -46,8 +47,24 @@ export const getOne= async (myquery: string) => {
     "authorImage": authorImage.asset->url,
     author,
     contenido,
+    _createdAt,
 }`;
-const data = await getData(query);
-return data;
+  const data = await getData(query);
+  return data;
+};
 
-} 
+export const getOrderedData = async (myquery: string, number: string) => {
+  const query = groq`*[_type == '${myquery}'] | order(publishedAt desc)[0..${number}]{
+    _id,
+    publishedAt,
+    title,
+    description,
+    "mainImage": mainImage.asset->url,
+    "authorImage": authorImage.asset->url,
+    author,
+    contenido,
+    _createdAt,
+}`;
+  const data = await getData(query);
+  return data;
+};

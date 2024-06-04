@@ -8,8 +8,11 @@ import LayoutY from "@/components/layouts/layoutY/LayoutY";
 import Diary from "@/components/magicDiaries/Diary";
 import React from "react";
 
-const GridDIaries = async () => {
-  const diaries = await getAllData("dairies");
+type GridDIariesProps = {
+  diaries: any
+}
+
+const GridDIaries = async ({diaries}: GridDIariesProps) => {
 
   return (
     <HeadingCenterAnimation>

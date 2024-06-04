@@ -40,6 +40,7 @@ export type MagicFrameProps = {
 export type OurProjectsProps = {
   bg: string;
   color: string;
+  projects: any
 };
 
 export type ProjectsProps = {

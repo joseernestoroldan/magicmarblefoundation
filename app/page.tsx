@@ -5,8 +5,14 @@ import Banner from "@/components/banner/banner";
 import OurProjects from "@/components/ourprojects/OurProjects";
 import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
+import { getOrderedData } from "@/client";
 
 const HomePage = async () => {
+
+  const projects = await getOrderedData("projects", "5")
+  const diaries = await getOrderedData("dairies", "2")
+
+  
   return (
     <div className="w-full flex-col justify-center items-center space-y-24">
       <Banner />
@@ -20,7 +26,7 @@ const HomePage = async () => {
         />
       </ParallaxContainer>
 
-      <GridDIaries />
+      <GridDIaries diaries={diaries} />
 
       <MagicFrame bg="bg-white" />
       <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
@@ -38,7 +44,7 @@ const HomePage = async () => {
         />
       </ParallaxContainer>
 
-      <OurProjects bg="bg-white" color="text-gray-800" />
+      <OurProjects bg="bg-white" color="text-gray-800" projects={projects} />
 
       <Donations />
     </div>
