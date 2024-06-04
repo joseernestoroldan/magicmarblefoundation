@@ -10,7 +10,6 @@ export default async function PhotoModal({
 }) {
   const photo = await getOne(_Id);
 
-
   return (
     <Modal>
       <Image
@@ -21,11 +20,9 @@ export default async function PhotoModal({
         priority
       />
 
-      <div className="flex flex-col justify-between absolute z-10 top-[10px] left-[0px] space-y-4 w-full">
-        <InfoPhoto title={photo[0].title} description = {photo[0].description} />
+      <div className="flex flex-col justify-between absolute z-10 top-[10px] left-[0px] space-y-4 w-[300px] md:w-[600px] pl-4">
+        <InfoPhoto title={photo[0].title} description={photo[0].description} />
       </div>
     </Modal>
   );
-
-  // <Photo width='w-[1000px]' height='h-[800px]' borderRadius='rounded-xl' src={photo[0].mainImage} alt='foto'/>
 }

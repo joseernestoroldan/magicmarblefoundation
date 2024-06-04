@@ -10,7 +10,7 @@ type InfoProps = {
 
 const Info = ({ toggle, setToggle, title, description }: InfoProps) => {
   return (
-    <div className="flex flex-col w-full bg bg-black bg-opacity-80 space-y-6 items-center p-6">
+    <div className="flex flex-col w-full bg bg-black bg-opacity-80 space-y-6 items-center p-6 rounded-2xl">
       <h1 className="capitalize text-white text-xl font-bold">
         {title}
       </h1>
