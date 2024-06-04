@@ -44,14 +44,14 @@ export const advisoryBoard = [
   {
     name: "Dash Meizler",
     post: "Advisory Board",
-    email: "Jennifer@email.com",
+    email: "MMFuganda@gmail.com",
     body: "Fahd Kharim Ssevume, widely recognized by his alias Dash Meizler, stands as a distinguished figure celebrated for his unwavering commitment to humanitarianism and fervent advocacy for animal rights. Renowned as the founder of the Podrska Foundation, Dash Meizler has played a pivotal role in propelling the vegan movement forward, leaving an indelible mark on the landscape of compassionate living. Dash Meizler's remarkable affinity for both human and non-human animals has served as a driving force behind his contributions to the cause of veganism. His ambitions are worldwide, and he embodies principles that are perfectly aligned with magic marble Marble Foundation's purpose of high-level, productive, and long-term transformation.",
     image: "/countryUganda.webp",
   },
   {
     name: "Cathy Caruth",
     post: "Advisory Board",
-    email: "Jennifer@email.com",
+    email: "cc694@cornell.edu",
     body: "Cathy Caruth teaches in the Departments of English and Comparative Literature at Cornell University. She focuses on the languages of trauma and testimony, on literary theory, and on contemporary discourses concerning the annihilation and survival of language. Her most recent books are Literature in the Ashes of History (Hopkins, 2013) and Listening to Trauma: Conversations with Leaders in the Theory and Treatment of Catastrophic Experience.",
     image: "/caruth.webp",
   },
