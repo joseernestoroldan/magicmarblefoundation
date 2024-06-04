@@ -40,7 +40,7 @@ export type MagicFrameProps = {
 export type OurProjectsProps = {
   bg: string;
   color: string;
-  projects: any
+  projects: any;
 };
 
 export type ProjectsProps = {
@@ -146,4 +146,8 @@ export type BannerDonationProps = {
   url: string;
   title: string;
   message: string;
+};
+
+export type GridDIariesProps = {
+  diaries: any;
 };

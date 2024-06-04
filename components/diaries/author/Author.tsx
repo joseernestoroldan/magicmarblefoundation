@@ -3,7 +3,7 @@ import { AuthorProps } from "@/types/types";
 import Photo from "@/components/photo/photo";
 
 const Author = ({ data }: AuthorProps) => {
-  console.log(data);
+
   return (
     <div className="w-min relative">
        <div className='absolute left-[50%] -translate-x-[50%] text-center w-full  bg-white text-gray-500 font-semibold text-base'>The Author</div>

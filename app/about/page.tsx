@@ -1,7 +1,5 @@
 import AboutUs from "@/components/about/AboutUs";
-
 import OurTeam from "@/components/about/OurTeam";
-import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import Donations from "@/components/home/donations/Donations";
 import FocusAreas from "@/components/home/focusareas/FocusAreas";
 import Container from "@/components/layouts/container/Container";
@@ -16,12 +14,14 @@ const AboutPage = () => {
   return (
     <div>
       <Container>
-        <AboutUs />
+        <AboutU s />
       </Container>
+
       <LayoutY>
         <Container>
           <FocusAreas />
         </Container>
+        
         <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
           <BannerParallax
             title="Our Mission"

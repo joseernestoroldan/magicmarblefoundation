@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
 import Heading from "../headings/heading";
-import Photo from "../photo/photo";
 import HeadingAboutAnimation from "../headingsAnimations/HeadingAboutAnimation";
 import Image from "next/image";
 
 const AboutUs = () => {
   return (
     <HeadingAboutAnimation>
-      <div className="flex flex-col-reverse justify-end md:flex-row md:items-center md:justify-center w-full h-screen bg-blue-300">
+      <div className="flex flex-col-reverse justify-end md:flex-row md:items-center md:justify-center w-full h-[90vh]">
         <div className="w-full md:w-[50%] flex flex-col justify-between md:justify-center items-center space-y-10">
           <div className="w-full relative text-wrap pt-8 md:pt-0">
             <Heading

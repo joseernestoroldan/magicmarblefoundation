@@ -5,10 +5,8 @@ import Container from "@/components/layouts/container/Container";
 import LayoutY from "@/components/layouts/layoutY/LayoutY";
 import Diary from "@/components/magicDiaries/Diary";
 import React from "react";
+import { GridDIariesProps } from "@/types/types";
 
-type GridDIariesProps = {
-  diaries: any
-}
 
 const GridDIaries = async ({diaries}: GridDIariesProps) => {
 
