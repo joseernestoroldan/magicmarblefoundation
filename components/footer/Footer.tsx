@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="flex flex-col justify-between items-center space-y-6 bg-white">
             <Logo />
             <p className="w-[250px] text-gray-500 text-base indent-4 text-justify">
-              It is a USA based tax-exempt charitable organization (tax-id
+              USA based tax-exempt charitable organization (tax-id
               number 86-1626792) under Section 501(c)(3) of the Internal Revenue
               Code. Donations are tax-deductible as allowed by law.
             </p>
