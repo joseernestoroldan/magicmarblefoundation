@@ -8,11 +8,9 @@ import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
 
 const HomePage = async () => {
+  const projects = await getOrderedData("projects", "5");
+  const diaries = await getOrderedData("dairies", "2");
 
-  const projects = await getOrderedData("projects", "5")
-  const diaries = await getOrderedData("dairies", "2")
-
-  
   return (
     <div className="w-full flex-col justify-center items-center space-y-24">
       <Banner />
