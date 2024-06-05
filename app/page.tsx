@@ -6,6 +6,7 @@ import OurProjects from "@/components/ourprojects/OurProjects";
 import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
+import OurPartners from "@/components/ourpartners/OurPartners";
 
 const HomePage = async () => {
   const projects = await getOrderedData("projects", "5");
@@ -45,6 +46,8 @@ const HomePage = async () => {
       <OurProjects bg="bg-white" color="text-gray-800" projects={projects} />
 
       <Donations />
+      
+      <OurPartners/>
     </div>
   );
 };
