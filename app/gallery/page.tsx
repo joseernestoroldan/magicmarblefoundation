@@ -39,19 +39,14 @@ const GalleryPage = async () => {
                 <div className="w-[300px] group relative max-w-[200px] h-[200px]  rounded-xl bg-black">
                   <div className="absolute flex flex-col items-center justify-center z-10 invisible group-hover:visible top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
                     <NotNull notnull={photograph.title}>
-                      <h1 className="capitalize text-gray-200 text-xl font-bold">
+                      <h1 className="capitalize text-white text-sm font-bold">
                         {photograph.title}
                       </h1>
-                    </NotNull>
-                    <NotNull notnull={photograph.description}>
-                      <p className="text-white text-lg font-semibold  w-full text-center">
-                        {photograph.description?.substring(0, 20)}
-                      </p>
                     </NotNull>
                   </div>
 
                   <Image
-                    className="object-cover object-top max-w-[1200px] mx-auto rounded-[1rem] group-hover:opacity-60"
+                    className="object-cover object-top max-w-[1200px] mx-auto rounded-[1rem] group-hover:opacity-40"
                     src={photograph.mainImage}
                     fill
                     alt="magic marble foundation"
