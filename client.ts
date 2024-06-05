@@ -68,3 +68,18 @@ export const getOrderedData = async (myquery: string, number: string) => {
   const data = await getData(query);
   return data;
 };
+
+export const getAllFiltter = async (myquery: string, parametro: string) => {
+  const query = groq`*[_type == '${myquery}' && category == '${parametro}'] | order(_createdAt asc){
+    _id,
+    name,
+    post,
+    body,
+    "mainImage": mainImage.asset->url,
+    email,
+    _createdAt,
+    category,
+}`;
+const data = await getData(query);
+return data;
+}

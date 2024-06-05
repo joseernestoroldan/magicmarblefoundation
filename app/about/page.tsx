@@ -14,7 +14,7 @@ const AboutPage = () => {
   return (
     <div>
       <Container>
-        <AboutU s />
+        <AboutUs />
       </Container>
 
       <LayoutY>

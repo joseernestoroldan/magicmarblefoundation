@@ -1,8 +1,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CardTeam from "./CardTeam";
-import { advisoryBoard, board, countryCoordinator } from "@/utils/members";
+import { getAllFiltter } from "@/client";
+// import { advisoryBoard, board, countryCoordinator } from "@/utils/members";
 
-export function TabsTeam() {
+
+
+export async function TabsTeam() {
+  const board = await getAllFiltter("board", "board");
+  const countryCoordinator = await getAllFiltter("board", "country");
+  const advisoryBoard = await getAllFiltter("board", "advisory")
+
+
   return (
     <Tabs defaultValue="board" className="w-full text-gray-500">
       <TabsList className="grid w-full grid-cols-3">
@@ -12,10 +20,10 @@ export function TabsTeam() {
       </TabsList>
 
       <TabsContent value="board" className="flex flex-row flex-wrap">
-        {board.map((member) => {
+        {board.map((member: any) => {
           return (
             <CardTeam
-              image={member.image}
+              image={member.mainImage}
               name={member.name}
               post={member.post}
               email={member.email}
@@ -26,10 +34,10 @@ export function TabsTeam() {
         })}
       </TabsContent>
       <TabsContent value="country" className="flex flex-row flex-wrap">
-        {countryCoordinator.map((member) => {
+        {countryCoordinator.map((member: any) => {
           return (
             <CardTeam
-              image={member.image}
+              image={member.mainImage}
               name={member.name}
               post={member.post}
               email={member.email}
@@ -41,10 +49,10 @@ export function TabsTeam() {
       </TabsContent>
 
       <TabsContent value="advisors" className="flex flex-row flex-wrap">
-        {advisoryBoard.map((member) => {
+        {advisoryBoard.map((member: any) => {
           return (
             <CardTeam
-              image={member.image}
+              image={member.mainImage}
               name={member.name}
               post={member.post}
               email={member.email}
