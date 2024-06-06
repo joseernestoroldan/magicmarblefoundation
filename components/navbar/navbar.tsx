@@ -21,7 +21,7 @@ const Navbar = () => {
           <Logo />
 
           <div className="flex space-x-8 items-center">
-            <Menu disposition="flex-row" space="space-x-6"></Menu>
+            <Menu disposition="flex-row" space="space-x-4"></Menu>
             <Link className="hidden md:inline" href={"/donations"}>
               <Button>Donate</Button>
             </Link>
