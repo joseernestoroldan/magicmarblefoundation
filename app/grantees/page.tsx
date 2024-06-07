@@ -25,7 +25,7 @@ const GranteesPage = async () => {
         <Container>
             <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center">
                 {grantees.map((grant: any) => (
-                    <div key={grant._id} className="w-[150px] h-[150px] relative">
+                    <div key={grant._id} className="w-[150px] h-[150px] relative mx-4">
                         <Image
                         src={grant.mainImage}
                         alt={grant.name}
