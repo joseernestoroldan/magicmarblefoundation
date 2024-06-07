@@ -26,9 +26,9 @@ const ProjectsPage = async () => {
         </div>
 
         <Container>
-          <EnterElement>
+        
             <Projects projects={projects} bg="bg-white" color="text-gray-500" />
-          </EnterElement>
+          
         </Container>
 
         <Donations />

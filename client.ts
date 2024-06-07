@@ -31,6 +31,7 @@ export const getAllData = async (myquery: string) => {
         contenido,
         alt,
         _createdAt,
+        name,
   }`;
 
   const data = await getData(query);
