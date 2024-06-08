@@ -15,12 +15,12 @@ const Parrafos = ({ data }: ParrafosProps) => {
               if (item.style === "h5") {
                 return (
                   <div key={i}>
-                    <p
+                    <h5
                       className="space-y-2 indent-8 text-gray-500 font-extrabold text-justify text-lg "
                       key={i}
                     >
                       {children}
-                    </p>
+                    </h5>
                   </div>
                 );
               }
@@ -39,27 +39,54 @@ const Parrafos = ({ data }: ParrafosProps) => {
               if (item.style == "h4") {
                 return (
                   <div key={i}>
-                    <p
+                    <h4
                       className="space-y-2 indent-8 text-gray-500  font-black text-justify text-xl "
                       key={i}
                     >
                       {children}
-                    </p>
+                    </h4>
                   </div>
                 );
               }
               if (item.style == "h3") {
                 return (
                   <div key={i}>
-                    <p
+                    <h3
                       className="space-y-2 indent-8 text-gray-500 font-black text-justify text-2xl "
                       key={i}
                     >
                       {children}
-                    </p>
+                    </h3>
                   </div>
                 );
               }
+
+              if (item.style == "h2") {
+                return (
+                  <div key={i}>
+                    <h2
+                      className="space-y-2 indent-8 text-gray-500 font-black text-justify text-3xl "
+                      key={i}
+                    >
+                      {children}
+                    </h2>
+                  </div>
+                );
+              }
+
+              if (item.style == "h1") {
+                return (
+                  <div key={i}>
+                    <h3
+                      className="space-y-2 indent-8 text-gray-500 font-black text-justify text-4xl "
+                      key={i}
+                    >
+                      {children}
+                    </h3>
+                  </div>
+                );
+              }
+
             })}
           </div>
         );

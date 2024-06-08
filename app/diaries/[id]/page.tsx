@@ -14,6 +14,7 @@ const DiaryPage = async ({
 }) => {
   const data = await getOne(_Id);
 
+
   return (
     <HeadingCenterAnimation>
       <Container>
