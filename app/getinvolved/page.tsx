@@ -164,11 +164,11 @@ const GetInvolvePage = () => {
         <div className="flex justify-center items-center w-full">
           {showVolunteer && (
             <div className="w-full max-w-[300px] sm:max-w-[600px] text-gray-500 text-lg indent-6 text-justify">
-              Join us in making a difference! We're thrilled that you're
+              Join us in making a difference! We are thrilled that you're
               considering becoming a volunteer with us. By completing our
-              volunteer application, you're taking the first step towards
+              volunteer application, you are taking the first step towards
               contributing your time and skills to support our cause. Whether
-              you're passionate about animals, community service, or both, there
+              you are passionate about animals, community service, or both, there
               are various ways you can get involved and help us create a better
               tomorrow. Fill out the application form below to begin your
               journey with us.
@@ -179,7 +179,7 @@ const GetInvolvePage = () => {
               Welcome to our Amazon Wish List! Here, you can directly support
               our efforts to care for rescue animals and serve our communities
               by donating much-needed supplies. Every item you contribute helps
-              us continue our mission to make a positive impact where it's
+              us continue our mission to make a positive impact where it is
               needed most. Browse through the list below to see how you can make
               a difference today.
             </div>
