@@ -164,7 +164,7 @@ const GetInvolvePage = () => {
         <div className="flex justify-center items-center w-full">
           {showVolunteer && (
             <div className="w-full max-w-[300px] sm:max-w-[600px] text-gray-500 text-lg indent-6 text-justify">
-              Join us in making a difference! We are thrilled that you're
+              Join us in making a difference! We are thrilled that you are
               considering becoming a volunteer with us. By completing our
               volunteer application, you are taking the first step towards
               contributing your time and skills to support our cause. Whether
