@@ -11,7 +11,8 @@ import { revalidatePath } from "next/cache";
 
 const HomePage = async () => {
   revalidatePath("/diaries");
-  revalidatePath("gallery")
+  revalidatePath("/diaries/[id]")
+  revalidatePath("/gallery")
   const projects = await getOrderedData("projects", "5");
   const diaries = await getOrderedData("dairies", "2");
 
