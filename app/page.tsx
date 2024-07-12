@@ -11,8 +11,8 @@ import { revalidatePath } from "next/cache";
 
 const HomePage = async () => {
   revalidatePath("/diaries");
-  revalidatePath("/diaries/[id]")
-  revalidatePath("/gallery")
+  revalidatePath("/diaries/[id]", "page");
+  revalidatePath("/gallery");
   const projects = await getOrderedData("projects", "5");
   const diaries = await getOrderedData("dairies", "2");
 
@@ -50,8 +50,8 @@ const HomePage = async () => {
       <OurProjects bg="bg-white" color="text-gray-800" projects={projects} />
 
       <Donations />
-      
-      <OurPartners/>
+
+      <OurPartners />
     </div>
   );
 };
