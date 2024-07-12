@@ -7,8 +7,11 @@ import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
 import OurPartners from "@/components/ourpartners/OurPartners";
+import { revalidatePath } from "next/cache";
 
 const HomePage = async () => {
+  revalidatePath("/diaries");
+  revalidatePath("gallery")
   const projects = await getOrderedData("projects", "5");
   const diaries = await getOrderedData("dairies", "2");
 
