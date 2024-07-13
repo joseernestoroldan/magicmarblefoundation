@@ -19,14 +19,16 @@ const DiaryPage = async ({
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
 
-  console.log("contenido:",data[0].contenido[0])
+  console.log(data[0])
+
+
   
 
   return (
     <>
     <Head>
       <title>{data[0].title}</title>
-      {/* <meta name="description" content={description} /> */}
+      <meta name="description" content={data[0].description} />
       <meta property="og:image" content={data[0].mainImage} />
       {/* Add other SEO or social sharing tags as needed */}
     </Head>
