@@ -8,6 +8,7 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Author from "@/components/diaries/author/Author";
 import { Date } from "@/utils/date";
 import Dates from "@/components/date/Date";
+import Head from "next/head";
 
 const DiaryPage = async ({
   params: { id: _Id },
@@ -22,6 +23,13 @@ const DiaryPage = async ({
   
 
   return (
+    <>
+    <Head>
+      <title>{data[0].title}</title>
+      {/* <meta name="description" content={description} /> */}
+      <meta property="og:image" content={data[0].mainImage} />
+      {/* Add other SEO or social sharing tags as needed */}
+    </Head>
     <HeadingCenterAnimation>
       <Container>
         <div className="flex flex-col justify-center w-full h-auto">
@@ -64,6 +72,9 @@ const DiaryPage = async ({
         </div>
       </Container>
     </HeadingCenterAnimation>
+    
+    </>
+    
   );
 };
 
