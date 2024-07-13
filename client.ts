@@ -19,7 +19,7 @@ const getData = async (query: string) => {
 };
 
 export const getAllData = async (myquery: string) => {
-  const query = groq`*[_type == '${myquery}'] | order(_createdAt desc){
+  const query = groq`*[_type == '${myquery}'] | order(_publishedAt desc){
         _id,
         publishedAt,
         title,

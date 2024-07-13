@@ -12,7 +12,9 @@ import { revalidatePath } from "next/cache";
 const HomePage = async () => {
   revalidatePath("/diaries");
   revalidatePath("/diaries/[id]", "page");
-  revalidatePath("/gallery");
+  revalidatePath("/gallery", "page");
+  revalidatePath("/gallery/photos/[id]", "page")
+  revalidatePath("/gallery")
   const projects = await getOrderedData("projects", "5");
   const diaries = await getOrderedData("dairies", "2");
 
