@@ -6,6 +6,8 @@ import Container from "@/components/layouts/container/Container";
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
 import Author from "@/components/diaries/author/Author";
+import { Date } from "@/utils/date";
+import Dates from "@/components/date/Date";
 
 const DiaryPage = async ({
   params: { id: _Id },
@@ -13,7 +15,9 @@ const DiaryPage = async ({
   params: { id: string };
 }) => {
   const data = await getOne(_Id);
-
+  const dateString = data[0].publishedAt;
+  const myDate = Date(dateString);
+  console.log(myDate);
 
   return (
     <HeadingCenterAnimation>
@@ -27,6 +31,19 @@ const DiaryPage = async ({
               textSize="text-2xl md:text-4xl"
               center="flex items-center justify-center"
             />
+
+            {data[0].publishedAt !== null && (
+              <div className="w-full flex justify-end items-center">
+                <Dates
+                  hour={myDate.hour}
+                  day={myDate.day}
+                  month={myDate.month}
+                  year={myDate.year}
+                  monthName={myDate.monthName}
+                />
+              </div>
+            )}
+
             {data[0].mainImage !== null && (
               <Photo
                 width="w-full"
