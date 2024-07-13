@@ -17,7 +17,9 @@ const DiaryPage = async ({
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
-  console.log(myDate);
+
+  console.log("contenido:",data[0].contenido[0])
+  
 
   return (
     <HeadingCenterAnimation>

@@ -9,7 +9,6 @@ type MyDateProps = {
 };
 
 const Dates = ({hour, day, month, year, monthName}: MyDateProps ) => {
-    console.log("aqui:", hour )
   return (
     <div>
       <span className="m-1 text-lg  text-gray-500 italic ">Published at:</span>
