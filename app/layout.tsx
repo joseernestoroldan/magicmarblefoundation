@@ -1,17 +1,14 @@
-import type { Metadata, Viewport } from "next";
+
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/Footer";
 import localFont from "next/font/local";
-import Photo from "@/components/photo/photo";
+
 
 
 const myFont = localFont({ src: "../public/bellmedium.woff2" });
 
-export const metadata: Metadata = {
-  title: "Magic Marble Foundation",
-  description: "Magic Marble Foundation WebPage",
-};
+
 
 export default function RootLayout({
   children,
