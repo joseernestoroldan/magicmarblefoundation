@@ -14,6 +14,7 @@ import Dates from "@/components/date/Date";
 export async function generateMetadata({ params: { id: _Id },}:{  params: { id: string }}){
 
   const data = await getOne(_Id);
+  console.log("esto", data[0].mainImage)
   return{
     title: data[0].title,
     openGraph: {
@@ -40,7 +41,7 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
-
+    
   return (
     <HeadingCenterAnimation>
       <Container>
