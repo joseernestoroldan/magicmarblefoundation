@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { id: _Id },}:{  params: { id: 
 
   const data = await getOne(_Id);
   const previousImages = (await parent).openGraph?.images || []
-  console.log("esto", data[0].mainImage)
+
   return{
     title: data[0].title,
     openGraph: {
@@ -39,7 +39,6 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
 
-  console.log(data[0].title.length)
   data[0].title.length > 30 ? textSize = "text-3xl" : textSize = "text-4xl" 
     
   return (
@@ -72,7 +71,7 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
                 width="w-full"
                 height="h-[250px] md:h-[500px] lg:h-[700px]"
                 alt=""
-                borderRadius=""
+                borderRadius="rounded-2xl"
                 src={data[0].mainImage}
                 objectFit="object-contain"
                 
