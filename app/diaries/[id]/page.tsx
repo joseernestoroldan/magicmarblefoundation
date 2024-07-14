@@ -8,30 +8,40 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Author from "@/components/diaries/author/Author";
 import { Date } from "@/utils/date";
 import Dates from "@/components/date/Date";
-import Head from "next/head";
 
-const DiaryPage = async ({
-  params: { id: _Id },
-}: {
-  params: { id: string };
-}) => {
+
+
+export async function generateMetadata({ params: { id: _Id },}:{  params: { id: string }}){
+
+  const data = await getOne(_Id);
+  return{
+    title: data[0].title,
+    openGraph: {
+      title: data[0].title,
+      description: data[0].description,
+      url: "https://magicmarblefoundation.org",
+      siteName: 'magicmarblefoundation.org',
+      images: [
+        {
+          url: data[0].mainImage, // Must be an absolute URL
+          width: 800,
+          height: 600,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+  }
+
+}
+
+
+const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => {
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
 
-  console.log(data[0])
-
-
-  
-
   return (
-    <>
-    <Head>
-      <title>{data[0].title}</title>
-      <meta name="description" content={data[0].description} />
-      <meta property="og:image" content={data[0].mainImage} />
-      {/* Add other SEO or social sharing tags as needed */}
-    </Head>
     <HeadingCenterAnimation>
       <Container>
         <div className="flex flex-col justify-center w-full h-auto">
@@ -74,9 +84,6 @@ const DiaryPage = async ({
         </div>
       </Container>
     </HeadingCenterAnimation>
-    
-    </>
-    
   );
 };
 
