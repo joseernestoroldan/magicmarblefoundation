@@ -20,7 +20,7 @@ export async function generateMetadata({ params: { id: _Id },}:{  params: { id: 
     openGraph: {
       title: data[0].title,
       description: data[0].description,
-      url: "https://magicmarblefoundation.org",
+      url: "https://magicmarblefoundation.orgi",
       siteName: 'magicmarblefoundation.org',
       images: [ data[0].mainImage
       ],
@@ -36,6 +36,7 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
+
     
   return (
     <HeadingCenterAnimation>
