@@ -8,22 +8,23 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Author from "@/components/diaries/author/Author";
 import { Date } from "@/utils/date";
 import Dates from "@/components/date/Date";
+import { Metadata, ResolvingMetadata } from "next";
 
 
 
-export async function generateMetadata({ params: { id: _Id },}:{  params: { id: string }}){
+export async function generateMetadata({ params: { id: _Id },}:{  params: { id: string }}, parent: ResolvingMetadata
+): Promise<Metadata> {
 
   const data = await getOne(_Id);
+  const previousImages = (await parent).openGraph?.images || []
   console.log("esto", data[0].mainImage)
   return{
     title: data[0].title,
     openGraph: {
       title: data[0].title,
       description: data[0].description,
-      url: "https://magicmarblefoundation.org",
-      siteName: 'magicmarblefoundation.org',
-      images: [ data[0].mainImage
-      ],
+      images:[data[0].mainImage, ...previousImages],
+
       locale: 'en_US',
       type: 'website',
     },
@@ -36,7 +37,6 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
-
     
   return (
     <HeadingCenterAnimation>
