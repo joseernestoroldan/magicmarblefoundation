@@ -21,7 +21,7 @@ export async function generateMetadata({ params: { id: _Id },}:{  params: { id: 
       title: data[0].title,
       description: data[0].description,
       url: "https://magicmarblefoundation.orgi",
-      siteName: 'magicmarblefoundation.org',
+      siteName: 'magicmarblefoundation.orgi',
       images: [ data[0].mainImage
       ],
       locale: 'en_US',
