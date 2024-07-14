@@ -34,9 +34,13 @@ export async function generateMetadata({ params: { id: _Id },}:{  params: { id: 
 
 
 const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => {
+  let textSize;
   const data = await getOne(_Id);
   const dateString = data[0].publishedAt;
   const myDate = Date(dateString);
+
+  console.log(data[0].title.length)
+  data[0].title.length > 30 ? textSize = "text-3xl" : textSize = "text-4xl" 
     
   return (
     <HeadingCenterAnimation>
@@ -47,7 +51,7 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
               title={data[0].title}
               color="text-cyan-500"
               shadow=""
-              textSize="text-2xl md:text-4xl"
+              textSize={`text-2xl md:${textSize}`}
               center="flex items-center justify-center"
             />
 
@@ -71,6 +75,7 @@ const DiaryPage = async ({ params: { id: _Id },}:{  params: { id: string }}) => 
                 borderRadius=""
                 src={data[0].mainImage}
                 objectFit="object-contain"
+                
               />
             )}
             {data[0].contenido !== null && <Parrafos data={data} />}
