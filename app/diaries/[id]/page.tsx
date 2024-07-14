@@ -20,8 +20,8 @@ export async function generateMetadata({ params: { id: _Id },}:{  params: { id: 
     openGraph: {
       title: data[0].title,
       description: data[0].description,
-      url: "https://magicmarblefoundation.orgi",
-      siteName: 'magicmarblefoundation.orgi',
+      url: "https://magicmarblefoundation.org",
+      siteName: 'magicmarblefoundation.org',
       images: [ data[0].mainImage
       ],
       locale: 'en_US',
