@@ -32,6 +32,14 @@ const OurPartners = () => {
             fill
           />
         </div>
+        <div className="relative w-[200px] h-[200px]">
+          <Image
+            className="object-contain"
+            src={"thrive.webp"}
+            alt="thrive"
+            fill
+          />
+        </div>
       </div>
     </LayoutY>
   );
