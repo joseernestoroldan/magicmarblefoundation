@@ -11,7 +11,7 @@ export const AnimatedWords: React.FC<AnimatedWordsProps> = ({ title }) => {
     return (
       <motion.span variants={staggerChildren}>
         {title.split(" ").map((word, idx) => (
-          <div key={idx} className="inline-block overflow-hidden p-1">
+          <div key={idx} className="inline-block overflow-hidden p-0">
             <motion.span
               className="inline-block overflow-hidden pb-[12px]"
               variants={wordAnimation}
