@@ -22,6 +22,7 @@ import { ImSpinner9 } from "react-icons/im";
 import Link from "next/link";
 import { newPassword } from "@/actions/new-password";
 
+
 const NewPasswordForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
