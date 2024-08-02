@@ -24,7 +24,7 @@ const focusAreasList = await getAllData("focusAreas");
                   src={area.mainImage}
                   title={area.title}
                   body={area.body}
-                  alt={area.alt}
+                  alt={area.alt || "magic marble foundation"}
                   key={area.title}
                   _id={area._id}
                 />

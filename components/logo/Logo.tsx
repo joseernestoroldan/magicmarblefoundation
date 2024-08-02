@@ -16,13 +16,13 @@ const Logo = () => {
         </div>
       </Link>
       <div className="flex flex-col">
-        <span className="text-black uppercase min-[426px]:text-base text-xs font-medium leading-none">
+        <span className="text-black uppercase min-[426px]:text-sm text-xs font-medium leading-none">
           Magic
         </span>
-        <span className="text-cyan-500 uppercase min-[426px]:text-base text-xs font-medium leading-none">
+        <span className="text-cyan-500 uppercase min-[426px]:text-sm text-xs font-medium leading-none">
           Marble
         </span>
-        <span className="text-black uppercase min-[426px]:text-base text-xs font-medium leading-none">
+        <span className="text-black uppercase min-[426px]:text-sm text-xs font-medium leading-none">
           Foundation
         </span>
       </div>

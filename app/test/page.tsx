@@ -1,12 +1,14 @@
 "use client";
+import FormUserAdmin from "@/components/formUserAdmin/FormUserAdmin";
+
 import React from "react";
-import BannerAnimation from "@/components/home/donations/BannerAnimation";
+
 
 const TestPage = () => {
 
   return (
-    <div className="relative">
-
+    <div className="w-full">
+      
     </div>
   );
 };

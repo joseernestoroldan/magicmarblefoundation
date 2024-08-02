@@ -1,5 +1,4 @@
 import { getAllData } from "@/client";
-import EnterElement from "@/components/animations/enterElement/EnterElement";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
 import Container from "@/components/layouts/container/Container";
 import Projects from "@/components/ourprojects/projects/Projects";
@@ -10,7 +9,6 @@ import Donations from "@/components/home/donations/Donations";
 
 const ProjectsPage = async () => {
   const projects = await getAllData("projects");
-
 
   return (
     <HeadingCenterAnimation>
@@ -26,9 +24,7 @@ const ProjectsPage = async () => {
         </div>
 
         <Container>
-        
-            <Projects projects={projects} bg="bg-white" color="text-gray-500" />
-          
+          <Projects projects={projects} bg="bg-white" color="text-gray-500" />
         </Container>
 
         <Donations />

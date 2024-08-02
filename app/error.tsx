@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -17,6 +18,7 @@ export default function Error({
 
   return (
     <main className="flex h-full flex-col items-center justify-center">
+      <div className="relative h-60 w-60"><Image className=" object-contain" src={"dogtransparent.png"} alt="" fill/></div>
       <h2 className="text-center text-xl font-bold text-red-500">
         Something went wrong!
       </h2>
