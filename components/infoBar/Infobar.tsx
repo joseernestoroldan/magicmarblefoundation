@@ -30,7 +30,7 @@ const Infobar = ({ name }: InfoProps) => {
               </div>
               <Icons color="text-gray-200" show={show} setShow={setShow} />
               {name === "" && (
-                <Link className="text-nowrap" href={"/login"}>
+                <Link className="text-nowrap" href={"https://www.magicmarblefoundation.org/login"}>
                   Sign In
                 </Link>
               )}
