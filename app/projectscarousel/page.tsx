@@ -40,7 +40,7 @@ const ProjectsCarouselPage = async () => {
                         <Card className=" border-0 rounded-2xl">
                           <CardContent className="flex aspect-video items-center justify-center p-0 w-full h-[600px] border-0 rounded-2xl">
                             <div className="text-4xl font-semibold w-full h-full relative">
-                              <div className="absolute z-10 left-5 bottom-10  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
+                              <div className="absolute z-10 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-5 bottom-10  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
                                 <div className=" bg-black bg-opacity-70 w-[300px] min-[425px]:w-[400px] p-4 rounded-2xl space-y-4">
                                   <h1 className="text-white text-xl min-[425px]:text-2xl font-bold w-full text-center">
                                     {project.title}

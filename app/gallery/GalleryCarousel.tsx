@@ -8,6 +8,7 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const GalleryCarousel = ({ gallery }: any) => {
   const [count, setCount] = useState<number>(0);
+  console.log(gallery)
 
   const handlePrev = () => {
     if (count > 0) {
@@ -26,7 +27,7 @@ const GalleryCarousel = ({ gallery }: any) => {
         <div className="w-full max-w-7xl  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
           {gallery.map((item: any, index: number) => (
             <div
-            key={index}
+              key={index}
               className={`bg-white top-0 bottom-0 left-0 right-0 absolute ${count === index ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}
             >
               <Image
@@ -35,6 +36,9 @@ const GalleryCarousel = ({ gallery }: any) => {
                 alt="Magic Marble Foundation"
                 fill
               />
+              <div className="bg-black bg-opacity-50 absolute z-10 bottom-4 sm:left-4 left-1/2 -translate-x-1/2 sm:-translate-x-0 rounded-[5px] ">
+                <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">{item.title}</p>
+              </div>
             </div>
           ))}
 
@@ -42,13 +46,13 @@ const GalleryCarousel = ({ gallery }: any) => {
             onClick={handlePrev}
             className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
           >
-           <FaRegArrowAltCircleLeft className="text-gray-50 text-3xl opacity-80 hidden sm:flex"/>
+            <FaRegArrowAltCircleLeft className="text-gray-50 text-3xl opacity-80 hidden sm:flex" />
           </button>
           <button
             onClick={handleNext}
             className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -right-12 sm:right-0 ${count === gallery.length - 1 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
           >
-            <FaRegArrowAltCircleRight className="text-gray-50 text-3xl opacity-80 hidden sm:flex"/>
+            <FaRegArrowAltCircleRight className="text-gray-50 text-3xl opacity-80 hidden sm:flex" />
           </button>
         </div>
       </div>
