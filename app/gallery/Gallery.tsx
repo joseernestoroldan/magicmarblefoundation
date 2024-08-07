@@ -16,7 +16,7 @@ const Gallery = ({ gallery }: any) => {
 
     <EnterSection>
       <div className="flex flex-col items-stretch space-y-0 w-full">
-      <div className="pt-4 md:pt-4 flex items-center w-full leading-none">
+      {/* <div className="pt-4 md:pt-4 flex items-center w-full leading-none">
         <HeadingCenterAnimation>
           <Heading
             title="Our Gallery"
@@ -26,7 +26,7 @@ const Gallery = ({ gallery }: any) => {
             center="flex justify-center "
           />
         </HeadingCenterAnimation>
-      </div>
+      </div> */}
       <div className="w-full">
         <div className="w-full flex flex-col justify-center">
           <div className="flex items-center justify-center md:justify-end gap-x-2 px-8 w-full py-4 md:py-0">
@@ -45,12 +45,12 @@ const Gallery = ({ gallery }: any) => {
           {!changeGallery && <GalleryCarousel gallery={gallery} />}
         </div>
       </div>
-      <div className="w-full max-w-[1400] py-4">
+      {/* <div className="w-full max-w-[1400] py-4">
         <VideoFrame
           src="https://www.youtube.com/embed/Xvy-99U_8bQ?autoplay=1&mute=1"
           bg={""}
         />
-      </div>
+      </div> */}
 
       </div>
     </EnterSection>

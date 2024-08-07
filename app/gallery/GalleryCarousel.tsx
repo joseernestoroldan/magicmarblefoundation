@@ -1,52 +1,55 @@
+"use client";
+import { useState } from "react";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Image from "next/image";
-import React from "react";
 
-
+import { FaRegArrowAltCircleLeft } from "react-icons/fa";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const GalleryCarousel = ({ gallery }: any) => {
+  const [count, setCount] = useState<number>(0);
+
+  const handlePrev = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (count < gallery.length) {
+      setCount(count + 1);
+    }
+  };
   return (
     <EnterSection>
-      <div className="relative w-full h-auto flex justify-center overflow-hidden p-0">
-        <Carousel className="w-full md:w-[60%] text-cyan-600 font-bold h-auto flex justify-center" >
-          <CarouselContent className="rounded-2xl w-full h-auto flex justify-stretch">
-            {gallery.map((photo: any, index: number) => (
-              <CarouselItem key={index} className="rounded-2xl h-auto w-full mx-auto">
-               
-                  <Card className="rounded-2xl h-auto w-full border-0 animate-fade-in-pro">
-                    <CardContent className="h-auto p-0 w-full rounded-2xl">
-                      <div className="text-4xl font-semibold w-full h-[700px] rounded-2xl relative">
-                        <div className="absolute z-10 left-0 top-0  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
-                          <div className=" bg-black bg-opacity-70 w-full md:w-[400px] p-4 rounded-2xl m-4">
-                            <h1 className="text-white text-lg min-[425px]:text-xl font-bold w-full">
-                              {photo.title}
-                            </h1>
-                          </div>
-                        </div>
-                        <Image
-                                className="object-center object-cover rounded-2xl"
-                                src={photo.mainImage}
-                                fill
-                                alt={photo.title}
-                                priority={true}
-                              />
-                      </div>
-                    </CardContent>
-                  </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="md:flex hidden" />
-          <CarouselNext className="md:flex hidden" />
-        </Carousel>
+      <div className="relative w-full h-auto flex flex-col justify-start items-center p-0">
+        <div className="w-full max-w-7xl  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
+          {gallery.map((item: any, index: number) => (
+            <div
+              className={`bg-white top-0 bottom-0 left-0 right-0 absolute ${count === index ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}
+            >
+              <Image
+                className="object-cover object-center"
+                src={item.mainImage}
+                alt="Magic Marble Foundation"
+                fill
+              />
+            </div>
+          ))}
+
+          <button
+            onClick={handlePrev}
+            className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
+          >
+           <FaRegArrowAltCircleLeft className="text-gray-50 text-3xl opacity-80 hidden sm:flex"/>
+          </button>
+          <button
+            onClick={handleNext}
+            className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -right-12 sm:right-0 ${count === gallery.length - 1 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
+          >
+            <FaRegArrowAltCircleRight className="text-gray-50 text-3xl opacity-80 hidden sm:flex"/>
+          </button>
+        </div>
       </div>
     </EnterSection>
   );
