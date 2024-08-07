@@ -71,7 +71,7 @@ const NewPasswordForm = () => {
                   <FormLabel>New password</FormLabel>
                   <FormControl>
                     <Input
-                      className="text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="******"
                       type="password"
@@ -90,7 +90,7 @@ const NewPasswordForm = () => {
                   <FormLabel>Repeat Password</FormLabel>
                   <FormControl>
                     <Input
-                      className="text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="******"
                       type="password"
@@ -106,7 +106,7 @@ const NewPasswordForm = () => {
           <FormSuccess message={success} />
 
           <button
-            className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-[5px]"
+            className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-full"
             type="submit"
             disabled={isPending}
           >

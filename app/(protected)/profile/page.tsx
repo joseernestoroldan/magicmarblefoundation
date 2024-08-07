@@ -23,39 +23,38 @@ const ProfilePage = async () => {
           className="text-cyan-500 underline text-lg flex justify-center gap-2 items-center"
           href={"/settings"}
         >
-          {" "}
           <IoMdSettings /> Settings
         </Link>
       </div>
 
       {!data?.name && (
-        <div className="text-4xl text-gray-500 font-bold flex space-x-2 uppercase">
+        <div className="sm:text-4xl text-2xl text-gray-500 font-bold flex space-x-2 uppercase ">
           <p>{data?.firstName}</p>
           <p>{data?.secondName}</p>
         </div>
       )}
 
       {data?.name && (
-        <div className="text-4xl text-gray-500 font-bold flex space-x-2 uppercase">
+        <div className="sm:text-4xl text-2xl text-gray-500 font-bold flex space-x-2 uppercase">
           <p>{data?.name}</p>
         </div>
       )}
 
-      <div className="flex space-x-2 text-gray-500 text-xl items-center">
+      <div className="flex space-x-2 text-gray-500 text-xl sm:items-center sm:flex-row flex-col items-start ">
         <p className="font-semibold capitalize">Email:</p>
         <p className="font-medium lowercase">{data?.email}</p>
         {data?.name && <FcGoogle />}
       </div>
 
       {data?.country && (
-        <div className="flex space-x-2 text-gray-500 text-xl">
+        <div className="flex space-x-2 text-gray-500 text-xl sm:items-center sm:flex-row flex-col items-start">
           <p className="font-semibold capitalize">Country:</p>
           <p className="font-medium capitalize">{data?.country}</p>
         </div>
       )}
 
       {data?.address && (
-        <div className="flex space-x-2 text-gray-500 text-xl">
+        <div className="flex space-x-2 text-gray-500 text-xl sm:items-center sm:flex-row flex-col items-start">
           <p className="font-semibold capitalize">Address:</p>
           <p className="font-medium capitalize">{data?.address}</p>
         </div>
@@ -97,7 +96,7 @@ const ProfilePage = async () => {
         }}
       >
         <button
-          className="bg-cyan-500 hover:bg-opacity-80 text-white rounded-[5px] py-2 px-6"
+          className="bg-cyan-500 hover:bg-opacity-80 text-white rounded-full py-2 px-6"
           type="submit"
         >
           Sign Out

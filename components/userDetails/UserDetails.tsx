@@ -45,7 +45,7 @@ const UserDetails = ({
   return (
     <Dialog>
       <DialogTrigger>
-        <button className="bg-cyan-500 text-white py-1 px-2 rounded-[5px]">
+        <button className="bg-cyan-500 text-white py-1 px-2 rounded-full">
           Details
         </button>
       </DialogTrigger>

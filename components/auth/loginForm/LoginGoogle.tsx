@@ -14,7 +14,7 @@ const LoginGoogle = () => {
         onClick={async () => {
           await sigInGoogle();
         }}
-        className="flex flex-row justify-center text-gray-500 items-center w-[250px] py-3 hover:bg-gray-100 gap-x-4 border border-gray-200 border-solid rounded-[5px]"
+        className="flex flex-row justify-center text-gray-500 items-center w-[250px] py-3 hover:bg-gray-100 gap-x-4 border border-gray-200 border-solid rounded-full"
       >
         <FcGoogle className="text-lg" />
         Sign in with Google

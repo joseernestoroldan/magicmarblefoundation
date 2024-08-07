@@ -7,7 +7,7 @@ import DangerZone from "../dangerzone/DangerZone";
 const SettingsTabs = (data: any) => {
   return (
     <div className="w-full max-w-5xl mx-auto h-[500px]">
-      <Tabs defaultValue="account" className="w-[400px] mx-auto">
+      <Tabs defaultValue="account" className="sm:w-[400px] w-[300px] mx-auto">
         <TabsList>
           <TabsTrigger
             className="data-[state=active]:bg-gray-100 rounded-t-[5px]"
@@ -42,7 +42,7 @@ const SettingsTabs = (data: any) => {
               Change your password here.
             </h2>
             <Link
-              className="border border-cyan-500 text-cyan-500 py-4 px-6 rounded-[5px]"
+              className="border border-cyan-500 text-cyan-500 py-4 px-6 rounded-full"
               href={"/reset"}
             >
               Reset your password

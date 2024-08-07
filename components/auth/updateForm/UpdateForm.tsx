@@ -83,14 +83,14 @@ const UpdateForm = ({ data }: any) => {
   return (
     <div className="flex flex-col space-y-8">
       <button
-        className="w-[100px] border border-cyan-500 text-cyan-500 rounded-[5px] py-2"
+        className="w-[100px] border border-cyan-500 text-cyan-500 rounded-full py-2"
         onClick={() => setEnable(!enable)}
       >
         {enable ? "Cancel" : "Edit"}
       </button>
 
       {!enable && (
-        <div className="space-y-4 w-[420px] max-w-5xl mx-auto text-cyan-500 border border-cyan-500 rounded-[5px] px-4 py-8">
+        <div className="space-y-4 w-[420px] max-w-5xl mx-auto text-cyan-500 border border-cyan-500 rounded-[20px] px-4 py-8">
           <div className="w-full flex flex-col text-2xl font-medium text-gray-500 items-center justify-center">
             <MdPerson />
             <h3 className="text-xl text-gray-500">Your personal info</h3>
@@ -112,14 +112,14 @@ const UpdateForm = ({ data }: any) => {
           {subscribed && (
             <div className="w-full flex gap-x-1 items-center font-medium">
               <MdUnsubscribe />
-              <p>Suscribed to the Newsletter</p>
+              <p>Suscribed to Diaries</p>
             </div>
           )}
 
           {!subscribed && (
             <div className="w-full flex gap-x-1 items-center font-medium">
               <MdOutlineUnsubscribe />
-              <p>Unsuscribed to the Newsletter</p>
+              <p>Unsuscribed to Diaries</p>
             </div>
           )}
         </div>
@@ -146,7 +146,7 @@ const UpdateForm = ({ data }: any) => {
                               variant="outline"
                               role="combobox"
                               className={cn(
-                                "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500"
+                                "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500 rounded-full"
                               )}
                             >
                               {field.value
@@ -211,7 +211,7 @@ const UpdateForm = ({ data }: any) => {
                       <FormLabel>Telephone Number</FormLabel>
                       <FormControl>
                         <Input
-                          className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                          className="w-[200px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                           {...field}
                           placeholder={number}
                           type="tel"
@@ -238,7 +238,7 @@ const UpdateForm = ({ data }: any) => {
                               variant="outline"
                               role="combobox"
                               className={cn(
-                                "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500"
+                                "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500 rounded-full"
                               )}
                             >
                               {field.value
@@ -320,7 +320,7 @@ const UpdateForm = ({ data }: any) => {
                     <FormLabel>Shipping Address</FormLabel>
                     <FormControl>
                       <Input
-                        className="w-full text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                        className="w-full text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                         {...field}
                         placeholder={address}
                         type="text"
@@ -336,7 +336,7 @@ const UpdateForm = ({ data }: any) => {
             <FormError message={error} />
 
             <button
-              className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-[5px]"
+              className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-full"
               type="submit"
               disabled={isPending}
             >

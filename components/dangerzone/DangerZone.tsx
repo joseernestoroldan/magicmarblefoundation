@@ -30,7 +30,7 @@ const DangerZone = ({ data }: any) => {
     <div className="border border-red-500 bg-red-100 w-full h-[300px] flex flex-col justify-center items-center rounded-[5px]">
       <Dialog>
         <DialogTrigger asChild>
-          <button className="bg-red-200 text-red-600 text-lg py-2 px-4 border-red-600 rounded-[5px] border">
+          <button className="bg-red-200 text-red-600 text-lg py-2 px-4 border-red-600 rounded-full border">
             Delete Account
           </button>
         </DialogTrigger>
@@ -43,12 +43,12 @@ const DangerZone = ({ data }: any) => {
             <div className="w-full flex justify-center gap-x-10 py-8">
               <button
                 onClick={handleDelete}
-                className="bg-red-200 text-red-600 text-lg py-2 px-6 border-red-600 rounded-[5px] border hover:bg-opacity-70"
+                className="bg-red-200 text-red-600 text-lg py-2 px-6 border-red-600 rounded-full border hover:bg-opacity-70"
               >
                 Delete
               </button>
               <DialogClose asChild>
-                <button className="bg-gray-200 text-gray-600 text-lg py-2 px-6 border-gray-600 rounded-[5px] border hover:bg-opacity-70">
+                <button className="bg-gray-200 text-gray-600 text-lg py-2 px-6 border-gray-600 rounded-full border hover:bg-opacity-70">
                   Cancel
                 </button>
               </DialogClose>

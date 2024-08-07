@@ -68,7 +68,7 @@ const LoginForm = () => {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                    className="text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                     {...field}
                     placeholder="magicmarble@example.com"
                     type="email"
@@ -88,7 +88,7 @@ const LoginForm = () => {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
-                    className="text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                    className="text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                     {...field}
                     placeholder="******"
                     type="password"
@@ -109,7 +109,7 @@ const LoginForm = () => {
         <FormError message={error} />
         <FormConfirmation message={confirmation} />
         <button
-          className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-[5px]"
+          className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-full"
           type="submit"
           disabled={isPending}
         >

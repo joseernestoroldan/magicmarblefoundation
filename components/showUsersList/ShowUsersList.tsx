@@ -57,64 +57,68 @@ const ShowUsersList = () => {
         </p>
       )}
       {users.length !== 0 && (
-        <table className="w-full border border-gray-200 my-4 text-gray-500">
-          <thead className="font-semibold text-center">
-            <tr>
-              <td className="p-3 text-center">Name</td>
-              <td className="p-3 text-center">Email</td>
-              <td className="p-3 text-center">Country</td>
-              <td className="p-3 text-center">Number</td>
-              <td className="p-3 text-center">Is suscribed</td>
-              <td className="p-3 text-center">Role</td>
-              <td className="p-3 text-center">Details</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => {
-              return (
-                <tr key={user.id}>
-                  <td className="p-3 text-center capitalize">
-                    {user.name
-                      ? user.name
-                      : user.firstName + " " + user.secondName}
-                  </td>
-                  <td className="p-3 text-center lowercase">{user.email}</td>
-                  <td className="p-3 text-center capitalize">{user.country}</td>
-                  <td className="p-3 text-center">
-                    ({user.codeNumber}) {" " + user.number}
-                  </td>
-                  <td className="p-3 flex justify-center ">
-                    {user.subscribed ? <FaCheck /> : ""}
-                  </td>
-                  <td className="p-3 text-center ">
-                    <FormUserAdmin role={user.role} id={user.id} />
-                  </td>
+        <div className="flex w-full overflow-x-scroll md:overflow-auto">
+          <table className="w-full border border-gray-200 my-4 text-gray-500">
+            <thead className="font-semibold text-center">
+              <tr>
+                <td className="p-3 text-center">Name</td>
+                <td className="p-3 text-center">Email</td>
+                <td className="p-3 text-center">Country</td>
+                <td className="p-3 text-center">Number</td>
+                <td className="p-3 text-center">Is suscribed</td>
+                <td className="p-3 text-center">Role</td>
+                <td className="p-3 text-center">Details</td>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user) => {
+                return (
+                  <tr key={user.id}>
+                    <td className="p-3 text-center capitalize">
+                      {user.name
+                        ? user.name
+                        : user.firstName + " " + user.secondName}
+                    </td>
+                    <td className="p-3 text-center lowercase">{user.email}</td>
+                    <td className="p-3 text-center capitalize">
+                      {user.country}
+                    </td>
+                    <td className="p-3 text-center">
+                      ({user.codeNumber}) {" " + user.number}
+                    </td>
+                    <td className="p-3 flex justify-center ">
+                      {user.subscribed ? <FaCheck /> : ""}
+                    </td>
+                    <td className="p-3 text-center ">
+                      <FormUserAdmin role={user.role} id={user.id} />
+                    </td>
 
-                  <td className="p-3 text-center flex justify-center">
-                    <UserDetails
-                      name={user.name}
-                      firstName={user.firstName}
-                      secondName={user.secondName}
-                      email={user.email}
-                      country={user.country}
-                      codeNumber={user.codeNumber}
-                      number={user.number}
-                      subscribed={user.subscribed}
-                      address={user.address}
-                      emailVerified={user.emailVerified}
-                      role={user.role}
-                    />
-                    {/* <Link href={`/details/${user.id}`}>
-                      <button className="bg-cyan-500 text-white py-1 px-2 rounded-[5px]">
-                        Details
-                      </button>
-                    </Link> */}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    <td className="p-3 text-center flex justify-center">
+                      <UserDetails
+                        name={user.name}
+                        firstName={user.firstName}
+                        secondName={user.secondName}
+                        email={user.email}
+                        country={user.country}
+                        codeNumber={user.codeNumber}
+                        number={user.number}
+                        subscribed={user.subscribed}
+                        address={user.address}
+                        emailVerified={user.emailVerified}
+                        role={user.role}
+                      />
+                      {/* <Link href={`/details/${user.id}`}>
+                    <button className="bg-cyan-500 text-white py-1 px-2 rounded-[5px]">
+                      Details
+                    </button>
+                  </Link> */}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
       <PaginationUtil count={count} />
     </div>

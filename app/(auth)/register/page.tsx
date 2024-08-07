@@ -6,9 +6,9 @@ import React from "react";
 
 const RegisterPage = async () => {
   return (
-    <div className="w-full h-[90vh] flex flex-col justify-center items-center max-w-5xl mx-auto">
-      <div className="w-full h-[90vh] flex justify-center">
-        <div className="md:w-[40%] lg:w-1/2 md:h-[70%] lg:h-[90%] relative rounded-[10px] overflow-hidden hidden md:block">
+    <div className="w-full h-auto sm:h-[90vh] flex flex-col justify-center items-center max-w-5xl mx-auto">
+      <div className="w-full h-auto sm:h-[90vh] flex justify-center">
+        <div className="hidden lg:w-1/2 md:h-[70%] lg:h-[90%] relative rounded-[10px] overflow-hidden lg:block">
           <Image
             className="object-cover object-center"
             src={"sanctuary.webp"}
@@ -20,11 +20,11 @@ const RegisterPage = async () => {
               <Button>Donate</Button>
             </Link>
             <h2 className="text-white text-4xl font-bold text-center">
-              Be Change You Want For the World
+              Your Choices Can Change The World
             </h2>
           </div>
         </div>
-        <div className=" w-1/2">
+        <div className="w-[90%] sm:w-[70%] lg:w-1/2">
           <RegisterCard />
         </div>
       </div>

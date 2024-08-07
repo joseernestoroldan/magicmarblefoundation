@@ -24,13 +24,14 @@ const Infobar = ({ name }: InfoProps) => {
         <div className="w-full flex flex-col md:flex-row items-center ">
           <div className="w-full flex justify-center md:justify-between items-center">
             <div className="text-lg hidden md:flex">+1 312 - 600 - 8182</div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center flex-col md:flex-row space-x-2">
               <div className="text-lg hidden md:flex px-4 items-center">
                 info@magicmarblefoundation.org
               </div>
+              
               <Icons color="text-gray-200" show={show} setShow={setShow} />
               {name === "" && (
-                <Link className="text-nowrap" href={"https://www.magicmarblefoundation.org/login"}>
+                <Link className="text-nowrap" href={`${process.env.NEXT_PUBLIC_APP_URL}/login`}>
                   Sign In
                 </Link>
               )}

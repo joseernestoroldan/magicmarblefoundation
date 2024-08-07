@@ -7,8 +7,8 @@ import React from "react";
 const LoginPage = () => {
   return (
     <div className="w-full h-[90vh] flex flex-col justify-center items-center max-w-5xl mx-auto">
-      <div className="w-full flex h-[80%]">
-        <div className="w-1/2 relative rounded-[10px] overflow-hidden">
+      <div className="w-full flex h-[80%] justify-center lg:justify-start">
+        <div className="hidden lg:w-1/2 relative rounded-[10px] overflow-hidden lg:block">
           <Image
             className="object-cover object-center"
             src={"sterilization.webp"}
@@ -18,14 +18,14 @@ const LoginPage = () => {
 
           <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col justify-end items-center gap-10 backdrop-brightness-50 pb-16">
             <h2 className="text-white text-3xl font-bold text-center">
-              Be Change You Want For the World
+              Your Choices Can Change The World
             </h2>
             <Link href={"/donations"}>
               <Button>Donate</Button>
-            </Link>{" "}
+            </Link>
           </div>
         </div>
-        <div className=" w-1/2">
+        <div className="w-[90%]  sm:w-[70%] lg:w-1/2">
           <LoginCard />
         </div>
       </div>

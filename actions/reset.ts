@@ -27,5 +27,5 @@ export const reset = async (value: z.infer<typeof resetSchema>) => {
 
   //todo generete token and send email
 
-  return { success: "Reset email sent!" };
+  return { success: "We have sent a reset link to your email." };
 };

@@ -78,20 +78,18 @@ const RegisterForm = () => {
     });
   };
 
-  if(success || success !== ""){
-    return(
-      <FormSuccess message={success} />
-    )
+  if (success || success !== "") {
+    return <FormSuccess message={success} />;
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className=" space-y-4 w-[80%]"
+        className=" space-y-4 w-[90%]"
       >
         <div className="space-y-2 w-full">
-          <div className="w-full flex justify-between">
+          <div className="w-full flex flex-col justify-center sm:justify-between sm:flex-row">
             <FormField
               control={form.control}
               name="firstName"
@@ -100,7 +98,7 @@ const RegisterForm = () => {
                   <FormLabel>First Name</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="w-full sm:w-[200px] md:w-[220px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="First Name"
                       type="text"
@@ -119,7 +117,7 @@ const RegisterForm = () => {
                   <FormLabel>Second Name</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="w-full sm:w-[200px] md:w-[220px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="Second Name"
                       type="text"
@@ -140,7 +138,7 @@ const RegisterForm = () => {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
-                    className=" text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                    className=" text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                     {...field}
                     placeholder="magicmarble@example.com"
                     type="email"
@@ -152,7 +150,7 @@ const RegisterForm = () => {
             )}
           />
 
-          <div className="w-full flex justify-between">
+          <div className="w-full flex flex-col justify-center sm:justify-between sm:flex-row">
             <FormField
               control={form.control}
               name="password"
@@ -161,7 +159,7 @@ const RegisterForm = () => {
                   <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="w-full sm:w-[200px] md:w-[220px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="******"
                       type="password"
@@ -181,7 +179,7 @@ const RegisterForm = () => {
                   <FormLabel>Repeat Password</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="w-full sm:w-[200px] md:w-[220px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="******"
                       type="password"
@@ -194,7 +192,7 @@ const RegisterForm = () => {
             />
           </div>
 
-          <div className="w-full flex justify-between items-end">
+          <div className="w-full flex flex-col justify-center sm:justify-between sm:flex-row items-start sm:items-end">
             <FormField
               control={form.control}
               name="codeNumber"
@@ -208,7 +206,7 @@ const RegisterForm = () => {
                           variant="outline"
                           role="combobox"
                           className={cn(
-                            "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500"
+                            "w-[200px] justify-between border-gray-200 focus-within:border-cyan-500 rounded-full"
                           )}
                         >
                           {field.value
@@ -273,7 +271,7 @@ const RegisterForm = () => {
                   <FormLabel>Telephone Number</FormLabel>
                   <FormControl>
                     <Input
-                      className="w-[200px] text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="w-[200px] text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="Telephone Number"
                       type="tel"
@@ -286,7 +284,7 @@ const RegisterForm = () => {
             />
           </div>
 
-          <div className="w-full flex justify-between">
+          <div className="w-full flex flex-col justify-center sm:justify-between sm:flex-row items-start sm:items-end">
             <FormField
               control={form.control}
               name="country"
@@ -300,7 +298,7 @@ const RegisterForm = () => {
                           variant="outline"
                           role="combobox"
                           className={cn(
-                            "w-[200px] justify-between border-gray-200"
+                            "w-[200px] justify-between border-gray-200 rounded-full"
                           )}
                         >
                           {field.value
@@ -367,7 +365,7 @@ const RegisterForm = () => {
                     />
                   </FormControl>
 
-                  <FormLabel className="">Suscribe to our Newsletter</FormLabel>
+                  <FormLabel className="">Subscribe to our Magic Diaries</FormLabel>
                 </FormItem>
               )}
             />
@@ -380,7 +378,7 @@ const RegisterForm = () => {
                 <FormLabel>Shipping Address</FormLabel>
                 <FormControl>
                   <Input
-                    className="w-full text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                    className="w-full text-gray-500 rounded-full border-gray-200 focus-within:border-cyan-500"
                     {...field}
                     placeholder="Shipping Address"
                     type="text"
@@ -394,9 +392,9 @@ const RegisterForm = () => {
           />
         </div>
         <FormError message={error} />
-        
+
         <button
-          className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-[5px]"
+          className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-3 rounded-full"
           type="submit"
           disabled={isPending}
         >

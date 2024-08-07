@@ -69,7 +69,7 @@ const ResetForm = () => {
                   <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
-                      className="text-gray-500 rounded-[5px] border-gray-200 focus-within:border-cyan-500"
+                      className="text-gray-500 rounded-rounded border-gray-200 focus-within:border-cyan-500"
                       {...field}
                       placeholder="magicmarble@example.com"
                       type="email"
@@ -84,7 +84,7 @@ const ResetForm = () => {
           <FormError message={error} />
 
           <button
-            className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-2 rounded-[5px] text-lg"
+            className="bg-cyan-500 hover:bg-opacity-80 text-white w-full py-2 rounded-full text-lg"
             type="submit"
             disabled={isPending}
           >

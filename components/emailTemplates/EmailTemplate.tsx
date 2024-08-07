@@ -2,9 +2,28 @@ import React from "react";
 
 const EmailTemplate = (Link: string, message: string) => {
   return (
-    <div>
+    <div
+      style={{
+        padding: "40px",
+      }}
+    >
+      <div style={{ textAlign: "center" }}>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAGKUDFa_w5EFlNfyYP7dNRuVKpiiHtUrlYQ&s"
+          alt="magic marble foundation"
+        />
+      </div>
+
       <h1
-        style={{ color: "#64cbcc", textAlign: "center", margin: "25px auto" }}
+        style={{
+          color: "#ffffff",
+          textAlign: "center",
+          margin: "25px auto",
+          backgroundColor: "#06b6d4",
+          borderRadius: "7px",
+          padding: "50px",
+          width: "",
+        }}
       >
         Magic Marble Foundation
       </h1>
@@ -45,7 +64,7 @@ const EmailTemplate = (Link: string, message: string) => {
         <a
           href="http://www.magicmarblefoundation.org"
           style={{
-            color: "#64cbcc",
+            color: "#06b6d4",
             textAlign: "center",
             margin: "auto",
             padding: "0 4px",
