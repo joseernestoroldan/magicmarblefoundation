@@ -7,12 +7,12 @@ const GetInvolvePage = () => {
   const [showWishList, setShowWishList] = useState(false);
   return (
     <div className="bg-fixed bg-White bg-no-repeat bg-cover flex flex-col justify-start items-center py-12 w-full bg-opacity-80">
-      <div className="w-[90%] flex flex-col justify-start items-stretch p-12 bg-white rounded-2xl space-y-4 max-w-5xl">
-        <h1 className="text-cyan-500 text-5xl text-center font-black pb-8">
+      <div className="w-full sm:w-[90%] flex flex-col justify-start items-stretch py-12 px-2 sm:px-12 bg-white rounded-2xl space-y-4 max-w-5xl">
+        <h1 className="text-cyan-500 text-2xl sm:text-5xl text-center font-black pb-8">
           Be the Catalyst for Change
         </h1>
 
-        <h2 className="text-cyan-500 text-3xl text-justify font-semibold">
+        <h2 className="text-cyan-500 text-xl sm:text-3xl text-justify font-semibold">
           Join Our Global Movement for Compassion
         </h2>
 
@@ -125,11 +125,11 @@ const GetInvolvePage = () => {
           both humans and non-humans thrive in harmony.
         </p>
 
-        <h3 className="text-cyan-500 text-4xl text-center font-black">
+        <h3 className="text-cyan-500 text-xl sm:text-4xl text-center font-black">
           Choose Your Path to Compassion. Support Magic Marble Foundation Today.
         </h3>
 
-        <div className="flex flex-row justify-around items-center py-8 w-full">
+        <div className="flex flex-col sm:flex-row justify-start sm:justify-around items-center py-4 w-full space-y-4 sm:space-y-0">
           <Link
             href={
               "https://docs.google.com/forms/d/1O9DbAEXwDj5_3pzSymk-hda3_rg2jV_WUmdVD8hFOP8/edit?ts=6670c3f0"
@@ -138,7 +138,7 @@ const GetInvolvePage = () => {
             target="_blank"
           >
             <div
-              className="bg-cyan-500 text-white rounded-full font-semibold text-lg p-4 hover:bg-cyan-400"
+              className="bg-cyan-500 text-white rounded-full font-semibold text-lg p-4 hover:bg-cyan-400 w-[250px] text-center"
               onMouseEnter={() => setShowVolunteer(true)}
               onMouseLeave={() => setShowVolunteer(false)}
             >
@@ -153,7 +153,7 @@ const GetInvolvePage = () => {
             target="_blank"
           >
             <div
-              className=" bg-cyan-500 text-white rounded-full font-semibold text-lg p-4 hover:bg-cyan-400"
+              className=" bg-cyan-500 text-white rounded-full font-semibold text-lg p-4 hover:bg-cyan-400 w-[250px] text-center"
               onMouseEnter={() => setShowWishList(true)}
               onMouseLeave={() => setShowWishList(false)}
             >

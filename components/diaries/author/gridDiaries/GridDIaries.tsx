@@ -13,7 +13,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
   return (
     <HeadingCenterAnimation>
       <EnterSection>
-        <div className="pb-12">
+        <div className="pb-12 flex flex-col items-center justify-start w-full">
           <Heading
             title="Magic Diaries"
             color="text-cyan-500"
@@ -25,7 +25,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
    
           <Container>
             <LayoutY>
-              <div className="flex flex-col flex-wrap md:flex-row items-start justify-center w-full space-y-8 md:space-y-0 max-w-5xl space-x-0 md:space-x-4 min-h-[75vh]">
+              <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-8 md:space-y-0 max-w-5xl space-x-0 md:space-x-4">
                 {diaries.map((diary: any) => (
                   <Diary
                     _id={diary._id}

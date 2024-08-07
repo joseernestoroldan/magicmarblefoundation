@@ -8,7 +8,6 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const GalleryCarousel = ({ gallery }: any) => {
   const [count, setCount] = useState<number>(0);
-  console.log(gallery)
 
   const handlePrev = () => {
     if (count > 0) {
@@ -37,7 +36,9 @@ const GalleryCarousel = ({ gallery }: any) => {
                 fill
               />
               <div className="bg-black bg-opacity-50 absolute z-10 bottom-4 sm:left-4 left-1/2 -translate-x-1/2 sm:-translate-x-0 rounded-[5px] ">
-                <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">{item.title}</p>
+                <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
+                  {item.title}
+                </p>
               </div>
             </div>
           ))}

@@ -31,7 +31,7 @@ const Gallery = ({ gallery }: any) => {
         <div className="w-full flex flex-col justify-center">
           <div className="flex items-center justify-center md:justify-end gap-x-2 px-8 w-full py-4 md:py-0">
 
-            <Label className="" htmlFor="show-grid">{changeGallery? "Show Carousel" : "Show Grid" }</Label>
+            <Label className="text-cyan-500" htmlFor="show-grid">{changeGallery? "Show Carousel" : "Show Grid" }</Label>
             <Switch
               id="show-grid"
               onCheckedChange={() => {

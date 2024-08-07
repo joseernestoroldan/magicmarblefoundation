@@ -8,7 +8,10 @@ const DiariesPage = async () => {
 
   return (
     <LayoutY>
-      <GridDIaries diaries={diaries} />
+      <div className="w-full max-w-5xl mx-auto min-h-[75vh] flex flex-col items-center justify-start">
+        <GridDIaries diaries={diaries} />
+      </div>
+      
       <Donations/>
     </LayoutY>
   );
