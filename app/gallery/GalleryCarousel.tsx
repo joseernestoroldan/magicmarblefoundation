@@ -26,6 +26,7 @@ const GalleryCarousel = ({ gallery }: any) => {
         <div className="w-full max-w-7xl  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
           {gallery.map((item: any, index: number) => (
             <div
+            key={index}
               className={`bg-white top-0 bottom-0 left-0 right-0 absolute ${count === index ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}
             >
               <Image
