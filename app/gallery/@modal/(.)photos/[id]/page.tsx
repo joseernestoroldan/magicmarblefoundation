@@ -20,7 +20,7 @@ export default async function PhotoModal({
         priority
       />
 
-      <div className="flex flex-col justify-between absolute z-10 top-[10px] left-[0px] space-y-4 w-[300px] md:w-[600px] pl-4">
+      <div className="flex flex-col justify-center absolute z-10 top-[1px] left-[0px] space-y-4 w-[300px] md:w-[400px] pl-0">
         <InfoPhoto title={photo[0].title} description={photo[0].description} />
       </div>
     </Modal>

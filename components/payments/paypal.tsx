@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Photo from "../photo/photo";
 import Image from "next/image";
 
 const Paypal = () => {

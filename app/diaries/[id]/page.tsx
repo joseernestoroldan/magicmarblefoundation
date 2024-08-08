@@ -46,7 +46,7 @@ const DiaryPage = async ({
     <HeadingCenterAnimation>
       <Container>
         <div className="flex flex-col justify-center w-full h-auto">
-          <div className="flex  flex-col space-y-4 md:space-y-10 justify-center items-center pt-4 md:pt-20">
+          <div className="flex  flex-col space-y-2 md:space-y-2 justify-center items-center pt-4 md:pt-4">
             <Heading
               title={data[0].title}
               color="text-cyan-500"
@@ -70,7 +70,7 @@ const DiaryPage = async ({
 
             {data[0].mainImage !== null && (
               <div
-                className={`w-full h-[250px] md:h-[500px] lg:h-[700px] relative overflow-hidden rounded-2xl bg-blue-300`}
+                className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}
               >
                 <Image
                   className={`object-cover object-top rounded-2xl`}

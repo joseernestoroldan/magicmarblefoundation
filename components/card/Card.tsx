@@ -2,9 +2,8 @@
 import React from "react";
 import Image from "next/image";
 import { CardDairiesProps } from "@/types/types";
-import EnterSection from "../animations/enterSection/EnterSection";
 import EnterElement from "../animations/enterElement/EnterElement";
-import Photo from "../photo/photo";
+
 
 const CardDairies = ({ src, title, body }: CardDairiesProps) => {
   return (
@@ -12,7 +11,16 @@ const CardDairies = ({ src, title, body }: CardDairiesProps) => {
       <div
         className={`bg-white w-[380px] h-[500px] flex flex-col items-center space-y-4  p-4 rounded-2xl  bg-opacity-100 border-card shadow-xl`}
       >
-        <Photo objectFit="object-cover" width="w-[350px]" height="h-[260px]" borderRadius="rounded-xl" src={src} alt=""/>
+        
+        <div className="w-[350px] h-[260px] rounded-xl relative overflow-hidden">
+          <Image
+          src={src}
+          alt=""
+          fill
+          className="object-cover"
+          
+          />
+        </div>
 
         <h2 className="text-xl font-bold  text-gray-500">{title}</h2>
         <div className="relative bg-white h-min">
