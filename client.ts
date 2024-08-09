@@ -48,6 +48,8 @@ export const getOne = async (myquery: string) => {
     description,
     "mainImage": mainImage.asset->url,
     "authorImage": authorImage.asset->url,
+    "crop": mainImage.crop,
+    "hotSpot": mainImage.hotspot,
     author,
     contenido,
     _createdAt,
@@ -83,6 +85,6 @@ export const getAllFiltter = async (myquery: string, parametro: string) => {
     _createdAt,
     category,
 }`;
-const data = await getData(query);
-return data;
-}
+  const data = await getData(query);
+  return data;
+};

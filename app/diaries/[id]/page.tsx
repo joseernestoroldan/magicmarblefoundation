@@ -42,6 +42,10 @@ const DiaryPage = async ({
 
   data[0].title.length > 30 ? (textSize = "text-3xl") : (textSize = "text-4xl");
 
+  const left = data[0].crop ? Math.trunc(data[0].crop?.left * 100) : 50;
+  const top = data[0].crop ? Math.trunc(data[0].crop?.top * 100) : 50;
+  console.log(top)
+
   return (
     <HeadingCenterAnimation>
       <Container>
@@ -73,7 +77,14 @@ const DiaryPage = async ({
                 className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}
               >
                 <Image
-                  className={`object-cover object-top rounded-2xl`}
+                  className={`object-cover
+                     ${left < 20 && top < 20 && "object-[0%_0%]"} ${left > 20 && left < 40 && top < 20 && "object-[20%_0%]"} ${left > 40 && left < 60 && top < 20 && "object-top"} ${left > 60 && left < 80 && top < 20 && "object-[60%_0%]"} ${left > 80 && left < 100 && top < 20 && "object-[80%_0%]"}
+                     ${left < 20 && top > 20 && top < 40 && "object-[0%_20%]"} ${left > 20 && left < 40  && top > 20 && top < 40 && "object-[20%_20%]"} ${left > 40 && left < 60  && top > 20 && top < 40 && "object-[40%_20%]"} ${left > 60 && left < 80  && top > 20 && top < 40 && "object-[60%_20%]"} ${left > 80 && left < 100  && top > 20 && top < 40 && "object-[80%_20%]"}
+                     ${left < 20 && top > 40 && top < 60 && "object-[0%_40%]"} ${left > 20 && left < 40  && top > 40 && top < 60 && "object-[20%_40%]"} ${left > 40 && left < 60  && top > 40 && top < 60 && "object-[40%_40%]"} ${left > 60 && left < 80  && top > 40 && top < 60 && "object-[60%_40%]"} ${left > 80 && left < 100  && top > 40 && top < 60 && "object-[80%_40%]"}
+                     ${left < 20 && top > 60 && top < 80 && "object-[0%_60%]"} ${left > 20 && left < 40  && top > 60 && top < 80 && "object-[20%_60%]"} ${left > 40 && left < 60  && top > 60 && top < 80 && "object-[40%_60%]"} ${left > 60 && left < 80  && top > 60 && top < 80 && "object-[60%_60%]"} ${left > 80 && left < 100  && top > 60 && top < 80 && "object-[80%_60%]"}
+                     ${left < 20 && top > 80 && top < 100 && "object-[0%_80%]"} ${left > 20 && left < 40  && top > 80 && top < 100 && "object-[20%_80%]"} ${left > 40 && left < 60  && top > 80 && top < 100 && "object-[40%_80%]"} ${left > 60 && left < 80  && top > 80 && top < 100 && "object-[60%_80%]"} ${left > 80 && left < 100  && top > 80 && top < 100 && "object-[80%_80%]"}
+
+                      rounded-2xl`}
                   src={data[0].mainImage}
                   fill
                   alt=""

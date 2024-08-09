@@ -33,6 +33,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
                     description={diary.description}
                     mainImage={diary.mainImage}
                     key={diary._id}
+                    crop={diary.crop}
                   ></Diary>
                 ))}
               </div>

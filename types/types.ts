@@ -126,6 +126,12 @@ export type DiaryProps = {
   title: string;
   mainImage: string;
   description: string;
+  crop:{
+    top:number
+    left: number
+    right:number
+    bottom: number
+  }
 };
 
 export type ParrafosProps = {
