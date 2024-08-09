@@ -1,22 +1,13 @@
-"use client"
-import { useState, useEffect } from 'react';
 
-export default function TestListener() {
-  const [documents, setDocuments] = useState([]);
 
-  useEffect(() => {
-    const fetchDocuments = async () => {
+export default async  function TestListener() {
+  
       const response = await fetch('/api/sanity-webhook');
       const data = await response.json();
-      setDocuments(data);
-    };
-
-    fetchDocuments();
-  }, []);
 
   return (
     <div>
-      hola {documents}
+      hola {data}
     </div>
   );
 }
