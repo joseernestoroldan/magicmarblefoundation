@@ -23,7 +23,7 @@ const GalleryCarousel = ({ gallery }: any) => {
   return (
     <EnterSection>
       <div className="relative w-full h-auto flex flex-col justify-start items-center p-0">
-        <div className="w-full max-w-[1200px]  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
+        <div className="w-full max-w-[1300px]  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
           {gallery.map((item: any, index: number) => {
             const left = item.crop ? Math.trunc(item.crop?.left * 100) : 50;
             const top = item.crop ? Math.trunc(item.crop?.top * 100) : 50;
