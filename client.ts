@@ -26,6 +26,8 @@ export const getAllData = async (myquery: string) => {
         description,
         "mainImage": mainImage.asset->url,
         "authorImage": authorImage.asset->url,
+        "crop": mainImage.crop,
+        "hotSpot": mainImage.hotspot,
         author,
         body,
         contenido,

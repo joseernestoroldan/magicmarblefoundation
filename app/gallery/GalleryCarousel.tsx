@@ -23,25 +23,37 @@ const GalleryCarousel = ({ gallery }: any) => {
   return (
     <EnterSection>
       <div className="relative w-full h-auto flex flex-col justify-start items-center p-0">
-        <div className="w-full max-w-7xl  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
-          {gallery.map((item: any, index: number) => (
-            <div
-              key={index}
-              className={`bg-white top-0 bottom-0 left-0 right-0 absolute ${count === index ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}
-            >
-              <Image
-                className="object-cover object-center"
-                src={item.mainImage}
-                alt="Magic Marble Foundation"
-                fill
-              />
-              <div className="bg-black bg-opacity-50 absolute z-10 bottom-4 sm:left-4 left-1/2 -translate-x-1/2 sm:-translate-x-0 rounded-[5px] ">
-                <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
-                  {item.title}
-                </p>
+        <div className="w-full max-w-[1200px]  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
+          {gallery.map((item: any, index: number) => {
+            const left = item.crop ? Math.trunc(item.crop?.left * 100) : 50;
+            const top = item.crop ? Math.trunc(item.crop?.top * 100) : 50;
+
+            return (
+              <div
+                key={index}
+                className={`bg-white top-0 bottom-0 left-0 right-0 absolute ${count === index ? "opacity-100" : "opacity-0"} transition-opacity duration-1000`}
+              >
+                <Image
+                  className={`object-cover
+                     ${left < 20 && top < 20 && "object-[0%_0%]"} ${left > 20 && left < 40 && top < 20 && "object-[20%_0%]"} ${left > 40 && left < 60 && top < 20 && "object-top"} ${left > 60 && left < 80 && top < 20 && "object-[60%_0%]"} ${left > 80 && left < 100 && top < 20 && "object-[80%_0%]"}
+                     ${left < 20 && top > 20 && top < 40 && "object-[0%_20%]"} ${left > 20 && left < 40  && top > 20 && top < 40 && "object-[20%_20%]"} ${left > 40 && left < 60  && top > 20 && top < 40 && "object-[40%_20%]"} ${left > 60 && left < 80  && top > 20 && top < 40 && "object-[60%_20%]"} ${left > 80 && left < 100  && top > 20 && top < 40 && "object-[80%_20%]"}
+                     ${left < 20 && top > 40 && top < 60 && "object-[0%_40%]"} ${left > 20 && left < 40  && top > 40 && top < 60 && "object-[20%_40%]"} ${left > 40 && left < 60  && top > 40 && top < 60 && "object-[40%_40%]"} ${left > 60 && left < 80  && top > 40 && top < 60 && "object-[60%_40%]"} ${left > 80 && left < 100  && top > 40 && top < 60 && "object-[80%_40%]"}
+                     ${left < 20 && top > 60 && top < 80 && "object-[0%_60%]"} ${left > 20 && left < 40  && top > 60 && top < 80 && "object-[20%_60%]"} ${left > 40 && left < 60  && top > 60 && top < 80 && "object-[40%_60%]"} ${left > 60 && left < 80  && top > 60 && top < 80 && "object-[60%_60%]"} ${left > 80 && left < 100  && top > 60 && top < 80 && "object-[80%_60%]"}
+                     ${left < 20 && top > 80 && top < 100 && "object-[0%_80%]"} ${left > 20 && left < 40  && top > 80 && top < 100 && "object-[20%_80%]"} ${left > 40 && left < 60  && top > 80 && top < 100 && "object-[40%_80%]"} ${left > 60 && left < 80  && top > 80 && top < 100 && "object-[60%_80%]"} ${left > 80 && left < 100  && top > 80 && top < 100 && "object-[80%_80%]"}
+
+                     `}
+                  src={item.mainImage}
+                  alt="Magic Marble Foundation"
+                  fill
+                />
+                <div className="bg-black bg-opacity-50 absolute z-10 bottom-4 sm:left-4 left-1/2 -translate-x-1/2 sm:-translate-x-0 rounded-[5px] ">
+                  <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
+                    {item.title}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           <button
             onClick={handlePrev}
