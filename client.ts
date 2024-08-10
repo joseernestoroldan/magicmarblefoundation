@@ -94,4 +94,5 @@ export const suscription = client
   .subscribe((update) => {
     const coment = update.result?._id;
     console.log("resultado:", coment);
+    console.log("email sent")
   });

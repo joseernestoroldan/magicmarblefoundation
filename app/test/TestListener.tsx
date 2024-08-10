@@ -1,4 +1,3 @@
-import { suscription } from "@/client";
 export default async function TestListener() {
 
   // const baby = await suscription
