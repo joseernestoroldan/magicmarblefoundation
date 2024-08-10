@@ -88,3 +88,10 @@ export const getAllFiltter = async (myquery: string, parametro: string) => {
   const data = await getData(query);
   return data;
 };
+
+export const suscription = client
+  .listen('*[_type == "dairies"]', { notificationSent: "notificationSent" })
+  .subscribe((update) => {
+    const coment = update.result?._id;
+    console.log("resultado:", coment);
+  });

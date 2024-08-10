@@ -1,14 +1,7 @@
+import { suscription } from "@/client";
+export default async function TestListener() {
 
-
-export default async  function TestListener() {
-  
-      const response = await fetch('/api/sanity-webhook');
-      const data = await response.json();
-
-  return (
-    <div>
-      hola {data}
-    </div>
-  );
+  // const baby = await suscription
+  // console.log(baby)
+  return <div>hola</div>;
 }
-
