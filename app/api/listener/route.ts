@@ -17,13 +17,10 @@ export async function POST(req: NextRequest) {
       return new Response("Bad Request", { status: 400 });
     }
 
-    revalidateTag(body._type);
-    return NextResponse.json({
-      status: 200,
-      revalidated: true,
-      now: Date.now(),
-      body,
-    });
+    return new Response("Created", {status: 200})
+
+    
+   
   } catch (error: any) {
     console.error(error);
     return new Response(error.message, { status: 500 });
