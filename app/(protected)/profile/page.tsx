@@ -8,12 +8,16 @@ import { FcGoogle } from "react-icons/fc";
 import { IoMdSettings } from "react-icons/io";
 import ShowUsersList from "@/components/showUsersList/ShowUsersList";
 import Link from "next/link";
+import { getAllData } from "@/client";
+import NotifyDiaries from "@/components/notifyDiaries/NotifyDiaries";
+
 
 const ProfilePage = async () => {
   const session = await auth();
   const userId = session?.user.id;
   const role = session?.user.role === "ADMIN";
   const data = await db.user.findFirst({ where: { id: userId } });
+  const diaries = await getAllData("dairies");
 
   return (
     <div className="w-full flex flex-col items-start justify-center space-y-4 max-w-5xl mx-auto p-8  rounded-[10px] border border-gray-300">
@@ -103,6 +107,7 @@ const ProfilePage = async () => {
         </button>
       </form>
       {role && <ShowUsersList />}
+      {role && <NotifyDiaries diaries={diaries}/>}
     </div>
   );
 };

@@ -41,7 +41,7 @@ const VerificationForm = () => {
     <div className="w-full max-w-5xl mx-auto flex flex-col justify-center items-center">
       <div className="w-[300px] md:w-[600px] h-[450px] my-8 flex flex-col items-center space-y-8">
         <div className="relative h-[150px] w-[150px]">
-          <Image src={"logo.jpg"} fill alt="mmf" />
+          <Image src={"/logo.jpg"} fill alt="mmf" />
         </div>
         <h2 className="text-gray-500 text-2xl font-medium">
           {!success? "Confirming your verification..." : "Account verified!"}

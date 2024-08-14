@@ -41,7 +41,7 @@ const ShowUsersList = () => {
   if (!users) return null;
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto border border-gray-200 p-4 rounded-[5px]">
       <div>
         <Search />
       </div>
@@ -107,11 +107,6 @@ const ShowUsersList = () => {
                         emailVerified={user.emailVerified}
                         role={user.role}
                       />
-                      {/* <Link href={`/details/${user.id}`}>
-                    <button className="bg-cyan-500 text-white py-1 px-2 rounded-[5px]">
-                      Details
-                    </button>
-                  </Link> */}
                     </td>
                   </tr>
                 );

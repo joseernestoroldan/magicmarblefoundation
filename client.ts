@@ -34,6 +34,8 @@ export const getAllData = async (myquery: string) => {
         alt,
         _createdAt,
         name,
+        notificationSent,
+        notificationsSent
   }`;
 
   const data = await getData(query);
@@ -94,5 +96,10 @@ export const suscription = client
   .subscribe((update) => {
     const coment = update.result?._id;
     console.log("resultado:", coment);
-    console.log("email sent")
+    console.log("email sent");
   });
+
+export const UpdateSuscriptionStatus = async (documentId: string, numberNotifications: number) => {
+  await client.patch(documentId).set({ notificationSent: true, notificationsSent: numberNotifications + 1 }).commit();
+  
+};

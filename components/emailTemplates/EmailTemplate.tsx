@@ -44,6 +44,14 @@ const EmailTemplate = (Link: string, message: string) => {
         </h2>
       )}
 
+      {message === "subscription" && (
+        <h2
+          style={{ color: "#6f7474", textAlign: "center", margin: "25px auto" }}
+        >
+          Read Our New Diary<a href={Link}>Here</a>.
+        </h2>
+      )}
+
       <h4
         style={{ color: "#6f7474", textAlign: "center", margin: "25px auto" }}
       >
