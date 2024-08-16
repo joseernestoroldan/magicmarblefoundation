@@ -11,6 +11,7 @@ interface ScrollPosition {
 const AdoptionCarousel = () => {
   const scrollableRef = useRef<HTMLDivElement>(null);
   const [counter, setCounter] = useState<number>(0);
+  const [isActive, setIsActive] = useState<boolean>(false)
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
     x: 0,
   });
@@ -40,12 +41,21 @@ const AdoptionCarousel = () => {
   const resolution = 364;
 
   const handleClick = (index: number) => {
-    if (scrollableRef.current) {
+
+    if(isActive){
+      console.log("go to page of the animal")
+      setIsActive(false)
+    } else{
+       if (scrollableRef.current) {
       const newPosition = index * resolution;
       scrollableRef.current.scrollLeft = newPosition;
       setScrollPosition({ x: newPosition });
       setCounter(index);
+      setIsActive(true)
     }
+    }
+    
+   
   };
 
   const handlePrev = () => {

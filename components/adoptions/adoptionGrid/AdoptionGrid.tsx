@@ -31,9 +31,9 @@ const AdoptionGrid = () => {
      
       {expand && (
         <div className="w-full max-w-5xl mx-auto flex flex-row flex-wrap justify-center gap-4">
-          {adoptions.map((item) => {
+          {adoptions.map((item, index) => {
             return (
-              <div className="w-[300px] h-[300px] bg-gray-200 rounded-[5px]"></div>
+              <div key={index} className="w-[300px] h-[300px] bg-gray-200 rounded-[5px]"></div>
             );
           })}
         </div>
