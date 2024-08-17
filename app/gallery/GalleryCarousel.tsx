@@ -88,7 +88,7 @@ const GalleryCarousel = ({ gallery }: any) => {
                   <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
                     {item.title}
                   </p>
-                  <p className=" text-white">{count}</p>
+                  {/* <p className=" text-white">{count}</p> */}
                 </div>
               </div>
             );
