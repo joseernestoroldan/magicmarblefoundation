@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
 import Image from "next/image";
 
@@ -8,38 +8,51 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const GalleryCarousel = ({ gallery }: any) => {
   const [count, setCount] = useState<number>(0);
+  const [isTouched, setIsTouched] = useState<boolean>(false)
   const elementRef = useRef<HTMLDivElement>(null);
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setIsTouched(true)
     const touch = event.touches[0];
     const initialX = touch.clientX;
     elementRef.current!.dataset.initialX = String(initialX);
+    console.log("touch")
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
     const touch = event.touches[0];
     const currentX = touch.clientX;
     const initialX = parseFloat(elementRef.current!.dataset.initialX || "0");
-    const threshold = 10; // Adjust threshold as needed
+    const threshold = 50; // Adjust threshold as needed
+    console.log("move")
 
-    if (currentX > initialX + threshold) {
+    if(isTouched) {
+      if (currentX > initialX + threshold) {
       // setDragDirection({ direction: 'right' });
+      console.log("right")
       handlePrev();
     } else {
       // setDragDirection({ direction: 'left' });
+      console.log("left")
       handleNext();
     }
+    }
+
+
+    
   };
 
   const handlePrev = () => {
     if (count > 0) {
       setCount(count - 1);
+      setIsTouched(false)
     }
   };
 
   const handleNext = () => {
     if (count < gallery.length) {
       setCount(count + 1);
+      setIsTouched(false)
     }
   };
   return (
@@ -75,20 +88,22 @@ const GalleryCarousel = ({ gallery }: any) => {
                   <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
                     {item.title}
                   </p>
+                  <p className=" text-white">{count}</p>
                 </div>
               </div>
             );
           })}
+        
 
           <button
             onClick={handlePrev}
-            className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
+            className={`bg-red-500 hidden sm:inline-block sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
           >
             <FaRegArrowAltCircleLeft className="text-gray-50 text-3xl opacity-80 hidden sm:flex" />
           </button>
           <button
             onClick={handleNext}
-            className={`bg-transparent w-[100px] h-screen sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -right-12 sm:right-0 ${count === gallery.length - 1 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
+            className={`bg-transparent hidden sm:inline-block  sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -right-12 sm:right-0 ${count === gallery.length - 1 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"}`}
           >
             <FaRegArrowAltCircleRight className="text-gray-50 text-3xl opacity-80 hidden sm:flex" />
           </button>
