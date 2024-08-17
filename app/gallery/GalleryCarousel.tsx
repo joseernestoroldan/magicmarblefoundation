@@ -75,7 +75,7 @@ const GalleryCarousel = ({ gallery }: any) => {
                   alt="Magic Marble Foundation"
                   fill
                 />
-                <div className="bg-black bg-opacity-50 absolute z-10 bottom-5 sm:left-4 left-0 right-0 sm:right-auto sm:-translate-x-0 rounded-none sm:rounded-[5px] ">
+                <div className="bg-black bg-opacity-50 absolute z-10 bottom-8 sm:left-4 left-0 right-0 sm:right-auto sm:-translate-x-0 rounded-none sm:rounded-[5px] ">
                   <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
                     {item.title}
                   </p>
