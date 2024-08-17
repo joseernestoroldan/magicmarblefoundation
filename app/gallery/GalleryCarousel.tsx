@@ -8,15 +8,14 @@ import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const GalleryCarousel = ({ gallery }: any) => {
   const [count, setCount] = useState<number>(0);
-  const [isTouched, setIsTouched] = useState<boolean>(false)
+  const [isTouched, setIsTouched] = useState<boolean>(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    setIsTouched(true)
+    setIsTouched(true);
     const touch = event.touches[0];
     const initialX = touch.clientX;
     elementRef.current!.dataset.initialX = String(initialX);
-    console.log("touch")
   };
 
   const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -24,35 +23,27 @@ const GalleryCarousel = ({ gallery }: any) => {
     const currentX = touch.clientX;
     const initialX = parseFloat(elementRef.current!.dataset.initialX || "0");
     const threshold = 50; // Adjust threshold as needed
-    console.log("move")
 
-    if(isTouched) {
+    if (isTouched) {
       if (currentX > initialX + threshold) {
-      // setDragDirection({ direction: 'right' });
-      console.log("right")
-      handlePrev();
-    } else {
-      // setDragDirection({ direction: 'left' });
-      console.log("left")
-      handleNext();
+        handlePrev();
+      } else {
+        handleNext();
+      }
     }
-    }
-
-
-    
   };
 
   const handlePrev = () => {
     if (count > 0) {
       setCount(count - 1);
-      setIsTouched(false)
+      setIsTouched(false);
     }
   };
 
   const handleNext = () => {
     if (count < gallery.length) {
       setCount(count + 1);
-      setIsTouched(false)
+      setIsTouched(false);
     }
   };
   return (
@@ -88,12 +79,10 @@ const GalleryCarousel = ({ gallery }: any) => {
                   <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
                     {item.title}
                   </p>
-                  {/* <p className=" text-white">{count}</p> */}
                 </div>
               </div>
             );
           })}
-        
 
           <button
             onClick={handlePrev}

@@ -29,7 +29,7 @@ const Gallery = ({ gallery }: any) => {
       </div> */}
       <div className="w-full">
         <div className="w-full flex flex-col justify-center relative">
-          <div className={`flex items-center justify-center md:justify-end gap-x-2 px-8 py-4 md:py-0  z-10 ${!changeGallery? "top-0 right-0 absolute w-min" : "static"} w-full`}>
+          <div className={`flex items-center justify-center md:justify-end gap-x-2 px-8 z-10 ${!changeGallery? "top-0 right-0 absolute sm:static w-min sm:w-full py-4 md:py-2 max-w-[1300px] mx-auto" : "w-full py-4 md:py-0 pt-0 md:pt-4 "}`}>
 
             <Label className="sm:text-cyan-500 text-gray-400" htmlFor="show-grid">{changeGallery? "Show Carousel" : "Show Grid" }</Label>
             <Switch
