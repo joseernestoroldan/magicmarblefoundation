@@ -97,7 +97,7 @@ const GalleryCarousel = ({ gallery }: any) => {
 
           <button
             onClick={handlePrev}
-            className={`bg-red-500 hidden sm:inline-block sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
+            className={`bg-transparent hidden sm:inline-block sm:h-min sm:w-min top-1/2 -translate-y-1/2 m-12  absolute z-10 -left-12 sm:left-0 ${count === 0 ? "opacity-50 pointer-events-none" : "opacity-100 pointer-events-auto"} `}
           >
             <FaRegArrowAltCircleLeft className="text-gray-50 text-3xl opacity-80 hidden sm:flex" />
           </button>
