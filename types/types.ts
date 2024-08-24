@@ -157,3 +157,7 @@ export type BannerDonationProps = {
 export type GridDIariesProps = {
   diaries: any;
 };
+
+export type AdoptionsProps = {
+  adoptions: any;
+};

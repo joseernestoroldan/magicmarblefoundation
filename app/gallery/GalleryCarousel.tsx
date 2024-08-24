@@ -51,6 +51,7 @@ const GalleryCarousel = ({ gallery }: any) => {
     if (count > 0) {
       setCount((prevCount) => prevCount - 1);
     }
+    //(prevIndex) => Math.max(prevIndex - 1, 0)
   };
 
   const handleNext = () => {
@@ -72,7 +73,7 @@ const GalleryCarousel = ({ gallery }: any) => {
       setCount((prevIndex) => Math.min(prevIndex + 1, gallery.length));
     }
     setDragDirection(''); // Reset drag direction
-    }, []);
+    }, [gallery.length, dragDirection]);
     
  
 

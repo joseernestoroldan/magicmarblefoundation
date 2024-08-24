@@ -15,13 +15,22 @@ export default async function RootLayout({
   const session = await auth();
   const userId = session?.user.id;
 
-  const data = await db.user.findFirst({ where: { id: userId } });
-  let name: string;
-  if (session) {
-    name = data?.firstName || "user";
-  } else {
-    name = "";
-  }
+  const getNameSession = async () => {
+    try {
+      const data = await db.user.findFirst({ where: { id: userId } });
+      let name: string;
+      if (session) {
+        name = data?.firstName || "user";
+      } else {
+        name = "";
+      }
+      return name
+    } catch (error) {
+      throw new Error 
+    }
+  };
+
+const name = await getNameSession()
 
   return (
     <html lang="en">

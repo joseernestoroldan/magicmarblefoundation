@@ -68,3 +68,18 @@ model PasswordResetToken {
 
   @@unique([email, token])
 }
+
+model Adoption {
+  id         String  @id @default(cuid())
+  name       String?
+  firstName  String?
+  secondName String?
+  email      String? 
+  country    String?
+  codeNumber String?
+  number     String?
+  address    String?
+  status     String?  @default("pending")
+  animalId   String? 
+  animalName String?
+}
