@@ -157,12 +157,12 @@ const AdoptionCarousel = ({ adoptions }: AdoptionsProps) => {
           return (
             <div
               key={index}
-              className={`w-full max-w-3xl absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 transition-opacity duration-1000 ${counter === index ? "opacity-100" : "opacity-0"} flex flex-col items-center space-y-8 py-8`}
+              className={`w-full max-w-3xl absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 transition-opacity duration-1000 ${counter === index ? "opacity-100" : "opacity-0"} flex flex-col items-center space-y-8 pt-8 h-min`}
             >
               <h1 className="text-cyan-500 text-4xl font-semibold">{item.title}</h1>
               <p className="text-cyan-500 text-xl max-w-lg text-justify indent-6">{item.description}</p>
               <p className="text-cyan-500 text-xl max-w-lg text-justify indent-6">{item.characteristics}</p>
-              <Link className="text-cyan-500 text-xl underline font-semibold" href={`/adoptions/${item._id}`}>Read more about {item.title}</Link>
+              <Link href={`/adoptions/${item._id}`}> <button className="text-cyan-500 text-xl underline font-semibold my-1">Read more about {item.title}</button> </Link>
             </div>
           );
         })}
