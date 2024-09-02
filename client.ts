@@ -29,6 +29,7 @@ export const getAllData = async (myquery: string) => {
         "mainImage": mainImage.asset->url,
         "secondImage": secondImage.asset->url,
         "thirdImage": thirdImage.asset->url,
+        "fourthImage": fourthImage.asset->url,
         "authorImage": authorImage.asset->url,
         "crop": mainImage.crop,
         "hotSpot": mainImage.hotspot,
