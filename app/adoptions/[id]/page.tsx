@@ -9,7 +9,6 @@ import {
   Dialog,
   DialogTrigger,
   DialogContent,
-  DialogClose,
 } from "@/components/ui/dialog";
 
 const AdoptionDynamicPage = async ({
