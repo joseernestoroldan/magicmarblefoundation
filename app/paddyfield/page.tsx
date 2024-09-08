@@ -4,6 +4,8 @@ import PaddyFieldPosts from "@/components/portalPaddyField/PaddyFieldPosts";
 import PaddyFieldList from "@/components/portalPaddyField/PaddyFieldList";
 import MainPost from "@/components/portalPaddyField/MainPost";
 import ReelPosts from "@/components/portalPaddyField/ReelPosts";
+import Recipies from "@/components/portalPaddyField/Recipies";
+import Link from "next/link";
 
 const PaddyFieldPage = async () => {
   const paddyFields = await getAllData("portalPaddyField");
@@ -22,7 +24,14 @@ const PaddyFieldPage = async () => {
 
         <ReelPosts paddyFieldPosts={paddyFields} />
 
-        {/* <PaddyFieldPosts paddyFieldPosts={paddyFields} /> */}
+        <div className="w-full py-8 text-green-950 underline text-lg font-medium">
+          <Link href={"/paddyfield/morearticles"}>Read More Articles</Link>
+        </div>
+
+        <Recipies />
+        <div className="w-full py-1 text-green-950 underline text-lg font-medium">
+          <Link href={"/paddyfield/morerecipies"}>Get More Recipies</Link>
+        </div>
       </div>
     </div>
   );

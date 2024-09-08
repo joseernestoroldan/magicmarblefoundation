@@ -19,6 +19,11 @@
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
+
+    .paddyfield-scroll {
+      scrollbar-width:thin;
+      scrollbar-color: green;
+    }
 }
   
 
