@@ -12,7 +12,7 @@ const MoreArticlesPage = async () => {
         <div className='w-full max-w-5xl mx-auto flex flex-row justify-between gap-4 flex-wrap'>
             {paddyFields.map((item: any, index: number) => {
                 return(
-                    <Link href={`/paddyfield/${item._id}`}>
+                    <Link href={`/paddyfield/${item._id}`} key={index}>
                     <div className="w-300px flex flex-col items-center space-y-4 hover:brightness-75 cursor-pointer">
                       <div className="w-[300px] h-[300px] bg-gray-600 mt-8 relative rounded-[5px] overflow-hidden">
                         <Image
