@@ -11,7 +11,7 @@ const PortalPaddyFieldPage = async ({
   params: { id: string };
 }) => {
   const [data] = await getOne(_Id);
-  console.log(data);
+
 
   const url = data.youtubeLink || "";
 

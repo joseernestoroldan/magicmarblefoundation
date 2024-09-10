@@ -64,6 +64,8 @@ export const getOne = async (myquery: string) => {
     "hotSpot": mainImage.hotspot,
     author,
     contenido,
+    instructions,
+    ingredients,
     _createdAt,
 }`;
   const data = await getData(query);
