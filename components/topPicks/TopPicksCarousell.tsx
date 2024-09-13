@@ -93,7 +93,7 @@ const TopPicksCarousell = ({ topPicks }: TopPicksProps) => {
 
         <button
           onClick={handlePrev}
-          className="text-green-800 text-3xl opacity-80 hidden sm:flex"
+          className="text-green-400 text-5xl opacity-80 hidden sm:flex"
         >
           <IoIosArrowBack />
         </button>
@@ -143,7 +143,7 @@ const TopPicksCarousell = ({ topPicks }: TopPicksProps) => {
         </div>
 
         <button
-          className="text-green-800 text-3xl opacity-80 hidden sm:flex"
+          className="text-green-400 text-5xl opacity-80 hidden sm:flex"
           onClick={handleNext}
         >
           <IoIosArrowForward />
