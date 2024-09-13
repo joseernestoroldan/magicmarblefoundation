@@ -1,11 +1,11 @@
 import React from "react";
 import { getAllData } from "@/client";
-import PaddyFieldPosts from "@/components/portalPaddyField/PaddyFieldPosts";
 import PaddyFieldList from "@/components/portalPaddyField/PaddyFieldList";
 import MainPost from "@/components/portalPaddyField/MainPost";
 import ReelPosts from "@/components/portalPaddyField/ReelPosts";
 import Recipies from "@/components/portalPaddyField/Recipies";
 import Link from "next/link";
+import TopPicks from "@/components/topPicks/TopPicks";
 
 const PaddyFieldPage = async () => {
   const paddyFields = await getAllData("portalPaddyField");
@@ -32,6 +32,8 @@ const PaddyFieldPage = async () => {
         <div className="w-full py-1 text-green-950 underline text-lg font-medium">
           <Link href={"/paddyfield/morerecipies"}>Get More Recipies</Link>
         </div>
+
+        <TopPicks/>
       </div>
     </div>
   );

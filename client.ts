@@ -18,6 +18,20 @@ const getData = async (query: string) => {
   return data;
 };
 
+export const getAllByTop = async () => {
+  const query = groq`*[_type == 'portalPaddyField' && topPick == true] | order(_publishedAt desc){
+  _id,
+  publishedAt,
+  title,
+  description,
+  "mainImage": mainImage.asset->url,
+  "crop": mainImage.crop,
+  "hotSpot": mainImage.hotspot,
+  }`;
+  const data = await getData(query);
+  return data;
+};
+
 export const getAllData = async (myquery: string) => {
   const query = groq`*[_type == '${myquery}'] | order(_publishedAt desc){
         _id,
@@ -111,7 +125,12 @@ export const suscription = client
     console.log("email sent");
   });
 
-export const UpdateSuscriptionStatus = async (documentId: string, numberNotifications: number) => {
-  await client.patch(documentId).set({ notificationSent: true, notificationsSent: numberNotifications + 1 }).commit();
-  
+export const UpdateSuscriptionStatus = async (
+  documentId: string,
+  numberNotifications: number
+) => {
+  await client
+    .patch(documentId)
+    .set({ notificationSent: true, notificationsSent: numberNotifications + 1 })
+    .commit();
 };

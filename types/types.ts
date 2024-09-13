@@ -161,3 +161,7 @@ export type GridDIariesProps = {
 export type AdoptionsProps = {
   adoptions: any;
 };
+
+export type TopPicksProps = {
+  topPicks: any;
+};

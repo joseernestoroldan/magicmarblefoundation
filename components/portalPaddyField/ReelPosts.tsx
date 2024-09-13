@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const ReelPosts = ({ paddyFieldPosts }: any) => {
-  console.log(paddyFieldPosts);
+ 
   return (
     <div className="w-full h-[500px]  flex justify-between">
       <Link href={`paddyfield/${paddyFieldPosts[1]._id}`}>

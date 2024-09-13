@@ -5,10 +5,9 @@ import React from "react";
 
 const Recipies = async () => {
   const recipies = await getAllData("recipies");
-  console.log(recipies);
 
   return (
-    <div className="max-w-6xl w-full mx-autos flex flex-col items-center pt-8">
+    <div className="max-w-6xl w-full mx-auto flex flex-col items-center pt-8">
       <h2 className="text-green-950 text-2xl font-semibold">Recipies</h2>
       <div className="w-full h-[400px] flex flex-row justify-between items-center pt-8">
         <Link href={`/paddyfield/morerecipies/${recipies[0]._id}`}>
