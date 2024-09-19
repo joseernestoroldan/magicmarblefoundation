@@ -32,9 +32,10 @@ const AboutPage = () => {
         </ParallaxContainer>
 
         <VideoFrame
-          src="https://www.youtube.com/embed/_cj-XrMSUWM?autoplay=1&mute=1"
+          src="https://www.youtube.com/embed/ipNTJWiKR5Q?autoplay=1&mute=1"
           bg={"bg-white"}
         />
+        
 
         <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
           <BannerParallax

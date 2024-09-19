@@ -5,11 +5,12 @@ import Link from "next/link";
 import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
 
+
 type InfoProps = {
   name?: string;
 };
 
-const Infobar = ({ name }: InfoProps) => {
+const Infobar = ({ name,}: InfoProps) => {
   const [show, setShow] = useState(false);
   const router = useRouter();
 
@@ -19,7 +20,8 @@ const Infobar = ({ name }: InfoProps) => {
     router.refresh();
   };
   return (
-    <div className="w-full bg-gray-800 py-1 text-white flex items-center">
+    <div className="w-full bg-gray-800 py-1 text-white flex items-center relative">
+      
       <Container>
         <div className="w-full flex flex-col md:flex-row items-center ">
           <div className="w-full flex justify-center md:justify-between items-center">
@@ -28,10 +30,14 @@ const Infobar = ({ name }: InfoProps) => {
               <div className="text-lg hidden md:flex px-4 items-center">
                 info@magicmarblefoundation.org
               </div>
-              
+
               <Icons color="text-gray-200" show={show} setShow={setShow} />
+
               {name === "" && (
-                <Link className="text-nowrap" href={`${process.env.NEXT_PUBLIC_APP_URL}/login`}>
+                <Link
+                  className="text-nowrap"
+                  href={`${process.env.NEXT_PUBLIC_APP_URL}/login`}
+                >
                   Sign In
                 </Link>
               )}

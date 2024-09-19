@@ -33,10 +33,11 @@ export const getAllByTop = async () => {
 };
 
 export const getAllData = async (myquery: string) => {
-  const query = groq`*[_type == '${myquery}'] | order(_publishedAt desc){
+  const query = groq`*[_type == '${myquery}'] | order(_createdAt desc){
         _id,
         publishedAt,
         title,
+        chimpLink,
         description,
         characteristics,
         youtubeLink,

@@ -14,11 +14,11 @@ type NavbarProps = {
   name?: string;
 };
 
-const Navbar = ({name}:NavbarProps ) => {
+const Navbar = ({name,}:NavbarProps ) => {
   const [toggle, setToggle] = useState<boolean>(false);
   return (
     <div className="w-full sticky top-0 left-0 right-0 z-20 bg-white">
-      <Infobar name={name} />
+      <Infobar name={name}/>
 
       <Container>
         <div className="w-full flex justify-between items-center">
