@@ -4,11 +4,11 @@ import Search from "../search/Search";
 import { FaCheck } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useCallback } from "react";
-import { countUsers, searchUser } from "@/actions/searchQuery";
 import PaginationUtil from "../paginationUtil/PaginationUtil";
 import FormUserAdmin from "../formUserAdmin/FormUserAdmin";
 import { BeatLoader } from "react-spinners";
 import UserDetails from "../userDetails/UserDetails";
+import { countDonators, searchDonators } from "@/actions/searchQueryDonators";
 
 const ShowUsersList = () => {
   const searchParams = useSearchParams();
@@ -19,14 +19,14 @@ const ShowUsersList = () => {
   const [count, setCount] = useState<number>(1);
 
   const onSearch = useCallback(() => {
-    searchUser(q, pageNumber)
+    searchDonators(q, pageNumber)
       .then((data) => {
         setUsers(data);
       })
       .catch((err) => {
         console.log(err);
       });
-    countUsers(q)
+    countDonators(q)
       .then((count) => {
         setCount(count);
       })
@@ -60,13 +60,13 @@ const ShowUsersList = () => {
           <table className="w-full border border-gray-200 my-4 text-gray-500">
             <thead className="font-semibold text-center">
               <tr>
-                <td className="p-3 text-center">Name</td>
+                <td className="p-3 text-center">First Name</td>
+                <td className="p-3 text-center">Second Name</td>
+                <td className="p-3 text-center">Amount</td>
                 <td className="p-3 text-center">Email</td>
                 <td className="p-3 text-center">Country</td>
-                <td className="p-3 text-center">Number</td>
-                <td className="p-3 text-center">Suscribed</td>
-                <td className="p-3 text-center">Role</td>
-                <td className="p-3 text-center">Details</td>
+                <td className="p-3 text-center">Address</td>
+                <td className="p-3 text-center">Telephone</td>
               </tr>
             </thead>
             <tbody>
@@ -74,39 +74,27 @@ const ShowUsersList = () => {
                 return (
                   <tr key={user.id}>
                     <td className="p-3 text-center capitalize">
-                      {user.name
-                        ? user.name
-                        : user.firstName + " " + user.secondName}
+                      {user.firstName}
                     </td>
-                    <td className="p-3 text-center lowercase">{user.email}</td>
+                    <td className="p-3 text-center lowercase">
+                      {user.secondName}
+                    </td>
                     <td className="p-3 text-center capitalize">
+                      {user.amount}
+                    </td>
+                    <td className="p-3 text-center">
+                      {user.email}
+                    </td>
+                    <td className="p-3 text-center">
                       {user.country}
                     </td>
                     <td className="p-3 text-center">
-                      ({user.codeNumber}) {" " + user.number}
+                      {user.address}
                     </td>
-                    <td className="p-3 flex justify-center ">
-                      {user.subscribed ? <FaCheck /> : ""}
+                    <td className="p-3 text-center">
+                      {user.telephone}
                     </td>
-                    <td className="p-3 text-center ">
-                      <FormUserAdmin role={user.role} id={user.id} />
-                    </td>
-
-                    <td className="p-3 text-center flex justify-center">
-                      <UserDetails
-                        name={user.name}
-                        firstName={user.firstName}
-                        secondName={user.secondName}
-                        email={user.email}
-                        country={user.country}
-                        codeNumber={user.codeNumber}
-                        number={user.number}
-                        subscribed={user.subscribed}
-                        address={user.address}
-                        emailVerified={user.emailVerified}
-                        role={user.role}
-                      />
-                    </td>
+                    
                   </tr>
                 );
               })}

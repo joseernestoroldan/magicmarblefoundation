@@ -10,6 +10,7 @@ import ShowUsersList from "@/components/showUsersList/ShowUsersList";
 import Link from "next/link";
 import { getAllData } from "@/client";
 import NotifyDiaries from "@/components/notifyDiaries/NotifyDiaries";
+import Donators from "@/components/donators/Donators";
 
 
 const ProfilePage = async () => {
@@ -108,6 +109,7 @@ const ProfilePage = async () => {
       </form>
       {role && <ShowUsersList />}
       {role && <NotifyDiaries diaries={diaries}/>}
+      {role && <Donators/>}
     </div>
   );
 };

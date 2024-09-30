@@ -14,7 +14,6 @@ interface ScrollPosition {
 
 const AdoptionCarousel = ({ adoptions }: AdoptionsProps) => {
   const {push} = useRouter()
-  console.log(adoptions)
   const scrollableRef = useRef<HTMLDivElement>(null);
   const [counter, setCounter] = useState<number>(0);
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
@@ -88,8 +87,8 @@ const AdoptionCarousel = ({ adoptions }: AdoptionsProps) => {
   }, [handleScroll, scrollableRef, counter]);
 
   return (
-    <div className="w-full hidden lg:flex flex-col justify-center items-center space-y-8 ">
-      <h1 className="text-4xl font-semibold text-cyan-500">Adopt or Sponsor</h1>
+    <div className="w-full hidden lg:flex flex-col justify-center items-center space-y-8">
+      <h1 className="text-5xl font-semibold text-center text-cyan-500">Adopt</h1>
       <div className="w-full max-w-6xl flex justify-center items-center">
         <button
           onClick={handlePrev}

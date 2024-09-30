@@ -83,3 +83,15 @@ model Adoption {
   animalId   String? 
   animalName String?
 }
+
+model Donation {
+  id         String  @id @default(cuid())
+  name       String?
+  firstName  String?
+  secondName String?
+  email      String? 
+  country    String?
+  telephone  String?
+  address    String?
+  amount     String?
+}

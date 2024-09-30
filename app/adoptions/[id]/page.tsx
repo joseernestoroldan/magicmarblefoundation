@@ -18,8 +18,8 @@ const AdoptionDynamicPage = async ({
 }) => {
   const [candidate] = await getOne(_Id);
 
-  const left = candidate.crop ? Math.trunc(candidate.crop?.left * 100) : 50;
-  const top = candidate.crop ? Math.trunc(candidate.crop?.top * 100) : 50;
+  const left = candidate?.crop ? Math.trunc(candidate.crop?.left * 100) : 50;
+  const top = candidate?.crop ? Math.trunc(candidate.crop?.top * 100) : 50;
 
   const url = candidate.youtubeLink || "";
 
@@ -154,9 +154,7 @@ const AdoptionDynamicPage = async ({
               >
                 Adopt
               </Link>
-              <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
-                Sponsor
-              </button>
+
               <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[1700px]">
                 Donate
               </button>
@@ -186,9 +184,6 @@ const AdoptionDynamicPage = async ({
         >
           Adopt
         </Link>
-        <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
-          Sponsor
-        </button>
         <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
           Donate
         </button>

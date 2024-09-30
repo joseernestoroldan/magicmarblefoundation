@@ -2,7 +2,6 @@ import React from "react";
 
 const AdoptionTemplate = (
   animalName: string,
-  animalImage: string,
   firstName: string,
 ) => {
   return (

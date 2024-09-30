@@ -16,7 +16,7 @@ type AdoptionResponsiveCarouselProps = {
 
 const AdoptionResponsiveCarousel = ({adoptions}: AdoptionResponsiveCarouselProps) => {
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col items-center lg:hidden">
+    <div className="w-full max-w-5xl mx-auto flex flex-col items-center lg:hidden bg-red-400">
       <Carousel className="w-full max-w-5xl">
       <CarouselContent>
         {adoptions.map((item: any, index: number) => {

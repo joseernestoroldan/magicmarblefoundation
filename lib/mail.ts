@@ -1,4 +1,6 @@
 import AdoptionTemplate from "@/components/emailTemplates/AdoptionTemplate";
+import DonationTemplate from "@/components/emailTemplates/DonationTemplate";
+import DonatorTemplate from "@/components/emailTemplates/DonatorTemplate";
 import EmailTemplate from "@/components/emailTemplates/EmailTemplate";
 import NewAdoptionTemplate from "@/components/emailTemplates/NewAdoptionTemplate";
 import SubscriptionTemplate from "@/components/emailTemplates/SubscriptionTemplate";
@@ -67,7 +69,7 @@ export const sendUserAdoptingEmail = async (
     from: "info@magicmarblefoundation.org",
     to: email,
     subject: "Adoption Form",
-    react: AdoptionTemplate(animalName, animalImage, firstName),
+    react: AdoptionTemplate(animalName, firstName),
   });
 };
 
@@ -80,11 +82,11 @@ export const sendAdminAdoptingEmail = async (
   country: string,
   codeNumber: string,
   number: string,
-  address:string,
+  address: string
 ) => {
   await resend.emails.send({
     from: "info@magicmarblefoundation.org",
-    to: "joseernestoroldan@gmail.com",
+    to: "info@magicmarblefoundation.org",
     subject: "New Potetial Adopter",
     react: NewAdoptionTemplate(
       animalName,
@@ -95,7 +97,41 @@ export const sendAdminAdoptingEmail = async (
       country,
       codeNumber,
       number,
-      address,
+      address
     ),
   });
+};
+
+type invoice = {
+  email: string;
+  totalValue: string;
+  firstName: string;
+  secondName: string;
+  country: string;
+  address: string;
+  telephone: string;
+};
+
+export const sendAdminDonateEmail = async (invoice: invoice) => {
+
+  await resend.emails.send(
+    {
+      from: "info@magicmarblefoundation.org",
+      to: "info@magicmarblefoundation.org",
+      subject: "New Donation Has Been Done",
+      react: DonationTemplate(invoice),
+    }
+  )
+};
+
+export const sendDonatorEmail = async (invoice: invoice) => {
+
+  await resend.emails.send(
+    {
+      from: "info@magicmarblefoundation.org",
+      to: invoice.email,
+      subject: `You have done a donation for $${invoice.totalValue}`,
+      react: DonatorTemplate(invoice),
+    }
+  )
 };

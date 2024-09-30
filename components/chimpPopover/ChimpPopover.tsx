@@ -65,7 +65,6 @@ const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
           </div>
           <div className="text-white text-base px-4 py-4">
             {chimpData.map((item: any, index: number) => {
-              console.log(item._createdAt);
               const date = stringToDate(item._createdAt);
               return (
                 <div className="py-4" key={index}>

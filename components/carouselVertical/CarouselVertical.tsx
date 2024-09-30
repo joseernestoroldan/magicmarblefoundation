@@ -95,9 +95,6 @@ const CarouselVertical = ({
           Adopt
         </Link>
         <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
-          Sponsor
-        </button>
-        <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
           Donate
         </button>
       </div>
