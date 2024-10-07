@@ -21,16 +21,18 @@ export const donationCompleted = async (
     telephone,
   };
 
-  await db.donation.create({ data: {
-    email,
-    amount: totalValue,
-    firstName,
-    secondName,
-    country,
-    address,
-    telephone,
-  }})
+  await db.donation.create({
+    data: {
+      email,
+      amount: totalValue,
+      firstName,
+      secondName,
+      country,
+      address,
+      telephone,
+    },
+  });
 
-  await sendAdminDonateEmail(invoice)
-  await sendDonatorEmail(invoice)
+  await sendAdminDonateEmail(invoice);
+  await sendDonatorEmail(invoice);
 };

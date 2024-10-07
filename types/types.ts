@@ -162,6 +162,10 @@ export type AdoptionsProps = {
   adoptions: any;
 };
 
+export type SponsorProps = {
+  sponsors: any;
+};
+
 export type TopPicksProps = {
   topPicks: any;
 };

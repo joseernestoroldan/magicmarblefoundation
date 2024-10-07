@@ -43,14 +43,14 @@ export default async function RootLayout({
       <body className={myFont.className}>
         <main className="relative">
         <ChimpPopover chimpData={chimpData} />
-          <div className=" w-[100px] h-[75px] md:w-[132px] md:h-[100px] fixed z-30 top-44 xl:top-11 sm:right-4">
-            <Link
+          <Link
               href={"https://greatnonprofits.org/org/magic-marble-foundation"}
               target="_blank"
-            >
-              <Image src="badge.png" alt="" fill priority />
-            </Link>
-          </div>
+            ><div className="w-[100px] h-[75px] md:w-[132px] md:h-[100px] fixed z-30 top-44 xl:top-11 sm:right-4">
+            
+              <Image src="badge.png" alt="" fill priority/>
+            
+          </div></Link>
           <Navbar name={name}/>
           <div className="w-full">{children}</div>
           <Footer />

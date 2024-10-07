@@ -1,11 +1,11 @@
 import { getOne } from "@/client";
-import CarouselVertical from "@/components/carouselVertical/CarouselVertical";
 import Parrafos from "@/components/parrafos/Parrafos";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import CarouselVerticalSponsor from "@/components/carouselVertical/CarouselVerticalSponsor";
 
 const AdoptionDynamicPage = async ({
   params: { id: _Id },
@@ -144,24 +144,15 @@ const AdoptionDynamicPage = async ({
               </div>
             </div>
             <div className="h-[20vh] w-[60%] md:flex hidden md:flex-row justify-center items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
-              <Link
-                href={`/adopted/${_Id}`}
-                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-              >
-                Adopt
-              </Link>
-              <Link
-                href={"/stagepayment"}
-                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-              >
-                Donate
-              </Link>
+              <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[1700px]">
+                Sponsor
+              </button>
             </div>
           </div>
         )}
 
         {!candidate.youtubeLink && (
-          <CarouselVertical
+          <CarouselVerticalSponsor
             mainImage={candidate.mainImage}
             secondImage={candidate.secondImage}
             thirdImage={candidate.thirdImage}
@@ -176,18 +167,9 @@ const AdoptionDynamicPage = async ({
         </div>
       </div>
       <div className="h-[20vh] w-full flex flex-col md:hidden justify-center items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
-        <Link
-          href={`/adopted/${candidate._Id}`}
-          className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-        >
-          Adopt
-        </Link>
-        <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
+        <Link className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]" href={"/stagesponsor"}>
           Sponsor
-        </button>
-        <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">
-          Donate
-        </button>
+        </Link>
       </div>
     </div>
   );

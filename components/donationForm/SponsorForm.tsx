@@ -24,8 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import PaypalButton from "./PaypalButton";
+import { useRouter } from "next/navigation";
+import { sponsorCompleted } from "@/actions/sponsor";
 
 type SessionAdoptionFormProps = {
   email: string | null | undefined;
@@ -37,7 +37,7 @@ type SessionAdoptionFormProps = {
   address: string | null | undefined;
 };
 
-export default function DonationForm({
+export default function SponsorForm({
   email,
   firstName,
   secondName,
@@ -47,6 +47,8 @@ export default function DonationForm({
   address,
 }: SessionAdoptionFormProps) {
   const [stage, setStage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const [formData, setFormData] = useState<z.infer<typeof donationSchema>>({
     email: email ? email : "",
@@ -58,7 +60,7 @@ export default function DonationForm({
     amount: "",
   });
 
-  const predefinedAmounts = ["10", "25", "50", "100", "200", "500"];
+  const predefinedAmounts = ["10", "20", "50", "100", "200", "500"];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -82,9 +84,44 @@ export default function DonationForm({
     setStage((prevStage) => prevStage - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-       // Here you would typically send the data to your server or payment processor
+    console.log("Form submitted:", formData);
+    // Here you would typically send the data to your server or payment processor
+    setLoading(true);
+    const finalAmount = formData.amount;
+
+    try {
+      const response = await fetch("/api/create-subscription", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: finalAmount }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        router.push(data.approvalUrl);
+      } else {
+        throw new Error(data.message || "Failed to create subscription");
+      }
+    } catch (error) {
+      console.error("Subscription creation error:", error);
+    } finally {
+      setLoading(false);
+    }
+
+    sponsorCompleted(
+      formData.email,
+      formData.amount,
+      formData.firstName,
+      formData.secondName,
+      formData.country,
+      formData.address,
+      formData.telephone
+    );
   };
 
   return (
@@ -118,7 +155,9 @@ export default function DonationForm({
         {stage === 1 && (
           <>
             <CardHeader>
-              <CardTitle className="text-cyan-500">Donation Amount</CardTitle>
+              <CardTitle className="text-cyan-500">
+                Sponsorship Amount
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4 mb-4">
@@ -159,7 +198,7 @@ export default function DonationForm({
             <CardFooter className="flex justify-center">
               <Button
                 onClick={handleNext}
-                className="w-32 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
                 disabled={!formData.amount}
               >
                 Next
@@ -262,13 +301,13 @@ export default function DonationForm({
             <CardFooter className="flex justify-between">
               <Button
                 onClick={handleBack}
-                className="w-32 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
+                className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
               >
                 Back
               </Button>
               <Button
                 onClick={handleNext}
-                className="w-32 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
+                className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
               >
                 Next
               </Button>
@@ -276,38 +315,27 @@ export default function DonationForm({
           </>
         )}
         {stage === 3 && (
-          <PayPalScriptProvider
-            options={{
-              clientId:
-                "AeOKOJoguFG3zS24Dv_C0GcKf65C2HAInjJZ5UoBiIs0bPJ6ds_pifANrv6hDAf5T_aOk8TZnt3YWf3q",
-            }}
-          >
-            <>
-              <CardHeader>
-                <CardTitle className="text-cyan-500">Payment Details</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4"></CardContent>
-              <CardFooter className="flex justify-between">
-                <Button
-                  onClick={handleBack}
-                  className="w-32 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-                >
-                  Back
-                </Button>
+          <>
+            <CardHeader>
+              <CardTitle className="text-cyan-500">Payment Details</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4"></CardContent>
+            <CardFooter className="flex justify-between">
+              <Button
+                onClick={handleBack}
+                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+              >
+                Back
+              </Button>
 
-                <PaypalButton
-                  totalValue={formData.amount}
-                  invoice=""
-                  email={formData.email}
-                  firstName={formData.firstName}
-                  secondName={formData.secondName}
-                  address={formData.address}
-                  country={formData.country}
-                  telephone={formData.telephone}
-                />
-              </CardFooter>
-            </>
-          </PayPalScriptProvider>
+              <Button
+                onClick={handleSubmit}
+                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+              >
+                Sponsor with ${formData.amount}
+              </Button>
+            </CardFooter>
+          </>
         )}
       </Card>
     </div>

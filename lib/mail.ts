@@ -3,6 +3,8 @@ import DonationTemplate from "@/components/emailTemplates/DonationTemplate";
 import DonatorTemplate from "@/components/emailTemplates/DonatorTemplate";
 import EmailTemplate from "@/components/emailTemplates/EmailTemplate";
 import NewAdoptionTemplate from "@/components/emailTemplates/NewAdoptionTemplate";
+import SponsorAdminTemplate from "@/components/emailTemplates/SponsorAdminTemplate";
+import SponsorTemplate from "@/components/emailTemplates/SponsorTemplate";
 import SubscriptionTemplate from "@/components/emailTemplates/SubscriptionTemplate";
 import { Resend } from "resend";
 
@@ -132,6 +134,30 @@ export const sendDonatorEmail = async (invoice: invoice) => {
       to: invoice.email,
       subject: `You have done a donation for $${invoice.totalValue}`,
       react: DonatorTemplate(invoice),
+    }
+  )
+};
+
+export const sendAdminSponsorEmail = async (invoice: invoice) => {
+
+  await resend.emails.send(
+    {
+      from: "info@magicmarblefoundation.org",
+      to: "info@magicmarblefoundation.org",
+      subject: "New Sponsor Has Subscribed",
+      react: SponsorAdminTemplate(invoice),
+    }
+  )
+};
+
+export const sendSponsorEmail = async (invoice: invoice) => {
+
+  await resend.emails.send(
+    {
+      from: "info@magicmarblefoundation.org",
+      to: invoice.email,
+      subject: `You have subscribed a sponsorship for $${invoice.totalValue}`,
+      react: SponsorTemplate(invoice),
     }
   )
 };
