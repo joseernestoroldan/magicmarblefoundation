@@ -36,22 +36,22 @@ export default async function RootLayout({
 
   const name = await getNameSession();
 
-  const chimpData = await getAllData("chimp")
- 
+  const chimpData = await getAllData("chimp");
+
   return (
     <html lang="en">
       <body className={myFont.className}>
         <main className="relative">
-        <ChimpPopover chimpData={chimpData} />
+          {/* <ChimpPopover chimpData={chimpData} /> */}
           <Link
-              href={"https://greatnonprofits.org/org/magic-marble-foundation"}
-              target="_blank"
-            ><div className="w-[100px] h-[75px] md:w-[132px] md:h-[100px] fixed z-30 top-44 xl:top-11 sm:right-4">
-            
-              <Image src="badge.png" alt="" fill priority/>
-            
-          </div></Link>
-          <Navbar name={name}/>
+            href={"https://greatnonprofits.org/org/magic-marble-foundation"}
+            target="_blank"
+          >
+            <div className="w-[90px] h-[65px] fixed z-30 top-14 hidden xl:inline-block xl:right-0 xl:left-auto">
+              <Image src="badge.png" alt="" fill priority />
+            </div>
+          </Link>
+          <Navbar name={name} chimpData={chimpData} />
           <div className="w-full">{children}</div>
           <Footer />
         </main>

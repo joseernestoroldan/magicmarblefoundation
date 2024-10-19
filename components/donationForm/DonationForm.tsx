@@ -279,7 +279,7 @@ export default function DonationForm({
           <PayPalScriptProvider
             options={{
               clientId:
-                "AeOKOJoguFG3zS24Dv_C0GcKf65C2HAInjJZ5UoBiIs0bPJ6ds_pifANrv6hDAf5T_aOk8TZnt3YWf3q",
+                "AexCIXsRYCnf0s8wmXEQ37db_xsRg0N1h3O6ZTeFunn2HOZxL2qVYxqQyXeQbWyXmqFh4ZNjwIjUUtUb",
             }}
           >
             <>

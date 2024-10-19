@@ -26,7 +26,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="bg-white">
-            <Menu disposition="flex-col" space="space-y-4" />
+            <Menu disposition="flex-col" space="space-y-1" />
           </div>
           <div className="bg-white flex flex-col items-center space-y-4  px-0">
             <h3 className="text-black font-bold text-2xl">Follow Us</h3>

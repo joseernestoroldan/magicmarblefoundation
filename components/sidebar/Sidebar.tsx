@@ -16,7 +16,7 @@ const Sidebar = ({ toggle, setToggle }: SidebarProps) => {
   
         <div className="w-full">
           <ul
-            className={`flex w-full flex-col space-y-4 font-medium items-stretch`}
+            className={`flex w-full flex-col space-y-2 font-medium items-stretch`}
           >
             {menuItems.map((item) => (
               <Link key={item.title} href={item.link}>

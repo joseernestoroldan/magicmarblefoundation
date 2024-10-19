@@ -86,8 +86,7 @@ export default function SponsorForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Here you would typically send the data to your server or payment processor
+   // Here you would typically send the data to your server or payment processor
     setLoading(true);
     const finalAmount = formData.amount;
 

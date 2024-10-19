@@ -42,8 +42,6 @@ const PaypalButton = ({
       }}
       onApprove={async (data, actions) => {
         const order = await actions.order?.capture();
-        console.log("order:", order);
-        console.log("this is the email:", email);
         donationCompleted(email, totalValue, firstName, secondName, country, address, telephone,);
       }}
     />

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const Menu = ({ disposition, space }: menuProps) => {
   const pathname = usePathname()
-  console.log(pathname)
+  
   return (
     <ul className={`hidden ${disposition} ${space} font-medium items-center lg:flex`}>
       {menuItems.map((item) => (

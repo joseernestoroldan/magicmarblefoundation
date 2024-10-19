@@ -41,6 +41,7 @@ const monthNumberToString = (monthNumber: string) => {
 };
 
 const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
+  
     
   const stringToDate = (stringDate: string) => {
     const str = stringDate;
@@ -52,10 +53,10 @@ const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
   };
 
   return (
-    <div className="fixed right-2 top-2 z-40">
+    <div className="">
       <Popover>
         <PopoverTrigger asChild>
-          <button>
+          <button className="flex items-center justify-center">
             <FaMailchimp className={`text-3xl text-gray-200`} />
           </button>
         </PopoverTrigger>
