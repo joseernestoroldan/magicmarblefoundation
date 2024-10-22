@@ -4,7 +4,7 @@ import React from "react";
 
 const MainPost = ({ paddyFieldPosts }: any) => {
   return (
-    <div className="w-2/3 flex flex-col space-y-8">
+    <div className="md:w-2/3 w-full flex flex-col space-y-8">
       <Link href={`paddyfield/${paddyFieldPosts[0]._id}`}>
         <div className="bg-gray-400 h-[50vh] w-full rounded-l-[10px] relative overflow-hidden hover:brightness-75 cursor-pointer">
           <Image

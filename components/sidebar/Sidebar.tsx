@@ -11,7 +11,7 @@ type SidebarProps = {
 
 const Sidebar = ({ toggle, setToggle }: SidebarProps) => {
   return (
-    <div className="w-full h-[80vh] bg-black bg-opacity-80 pt-10 ">
+    <div className="w-full h-[85vh] bg-black bg-opacity-80 pt-10 ">
       <div className="text-white flex flex-col items-center space-y-4">
   
         <div className="w-full">
@@ -22,7 +22,7 @@ const Sidebar = ({ toggle, setToggle }: SidebarProps) => {
               <Link key={item.title} href={item.link}>
                 <li
                   onClick={() => setToggle(!toggle)}
-                  className="w-full py-4 text-center cursor-pointer hover:drop-shadow-md rounded-lg text-white hover:text-cyan-500 text-2xl font-medium"
+                  className="w-full py-1 text-center cursor-pointer hover:drop-shadow-md rounded-lg text-white hover:text-cyan-500 text-lg font-medium"
                 >
                   {item.title}
                 </li>

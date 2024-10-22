@@ -16,7 +16,7 @@ const PaddyFieldPage = async () => {
         Portal Paddy Field
       </h1>
       <div className="w-full max-w-6xl mx-auto flex flex-col mt-8">
-        <div className="w-full max-w-6xl flex flex-row">
+        <div className="w-full max-w-6xl flex flex-col md:flex-row">
           <MainPost paddyFieldPosts={paddyFields} />
 
           <PaddyFieldList paddyFieldPosts={paddyFields} />
