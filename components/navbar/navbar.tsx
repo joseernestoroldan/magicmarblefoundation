@@ -43,7 +43,7 @@ const Navbar = ({ name, chimpData }: NavbarProps) => {
                 </p>
               )}
 
-              <Link className="hidden md:inline" href={"/donations"}>
+              <Link className="hidden md:inline mx-4" href={"/donations"}>
                 <Button>Donate</Button>
               </Link>
             </div>
