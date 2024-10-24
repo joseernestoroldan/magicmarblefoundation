@@ -5,9 +5,9 @@ import React from "react";
 const ReelPosts = ({ paddyFieldPosts }: any) => {
  
   return (
-    <div className="w-full h-[500px]  flex justify-between overflow-x-scroll">
+    <div className="w-full h-auto flex flex-wrap justify-center gap-8 lg:justify-between lg:gap-0">
       <Link href={`paddyfield/${paddyFieldPosts[1]._id}`}>
-        <div className="w-300px flex flex-col items-center space-y-4 hover:brightness-75 cursor-pointer">
+        <div className="w-[300px]  flex flex-col items-center space-y-4 hover:brightness-75 cursor-pointer">
           <div className="w-[300px] h-[300px] bg-gray-600 mt-8 relative rounded-[5px] overflow-hidden">
             <Image
               src={paddyFieldPosts[1].mainImage}

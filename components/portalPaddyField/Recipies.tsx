@@ -9,7 +9,7 @@ const Recipies = async () => {
   return (
     <div className="max-w-6xl w-full mx-auto flex flex-col items-center pt-8">
       <h2 className="text-green-950 text-2xl font-semibold">Recipies</h2>
-      <div className="w-full h-[400px] flex flex-row justify-between items-center pt-8 overflow-x-scroll">
+      <div className="w-full h-[400px] flex flex-row justify-between items-center pt-8 overflow-x-scroll paddyfield-scroll">
         <Link href={`/paddyfield/morerecipies/${recipies[0]._id}`}>
           <div className="w-[260px] h-[350px] group">
             <div className="w-[260px] h-[260px] bg-gray-400 relative rounded-[5px] overflow-hidden hover:brightness-75 cursor-pointer">

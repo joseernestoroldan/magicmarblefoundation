@@ -13,7 +13,7 @@ const PaddyFieldPage = async () => {
   return (
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center">
       <h1 className="text-3xl font-semibold text-green-800">
-        Portal Paddy Field
+        Paddy Field
       </h1>
       <div className="w-full max-w-6xl mx-auto flex flex-col mt-8">
         <div className="w-full max-w-6xl flex flex-col md:flex-row">

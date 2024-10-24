@@ -4,7 +4,6 @@ import Dates from "../date/Date";
 import Link from "next/link";
 
 const PaddyFieldList = ({ paddyFieldPosts }: any) => {
-  
   return (
     <div className="md:w-1/3 w-full h-[50vh] flex flex-col items-center bg-green-200 rounded-r-[10px]  px-4 pt-8 overflow-y-scroll paddyfield-scroll">
       <h2 className="text-2xl text-gray-500 font-semibold">Recent Entries</h2>
