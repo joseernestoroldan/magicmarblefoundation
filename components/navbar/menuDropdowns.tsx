@@ -33,7 +33,7 @@ const MenuDropdowns = () => {
         <PopoverContent
           onMouseOver={() => setIsOpenAbout(true)}
           onMouseLeave={() => setIsOpenAbout(false)}
-          className="bg-white"
+          className="bg-white bg-opacity-90"
         >
           <Link href={"/about"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
@@ -74,7 +74,7 @@ const MenuDropdowns = () => {
         <PopoverContent
           onMouseEnter={() => setIsOpenChange(true)}
           onMouseLeave={() => setIsOpenChange(false)}
-          className="bg-white"
+          className="bg-white bg-opacity-90"
         >
           <Link href={"/adoptions"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
