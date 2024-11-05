@@ -7,7 +7,7 @@ export const menuItems = [
   { title: "Gallery", link: "/gallery" },
   { title: "Adopt", link: "/adoptions" },
   { title: "Sponsor", link: "/sponsors" },
-  { title: "Portal Paddy Field", link: "/paddyfield" },
+  { title: "Paddy Field", link: "/paddyfield" },
   { title: "Magic Diaries", link: "/diaries" },
   { title: "Join Us", link: "/getinvolved" },
   { title: "Our Grantees", link: "/grantees" },

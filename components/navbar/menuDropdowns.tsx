@@ -96,17 +96,19 @@ const MenuDropdowns = () => {
         </PopoverContent>
       </Popover>
 
-      <Link href={"/paddyfield"} className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}>
-        <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
-          Paddy Field
-        </div>
-      </Link>
-
       <Link href={"/grantees"} className={`${pathname === "/grantees" ? "hidden" : "inline-block"}`}>
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Our Grantees
         </div>
       </Link>
+
+      <Link href={"/paddyfield"} className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}>
+        <div className="text-nowrap cursor-pointer hover:drop-shadow-md  text-green-400 hover:text-gray-500 text-lg font-medium bg-transparent">
+          Paddy Field
+        </div>
+      </Link>
+
+      
 
     </div>
   );
