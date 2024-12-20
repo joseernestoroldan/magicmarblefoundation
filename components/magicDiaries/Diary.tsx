@@ -33,7 +33,7 @@ const Diary = ({ _id, title, mainImage, description, crop }: DiaryProps) => {
         </div>
         <div className="invisible group-hover:visible bg-black bg-opacity-50 absolute z-10 bottom-1 left-1 right-1 flex flex-col justify-start space-y-2 p-6 rounded-b-2xl">
           <h2 className="text-lg font-bold  text-white">{title}</h2>
-          <p className="text-sm font-medium  w-full h-min text-justify max-w-[500px] text-transparent bg-gradient-to-r from-white via-white to-transparent bg-clip-text ">
+          <p className="text-sm font-medium  w-full h-min text-left max-w-[500px] text-white ">
             {description?.substring(0, 70)}
           </p>
         </div>
