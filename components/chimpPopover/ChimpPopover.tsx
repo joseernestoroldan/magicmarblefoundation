@@ -4,6 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@radix-ui/react-popover";
+import Link from "next/link";
 import React from "react";
 import { FaMailchimp } from "react-icons/fa";
 
@@ -41,13 +42,12 @@ const monthNumberToString = (monthNumber: string) => {
 };
 
 const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
-  
-    
+  console.log(chimpData);
   const stringToDate = (stringDate: string) => {
     const str = stringDate;
     const year = str.substring(0, 4);
     const mounthNumber = str.substring(5, 7);
-    const month = monthNumberToString(mounthNumber)
+    const month = monthNumberToString(mounthNumber);
     const day = str.substring(8, 10);
     return { day: day, month: month, year: year };
   };
@@ -69,10 +69,17 @@ const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
               const date = stringToDate(item._createdAt);
               return (
                 <div className="py-4" key={index}>
-                  <p className="font-normal text-lg">
-                    {date.month} | {date.year}
-                  </p>
-                  <p className="font-semibold text-lg">{item.title}</p>
+                  {item.chimpLink && (
+                    <p className="font-normal text-lg">
+                      {date.month} | {date.year}
+                    </p>
+                  )}
+
+                  {item.chimpLink && (
+                    <Link href={item.chimpLink}>
+                      <p className="font-semibold text-lg">{item.title}</p>
+                    </Link>
+                  )}
                 </div>
               );
             })}
