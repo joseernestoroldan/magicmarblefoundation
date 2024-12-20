@@ -42,7 +42,6 @@ const monthNumberToString = (monthNumber: string) => {
 };
 
 const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
-  console.log(chimpData);
   const stringToDate = (stringDate: string) => {
     const str = stringDate;
     const year = str.substring(0, 4);
