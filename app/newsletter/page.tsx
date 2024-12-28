@@ -47,12 +47,12 @@ const ChimpNewsLetter = async () => {
   };
 
   return (
-    <div className=" w-full max-w-2xl mx-auto flex flex-col justify-center space-y-8">
+    <div className=" w-full max-w-3xl mx-auto flex flex-col justify-center space-y-8">
         <h1 className="text-center text-4xl font-bold text-cyan-500">Our Newsletter</h1>
       {FilteredData.map((newsletter: any) => {
         const date = stringToDate(newsletter._createdAt);
         return (
-          <div key={newsletter._id} className="w-full p-8  bg-cyan-500 rounded-[10px] text-white">
+          <div key={newsletter._id} className="w-full py-8 px-16 bg-opacity-10  bg-gradient-to-b from-cyan-50 via-white to-cyan-50 rounded-[10px] text-cyan-500 hover:scale-110 hover:shadow-xl">
             <h2 className=" text-2xl font-bold">{newsletter.title}</h2>
             <Link
               href={newsletter.chimpLink}
