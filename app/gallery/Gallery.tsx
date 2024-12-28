@@ -11,22 +11,12 @@ import { useState } from "react";
 import GalleryCarousel from "./GalleryCarousel";
 
 const Gallery = ({ gallery }: any) => {
-  const [changeGallery, setChangeGallery] = useState<boolean>(false);
+  const [changeGallery, setChangeGallery] = useState<boolean>(true);
   return (
 
     <EnterSection>
       <div className="flex flex-col items-stretch space-y-0 w-full">
-      {/* <div className="pt-4 md:pt-4 flex items-center w-full leading-none">
-        <HeadingCenterAnimation>
-          <Heading
-            title="Our Gallery"
-            color="text-cyan-500"
-            shadow=""
-            textSize="text-2xl"
-            center="flex justify-center "
-          />
-        </HeadingCenterAnimation>
-      </div> */}
+      
       <div className="w-full">
         <div className="w-full flex flex-col justify-center relative">
           <div className={`flex items-center justify-center md:justify-end gap-x-2 px-8 z-10 ${!changeGallery? "top-0 right-0 absolute sm:static w-min sm:w-full py-4 md:py-2 max-w-[1300px] mx-auto" : "w-full py-4 md:py-0 pt-0 md:pt-4 "}`}>
