@@ -25,7 +25,7 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
    
           <Container>
             <LayoutY>
-              <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-8 md:space-y-0 max-w-5xl space-x-0">
+              <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-0 max-w-5xl space-x-0">
                 {diaries.map((diary: any) => (
                   <Diary
                     _id={diary._id}
