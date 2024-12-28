@@ -9,7 +9,7 @@ const Diary = ({ _id, title, mainImage, description, crop }: DiaryProps) => {
   return (
     <Link href={`/diaries/${_id}`}>
       <div
-        className={`group bg-black w-[300px] h-[auto] flex justify-around items-center rounded-2xl border-gray-300 border border-card shadow-xl relative`}
+        className={`group bg-black w-[300px] h-[auto] flex justify-around items-center rounded-2xl border-gray-300 border border-card shadow-xl relative m-2`}
       >
         <div className="flex justify-center items-center group-hover:opacity-60 ">
           <div
