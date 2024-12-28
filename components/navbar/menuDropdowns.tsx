@@ -52,6 +52,11 @@ const MenuDropdowns = () => {
               Magic Diaries
             </div>
           </Link>
+          <Link href={"/newsletter"}>
+            <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
+              Newsletter
+            </div>
+          </Link>
         </PopoverContent>
       </Popover>
 
