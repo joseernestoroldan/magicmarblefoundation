@@ -1,40 +1,41 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect } from "react"
+import { AlertCircle } from "lucide-react"
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string };
-  reset: () => void;
+  error: Error & { digest?: string }
+  reset: () => void
 }) {
   useEffect(() => {
-    // Optionally log the error to an error reporting service
-    console.error(error);
-  }, [error]);
+    // Log the error to an error reporting service
+    console.error(error)
+  }, [error])
 
   return (
-    <main className="flex h-full flex-col items-center justify-center">
-      <div className="relative h-60 w-60"><Image className=" object-contain" src={"dogtransparent.png"} alt="" fill/></div>
-      <h2 className="text-center text-xl font-bold text-red-500">
-        Something went wrong!
-      </h2>
-      <button
-        className="mt-4 rounded-md bg-cyan-500 px-4 py-2 text-sm text-white transition-colors hover:bg-cyan-400"
-        onClick={
-          // Attempt to recover by trying to re-render the invoices route
-          () => reset()
-        }
-      >
-        Try again
-      </button>
-
-      <Link className="text-cyan-500 text-lg font-bold underline" href={"/"}>
-        Go Home
-      </Link>
-    </main>
-  );
+    <div className="min-h-[70vh] bg-white flex flex-col justify-center items-center p-4">
+      <div className="text-center">
+        <AlertCircle className="mx-auto h-16 w-16 text-cyan-500" />
+        <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Something went wrong</h1>
+        <p className="mt-6 text-base leading-7 text-gray-600">
+          We apologize for the inconvenience. Our team has been notified and is working on resolving the issue.
+        </p>
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+          <button
+            onClick={reset}
+            className="rounded-md bg-cyan-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
+          >
+            Try again
+          </button>
+          <a href="/" className="text-sm font-semibold text-cyan-500 hover:text-cyan-600">
+            Go back home <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  )
 }
+

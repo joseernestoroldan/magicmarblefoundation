@@ -8,6 +8,7 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Donations from "@/components/home/donations/Donations";
 
 const ProjectsPage = async () => {
+
   const projects = await getAllData("projects");
 
   return (
