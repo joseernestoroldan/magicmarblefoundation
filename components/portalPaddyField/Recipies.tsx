@@ -5,7 +5,6 @@ import React from "react";
 
 const Recipies = async () => {
   const recipies = await getAllData("recipies2");
-  console.log(recipies)
 
   return (
     <div className="max-w-6xl w-full mx-auto flex flex-col items-center pt-8">
