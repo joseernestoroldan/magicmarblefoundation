@@ -12,8 +12,7 @@ interface ScrollPosition {
 }
 
 const TopPicksCarousell = ({ topPicks }: TopPicksProps) => {
-  const {push} = useRouter()
-  console.log(topPicks)
+  
   const scrollableRef = useRef<HTMLDivElement>(null);
   const [counter, setCounter] = useState<number>(0);
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({

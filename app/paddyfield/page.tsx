@@ -9,7 +9,7 @@ import TopPicks from "@/components/topPicks/TopPicks";
 
 const PaddyFieldPage = async () => {
   const paddyFields = await getAllData("portalPaddyField");
-
+ 
   return (
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center">
       <h1 className="text-3xl font-semibold text-green-800">

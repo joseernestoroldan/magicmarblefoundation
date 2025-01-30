@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const MoreRecipiesPage = async () => {
-    const recipies = await getAllData('recipies')
+    const recipies = await getAllData('recipies2')
   return (
     
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center">

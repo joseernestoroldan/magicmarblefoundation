@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllData } from "@/client";
-import ChimpPopover from "@/components/chimpPopover/ChimpPopover";
+
 
 const myFont = localFont({ src: "../public/bellmedium.woff2" });
 
@@ -16,19 +16,25 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-  const userId = session?.user.id;
+
+  const getUserById = async () => {
+    // const session = await auth();
+    const session = null
+    if (!session) return null
+    // return session.user.id
+  }
+  
+  const userId = await getUserById()
 
   const getNameSession = async () => {
+    let name: string;
     try {
-      const data = await db.user.findFirst({ where: { id: userId } });
-      let name: string;
-      if (session) {
-        name = data?.firstName || "user";
-      } else {
-        name = "";
-      }
-      return name;
+      if(userId){
+         const data = await db.user.findFirst({ where: { id: userId } });
+         name = data?.firstName || "user";
+         return name        
+        }
+      return undefined
     } catch (error) {
       throw new Error();
     }
