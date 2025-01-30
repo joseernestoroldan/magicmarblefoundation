@@ -10,10 +10,10 @@ const page = async ({ params: { id: _Id } }: { params: { id: string } }) => {
 
   return (
     <HeadingCenterAnimation>
-      <div className="flex flex-col md:flex-row w-full h-auto justify-around px-6">
-        <div className="flex flex-col items-center py-10 space-y-10 px-6">
-          {data[0].mainImage !== null && (
-            <div className="w-[300px] md:w-[500px] lg:w-[700px] h-[150px] md:h-[400px] lg:h-[600px] relative overflow-hidden">
+      <div className="flex flex-col lg:flex-row w-full h-auto justify-around px-6">
+        <div className="flex flex-col items-center px-4">
+          {data[0]?.mainImage !== null && (
+            <div className="w-full lg:w-[500px] xl:w-[700px] h-[300px] lg:h-[600px] relative overflow-hidden">
               <Image
                 className="object-contain object-top"
                 src={data[0]?.mainImage}

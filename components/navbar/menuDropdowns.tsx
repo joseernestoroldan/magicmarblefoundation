@@ -21,7 +21,7 @@ const MenuDropdowns = () => {
       </Link>
 
       <Popover open={isOpenAbout}>
-        <PopoverTrigger asChild>
+        <PopoverTrigger asChild className="border-none">
           <button
             className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium"
             onMouseOver={() => setIsOpenAbout(true)}

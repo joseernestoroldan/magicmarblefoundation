@@ -61,7 +61,7 @@ const DiaryPage = async ({
             />
 
             <div className="w-full">
-              {data[0].publishedAt !== null && (
+              {data[0]?.publishedAt !== null && (
                 <div className="w-full flex justify-end items-center">
                   <Dates
                     hour={myDate.hour}
@@ -73,7 +73,7 @@ const DiaryPage = async ({
                 </div>
               )}
 
-              {data[0].mainImage !== null && (
+              {data[0]?.mainImage !== null && (
                 <div
                   className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}
                 >
@@ -86,7 +86,7 @@ const DiaryPage = async ({
                      ${left < 20 && top > 80 && top < 100 && "object-[0%_80%]"} ${left > 20 && left < 40 && top > 80 && top < 100 && "object-[20%_80%]"} ${left > 40 && left < 60 && top > 80 && top < 100 && "object-[40%_80%]"} ${left > 60 && left < 80 && top > 80 && top < 100 && "object-[60%_80%]"} ${left > 80 && left < 100 && top > 80 && top < 100 && "object-[80%_80%]"}
 
                       rounded-2xl`}
-                    src={data[0].mainImage}
+                    src={data[0]?.mainImage}
                     fill
                     alt=""
                     priority={true}
@@ -95,10 +95,10 @@ const DiaryPage = async ({
               )}
             </div>
 
-            {data[0].contenido !== null && <Parrafos data={data} />}
+            {data[0]?.contenido !== null && <Parrafos data={data} />}
           </div>
           <div className="flex flex-row justify-center md:justify-end">
-            {data[0].author !== null && <Author data={data} />}
+            {data[0]?.author !== null && <Author data={data} />}
           </div>
         </div>
       </Container>
