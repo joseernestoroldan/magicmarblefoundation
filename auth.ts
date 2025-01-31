@@ -5,6 +5,7 @@ import authConfig from "./auth.config";
 import { getUserById } from "./data/user";
 import { UserRole } from "@prisma/client";
 import "next-auth/jwt";
+import { cache } from "react";
 
 declare module "next-auth/jwt" {
   interface JWT {
@@ -19,7 +20,7 @@ declare module "next-auth" {
   }
 }
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+const { auth: uncachedAuth, handlers, signIn, signOut } = NextAuth({
   pages:{
     signIn: "/login",
     error: "/error"
@@ -65,3 +66,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
   ...authConfig,
 });
+
+const auth = cache(uncachedAuth);
+export { auth, handlers, signIn, signOut };
