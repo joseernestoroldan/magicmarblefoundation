@@ -1,4 +1,3 @@
-import React from "react";
 import { getAllData } from "@/client";
 import PaddyFieldList from "@/components/portalPaddyField/PaddyFieldList";
 import MainPost from "@/components/portalPaddyField/MainPost";
@@ -6,9 +5,11 @@ import ReelPosts from "@/components/portalPaddyField/ReelPosts";
 import Recipies from "@/components/portalPaddyField/Recipies";
 import Link from "next/link";
 import TopPicks from "@/components/topPicks/TopPicks";
+import { QueryType } from "@/types/types";
+
 
 const PaddyFieldPage = async () => {
-  const paddyFields = await getAllData("portalPaddyField");
+  const paddyFields: QueryType[] = await getAllData("portalPaddyField");
  
   return (
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center">
@@ -17,7 +18,7 @@ const PaddyFieldPage = async () => {
       </h1>
       <div className="w-full max-w-6xl mx-auto flex flex-col mt-8">
         <div className="w-full max-w-6xl flex flex-col md:flex-row">
-          <MainPost paddyFieldPosts={paddyFields} />
+          <MainPost paddyFields={paddyFields} />
 
           <PaddyFieldList paddyFieldPosts={paddyFields} />
         </div>

@@ -126,12 +126,12 @@ export type DiaryProps = {
   title: string;
   mainImage: string;
   description: string;
-  crop:{
-    top:number
-    left: number
-    right:number
-    bottom: number
-  }
+  crop: {
+    top: number;
+    left: number;
+    right: number;
+    bottom: number;
+  };
 };
 
 export type ParrafosProps = {
@@ -170,3 +170,61 @@ export type SponsorProps = {
 export type TopPicksProps = {
   topPicks: any;
 };
+
+export type QueryType = {
+  youtubeLink: string | null;
+  thirdImage: string | null;
+  hotSpot: HotSpot | null; 
+  alt: string | null;
+  publishedAt: string | null;
+  description: string | null;
+  contenido: Block[];
+  chimpLink: string | null;
+  characteristics: string | null;
+  secondImage: string | null;
+  crop: Crop | null; 
+  body: string | null;
+  notificationsSent: boolean | null;
+  _id: string;
+  mainImage: string | null;
+  authorImage: string | null;
+  author: string | null;
+  _createdAt: string;
+  name: string | null;
+  notificationSent: boolean | null;
+  title: string;
+  fourthImage: string | null;
+};
+
+type Block = {
+  children: Children
+  _type: "block";
+  style: Style
+  markDefs: any[];
+  _key: string
+};
+
+type Crop = {
+  top: number;
+  left: number;
+  bottom: number;
+  right: number;
+  _type: string;
+};
+
+type HotSpot = {
+  width: number
+  height: number
+  x: number
+  y: number
+  _type: string
+}
+
+type Style = 'h1' | 'h2' | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
+
+type Children = {
+  _type: string
+  marks: any[]
+  text: string
+  _key: string
+}[]
