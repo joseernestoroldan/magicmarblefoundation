@@ -117,7 +117,7 @@ const MenuDropdowns = () => {
       </Link>
 
       <Link
-        href={"/paddyfield"}
+        href={"/mantainance"}
         className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}
       >
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md  text-green-400 hover:text-gray-500 text-lg font-medium bg-transparent">
