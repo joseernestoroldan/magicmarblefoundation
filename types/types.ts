@@ -174,7 +174,10 @@ export type TopPicksProps = {
 export type QueryType = {
   youtubeLink: string | null;
   thirdImage: string | null;
-  hotSpot: HotSpot | null; 
+  hotSpotMain: HotSpot | null; 
+  hotSpotSecond: HotSpot | null;
+  hotSpotThird: HotSpot | null;
+  hotSpotFourth: HotSpot | null;
   alt: string | null;
   publishedAt: string | null;
   description: string | null;
@@ -196,12 +199,13 @@ export type QueryType = {
   fourthImage: string | null;
 };
 
-type Block = {
+export type Block = {
   children: Children
   _type: "block";
   style: Style
   markDefs: any[];
   _key: string
+  listItem: string | null
 };
 
 type Crop = {
@@ -212,7 +216,7 @@ type Crop = {
   _type: string;
 };
 
-type HotSpot = {
+export type HotSpot = {
   width: number
   height: number
   x: number
@@ -228,3 +232,5 @@ type Children = {
   text: string
   _key: string
 }[]
+
+export type ModePhoto = "gallery" | "cover"

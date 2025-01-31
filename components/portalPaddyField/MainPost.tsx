@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
   const mainArticle = paddyFields[0];
-  const { _id, mainImage, title, description, hotSpot } = mainArticle;
-  const x = (hotSpot?.x ?? 0.5) * 100;
-  const y = (hotSpot?.y ?? 0.5) * 100;
+  const { _id, mainImage, title, description, hotSpotMain } = mainArticle;
+  const x = (hotSpotMain?.x ?? 0.5) * 100;
+  const y = (hotSpotMain?.y ?? 0.5) * 100;
   return (
     <div className="w-full flex flex-col space-y-8">
       {_id && mainImage && (

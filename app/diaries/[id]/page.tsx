@@ -9,6 +9,7 @@ import { Date } from "@/utils/date";
 import Dates from "@/components/date/Date";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
+import { QueryType } from "@/types/types";
 
 export async function generateMetadata(
   { params: { id: _Id } }: { params: { id: string } },
@@ -19,7 +20,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: data[0].title,
+    title: data.title,
     openGraph: {
       title: data[0].title,
       description: data[0].description,
@@ -37,15 +38,15 @@ const DiaryPage = async ({
   params: { id: string };
 }) => {
   let textSize;
-  const data = await getOne(_Id);
-  const dateString = data[0].publishedAt;
+   const [data]: QueryType[] = await getOne(_Id);
+  const dateString = data._createdAt;
   const myDate = Date(dateString);
   
 
-  data[0].title.length > 30 ? (textSize = "text-3xl") : (textSize = "text-4xl");
+  data.title.length > 30 ? (textSize = "text-3xl") : (textSize = "text-4xl");
 
-  const left = data[0].crop ? Math.trunc(data[0].crop?.left * 100) : 50;
-  const top = data[0].crop ? Math.trunc(data[0].crop?.top * 100) : 50;
+  const left = data.crop ? Math.trunc(data.crop?.left * 100) : 50;
+  const top = data.crop ? Math.trunc(data.crop?.top * 100) : 50;
 
   return (
     <HeadingCenterAnimation>
@@ -53,7 +54,7 @@ const DiaryPage = async ({
         <div className="flex flex-col justify-center w-full h-auto">
           <div className="flex  flex-col space-y-2 md:space-y-2 justify-center items-center pt-4 md:pt-4">
             <Heading
-              title={data[0].title}
+              title={data.title}
               color="text-cyan-500"
               shadow=""
               textSize={`text-2xl md:${textSize}`}
@@ -61,7 +62,7 @@ const DiaryPage = async ({
             />
 
             <div className="w-full">
-              {data[0]?.publishedAt !== null && (
+              {data?.publishedAt !== null && (
                 <div className="w-full flex justify-end items-center">
                   <Dates
                     hour={myDate.hour}
@@ -73,7 +74,7 @@ const DiaryPage = async ({
                 </div>
               )}
 
-              {data[0]?.mainImage !== null && (
+              {data?.mainImage !== null && (
                 <div
                   className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}
                 >
@@ -86,7 +87,7 @@ const DiaryPage = async ({
                      ${left < 20 && top > 80 && top < 100 && "object-[0%_80%]"} ${left > 20 && left < 40 && top > 80 && top < 100 && "object-[20%_80%]"} ${left > 40 && left < 60 && top > 80 && top < 100 && "object-[40%_80%]"} ${left > 60 && left < 80 && top > 80 && top < 100 && "object-[60%_80%]"} ${left > 80 && left < 100 && top > 80 && top < 100 && "object-[80%_80%]"}
 
                       rounded-2xl`}
-                    src={data[0]?.mainImage}
+                    src={data?.mainImage}
                     fill
                     alt=""
                     priority={true}
@@ -95,10 +96,10 @@ const DiaryPage = async ({
               )}
             </div>
 
-            {data[0]?.contenido !== null && <Parrafos data={data} />}
+            {data?.contenido !== null && <Parrafos contenido={data.contenido} />}
           </div>
           <div className="flex flex-row justify-center md:justify-end">
-            {data[0]?.author !== null && <Author data={data} />}
+            {data?.author !== null && <Author data={data} />}
           </div>
         </div>
       </Container>

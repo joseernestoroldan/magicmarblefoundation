@@ -11,9 +11,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 type CarouselVerticalProps = {
-  mainImage?: string;
-  secondImage?: string;
-  thirdImage?: string;
+  mainImage?: string | null;
+  secondImage?: string | null;
+  thirdImage?: string | null;
   id: string;
 };
 

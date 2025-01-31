@@ -6,18 +6,19 @@ import React from "react";
 
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import CarouselVerticalSponsor from "@/components/carouselVertical/CarouselVerticalSponsor";
+import { QueryType } from "@/types/types";
 
 const AdoptionDynamicPage = async ({
   params: { id: _Id },
 }: {
   params: { id: string };
 }) => {
-  const [candidate] = await getOne(_Id);
+  const [data]: QueryType[] = await getOne(_Id);
 
-  const left = candidate?.crop ? Math.trunc(candidate.crop?.left * 100) : 50;
-  const top = candidate?.crop ? Math.trunc(candidate.crop?.top * 100) : 50;
+  const left = data?.crop ? Math.trunc(data.crop?.left * 100) : 50;
+  const top = data?.crop ? Math.trunc(data.crop?.top * 100) : 50;
 
-  const url = candidate?.youtubeLink || "";
+  const url = data?.youtubeLink || "";
 
   const urlParts = url.split("?v=");
   const queryString = urlParts[1];
@@ -27,7 +28,7 @@ const AdoptionDynamicPage = async ({
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col items-start">
       <div className="w-full h-auto flex justify-start flex-col md:flex-row">
-        {candidate.youtubeLink && (
+        {data.youtubeLink && (
           <div className="md:w-[60%] w-full h-auto flex flex-col justify-start items-center space-y-2">
             <div className="w-full bg-gray-400 aspect-video rounded-[5px] relative overflow-hidden">
               <iframe
@@ -39,12 +40,12 @@ const AdoptionDynamicPage = async ({
             </div>
             <div className="w-full h-min flex">
               <div className="w-full flex flex-row justify-center items-center space-x-2">
-                {candidate.mainImage && (
+                {data.mainImage && (
                   <Dialog>
                     <DialogTrigger className="w-1/3 bg-green-400">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.mainImage}
+                          src={data.mainImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -59,7 +60,7 @@ const AdoptionDynamicPage = async ({
                     <DialogContent className="p-0">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.mainImage}
+                          src={data.mainImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -73,12 +74,12 @@ const AdoptionDynamicPage = async ({
                     </DialogContent>
                   </Dialog>
                 )}
-                {candidate.secondImage && (
+                {data.secondImage && (
                   <Dialog>
                     <DialogTrigger className="w-1/3 bg-green-400">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.secondImage}
+                          src={data.secondImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -93,7 +94,7 @@ const AdoptionDynamicPage = async ({
                     <DialogContent className="p-0">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.secondImage}
+                          src={data.secondImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -107,12 +108,12 @@ const AdoptionDynamicPage = async ({
                     </DialogContent>
                   </Dialog>
                 )}
-                {candidate.thirdImage && (
+                {data.thirdImage && (
                   <Dialog>
                     <DialogTrigger className="w-1/3 bg-green-400">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.thirdImage}
+                          src={data.thirdImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -127,7 +128,7 @@ const AdoptionDynamicPage = async ({
                     <DialogContent className="p-0">
                       <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
                         <Image
-                          src={candidate.thirdImage}
+                          src={data.thirdImage}
                           alt="adoption"
                           fill
                           className={`object-cover
@@ -151,18 +152,18 @@ const AdoptionDynamicPage = async ({
           </div>
         )}
 
-        {!candidate.youtubeLink && (
+        {!data.youtubeLink && (
           <CarouselVerticalSponsor
-            mainImage={candidate.mainImage}
-            secondImage={candidate.secondImage}
-            thirdImage={candidate.thirdImage}
-            id={candidate._id}
+            mainImage={data.mainImage}
+            secondImage={data.secondImage}
+            thirdImage={data.thirdImage}
+            id={data._id}
           />
         )}
 
         <div className="md:w-[40%] w-full h-auto flex justify-end z-10">
           <div className="w-[95%] h-full border-l border-gray-200 text-gray-500 indent-4 text-justify px-4 space-y-4">
-            {candidate.contenido !== null && <Parrafos data={[candidate]} />}
+            {data.contenido !== null && <Parrafos contenido={data.contenido} />}
           </div>
         </div>
       </div>
