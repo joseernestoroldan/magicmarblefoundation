@@ -13,7 +13,7 @@ import MenuDropdowns from "./menuDropdowns";
 import Image from "next/image";
 
 type NavbarProps = {
-  name?: string;
+  name: string | null;
   chimpData: any;
 };
 
@@ -31,17 +31,10 @@ const Navbar = ({ name, chimpData }: NavbarProps) => {
           </div>
           <div className="flex items-center justify-center">
             {/* <Menu disposition="flex-row" space="space-x-3"></Menu> */}
-            <MenuDropdowns />
+            <MenuDropdowns/>
 
             <div className="w-min hidden md:flex flex-col justify-center items-center space-y-2">
-              {name && (
-                <p className="text-nowrap text-sm text-cyan-500 capitalize">
-                  Hello {name} -{" "}
-                  <Link className="underline font-medium" href={"/profile"}>
-                    your profile
-                  </Link>{" "}
-                </p>
-              )}
+              
 
               <Link className="hidden md:inline mx-4" href={"/donations"}>
                 <Button>Donate</Button>

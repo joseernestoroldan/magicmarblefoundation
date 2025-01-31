@@ -11,10 +11,13 @@ import { usePathname } from "next/navigation";
 const MenuDropdowns = () => {
   const [isOpenAbout, setIsOpenAbout] = useState(false);
   const [isOpenChange, setIsOpenChange] = useState(false);
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <div className="hidden flex-row space-x-3 font-medium items-center lg:flex">
-      <Link href={"/"} className={`${pathname === "/" ? "hidden" : "inline-block"}`}>
+      <Link
+        href={"/"}
+        className={`${pathname === "/" ? "hidden" : "inline-block"}`}
+      >
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Home
         </div>
@@ -60,7 +63,10 @@ const MenuDropdowns = () => {
         </PopoverContent>
       </Popover>
 
-      <Link href={"/gallery"} className={`${pathname === "/gallery" ? "hidden" : "inline-block"}`}>
+      <Link
+        href={"/gallery"}
+        className={`${pathname === "/gallery" ? "hidden" : "inline-block"}`}
+      >
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Gallery
         </div>
@@ -101,20 +107,23 @@ const MenuDropdowns = () => {
         </PopoverContent>
       </Popover>
 
-      <Link href={"/grantees"} className={`${pathname === "/grantees" ? "hidden" : "inline-block"}`}>
+      <Link
+        href={"/grantees"}
+        className={`${pathname === "/grantees" ? "hidden" : "inline-block"}`}
+      >
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Our Grantees
         </div>
       </Link>
 
-      <Link href={"/paddyfield"} className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}>
+      <Link
+        href={"/paddyfield"}
+        className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}
+      >
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md  text-green-400 hover:text-gray-500 text-lg font-medium bg-transparent">
           Paddy Field
         </div>
       </Link>
-
-      
-
     </div>
   );
 };

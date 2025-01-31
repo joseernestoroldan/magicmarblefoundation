@@ -6,13 +6,21 @@ import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { IoMdContact } from "react-icons/io";
 import { IconsProps } from "@/types/types";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-
-const Icons = ({ show, setShow, color }: IconsProps) => {
- 
-
+const Icons = ({ show, setShow, color, name }: IconsProps) => {
+  const pathname = usePathname()
+  console.log(pathname)
   return (
     <div className="w-full flex flex-row justify-between items-center">
+      {name && pathname !== "/profile" && (
+        <Link
+          className={`${color} hover:bg-zinc-200 hover:text-black text-sm underline border-2 rounded-[10px] h-[1.6rem] flex justify-center items-center px-2 border-[${color}]`}
+          href={"/profile"}
+        >
+          Profile
+        </Link>
+      )}
       <Link
         href={"https://www.facebook.com/magicmarblefoundation?mibextid=JRoKGi"}
         passHref

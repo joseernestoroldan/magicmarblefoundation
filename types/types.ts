@@ -146,6 +146,7 @@ export type IconsProps = {
   color: string;
   show?: boolean;
   setShow?: any;
+  name: string | null;
 };
 
 export type BannerDonationProps = {

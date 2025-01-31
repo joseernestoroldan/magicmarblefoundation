@@ -9,7 +9,7 @@ import ChimpPopover from "../chimpPopover/ChimpPopover";
 import Image from "next/image";
 
 type InfoProps = {
-  name?: string;
+  name: string | null;
   chimpData: any;
 };
 
@@ -37,7 +37,7 @@ const Infobar = ({ name, chimpData }: InfoProps) => {
               </div>
 
               <div className="flex justify-center items-center">
-                <Icons color="text-gray-200" show={show} setShow={setShow} />
+                <Icons name={name} color="text-gray-200" show={show} setShow={setShow} />
                 <ChimpPopover chimpData={chimpData}/>
               </div>
 
@@ -50,7 +50,7 @@ const Infobar = ({ name, chimpData }: InfoProps) => {
                 </Link>
               )}
 
-              {name && name !== "" && (
+              {name ? (
                 <div className="flex flex-col justify-center items-center">
                   <button
                     onClick={() => handleSignOut()}
@@ -59,7 +59,7 @@ const Infobar = ({ name, chimpData }: InfoProps) => {
                     Sign Out
                   </button>
                 </div>
-              )}
+              ): (<Link className="underline text-sm text-nowrap" href={"/login"}>Login</Link>)}
             </div>
           </div>
 

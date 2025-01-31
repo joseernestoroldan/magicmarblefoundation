@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { getAllData } from "@/client";
 
-
 const myFont = localFont({ src: "../public/bellmedium.woff2" });
 
 export default async function RootLayout({
@@ -16,26 +15,26 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const getUserById = async () => {
     const session = await auth();
-    console.log(session)
-   
-    if (!session) return null
-     return session.user.id
-  }
-  
-  const userId = await getUserById()
+    if (!session?.user?.id) return null;
+    return session.user.id;
+  };
+
+  const userId = await getUserById();
 
   const getNameSession = async () => {
-    let name: string;
+    let name: string | null;
     try {
-      if(userId){
-         const data = await db.user.findFirst({ where: { id: userId } });
-         name = data?.firstName || "user";
-         return name        
+      if (userId) {
+        const data = await db.user.findFirst({ where: { id: userId } });
+        if (data?.firstName) {
+          name = data.firstName;
+          return name;
         }
-      return undefined
+        return null;
+      }
+      return null;
     } catch (error) {
       throw new Error();
     }
