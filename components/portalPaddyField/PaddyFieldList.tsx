@@ -1,18 +1,19 @@
-import React from "react";
 import { Date } from "@/utils/date";
 import Dates from "../date/Date";
 import Link from "next/link";
+import { QueryType } from "@/types/types";
 
-const PaddyFieldList = ({ paddyFieldPosts }: any) => {
+const PaddyFieldList = ({ paddyFieldPosts } : { paddyFieldPosts: QueryType[]} ) => {
   return (
-    <div className="md:w-1/3 w-full h-[50vh] flex flex-col items-center bg-green-200 rounded-r-[10px]  px-4 pt-8 overflow-y-scroll paddyfield-scroll">
+    <div className="w-1/3 flex flex-col px-4">
       <h2 className="text-2xl text-gray-500 font-semibold">Recent Entries</h2>
-      {paddyFieldPosts.map((item: any, index: number) => {
+
+      {paddyFieldPosts.map((item: QueryType, index: number) => {
         const dateString = item._createdAt;
         const myDate = Date(dateString);
 
         return (
-          <div key={index} className="my-4">
+          <div key={index} className="my-4 bg-white p-4">
             <Link href={`paddyfield/${item._id}`}>
               <p className="text-gray-500 text-base font-semibold">
                 {item.title}
