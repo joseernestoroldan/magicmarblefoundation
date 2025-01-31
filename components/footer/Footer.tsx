@@ -4,7 +4,11 @@ import Icons from "../socialMedia/Icons";
 import Container from "../layouts/container/Container";
 import Logo from "../logo/Logo";
 
-const Footer = () => {
+type FooterProps = {
+  name: string | null;
+};
+
+const Footer = ({name}:FooterProps) => {
   return (
     <div className="flex flex-col space-y-10 items-stretch w-full max-w-[300px] min-[425px]:max-w-[423px] sm:max-w-[638px] md:max-w-[766px] lg:max-w-[1022px] mx-auto">
       <Container>
@@ -31,7 +35,7 @@ const Footer = () => {
           <div className="bg-white flex flex-col items-center space-y-4  px-0">
             <h3 className="text-black font-bold text-2xl">Follow Us</h3>
             <div>
-              <Icons color="text-cyan-500" />
+              <Icons color="text-cyan-500" name={name} />
             </div>
           </div>
         </div>

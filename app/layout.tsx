@@ -59,7 +59,7 @@ export default async function RootLayout({
           </Link>
           <Navbar name={name} chimpData={chimpData} />
           <div className="w-full">{children}</div>
-          <Footer />
+          <Footer name={name} />
         </main>
       </body>
     </html>
