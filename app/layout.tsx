@@ -18,8 +18,9 @@ export default async function RootLayout({
 }>) {
 
   const getUserById = async () => {
-    // const session = await auth();
-    const session = null
+    const session = await auth();
+    console.log(session)
+   
     if (!session) return null
     // return session.user.id
   }
