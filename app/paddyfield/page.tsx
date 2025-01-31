@@ -15,7 +15,7 @@ const PaddyFieldPage = async () => {
       <h1 className="text-3xl font-semibold text-green-800">Paddy Field</h1>
       <div className="w-full max-w-7xl mx-auto flex flex-col mt-8">
         <div className="w-full max-w-7xl flex flex-col md:flex-row">
-          <div className="flex flex-col w-2/3">
+          <div className="flex flex-col w-full md:w-2/3">
             <MainPost paddyFields={paddyFields} />
             <ReelPosts paddyFieldPosts={paddyFields} />
             <div className="w-full py-8 text-green-950 underline text-lg font-medium">

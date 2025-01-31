@@ -5,8 +5,8 @@ import Link from "next/link";
 const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
   const mainArticle = paddyFields[0];
   const { _id, mainImage, title, description, hotSpot } = mainArticle;
-  const x = ((hotSpot?.x ?? 0.5) * 100)
-  const y = ((hotSpot?.y ?? 0.5) * 100)
+  const x = (hotSpot?.x ?? 0.5) * 100;
+  const y = (hotSpot?.y ?? 0.5) * 100;
   return (
     <div className="w-full flex flex-col space-y-8">
       {_id && mainImage && (
@@ -17,7 +17,7 @@ const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
               className="object-cover"
               alt="portal paddy field"
               fill
-              style={{objectPosition:`${x}% ${y}%` }}
+              style={{ objectPosition: `${x}% ${y}%` }}
             />
             <div className="h-[20vh] w-[300px] rounded-tr-[5px] sm:w-[500px] bottom-0 bg-green-950 absolute bg-opacity-60 flex flex-col space-y-4 justify-center items-center p-4">
               <h2 className="w-[300px] text-white text-xl font-bold">
