@@ -22,7 +22,7 @@ export default async function RootLayout({
     console.log(session)
    
     if (!session) return null
-    // return session.user.id
+     return session.user.id
   }
   
   const userId = await getUserById()
