@@ -2,13 +2,14 @@ import React from "react";
 import { Block, ParrafosProps } from "@/types/types";
 
 const Parrafos = ({ contenido }: { contenido: Block[] }) => {
- 
+  console.log("holita")
   return (
     <div className="">
       {contenido.map((item: Block, i: any) => {
         const text = item.children[0].text; ///////////////////////////
         const style = item.style;
-       
+        console.log(style)
+
         if (style === "h5") {
           if (text !== "") {
             return (
@@ -25,7 +26,7 @@ const Parrafos = ({ contenido }: { contenido: Block[] }) => {
             return <div key={i} className="h-[1.125rem] w-full"></div>;
           }
         }
-        if (style === "normal") {
+        if (style == "normal") {
           if (text !== "") {
             return (
               <div key={i}>

@@ -174,7 +174,7 @@ export type TopPicksProps = {
 export type QueryType = {
   youtubeLink: string | null;
   thirdImage: string | null;
-  hotSpotMain: HotSpot | null; 
+  hotSpotMain: HotSpot | null;
   hotSpotSecond: HotSpot | null;
   hotSpotThird: HotSpot | null;
   hotSpotFourth: HotSpot | null;
@@ -185,7 +185,7 @@ export type QueryType = {
   chimpLink: string | null;
   characteristics: string | null;
   secondImage: string | null;
-  crop: Crop | null; 
+  crop: Crop | null;
   body: string | null;
   notificationsSent: boolean | null;
   _id: string;
@@ -197,15 +197,17 @@ export type QueryType = {
   notificationSent: boolean | null;
   title: string;
   fourthImage: string | null;
+  instructions: Block[] | null;
+  ingredients: Block[] | null;
 };
 
 export type Block = {
-  children: Children
+  children: Children;
   _type: "block";
-  style: Style
+  style: Style;
   markDefs: any[];
-  _key: string
-  listItem: string | null
+  _key: string;
+  listItem: string | null;
 };
 
 type Crop = {
@@ -217,20 +219,20 @@ type Crop = {
 };
 
 export type HotSpot = {
-  width: number
-  height: number
-  x: number
-  y: number
-  _type: string
-}
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  _type: string;
+};
 
-type Style = 'h1' | 'h2' | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
+type Style = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
 
 type Children = {
-  _type: string
-  marks: any[]
-  text: string
-  _key: string
-}[]
+  _type: string;
+  marks: any[];
+  text: string;
+  _key: string;
+}[];
 
-export type ModePhoto = "gallery" | "cover"
+export type ModePhoto = "gallery" | "cover";

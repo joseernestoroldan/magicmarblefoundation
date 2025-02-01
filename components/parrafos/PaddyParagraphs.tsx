@@ -2,7 +2,6 @@ import React from "react";
 
 const PaddyParagraphs = (datos: any) => {
   const data = datos.datos;
-  console.log(datos);
   return (
     <div className="w-full">
       {data.map((item: any, index: number) => {

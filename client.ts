@@ -9,7 +9,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false,
+  useCdn: true,
   token,
 });
 
@@ -78,7 +78,7 @@ export const getOne = async (myquery: string) => {
     "crop": mainImage.crop,
     "hotSpotMain": mainImage.hotspot,
     "hotSpotSecond": secondImage.hotspot,
-    "hotSpotThird": mainThird.hotspot,
+    "hotSpotThird": thirdImage.hotspot,
     "hotSpotFourth": fourthImage.hotspot,
     author,
     contenido,
@@ -86,8 +86,14 @@ export const getOne = async (myquery: string) => {
     ingredients,
     _createdAt,
 }`;
-  const data = await getData(query);
-  return data;
+  try {
+    const data = await getData(query);
+    if (data.length === 0) return null;
+    return data;
+  } catch (error) {
+    console.log("error:", error);
+    return null;
+  }
 };
 
 export const getOrderedData = async (myquery: string, number: string) => {

@@ -8,9 +8,9 @@ const Recipies = async () => {
   const recipies: QueryType[] = await getAllData("recipies2");
 
   return (
-    <div className="max-w-6xl w-full mx-auto flex flex-col items-center bg-red-400 space-y-8">
-      <h2 className="text-green-950 text-2xl font-semibold">Recipies</h2>
-      <div className="w-full flex flex-row justify-between items-center paddyfield-scroll2 bg-green-400">
+    <div className="max-w-6xl w-full mx-auto flex flex-col items-center space-y-8">
+      <h2 className="text-gray-500 text-3xl font-bold">Recipies</h2>
+      <div className="w-full flex flex-row justify-between items-center paddyfield-scroll2">
         <RecipieComponent
           _id={recipies[0]._id}
           mainImage={recipies[0].mainImage}
@@ -55,7 +55,7 @@ const RecipieComponent = ({
 }) => {
   return (
     <Link href={`/paddyfield/morerecipies/${_id}`}>
-      <div className="w-[200px] h-[200px] group bg-gray-500">
+      <div className="w-[260px] h-[260px] group bg-gray-500 rounded-[10px]">
         <div className="w-full h-full bg-gray-400 relative rounded-[5px] overflow-hidden hover:brightness-75 cursor-pointer">
           <Image
             src={mainImage || "/logo.jpg"}
@@ -69,9 +69,6 @@ const RecipieComponent = ({
             </h3>
           </div>
         </div>
-        <p className="text-green-950 text-base pt-4 px-1 text-center invisible group-hover:visible">
-          {description}
-        </p>
       </div>
     </Link>
   );
