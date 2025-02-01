@@ -25,7 +25,7 @@
       scrollbar-color: rgb(125, 134, 148) rgb(179, 228, 179);
     }
     .paddyfield-scroll2 {
-      scrollbar-width:thin;
+      scrollbar-width:none;
       scrollbar-color: rgb(125, 134, 148) rgb(179, 228, 179);
     }
 }

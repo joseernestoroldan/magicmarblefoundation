@@ -2,14 +2,11 @@ import React from "react";
 import { Block, ParrafosProps } from "@/types/types";
 
 const Parrafos = ({ contenido }: { contenido: Block[] }) => {
-  console.log(contenido)
-
   return (
     <div className="">
-      {contenido?.map((item: Block, i: any) => {
-        
+      {contenido.map((item: Block, i: any) => {
         const text = item.children[0].text; ///////////////////////////
-        const style = item.style
+        const style = item.style;
 
         if (style === "h5") {
           if (text !== "") {

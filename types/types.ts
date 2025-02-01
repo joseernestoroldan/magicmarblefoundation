@@ -181,7 +181,7 @@ export type QueryType = {
   alt: string | null;
   publishedAt: string | null;
   description: string | null;
-  contenido: Block[];
+  contenido: Block[] | null;
   chimpLink: string | null;
   characteristics: string | null;
   secondImage: string | null;

@@ -18,14 +18,15 @@ const PaddyFieldPage = async () => {
           <div className="flex flex-col w-full md:w-2/3">
             <MainPost paddyFields={paddyFields} />
             <ReelPosts paddyFieldPosts={paddyFields} />
-            <div className="w-full py-8 text-green-950 underline text-lg font-medium">
+            <div className="w-full text-center py-8 text-green-950 underline text-xl font-bold">
               <Link href={"/paddyfield/morearticles"}>Read More Articles</Link>
             </div>
-            <div className="w-full py-1 text-green-950 underline text-lg font-medium">
+            <Recipies />
+            <div className="w-full text-center py-1 text-green-950 underline text-xl font-bold">
               <Link href={"/paddyfield/morerecipies"}>Get More Recipies</Link>
             </div>
             <TopPicks />
-            <Recipies />
+            
           </div>
 
           <PaddyFieldList paddyFieldPosts={paddyFields} />

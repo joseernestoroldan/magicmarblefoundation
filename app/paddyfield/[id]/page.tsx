@@ -11,7 +11,7 @@ const PortalPaddyFieldPage = async ({
   params: { id: string };
 }) => {
   const [data]: QueryType[] = await getOne(_Id);
-
+ 
   const {
     contenido,
     title,
@@ -21,7 +21,12 @@ const PortalPaddyFieldPage = async ({
     secondImage,
     thirdImage,
     fourthImage,
+    hotSpotSecond,
+    hotSpotThird,
+    hotSpotFourth,
   } = data;
+
+  console.log(contenido)
 
   const url = youtubeLink || "";
   const urlParts = url.split("?v=");
@@ -39,9 +44,45 @@ const PortalPaddyFieldPage = async ({
             mode="cover"
           />
         )}
+
         <div className="mx-auto w-full flex flex-col justify-center">
-          {data.contenido !== null && <Parrafos contenido={contenido} />}
+          {contenido !== null && <Parrafos contenido={contenido} />}
         </div>
+        {!youtubeLink && (
+          <div className="flex flex-col items-center w-full space-y-8">
+            <h2 className="text-xl font-bold text-gray-500">Gallery</h2>
+            <div className="w-full flex flex-row justify-center flex-wrap gap-4">
+              {secondImage && (
+                <PhotoComponent
+                  image={secondImage}
+                  hotSpot={hotSpotSecond}
+                  mode="gallery"
+                />
+              )}
+              {thirdImage && (
+                <PhotoComponent
+                  image={thirdImage}
+                  hotSpot={hotSpotThird}
+                  mode="gallery"
+                />
+              )}
+              {fourthImage && (
+                <PhotoComponent
+                  image={fourthImage}
+                  hotSpot={hotSpotFourth}
+                  mode="gallery"
+                />
+              )}
+              {mainImage && (
+                <PhotoComponent
+                  image={mainImage}
+                  hotSpot={hotSpotMain}
+                  mode="gallery"
+                />
+              )}
+            </div>
+          </div>
+        )}
 
         {/* {youtubeLink === null && (
           <div className="w-full flex items-start justify-center  flex-wrap gap-4">
@@ -172,9 +213,11 @@ const PhotoComponent = ({
   return (
     <Dialog>
       <DialogTrigger
-        className={`w-full ${mode === "cover" ? "max-w-3xl" : "max-w-xl"}`}
+        className={`w-full ${mode === "cover" ? "max-w-3xl" : "max-w-[200px]"}`}
       >
-        <div className={`w-full ${mode === "cover"? "aspect-video": "aspect-square"} bg-gray-200 relative rounded-[10px] overflow-hidden`}>
+        <div
+          className={`w-full ${mode === "cover" ? "aspect-video" : "aspect-square"} bg-gray-200 relative rounded-[10px] overflow-hidden`}
+        >
           <Image
             src={image}
             alt={"portal paddy field"}
