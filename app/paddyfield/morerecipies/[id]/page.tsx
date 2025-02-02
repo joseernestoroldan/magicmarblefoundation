@@ -1,4 +1,5 @@
 import { getOne } from "@/client";
+import Paragraphs from "@/components/parrafos/Paragraphs";
 import Parrafos from "@/components/parrafos/Parrafos";
 import { QueryType } from "@/types/types";
 import Image from "next/image";
@@ -10,14 +11,14 @@ const RecipiePage = async ({
 }) => {
   
   const query: QueryType[] | null = await getOne(_Id);
-
   if (!query) return null;
   const [data] = query;
-  const {ingredients} = data;
+  const {} = data;
+  const {ingredients, instructions} = data;
 
   return (
     <div className="w-full h-screen bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center justify-center space-y-8">
-      {ingredients && <Parrafos contenido={ingredients}/>}s
+      {ingredients && <Paragraphs contenido={ingredients}/>}
     </div>
   );
 };

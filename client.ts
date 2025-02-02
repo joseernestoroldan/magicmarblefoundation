@@ -127,20 +127,20 @@ export const getAllFiltter = async (myquery: string, parametro: string) => {
   return data;
 };
 
-export const suscription = client
-  .listen('*[_type == "dairies"]', { notificationSent: "notificationSent" })
-  .subscribe((update) => {
-    const coment = update.result?._id;
-    console.log("resultado:", coment);
-    console.log("email sent");
-  });
+// export const suscription = client
+//   .listen('*[_type == "dairies"]', { notificationSent: "notificationSent" })
+//   .subscribe((update) => {
+//     const coment = update.result?._id;
+//     console.log("resultado:", coment);
+//     console.log("email sent");
+//   });
 
-export const UpdateSuscriptionStatus = async (
-  documentId: string,
-  numberNotifications: number
-) => {
-  await client
-    .patch(documentId)
-    .set({ notificationSent: true, notificationsSent: numberNotifications + 1 })
-    .commit();
-};
+// export const UpdateSuscriptionStatus = async (
+//   documentId: string,
+//   numberNotifications: number
+// ) => {
+//   await client
+//     .patch(documentId)
+//     .set({ notificationSent: true, notificationsSent: numberNotifications + 1 })
+//     .commit();
+// };

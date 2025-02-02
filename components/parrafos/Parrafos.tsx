@@ -1,4 +1,3 @@
-import React from "react";
 import { Block, ParrafosProps } from "@/types/types";
 
 const Parrafos = ({ contenido }: { contenido: Block[] }) => {
@@ -6,7 +5,7 @@ const Parrafos = ({ contenido }: { contenido: Block[] }) => {
   return (
     <div className="">
       {contenido.map((item: Block, i: any) => {
-        const text = item.children[0].text; ///////////////////////////
+        const text = item.children[0].text; 
         const style = item.style;
        
         if (style === "h5") {
