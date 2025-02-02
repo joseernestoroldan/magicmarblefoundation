@@ -1,6 +1,5 @@
 import { getOne } from "@/client";
 import Paragraphs from "@/components/parrafos/Paragraphs";
-import Parrafos from "@/components/parrafos/Parrafos";
 import { QueryType } from "@/types/types";
 import Image from "next/image";
 

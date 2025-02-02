@@ -1,5 +1,4 @@
-"use client"
-import React from "react";
+"use client";
 import { motion } from "framer-motion";
 import { EnterSectionProps } from "@/types/types";
 

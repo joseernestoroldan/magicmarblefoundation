@@ -1,5 +1,4 @@
 "use client"
-import React from "react";
 import { AnimatedWords } from "../animatedWords/AnimatedWords";
 import type { headingProps } from "@/types/types";
 

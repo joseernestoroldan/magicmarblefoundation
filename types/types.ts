@@ -121,24 +121,7 @@ export type LayoutYProps = {
   children: React.ReactNode;
 };
 
-export type DiaryProps = {
-  _id: string;
-  title: string;
-  mainImage: string;
-  description: string;
-  crop: {
-    top: number;
-    left: number;
-    right: number;
-    bottom: number;
-  };
-};
-
 export type ParrafosProps = {
-  data: any;
-};
-
-export type AuthorProps = {
   data: any;
 };
 
@@ -153,10 +136,6 @@ export type BannerDonationProps = {
   url: string;
   title: string;
   message: string;
-};
-
-export type GridDIariesProps = {
-  diaries: any;
 };
 
 export type AdoptionsProps = {

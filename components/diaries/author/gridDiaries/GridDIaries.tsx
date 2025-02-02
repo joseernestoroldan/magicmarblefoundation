@@ -4,11 +4,9 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Container from "@/components/layouts/container/Container";
 import LayoutY from "@/components/layouts/layoutY/LayoutY";
 import Diary from "@/components/magicDiaries/Diary";
-import React from "react";
-import { GridDIariesProps } from "@/types/types";
+import { QueryType } from "@/types/types";
 
-
-const GridDIaries = async ({diaries}: GridDIariesProps) => {
+const GridDIaries = async ({diaries}: {diaries:QueryType[]}) => {
 
   return (
     <HeadingCenterAnimation>
@@ -26,15 +24,8 @@ const GridDIaries = async ({diaries}: GridDIariesProps) => {
           <Container>
             <LayoutY>
               <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-0 max-w-5xl space-x-0">
-                {diaries.map((diary: any) => (
-                  <Diary
-                    _id={diary._id}
-                    title={diary.title}
-                    description={diary.description}
-                    mainImage={diary.mainImage}
-                    key={diary._id}
-                    crop={diary.crop}
-                  ></Diary>
+                {diaries.map((diary: QueryType) => (
+                  <Diary key={diary._id} diary ={diary}/>
                 ))}
               </div>
             </LayoutY>
