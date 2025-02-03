@@ -2,7 +2,7 @@ import { getOne } from "@/client";
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
 import Container from "@/components/layouts/container/Container";
-import Parrafos from "@/components/parrafos/Parrafos";
+import Paragraphs from "@/components/parrafos/Paragraphs";
 import { QueryType } from "@/types/types";
 import Image from "next/image";
 
@@ -27,7 +27,7 @@ const FocusArea = async ({
               textSize="text-4xl"
               center="flex items-center justify-center"
             />
-            {mainImage !== null && (
+            {mainImage && (
               <div
                 className={`w-full h-[200px] md:h-[500px] lg:h-[700px] relative overflow-hidden rounded-2xl`}
               >
@@ -40,7 +40,7 @@ const FocusArea = async ({
                 />
               </div>
             )}
-            {contenido !== null && <Parrafos contenido={contenido} />}
+            {contenido !== null && <Paragraphs contenido={contenido} />}
           </div>
         </div>
       </Container>

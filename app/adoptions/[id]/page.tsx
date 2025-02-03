@@ -1,6 +1,6 @@
 import { getOne } from "@/client";
 import CarouselVertical from "@/components/carouselVertical/CarouselVertical";
-import Parrafos from "@/components/parrafos/Parrafos";
+import Paragraphs from "@/components/parrafos/Paragraphs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -140,7 +140,7 @@ const AdoptionDynamicPage = async ({
 
         <div className="md:w-[40%] w-full h-auto flex justify-end z-10">
           <div className="w-[95%] h-full border-l border-gray-200 text-gray-500 indent-4 text-justify px-4 space-y-4">
-            {contenido !== null && <Parrafos contenido={contenido} />}
+            {contenido !== null && <Paragraphs contenido={contenido} />}
           </div>
         </div>
       </div>

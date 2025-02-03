@@ -111,4 +111,4 @@ const Parrafos = ({ contenido }: { contenido: Block[] }) => {
   );
 };
 
-export default Parrafos;
+export default Parrafos
