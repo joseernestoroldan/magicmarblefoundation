@@ -5,7 +5,7 @@ import Container from "../layouts/container/Container";
 import Logo from "../logo/Logo";
 
 type FooterProps = {
-  name: string | null;
+  name?: string | null;
 };
 
 const Footer = ({name}:FooterProps) => {

@@ -15,9 +15,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   const getUserById = async () => {
     const session = await auth();
-    if (!session?.user?.id) return null;
+    if (!session) return null;
+    
     return session.user.id;
   };
 
@@ -28,7 +30,7 @@ export default async function RootLayout({
     try {
       if (userId) {
         const data = await db.user.findFirst({ where: { id: userId } });
-        if (data?.firstName) {
+        if (data) {
           name = data.firstName;
           return name;
         }
@@ -36,7 +38,7 @@ export default async function RootLayout({
       }
       return null;
     } catch (error) {
-      throw new Error();
+      console.log("this is my error:", error);
     }
   };
 
@@ -48,13 +50,12 @@ export default async function RootLayout({
     <html lang="en">
       <body className={myFont.className}>
         <main className="relative">
-          {/* <ChimpPopover chimpData={chimpData} /> */}
           <Link
             href={"https://greatnonprofits.org/org/magic-marble-foundation"}
             target="_blank"
           >
             <div className="w-[90px] h-[65px] fixed z-30 top-14 hidden xl:inline-block xl:right-0 xl:left-auto">
-              <Image src="badge.png" alt="" fill priority />
+              <Image src="/badge.png" alt="Great None Profits" fill priority />
             </div>
           </Link>
           <Navbar name={name} chimpData={chimpData} />

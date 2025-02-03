@@ -7,7 +7,7 @@ import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
 import OurPartners from "@/components/ourpartners/OurPartners";
-import { revalidatePath } from "next/cache";
+
 
 const HomePage = async () => {
  

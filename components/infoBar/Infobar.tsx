@@ -9,7 +9,7 @@ import ChimpPopover from "../chimpPopover/ChimpPopover";
 import Image from "next/image";
 
 type InfoProps = {
-  name: string | null;
+  name?: string | null;
   chimpData: any;
 };
 
