@@ -13,7 +13,7 @@ import MenuDropdowns from "./menuDropdowns";
 import Image from "next/image";
 
 type NavbarProps = {
-  name?: string | null;
+  name: string | null;
   chimpData: any;
 };
 

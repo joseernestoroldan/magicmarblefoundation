@@ -2,11 +2,10 @@ import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/Footer";
 import localFont from "next/font/local";
-import { db } from "@/db";
-import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllData } from "@/client";
+import { getNameSession, getSessionId } from "@/lib/sessions";
 
 const myFont = localFont({ src: "../public/bellmedium.woff2" });
 
@@ -16,33 +15,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const getUserById = async () => {
-    const session = await auth();
-    if (!session) return null;
-    
-    return session.user.id;
-  };
-
-  const userId = await getUserById();
-
-  const getNameSession = async () => {
-    let name: string | null;
-    try {
-      if (userId) {
-        const data = await db.user.findFirst({ where: { id: userId } });
-        if (data) {
-          name = data.firstName;
-          return name;
-        }
-        return null;
-      }
-      return null;
-    } catch (error) {
-      console.log("this is my error:", error);
-    }
-  };
-
-  const name = await getNameSession();
+  const userId = await getSessionId();
+  const name = await getNameSession(userId);
 
   const chimpData = await getAllData("chimp");
 
