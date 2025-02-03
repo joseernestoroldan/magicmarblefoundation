@@ -8,7 +8,6 @@ const Paragraphs = ({ contenido, sizeText, mdSizeText, indent }: { contenido: Bl
         const text = unTrimmedText.trim();
         const style = item.style;
         const textSize = decideSize(style, sizeText, mdSizeText, indent);
-        console.log(textSize)
 
         if (text === "##") {
           return <div key={index} className="h-[16px] w-full"></div>;
