@@ -1,4 +1,5 @@
 import { getOne } from "@/client";
+import { DialogBox } from "@/components/dialogBox/DialogBox";
 import Paragraphs from "@/components/parrafos/Paragraphs";
 import { HotSpot, QueryType } from "@/types/types";
 import Image from "next/image";
@@ -29,15 +30,23 @@ const RecipiePage = async ({
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-row">
       <div className="p-12 w-2/5 flex flex-col items-center space-y-4 min-w-[300px]">
         {mainImage && <ItemGallery image={mainImage} hotSpot={hotSpotMain} />}
-        {secondImage && (
-          <ItemGallery image={secondImage} hotSpot={hotSpotSecond} />
-        )}
-        {thirdImage && (
-          <ItemGallery image={thirdImage} hotSpot={hotSpotThird} />
-        )}
-        {fourthImage && (
-          <ItemGallery image={fourthImage} hotSpot={hotSpotFourth} />
-        )}
+        <div className="w-full flex justify-between items-center">
+          {secondImage && (
+            <DialogBox width="w-[150px]">
+              <ItemGallery image={secondImage} hotSpot={hotSpotSecond} />
+            </DialogBox>
+          )}
+          {thirdImage && (
+            <DialogBox width="w-[150px]">
+              <ItemGallery image={thirdImage} hotSpot={hotSpotThird} />
+            </DialogBox>
+          )}
+          {fourthImage && (
+            <DialogBox width="w-[150px]">
+              <ItemGallery image={fourthImage} hotSpot={hotSpotFourth} />
+            </DialogBox>
+          )}
+        </div>
       </div>
       <div className=" w-3/5 flex flex-col justify-start space-y-4 px-12">
         <h2 className="text-gray-500 font-bold text-2xl">Ingredients:</h2>
