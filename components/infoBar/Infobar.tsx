@@ -28,7 +28,7 @@ const Infobar = ({ name }: InfoProps) => {
           <div className="w-full flex justify-center md:justify-between items-center">
             <div className="text-lg hidden md:flex">+1 312 - 600 - 8182</div>
             <Badge mode="infobar"/>
-            <div className="flex items-center flex-col md:flex-row space-x-2 bg-green-300">
+            <div className="flex items-center flex-col md:flex-row space-x-2">
               <div className="text-lg hidden md:inline-block">
                 info@magicmarblefoundation.org
               </div>
