@@ -1,4 +1,3 @@
-import React from "react";
 import Menu from "../navbar/menu";
 import Icons from "../socialMedia/Icons";
 import Container from "../layouts/container/Container";

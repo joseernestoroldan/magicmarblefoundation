@@ -5,7 +5,6 @@ import Icons from "../socialMedia/Icons";
 import Link from "next/link";
 import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Badge from "../badge/Badge";
 
 type InfoProps = {

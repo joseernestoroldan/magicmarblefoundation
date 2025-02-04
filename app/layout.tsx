@@ -2,9 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/Footer";
 import localFont from "next/font/local";
-import { getAllData } from "@/client";
 import { getNameSession, getSessionId } from "@/lib/sessions";
-import { QueryType } from "@/types/types";
 import Badge from "@/components/badge/Badge";
 
 const myFont = localFont({ src: "../public/bellmedium.woff2" });
