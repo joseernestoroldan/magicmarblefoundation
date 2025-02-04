@@ -18,14 +18,12 @@ export default async function RootLayout({
   const userId = await getSessionId();
   const name = await getNameSession(userId);
 
-  const chimpData: QueryType[] | null = await getAllData("chimp");
-
   return (
     <html lang="en">
       <body className={myFont.className}>
         <main className="relative">
           <Badge mode="layout"/>
-          <Navbar name={name} chimpData={chimpData} />
+          <Navbar name={name}/>
           <div className="w-full">{children}</div>
           <Footer name={name} />
         </main>

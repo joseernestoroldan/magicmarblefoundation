@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 type BadgeProps = {
-  mode: "layout" | "navbar";
+  mode: "layout" | "navbar" | "infobar";
 };
 
 const Badge = ({ mode }: BadgeProps) => {
-  if ((mode = "layout"))
+  if ((mode === "layout")) {
     return (
       <Link
         href={"https://greatnonprofits.org/org/magic-marble-foundation"}
@@ -17,8 +17,7 @@ const Badge = ({ mode }: BadgeProps) => {
         </div>
       </Link>
     );
-
-  if ((mode = "navbar"))
+  } else if ((mode === "navbar")) {
     return (
       <Link
         href={"https://greatnonprofits.org/org/magic-marble-foundation"}
@@ -29,5 +28,17 @@ const Badge = ({ mode }: BadgeProps) => {
         </div>
       </Link>
     );
+  } else if ((mode === "infobar")) {
+    return (
+      <Link
+        href={"https://greatnonprofits.org/org/magic-marble-foundation"}
+        target="_blank"
+      >
+        <div className="w-[90px] h-[65px] relative hidden lg:inline-block xl:hidden">
+          <Image src="/badge.png" alt="" fill priority />
+        </div>
+      </Link>
+    );
+  }
 };
 export default Badge;

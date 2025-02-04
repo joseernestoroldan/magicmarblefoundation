@@ -1,16 +1,30 @@
 "use client";
-import React from "react";
-import { LiaFacebook } from "react-icons/lia";
-import { LiaInstagram } from "react-icons/lia";
-import { TiSocialYoutubeCircular } from "react-icons/ti";
-import { IoMdContact } from "react-icons/io";
+import { LiaFacebook as FbIcon } from "react-icons/lia";
+import { LiaInstagram as IgIcon } from "react-icons/lia";
+import { TiSocialYoutubeCircular as YouTubeIcon } from "react-icons/ti";
+import { IoMdContact as ContactIcon } from "react-icons/io";
 import { IconsProps } from "@/types/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IconType } from "react-icons/lib";
+
+const links = [
+  {
+    href: "https://www.facebook.com/magicmarblefoundation",
+    Icon: FbIcon,
+  },
+  {
+    href: "https://www.instagram.com/magicmarblefoundation",
+    Icon: IgIcon,
+  },
+  {
+    href: "https://www.youtube.com/@magicmarble2478",
+    Icon: YouTubeIcon,
+  },
+];
 
 const Icons = ({ show, setShow, color, name }: IconsProps) => {
-  const pathname = usePathname()
-  console.log(pathname)
+  const pathname = usePathname();
   return (
     <div className="w-full flex flex-row justify-between items-center">
       {name && pathname !== "/profile" && (
@@ -21,31 +35,17 @@ const Icons = ({ show, setShow, color, name }: IconsProps) => {
           Profile
         </Link>
       )}
-      <Link
-        href={"https://www.facebook.com/magicmarblefoundation?mibextid=JRoKGi"}
-        passHref
-        target="_blank"
-      >
-        <LiaFacebook className={`text-4xl ${color}`} />
-      </Link>
-      <Link
-        href={
-          "https://www.instagram.com/magicmarblefoundation?igsh=MW1ybzdlZGZ2cnNkdA%3D%3D&utm_source=qr"
-        }
-        passHref
-        target="_blank"
-      >
-        <LiaInstagram className={`text-4xl ${color}`} />
-      </Link>
-      <Link
-        href={"https://www.youtube.com/@magicmarble2478"}
-        passHref
-        target="_blank"
-      >
-        <TiSocialYoutubeCircular className={`text-4xl ${color}`} />
-      </Link>
 
-      <IoMdContact
+      {links.map((link) => (
+        <IconLink
+          key={link.href}
+          href={link.href}
+          Icon={link.Icon}
+          color={color}
+        />
+      ))}
+
+      <ContactIcon
         className={`text-4xl ${color} inline-block md:hidden`}
         onClick={() => setShow(!show)}
       />
@@ -54,3 +54,17 @@ const Icons = ({ show, setShow, color, name }: IconsProps) => {
 };
 
 export default Icons;
+
+interface IconLinkProps {
+  href: string;
+  Icon: IconType;
+  color: string;
+}
+
+const IconLink = ({ href, Icon, color }: IconLinkProps) => {
+  return (
+    <Link href={href} passHref target="_blank">
+      <Icon className={`text-4xl ${color}`} />
+    </Link>
+  );
+};

@@ -1,19 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Container from "../layouts/container/Container";
 import Icons from "../socialMedia/Icons";
 import Link from "next/link";
 import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
-import ChimpPopover from "../chimpPopover/ChimpPopover";
 import Image from "next/image";
+import Badge from "../badge/Badge";
 
 type InfoProps = {
   name: string | null;
-  chimpData: any;
 };
 
-const Infobar = ({ name, chimpData }: InfoProps) => {
+const Infobar = ({ name }: InfoProps) => {
   const [show, setShow] = useState(false);
   const router = useRouter();
 
@@ -28,20 +27,28 @@ const Infobar = ({ name, chimpData }: InfoProps) => {
         <div className="w-full flex flex-col md:flex-row items-center ">
           <div className="w-full flex justify-center md:justify-between items-center">
             <div className="text-lg hidden md:flex">+1 312 - 600 - 8182</div>
-            <div className="w-[90px] h-[65px] relative hidden lg:inline-block xl:hidden">
-              <Image src="badge.png" alt="" fill priority />
-            </div>
-            <div className="flex items-center flex-col md:flex-row space-x-2">
-              <div className="text-lg hidden md:flex px-4 items-center">
+            <Badge mode="infobar"/>
+            <div className="flex items-center flex-col md:flex-row space-x-2 bg-green-300">
+              <div className="text-lg hidden md:inline-block">
                 info@magicmarblefoundation.org
               </div>
 
-              <div className="flex justify-center items-center">
-                <Icons name={name} color="text-gray-200" show={show} setShow={setShow} />
-                <ChimpPopover chimpData={chimpData}/>
+              <div className="flex justify-center items-center ">
+                <Icons
+                  name={name}
+                  color="text-gray-200"
+                  show={show}
+                  setShow={setShow}
+                />
+              </div>
+              <div
+                className={`w-full ${show ? "flex md:hidden " : "hidden"} flex-col items-center justify-between py-4 `}
+              >
+                <div className="text-lg">+1 312 - 600 - 8182</div>
+                <div className="text-lg ">info@magicmarblefoundation.org</div>
               </div>
 
-              {name === "" && (
+              {name && (
                 <Link
                   className="text-nowrap"
                   href={`${process.env.NEXT_PUBLIC_APP_URL}/login`}
@@ -59,15 +66,12 @@ const Infobar = ({ name, chimpData }: InfoProps) => {
                     Sign Out
                   </button>
                 </div>
-              ): (<Link className="underline text-sm text-nowrap" href={"/login"}>Login</Link>)}
+              ) : (
+                <Link className="underline text-sm text-nowrap" href={"/login"}>
+                  Login
+                </Link>
+              )}
             </div>
-          </div>
-
-          <div
-            className={`w-full ${show ? "flex flex-col items-center" : "hidden"} justify-between  py-4`}
-          >
-            <div className="text-lg">+1 312 - 600 - 8182</div>
-            <div className="text-lg ">info@magicmarblefoundation.org</div>
           </div>
         </div>
       </Container>
