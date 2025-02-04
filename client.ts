@@ -13,9 +13,24 @@ export const client = createClient({
   token,
 });
 
+// const getData = async (query: string) => {
+//   const data = await client.fetch(query);
+//   return data;
+// };
+
 const getData = async (query: string) => {
-  const data = await client.fetch(query);
-  return data;
+  try {
+    const data = await client.fetch(query);
+    return data;
+  } catch (error: unknown) {
+    const err = error as Error;
+    // Handle Sanity client errors or network issues
+    console.error("Failed to fetch data from Sanity:", err.message);
+    // Option 1: Rethrow a custom error with context
+    throw new Error(`Sanity query failed: ${query}. ${err.message}`);
+    // Option 2: Return fallback data (if error should be non-blocking)
+    // return { error: true, message: "Data fetch failed", details: error.message };
+  }
 };
 
 export const getAllByTop = async () => {
@@ -58,8 +73,14 @@ export const getAllData = async (myquery: string) => {
         notificationsSent
   }`;
 
-  const data = await getData(query);
-  return data;
+  try {
+    const data = await getData(query);
+    if (data.length === 0) return null;
+    return data;
+  } catch (error) {
+    console.log("error:", error);
+    return null;
+  }
 };
 
 export const getOne = async (myquery: string) => {

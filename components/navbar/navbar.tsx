@@ -1,6 +1,5 @@
 "use client";
-import React, { useState } from "react";
-import Menu from "./menu";
+import { useState } from "react";
 import Button from "../button/Button";
 import Infobar from "../infoBar/Infobar";
 import Container from "../layouts/container/Container";
@@ -8,17 +7,19 @@ import Link from "next/link";
 import Logo from "../logo/Logo";
 import HamburgerMenu from "../hamburgerMenu/HamburgerMenu";
 import Sidebar from "../sidebar/Sidebar";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose as CloseIcon} from "react-icons/io";
 import MenuDropdowns from "./menuDropdowns";
-import Image from "next/image";
+import { QueryType } from "@/types/types";
+import Badge from "../badge/Badge";
 
 type NavbarProps = {
   name: string | null;
-  chimpData: any;
+  chimpData: QueryType[] | null;
 };
 
 const Navbar = ({ name, chimpData }: NavbarProps) => {
   const [toggle, setToggle] = useState<boolean>(false);
+
   return (
     <div className="w-full sticky top-0 left-0 right-0 z-20 bg-white">
       <Infobar name={name} chimpData={chimpData} />
@@ -26,16 +27,10 @@ const Navbar = ({ name, chimpData }: NavbarProps) => {
       <Container>
         <div className="w-full flex justify-between items-center">
           <Logo />
-          <div className="w-[90px] h-[65px] relative inline-block lg:hidden">
-            <Image src="badge.png" alt="" fill priority />
-          </div>
+          <Badge mode="navbar"/>
           <div className="flex items-center justify-center">
-            {/* <Menu disposition="flex-row" space="space-x-3"></Menu> */}
-            <MenuDropdowns/>
-
-            <div className="w-min hidden md:flex flex-col justify-center items-center space-y-2">
-              
-
+            <MenuDropdowns />
+            <div className="w-min hidden md:flex flex-col justify-center items-center space-y-2 bg-red-300">
               <Link className="hidden md:inline mx-4" href={"/donations"}>
                 <Button>Donate</Button>
               </Link>
@@ -53,7 +48,7 @@ const Navbar = ({ name, chimpData }: NavbarProps) => {
                   onClick={() => setToggle(!toggle)}
                   className="text-white text-xl absolute right-4 top-4"
                 >
-                  <IoMdClose className="text-2xl" />
+                  <CloseIcon className="text-2xl" />
                 </div>
                 <Sidebar toggle={toggle} setToggle={setToggle} />
               </div>
