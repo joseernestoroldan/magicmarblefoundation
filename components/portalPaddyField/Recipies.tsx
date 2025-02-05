@@ -11,30 +11,38 @@ const Recipies = async () => {
     <div className="max-w-6xl w-full mx-auto flex flex-col items-center space-y-8">
       <h2 className="text-gray-500 text-3xl font-bold">Recipies</h2>
       <div className="w-full flex flex-row justify-between items-center paddyfield-scroll2">
-        <RecipieComponent
-          _id={recipies[0]._id}
-          mainImage={recipies[0].mainImage}
-          title={recipies[0].title}
-          description={recipies[0].description}
-        />
-        <RecipieComponent
-          _id={recipies[1]._id}
-          mainImage={recipies[1].mainImage}
-          title={recipies[1].title}
-          description={recipies[1].description}
-        />
-        <RecipieComponent
-          _id={recipies[2]._id}
-          mainImage={recipies[2].mainImage}
-          title={recipies[2].title}
-          description={recipies[2].description}
-        />
-        <RecipieComponent
-          _id={recipies[3]._id}
-          mainImage={recipies[3].mainImage}
-          title={recipies[3].title}
-          description={recipies[3].description}
-        />
+        {recipies.length > 0 && (
+          <RecipieComponent
+            _id={recipies[0]._id}
+            mainImage={recipies[0].mainImage}
+            title={recipies[0].title}
+            description={recipies[0].description}
+          />
+        )}
+        {recipies.length > 1 && (
+          <RecipieComponent
+            _id={recipies[1]._id}
+            mainImage={recipies[1].mainImage}
+            title={recipies[1].title}
+            description={recipies[1].description}
+          />
+        )}
+        {recipies.length > 2 && (
+          <RecipieComponent
+            _id={recipies[2]._id}
+            mainImage={recipies[2].mainImage}
+            title={recipies[2].title}
+            description={recipies[2].description}
+          />
+        )}
+        {recipies.length > 3 && (
+          <RecipieComponent
+            _id={recipies[3]._id}
+            mainImage={recipies[3].mainImage}
+            title={recipies[3].title}
+            description={recipies[3].description}
+          />
+        )}
       </div>
     </div>
   );
