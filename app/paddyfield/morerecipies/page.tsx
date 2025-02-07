@@ -1,10 +1,11 @@
 import { getAllData } from '@/client';
+import { QueryType } from '@/types/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
 const MoreRecipiesPage = async () => {
-    const recipies = await getAllData('recipies2')
+    const recipies: QueryType[] = await getAllData('recipies2')
     
   return (
     
@@ -12,13 +13,13 @@ const MoreRecipiesPage = async () => {
         <h1 className='text-green-950 text-2xl font-medium'>Recipies</h1>
 
         <div className='w-full max-w-5xl mx-auto flex flex-row justify-between gap-4 flex-wrap'>
-            {recipies.map((item: any, index: number) => {
+            {recipies.map((recipe: QueryType, index: number) => {
                 return(
-                    <Link href={`/paddyfield/morerecipies/${item._id}`} key={index}>
-                    <div className="w-300px flex flex-col items-center space-y-4 hover:brightness-75 cursor-pointer">
+                    <Link href={`/paddyfield/morerecipies/${recipe._id}`} key={index}>
+                    <div className="w-300px flex flex-col itemss-center space-y-4 hover:brightness-75 cursor-pointer">
                       <div className="w-[300px] h-[300px] bg-gray-600 mt-8 relative rounded-[5px] overflow-hidden">
                         <Image
-                          src={item.mainImage}
+                          src={recipe.mainImage ?? "/no-profile,png"} 
                           alt="portal paddy field"
                           fill
                           className="object-cover"
@@ -26,10 +27,10 @@ const MoreRecipiesPage = async () => {
                       </div>
                       <div className=" w-300px flex flex-col space-y-4">
                         <h2 className="z-10 w-[300px] text-green-950 text-xl font-medium">
-                          {item.title}
+                          {recipe.title}
                         </h2>
                         <p className="w-[300px] text-green-950 text-base text-opacity-85">
-                          {item.description}
+                          {recipe.description}
                         </p>
                       </div>
                     </div>
