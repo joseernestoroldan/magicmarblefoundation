@@ -21,6 +21,7 @@ const MagicDairies = async () => {
             {diaries.map(
               ({ mainImage, title, body }: QueryType, index: number) => (
                 <CardDairies
+                  key={index}
                   src={mainImage ?? "/no-profile.webp"}
                   title={title}
                   // body={diaries[0].body.substring(0, 160)}
