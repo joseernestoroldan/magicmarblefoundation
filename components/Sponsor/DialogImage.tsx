@@ -7,11 +7,11 @@ export const DialogImage = ({ image, hotSpot }: DialogImageProps) => {
   const y = (hotSpot?.y ?? 0.5) * 100;
   return (
     <Dialog>
-      <DialogTrigger className="w-full min-[420px]:w-[60%] md:w-[30%] bg-green-400">
+      <DialogTrigger className="w-full md:w-[30%]">
         <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
           <Image
             src={image ?? "/no-profile.webp"}
-            alt="Sponsor at Magic Marble FOundation"
+            alt="Sponsor at Magic Marble Foundation"
             fill
             className={`object-cover`}
             style={{ objectPosition: `${x}% ${y}%` }}

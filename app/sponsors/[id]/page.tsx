@@ -1,11 +1,11 @@
 import { getOne } from "@/client";
-import Image from "next/image";
-import Link from "next/link";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import CarouselVerticalSponsor from "@/components/Sponsor/CarouselSponsor";
-import { HotSpot, QueryType } from "@/types/types";
-import Paragraphs from "@/components/parrafos/Paragraphs";
+import {
+  QueryType,
+  SponsorGalleryProps,
+  WithYouTubeFrameProps,
+} from "@/types/types";
 import { DialogImage } from "@/components/Sponsor/DialogImage";
+import { SponsorButton } from "@/components/Sponsor/SponsorButton";
 
 const SponsorDynamicPage = async ({
   params: { id: _Id },
@@ -34,7 +34,7 @@ const SponsorDynamicPage = async ({
 
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row">
-      <div className="w-full md:w-1/2 p-8">
+      <div className="w-full md:w-1/2 relative flex flex-col bg-orange-400">
         <SponsorGallery
           videoLink={videoEmbedUrl}
           youtubeLink={youtubeLink}
@@ -45,6 +45,7 @@ const SponsorDynamicPage = async ({
           hotSpotSecond={hotSpotSecond}
           hotSpotThird={hotSpotThird}
         />
+        <SponsorButton />
       </div>
 
       <div className="w-full md:w-1/2  p-8"></div>
@@ -97,27 +98,6 @@ const SponsorDynamicPage = async ({
 
 export default SponsorDynamicPage;
 
-type SponsorGalleryProps = {
-  videoLink: string;
-  youtubeLink: string | null;
-  mainImage: string | null;
-  secondImage: string | null;
-  thirdImage: string | null;
-  hotSpotMain: HotSpot | null;
-  hotSpotSecond: HotSpot | null;
-  hotSpotThird: HotSpot | null;
-};
-
-type WithYouTubeFrameProps = {
-  videoLink: string;
-  mainImage: string | null;
-  secondImage: string | null;
-  thirdImage: string | null;
-  hotSpotMain: HotSpot | null;
-  hotSpotSecond: HotSpot | null;
-  hotSpotThird: HotSpot | null;
-};
-
 const SponsorGallery = ({
   youtubeLink,
   videoLink,
@@ -129,7 +109,7 @@ const SponsorGallery = ({
   hotSpotThird,
 }: SponsorGalleryProps) => {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col justify-center items-center">
       {!youtubeLink && (
         <WithYouTubeFrame
           videoLink={videoLink}
@@ -155,8 +135,8 @@ const WithYouTubeFrame = ({
   hotSpotThird,
 }: WithYouTubeFrameProps) => {
   return (
-    <div className="w-full h-auto flex flex-col justify-start items-center space-y-4 bg-red-400">
-      <div className="w-full bg-gray-400 aspect-video rounded-[5px] relative overflow-hidden">
+    <div className="w-full h-auto flex flex-col justify-start items-center space-y-0 sm:space-y-4">
+      <div className="w-full bg-gray-400 aspect-video rounded-[5px] relative overflow-hidden hidden min-[500px]:block mb-4 sm:mb-0">
         <iframe
           className="absolute top-0 left-0 w-full h-full"
           src={videoLink}
@@ -164,14 +144,17 @@ const WithYouTubeFrame = ({
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         ></iframe>
       </div>
-      <div className="w-full h-min flex">
-        <div className="w-full flex flex-row justify-center items-center space-x-0 space-y-4 md:space-y-0 md:space-x-2 flex-wrap">
-          {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
-          {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
-          {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
-          {secondImage && (<DialogImage image={secondImage} hotSpot={hotSpotSecond} />)}
-          {thirdImage && (<DialogImage image={thirdImage} hotSpot={hotSpotThird} />)}
-        </div>
+
+      <div className="w-full flex flex-col sm:flex-row justify-between items-center space-y-4 space-x-0 sm:space-y-0 sm:space-x-4">
+        {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
+        {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
+        {mainImage && <DialogImage image={mainImage} hotSpot={hotSpotMain} />}
+        {secondImage && (
+          <DialogImage image={secondImage} hotSpot={hotSpotSecond} />
+        )}
+        {thirdImage && (
+          <DialogImage image={thirdImage} hotSpot={hotSpotThird} />
+        )}
       </div>
     </div>
   );
