@@ -18,7 +18,7 @@ const MagicDairies = async () => {
           <SubHeading title="Magic Dairies" />
           <div className="flex justify-center items-center space-x-6">
             <CardDairies
-              src={diaries[0].mainImage}
+              src={diaries[0].mainImage ?? "/no-profile.webp"}
               title={diaries[0].title}
               body={diaries[0].body?.substring(0, 160)}
             />
