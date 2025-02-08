@@ -39,7 +39,7 @@ const AdoptedPage = async ({
     
       <div className="w-[100px] aspect-square rounded-[50%] bg-gray-500 relative overflow-hidden">
         <Image
-          src={candidate.mainImage}
+          src={candidate.mainImage ?? "/no-profile.webp"}
           alt=""
           fill
           className={`object-cover
@@ -63,7 +63,7 @@ const AdoptedPage = async ({
             address={user?.address}
             animalName={candidate.title}
             animalId={_Id}
-            animalImage={candidate.mainImage}
+            animalImage={candidate.mainImage ?? "/no-profile.webp"}
           />
        
       </div>
