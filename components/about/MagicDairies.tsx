@@ -1,4 +1,3 @@
-import React from "react";
 import SubHeading from "../headings/subheading";
 import Button from "../button/Button";
 import { getAllData } from "@/client";
@@ -7,9 +6,11 @@ import EnterSection from "../animations/enterSection/EnterSection";
 import LayoutY from "../layouts/layoutY/LayoutY";
 import Container from "../layouts/container/Container";
 import Link from "next/link";
+import { QueryType } from "@/types/types";
 
 const MagicDairies = async () => {
-  const diaries = await getAllData("dairies");
+  const query: QueryType[] | null = await getAllData("dairies");
+  const diaries = query?.slice(0, 3);
 
   return (
     <EnterSection>
@@ -17,25 +18,21 @@ const MagicDairies = async () => {
         <LayoutY>
           <SubHeading title="Magic Dairies" />
           <div className="flex justify-center items-center space-x-6">
-            <CardDairies
-              src={diaries[0].mainImage ?? "/no-profile.webp"}
-              title={diaries[0].title}
-              body={diaries[0].body?.substring(0, 160)}
-            />
-            <CardDairies
-              src={diaries[1].mainImage}
-              title={diaries[1].title}
-              body={diaries[1].body?.substring(0, 170)}
-            />{" "}
-            <CardDairies
-              src={diaries[2].mainImage}
-              title={diaries[2].title}
-              body={diaries[2].body?.substring(0, 170)}
-            />
+            {diaries.map(
+              ({ mainImage, title, body }: QueryType, index: number) => (
+                <CardDairies
+                  src={mainImage ?? "/no-profile.webp"}
+                  title={title}
+                  // body={diaries[0].body.substring(0, 160)}
+                  body={body ?? "Magic Marble Foundation"}
+                />
+              )
+            )}
           </div>
           <div className="flex justify-center">
-            <Link href={"/diaries"}><Button>Go to Dairies</Button></Link>
-            
+            <Link href={"/diaries"}>
+              <Button>Go to Dairies</Button>
+            </Link>
           </div>
         </LayoutY>
       </Container>

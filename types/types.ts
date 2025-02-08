@@ -65,7 +65,7 @@ export type SpanMessageProps = {
 export type CardDairiesProps = {
   src: string;
   title: string;
-  body: string;
+  body: string | null;
 };
 
 export type PhotoProps = {
