@@ -1,4 +1,3 @@
-import React from "react";
 import { TabsTeam } from "./Tabs";
 import SubHeading from "../headings/subheading";
 import EnterSection from "../animations/enterSection/EnterSection";

@@ -1,7 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CardTeam from "./CardTeam";
 import { getAllFiltter } from "@/client";
-// import { advisoryBoard, board, countryCoordinator } from "@/utils/members";
 
 
 

@@ -8,8 +8,6 @@ import BannerParallax from "@/components/parallax/bannerParallax/bannerParallax"
 import ParallaxContainer from "@/components/parallax/parallax";
 import VideoFrame from "@/components/videoFrame/videoframe";
 
-import React from "react";
-
 const AboutPage = () => {
   return (
     <div>
