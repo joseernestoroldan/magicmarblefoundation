@@ -228,4 +228,24 @@ export type DialogImageProps = {
   hotSpot: HotSpot | null;
 };
 
+export type SponsorGalleryProps = {
+  videoLink: string;
+  youtubeLink: string | null;
+  mainImage: string | null;
+  secondImage: string | null;
+  thirdImage: string | null;
+  hotSpotMain: HotSpot | null;
+  hotSpotSecond: HotSpot | null;
+  hotSpotThird: HotSpot | null;
+};
+
+export type WithYouTubeFrameProps = {
+  videoLink: string;
+  mainImage: string | null;
+  secondImage: string | null;
+  thirdImage: string | null;
+  hotSpotMain: HotSpot | null;
+  hotSpotSecond: HotSpot | null;
+  hotSpotThird: HotSpot | null;
+};
 
