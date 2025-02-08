@@ -1,4 +1,5 @@
 import { createClient, groq } from "next-sanity";
+import { QueryType } from "./types/types";
 
 const projectId = process.env.API_ID;
 const dataset = "production"; // "production"
@@ -13,14 +14,10 @@ export const client = createClient({
   token,
 });
 
-// const getData = async (query: string) => {
-//   const data = await client.fetch(query);
-//   return data;
-// };
-
-const getData = async (query: string) => {
+const getData: (query: string) => Promise<QueryType[]> = async (query: string) => {
   try {
     const data = await client.fetch(query);
+    if (data.length === 0) return null;
     return data;
   } catch (error: unknown) {
     const err = error as Error;
@@ -43,7 +40,7 @@ export const getAllByTop = async () => {
   "crop": mainImage.crop,
   "hotSpot": mainImage.hotspot,
   }`;
-  const data = await getData(query);
+  const data: QueryType[] | null = await getData(query);
   return data;
 };
 
@@ -73,14 +70,8 @@ export const getAllData = async (myquery: string) => {
         notificationsSent
   }`;
 
-  try {
-    const data = await getData(query);
-    if (data.length === 0) return null;
-    return data;
-  } catch (error) {
-    console.log("error:", error);
-    return null;
-  }
+  const data: QueryType[] | null = await getData(query);
+  return data;
 };
 
 export const getOne = async (myquery: string) => {
@@ -107,14 +98,8 @@ export const getOne = async (myquery: string) => {
     ingredients,
     _createdAt,
 }`;
-  try {
-    const data = await getData(query);
-    if (data.length === 0) return null;
-    return data;
-  } catch (error) {
-    console.log("error:", error);
-    return null;
-  }
+  const data: QueryType[] | null = await getData(query);
+  return data;
 };
 
 export const getOrderedData = async (myquery: string, number: string) => {
@@ -128,8 +113,9 @@ export const getOrderedData = async (myquery: string, number: string) => {
     author,
     contenido,
     _createdAt,
+    "hotSpotMain": mainImage.hotspot,
 }`;
-  const data = await getData(query);
+  const data: QueryType[] | null = await getData(query);
   return data;
 };
 
@@ -144,7 +130,7 @@ export const getAllFiltter = async (myquery: string, parametro: string) => {
     _createdAt,
     category,
 }`;
-  const data = await getData(query);
+  const data: QueryType[] | null = await getData(query);
   return data;
 };
 

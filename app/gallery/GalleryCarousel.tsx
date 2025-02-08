@@ -1,14 +1,14 @@
 "use client";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
 import Image from "next/image";
-
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
+import { QueryType } from "@/types/types";
 
-const GalleryCarousel = ({ gallery }: any) => {
+const GalleryCarousel = ({ gallery }: { gallery: QueryType[] }) => {
   const [count, setCount] = useState<number>(0);
-  const [dragDirection, setDragDirection] = useState<string>('');
+  const [dragDirection, setDragDirection] = useState<string>("");
   const [dragStarted, setDragStarted] = useState(false); // Flag to track drag initiation
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -27,23 +27,23 @@ const GalleryCarousel = ({ gallery }: any) => {
     const threshold = 50; // Adjust threshold as needed
 
     if (currentX > initialX + threshold) {
-      setDragDirection('left');
+      setDragDirection("left");
     } else if (currentX < initialX - threshold) {
-      setDragDirection('right');
+      setDragDirection("right");
     } else {
-      setDragDirection(''); // Reset drag direction if not exceeding threshold
+      setDragDirection(""); // Reset drag direction if not exceeding threshold
     }
   };
 
   const handleTouchEnd = () => {
     setDragStarted(false); // Reset drag flag on touch end
 
-    if (dragDirection === 'left') {
+    if (dragDirection === "left") {
       handlePrev();
-      setDragDirection(''); // Reset drag direction
-    } else if (dragDirection === 'right') {
+      setDragDirection(""); // Reset drag direction
+    } else if (dragDirection === "right") {
       handleNext();
-      setDragDirection(''); // Reset drag direction
+      setDragDirection(""); // Reset drag direction
     }
   };
 
@@ -61,30 +61,28 @@ const GalleryCarousel = ({ gallery }: any) => {
   };
 
   useEffect(() => {
-    if (dragDirection === 'left') {
+    if (dragDirection === "left") {
       // Handle previous slide logic
-      console.log('Previous slide');
-     // handleNext()
+      console.log("Previous slide");
+      // handleNext()
       setCount((prevIndex) => Math.max(prevIndex - 1, 0));
-    } else if (dragDirection === 'right') {
+    } else if (dragDirection === "right") {
       // Handle next slide logic
-      console.log('Next slide');
+      console.log("Next slide");
       //handlePrev()
       setCount((prevIndex) => Math.min(prevIndex + 1, gallery.length));
     }
-    setDragDirection(''); // Reset drag direction
-    }, [gallery.length, dragDirection]);
-    
- 
-
+    setDragDirection(""); // Reset drag direction
+  }, [gallery.length, dragDirection]);
 
   return (
     <EnterSection>
       <div className="relative w-full h-auto flex flex-col justify-start items-center p-0">
         <div className="w-full max-w-[1250px]  bg-white relative h-[80vh] rounded-[10px] overflow-hidden">
-          {gallery.map((item: any, index: number) => {
-            const left = item.crop ? Math.trunc(item.crop?.left * 100) : 50;
-            const top = item.crop ? Math.trunc(item.crop?.top * 100) : 50;
+          {gallery.map((item: QueryType, index: number) => {
+            const { mainImage, title, hotSpotMain } = item;
+            const x = (hotSpotMain?.x ?? 0.5) * 100;
+            const y = (hotSpotMain?.y ?? 0.5) * 100;
 
             return (
               <div
@@ -96,21 +94,15 @@ const GalleryCarousel = ({ gallery }: any) => {
                 onTouchEnd={handleTouchEnd}
               >
                 <Image
-                  className={`object-cover
-                     ${left < 20 && top < 20 && "object-[0%_0%]"} ${left > 20 && left < 40 && top < 20 && "object-[20%_0%]"} ${left > 40 && left < 60 && top < 20 && "object-top"} ${left > 60 && left < 80 && top < 20 && "object-[60%_0%]"} ${left > 80 && left < 100 && top < 20 && "object-[80%_0%]"}
-                     ${left < 20 && top > 20 && top < 40 && "object-[0%_20%]"} ${left > 20 && left < 40 && top > 20 && top < 40 && "object-[20%_20%]"} ${left > 40 && left < 60 && top > 20 && top < 40 && "object-[40%_20%]"} ${left > 60 && left < 80 && top > 20 && top < 40 && "object-[60%_20%]"} ${left > 80 && left < 100 && top > 20 && top < 40 && "object-[80%_20%]"}
-                     ${left < 20 && top > 40 && top < 60 && "object-[0%_40%]"} ${left > 20 && left < 40 && top > 40 && top < 60 && "object-[20%_40%]"} ${left > 40 && left < 60 && top > 40 && top < 60 && "object-[40%_40%]"} ${left > 60 && left < 80 && top > 40 && top < 60 && "object-[60%_40%]"} ${left > 80 && left < 100 && top > 40 && top < 60 && "object-[80%_40%]"}
-                     ${left < 20 && top > 60 && top < 80 && "object-[0%_60%]"} ${left > 20 && left < 40 && top > 60 && top < 80 && "object-[20%_60%]"} ${left > 40 && left < 60 && top > 60 && top < 80 && "object-[40%_60%]"} ${left > 60 && left < 80 && top > 60 && top < 80 && "object-[60%_60%]"} ${left > 80 && left < 100 && top > 60 && top < 80 && "object-[80%_60%]"}
-                     ${left < 20 && top > 80 && top < 100 && "object-[0%_80%]"} ${left > 20 && left < 40 && top > 80 && top < 100 && "object-[20%_80%]"} ${left > 40 && left < 60 && top > 80 && top < 100 && "object-[40%_80%]"} ${left > 60 && left < 80 && top > 80 && top < 100 && "object-[60%_80%]"} ${left > 80 && left < 100 && top > 80 && top < 100 && "object-[80%_80%]"}
-
-                     `}
-                  src={item.mainImage}
+                  src={mainImage ?? "/no-profile.webp"}
+                  className="object-cover"
                   alt="Magic Marble Foundation"
                   fill
+                  style={{ objectPosition: `${x}% ${y}%` }}
                 />
                 <div className="bg-black bg-opacity-50 absolute z-10 bottom-12 sm:left-4 left-0 right-0 sm:right-auto sm:-translate-x-0 rounded-none sm:rounded-[5px] ">
                   <p className="text-white text-base sm:text-xl capitalize p-4 text-center text-wrap">
-                    {item.title}
+                    {title}
                   </p>
                 </div>
               </div>

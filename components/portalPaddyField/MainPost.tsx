@@ -9,11 +9,11 @@ const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
   const y = (hotSpotMain?.y ?? 0.5) * 100;
   return (
     <div className="w-full flex flex-col space-y-8">
-      {_id && mainImage && (
+      
         <Link href={`paddyfield/${_id}`}>
           <div className="bg-gray-400 h-[50vh] w-full rounded-[10px] relative overflow-hidden hover:brightness-75 cursor-pointer">
             <Image
-              src={mainImage}
+              src={mainImage ?? "/no-profile.webp"}
               className="object-cover"
               alt="portal paddy field"
               fill
@@ -27,7 +27,7 @@ const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
             </div>
           </div>
         </Link>
-      )}
+      
     </div>
   );
 };

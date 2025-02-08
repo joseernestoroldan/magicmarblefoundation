@@ -7,12 +7,13 @@ import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
 import OurPartners from "@/components/ourpartners/OurPartners";
+import { QueryType} from "@/types/types";
 
 
 const HomePage = async () => {
  
-  const projects = await getOrderedData("projects", "5");
-  const diaries = await getOrderedData("dairies", "2");
+  const projects: QueryType[] | null =  await getOrderedData("projects", "5");
+  const diaries: QueryType[] | null = await getOrderedData("dairies", "2");
 
   return (
     <div className="w-full flex-col justify-center items-center space-y-24">
@@ -27,7 +28,7 @@ const HomePage = async () => {
         />
       </ParallaxContainer>
 
-      <GridDIaries diaries={diaries} />
+      {diaries && <GridDIaries diaries={diaries} />}
 
       <MagicFrame bg="bg-white" />
       <ParallaxContainer bgImage="bg-map.png" opacity="0.1">

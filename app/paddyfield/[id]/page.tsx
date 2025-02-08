@@ -10,7 +10,8 @@ const PortalPaddyFieldPage = async ({
 }: {
   params: { id: string };
 }) => {
-  const [data]: QueryType[] = await getOne(_Id);
+  const query : QueryType[] | null = await getOne(_Id);
+  const [data] = query;
  
   const {
     contenido,
@@ -26,7 +27,6 @@ const PortalPaddyFieldPage = async ({
     hotSpotFourth,
   } = data;
 
-  console.log(contenido)
 
   const url = youtubeLink || "";
   const urlParts = url.split("?v=");

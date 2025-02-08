@@ -40,11 +40,11 @@ export type MagicFrameProps = {
 export type OurProjectsProps = {
   bg: string;
   color: string;
-  projects: any;
+  projects: QueryType[];
 };
 
 export type ProjectsProps = {
-  projects: any;
+  projects: QueryType[];
   bg: string;
   color: string;
 };
@@ -215,3 +215,5 @@ type Children = {
 }[];
 
 export type ModePhoto = "gallery" | "cover";
+
+

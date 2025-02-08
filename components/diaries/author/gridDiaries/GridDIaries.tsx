@@ -4,7 +4,7 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Container from "@/components/layouts/container/Container";
 import LayoutY from "@/components/layouts/layoutY/LayoutY";
 import Diary from "@/components/magicDiaries/Diary";
-import { QueryType } from "@/types/types";
+import {  QueryType } from "@/types/types";
 
 const GridDIaries = async ({diaries}: {diaries:QueryType[]}) => {
 
