@@ -216,4 +216,16 @@ type Children = {
 
 export type ModePhoto = "gallery" | "cover";
 
+export type CarouselSponsorProps = {
+  mainImage?: string | null;
+  secondImage?: string | null;
+  thirdImage?: string | null;
+  id: string;
+};
+
+export type DialogImageProps = {
+  image: string | null;
+  hotSpot: HotSpot | null;
+};
+
 
