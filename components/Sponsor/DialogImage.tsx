@@ -8,7 +8,7 @@ export const DialogImage = ({ image, hotSpot }: DialogImageProps) => {
   return (
     <Dialog>
       <DialogTrigger className="w-full md:w-[30%]">
-        <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
+        <div className="w-full aspect-square  rounded-[10px]  bg-gray-400 relative overflow-hidden">
           <Image
             src={image ?? "/no-profile.webp"}
             alt="Sponsor at Magic Marble Foundation"
@@ -19,10 +19,10 @@ export const DialogImage = ({ image, hotSpot }: DialogImageProps) => {
         </div>
       </DialogTrigger>
       <DialogContent className="p-0">
-        <div className="w-full aspect-square  rounded-[5px]  bg-gray-400 relative overflow-hidden">
+        <div className="w-full aspect-square  rounded-[10px]  bg-gray-400 relative overflow-hidden">
           <Image
             src={image ?? "/no-profile.webp"}
-            alt="Sponsor at Magic Marble FOundation"
+            alt="Sponsor at Magic Marble Foundation"
             fill
             className={`object-cover`}
             style={{ objectPosition: `${x}% ${y}%` }}

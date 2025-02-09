@@ -237,6 +237,7 @@ export type SponsorGalleryProps = {
   hotSpotMain: HotSpot | null;
   hotSpotSecond: HotSpot | null;
   hotSpotThird: HotSpot | null;
+  _id: string;
 };
 
 export type WithYouTubeFrameProps = {
