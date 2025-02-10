@@ -27,36 +27,35 @@ import {
 import { useRouter } from "next/navigation";
 import { sponsorCompleted } from "@/actions/sponsor";
 
-type SessionAdoptionFormProps = {
-  email: string | null | undefined;
-  firstName: string | null | undefined;
-  secondName: string | null | undefined;
-  country: string | null | undefined;
-  codeNumber: string | null | undefined;
-  number: string | null | undefined;
-  address: string | null | undefined;
-};
+type SponsorFormProps = {
+  
+    name: string | null;
+    firstName: string | null;
+    secondName: string | null;
+    email: string | null;
+    country: string | null;
+    codeNumber: string | null;
+    number: string | null;
+    address: string | null;
+   
+}
 
-export default function SponsorForm({
-  email,
-  firstName,
-  secondName,
-  country,
-  codeNumber,
-  number,
-  address,
-}: SessionAdoptionFormProps) {
+
+export default function SponsorForm( {sessionUser} : {sessionUser:SponsorFormProps}) {
   const [stage, setStage] = useState(1);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  const {email, firstName, secondName, country, codeNumber, number, address} = sessionUser
+
   const [formData, setFormData] = useState<z.infer<typeof donationSchema>>({
-    email: email ? email : "",
-    firstName: firstName ? firstName : "",
-    secondName: secondName ? secondName : "",
-    country: country ? country : "",
-    telephone: codeNumber && number ? codeNumber + " " + number : "",
-    address: address ? address : "",
+    email: email ?? "",
+    firstName: firstName ?? "",
+    secondName: secondName ?? "",
+    country: country ?? "",
+    codeNumber: "",
+    telephone: "",
+    address: address ?? "",
     amount: "",
   });
 

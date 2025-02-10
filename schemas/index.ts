@@ -73,6 +73,7 @@ export const donationSchema = z.object({
   firstName: z.string().min(1, { message: "Name is required" }),
   secondName: z.string().min(1, { message: "Second name is required" }),
   country: z.string(),
+  codeNumber:z.string(),
   telephone: z.string(),
   address: z.string(),
 });
