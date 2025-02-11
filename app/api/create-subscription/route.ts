@@ -1,74 +1,54 @@
-import { NextResponse } from 'next/server'
-import axios from 'axios'
+import { NextResponse } from "next/server";
+import axios from "axios";
+import { getPayPalAccessToken } from "../AccessToken";
 
-const PAYPAL_API_BASE = process.env.PAYPAL_API_BASE || 'https://api-m.sandbox.paypal.com'
-const CLIENT_ID = process.env.PAYPAL_CLIENT_ID
-const APP_SECRET = process.env.PAYPAL_APP_SECRET
-
-export async function POST(req: Request) {
+export async function POST(request: Request) {
   try {
-    const { amount } = await req.json()
+    const { planId } = await request.json();
 
-    // Get access token
-    const tokenResponse = await axios.post(`${PAYPAL_API_BASE}/v1/oauth2/token`, 'grant_type=client_credentials', {
-      auth: {
-        username: CLIENT_ID!,
-        password: APP_SECRET!,
-      },
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
+    // Validate input
+    if (!planId) {
+      return NextResponse.json(
+        { error: "Plan ID is required" },
+        { status: 400 }
+      );
+    }
+    const accessToken = await getPayPalAccessToken();
 
-    const accessToken = tokenResponse.data.access_token
-
-    // Create subscription
     const subscriptionResponse = await axios.post(
-      `${PAYPAL_API_BASE}/v1/billing/subscriptions`,
+      `${process.env.PAYPAL_API_BASE}/v1/billing/subscriptions`,
       {
-        plan_id: 'P-0CP0656676651310XM36HM4Y', // Replace with your base plan ID
+        plan_id: planId,
         application_context: {
-          return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscription-success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/subscription-cancel`,
-        },
-        plan: {
-          billing_cycles: [
-            {
-              frequency: {
-                interval_unit: 'MONTH',
-                interval_count: 1,
-              },
-              tenure_type: 'REGULAR',
-              sequence: 1,
-              total_cycles: 0,
-              pricing_scheme: {
-                fixed_price: {
-                  value: amount - 10,
-                  currency_code: 'USD',
-                },
-              },
-            },
-          ],
+          brand_name: "Magic Marble Foundation",
+          locale: "en-US",
+          shipping_preference: "NO_SHIPPING",
+          user_action: "SUBSCRIBE_NOW",
+          return_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/success`,
+          cancel_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/cancel`,
         },
       },
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       }
-    )
+    );
 
-    const approvalUrl = subscriptionResponse.data.links.find(
-      (link: { rel: string }) => link.rel === 'approve'
-    ).href
-
-    return NextResponse.json({ approvalUrl })
-  } catch (error) {
-    console.error('PayPal API error:', error)
     return NextResponse.json(
-      { message: 'Failed to create subscription' },
+      {
+        success: true,
+        subscription: subscriptionResponse.data,
+        message: "Subscription completed",
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("PayPal API error:", error);
+    return NextResponse.json(
+      { message: "Failed to create subscription", success: false },
       { status: 500 }
-    )
+    );
   }
 }
