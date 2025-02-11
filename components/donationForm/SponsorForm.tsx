@@ -28,25 +28,27 @@ import { useRouter } from "next/navigation";
 import { sponsorCompleted } from "@/actions/sponsor";
 
 type SponsorFormProps = {
-  
-    name: string | null;
-    firstName: string | null;
-    secondName: string | null;
-    email: string | null;
-    country: string | null;
-    codeNumber: string | null;
-    number: string | null;
-    address: string | null;
-   
-}
+  name: string | null;
+  firstName: string | null;
+  secondName: string | null;
+  email: string | null;
+  country: string | null;
+  codeNumber: string | null;
+  number: string | null;
+  address: string | null;
+};
 
-
-export default function SponsorForm( {sessionUser} : {sessionUser:SponsorFormProps}) {
+export default function SponsorForm({
+  sessionUser,
+}: {
+  sessionUser: SponsorFormProps;
+}) {
   const [stage, setStage] = useState(1);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const {email, firstName, secondName, country, codeNumber, number, address} = sessionUser
+  const { email, firstName, secondName, country, codeNumber, number, address } =
+    sessionUser;
 
   const [formData, setFormData] = useState<z.infer<typeof donationSchema>>({
     email: email ?? "",
@@ -85,41 +87,59 @@ export default function SponsorForm( {sessionUser} : {sessionUser:SponsorFormPro
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-   // Here you would typically send the data to your server or payment processor
+    // Here you would typically send the data to your server or payment processor
     setLoading(true);
     const finalAmount = formData.amount;
 
     try {
-      const response = await fetch("/api/create-subscription", {
+      const response = await fetch("/api/create-plan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: finalAmount }),
+        body: JSON.stringify({
+          amount: finalAmount,
+          frequency: 1,
+          interval: "MONTH",
+        }),
       });
-
       const data = await response.json();
-
-      if (response.ok) {
-        router.push(data.approvalUrl);
-      } else {
-        throw new Error(data.message || "Failed to create subscription");
-      }
+      console.log(data);
     } catch (error) {
       console.error("Subscription creation error:", error);
-    } finally {
-      setLoading(false);
     }
 
-    sponsorCompleted(
-      formData.email,
-      formData.amount,
-      formData.firstName,
-      formData.secondName,
-      formData.country,
-      formData.address,
-      formData.telephone
-    );
+    // try {
+    //   const response = await fetch("/api/create-subscription", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ amount: finalAmount }),
+    //   });
+
+    //   const data = await response.json();
+
+    //   if (response.ok) {
+    //     router.push(data.approvalUrl);
+    //   } else {
+    //     throw new Error(data.message || "Failed to create subscription");
+    //   }
+    // } catch (error) {
+    //   console.error("Subscription creation error:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
+
+    // sponsorCompleted(
+    //   formData.email,
+    //   formData.amount,
+    //   formData.firstName,
+    //   formData.secondName,
+    //   formData.country,
+    //   formData.address,
+    //   formData.telephone
+    // );
   };
 
   return (
