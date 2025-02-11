@@ -87,7 +87,7 @@ export default function SponsorForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     const {amount, email, firstName, secondName} = formData
+    const { amount, email, firstName, secondName } = formData;
 
     setLoading(true);
     try {
@@ -144,31 +144,8 @@ export default function SponsorForm({
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
       <Card className="w-full max-w-md">
-        <div className="flex justify-center items-center pb-6 pt-6">
-          <div className="flex items-center justify-center">
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 1 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-            >
-              <DollarSignIcon className="h-6 w-6" />
-            </div>
-            <div
-              className={`w-16 h-1 ${stage >= 2 ? "bg-cyan-200" : "bg-gray-200"}`}
-            />
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 2 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-            >
-              <UserIcon className="h-6 w-6" />
-            </div>
-            <div
-              className={`w-16 h-1 ${stage >= 3 ? "bg-cyan-200" : "bg-gray-200"}`}
-            />
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 3 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-            >
-              <CreditCardIcon className="h-6 w-6" />
-            </div>
-          </div>
-        </div>
+        <ProgressBarComponent stage={stage} />
+        
         {stage === 1 && (
           <>
             <CardHeader>
@@ -358,3 +335,33 @@ export default function SponsorForm({
     </div>
   );
 }
+
+const ProgressBarComponent = ({ stage }: { stage: number }) => {
+  return (
+    <div className="flex justify-center items-center pb-6 pt-6">
+      <div className="flex items-center justify-center">
+        <div
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 1 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
+        >
+          <DollarSignIcon className="h-6 w-6" />
+        </div>
+        <div
+          className={`w-16 h-1 ${stage >= 2 ? "bg-cyan-200" : "bg-gray-200"}`}
+        />
+        <div
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 2 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
+        >
+          <UserIcon className="h-6 w-6" />
+        </div>
+        <div
+          className={`w-16 h-1 ${stage >= 3 ? "bg-cyan-200" : "bg-gray-200"}`}
+        />
+        <div
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 3 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
+        >
+          <CreditCardIcon className="h-6 w-6" />
+        </div>
+      </div>
+    </div>
+  );
+};
