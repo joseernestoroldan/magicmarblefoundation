@@ -49,7 +49,6 @@ const RecipiePage = async ({
         </div>
       </div>
       <div className=" w-3/5 flex flex-col justify-start space-y-4 px-12">
-        <h2 className="text-gray-500 font-bold text-2xl">Ingredients:</h2>
         {ingredients && (
           <Paragraphs
             contenido={ingredients}
@@ -57,7 +56,6 @@ const RecipiePage = async ({
             mdSizeText="text-[18px]"
           />
         )}
-        <h2 className="text-gray-500 font-bold text-2xl">Instructions:</h2>
         {instructions && (
           <Paragraphs
             contenido={instructions}

@@ -4,10 +4,10 @@ import { getPayPalAccessToken } from "../AccessToken";
 
 export async function POST(request: Request) {
   try {
-    const { planId } = await request.json();
+    const { planId, firstName, secondName, email } = await request.json();
 
     // Validate input
-    if (!planId) {
+    if (!planId || !email) {
       return NextResponse.json(
         { error: "Plan ID is required" },
         { status: 400 }
@@ -26,6 +26,26 @@ export async function POST(request: Request) {
           user_action: "SUBSCRIBE_NOW",
           return_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/success`,
           cancel_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/cancel`,
+        },
+        subscriber: {
+          name: {
+            given_name: "John",
+            surname: "Doe",
+          },
+          email_address: "customer@example.com",
+          // shipping_address: {
+          //   name: {
+          //     full_name: "John Doe",
+          //   },
+          //   address: {
+          //     address_line_1: "2211 N First Street",
+          //     address_line_2: "Building 17",
+          //     admin_area_2: "San Jose",
+          //     admin_area_1: "CA",
+          //     postal_code: "95131",
+          //     country_code: "US",
+          //   },
+          // },
         },
       },
       {

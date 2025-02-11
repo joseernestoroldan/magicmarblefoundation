@@ -87,10 +87,9 @@ export default function SponsorForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your server or payment processor
-    setLoading(true);
-    const finalAmount = formData.amount;
+     const {amount, email, firstName, secondName} = formData
 
+    setLoading(true);
     try {
       const response = await fetch("/api/create-plan", {
         method: "POST",
@@ -98,7 +97,7 @@ export default function SponsorForm({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: finalAmount,
+          amount: amount,
           frequency: 1,
           interval: "MONTH",
         }),
@@ -145,8 +144,8 @@ export default function SponsorForm({
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
       <Card className="w-full max-w-md">
-        <div className="flex justify-center mb-4 pt-6">
-          <div className="flex items-center">
+        <div className="flex justify-center items-center pb-6 pt-6">
+          <div className="flex items-center justify-center">
             <div
               className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 1 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
             >

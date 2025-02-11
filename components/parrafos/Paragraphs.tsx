@@ -1,6 +1,7 @@
 import { Block } from "@/types/types";
 
 const Paragraphs = ({ contenido, sizeText, mdSizeText, indent }: { contenido: Block[], sizeText?: string, mdSizeText?: string, indent?:string }) => {
+  let numberParagraph: number = 0
   return (
     <div className="">
       {contenido.map((item: Block, index: number) => {
@@ -8,6 +9,11 @@ const Paragraphs = ({ contenido, sizeText, mdSizeText, indent }: { contenido: Bl
         const text = unTrimmedText.trim();
         const style = item.style;
         const textSize = decideSize(style, sizeText, mdSizeText, indent);
+        const isBullet: boolean = item.listItem === "bullet"
+        const isNumbered: boolean = item.listItem === "number"
+       
+        isNumbered ? numberParagraph++ : numberParagraph
+       
 
         if (text === "##") {
           return <div key={index} className="h-[16px] w-full"></div>;
@@ -19,9 +25,9 @@ const Paragraphs = ({ contenido, sizeText, mdSizeText, indent }: { contenido: Bl
           return (
             <div key={index}>
               <div
-                className={`space-y-2 text-gray-500 font-semibold text-justify text-wrap w-full ${textSize}`}
+                className={`space-y-2 text-gray-500 font-semibold text-justify text-wrap w-full ${textSize} ${isBullet ? "list-item list-disc" : ""}`}
               >
-                {text}
+              {isNumbered && <span>{numberParagraph}.</span>}  {text}
               </div>
             </div>
           );
