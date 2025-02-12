@@ -2,10 +2,10 @@
 
 import * as z from "zod";
 import { donationSchema } from "@/schemas";
-
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { countries } from "@/utils/countries";
 import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,17 +26,8 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 import { sponsorCompleted } from "@/actions/sponsor";
-
-type SponsorFormProps = {
-  name: string | null;
-  firstName: string | null;
-  secondName: string | null;
-  email: string | null;
-  country: string | null;
-  codeNumber: string | null;
-  number: string | null;
-  address: string | null;
-};
+import { SponsorFormProps } from "@/types/types";
+import { createPlan, createSubscriber } from "@/lib/apiCalls";
 
 export default function SponsorForm({
   sessionUser,
@@ -50,86 +41,88 @@ export default function SponsorForm({
   const { email, firstName, secondName, country, codeNumber, number, address } =
     sessionUser;
 
-  const [formData, setFormData] = useState<z.infer<typeof donationSchema>>({
-    email: email ?? "",
-    firstName: firstName ?? "",
-    secondName: secondName ?? "",
-    country: country ?? "",
-    codeNumber: "",
-    telephone: "",
-    address: address ?? "",
-    amount: "",
+  const form = useForm<z.infer<typeof donationSchema>>({
+    resolver: zodResolver(donationSchema),
+    defaultValues: {
+      email: email ?? "",
+      firstName: firstName ?? "",
+      secondName: secondName ?? "",
+      country: country ?? "",
+      codeNumber: codeNumber ?? "",
+      telephone: number ?? "",
+      address: address ?? "",
+      amount: "",
+    },
   });
+
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    trigger,
+    formState: { errors },
+  } = form;
 
   const predefinedAmounts = ["10", "20", "50", "100", "200", "500"];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSelectChange = (name: string) => (value: string) => {
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
   const handleAmountChange = (value: string) => {
-    setFormData((prevData) => ({ ...prevData, amount: value }));
+    setValue("amount", value);
   };
 
-  const handleNext = () => {
-    setStage((prevStage) => prevStage + 1);
+  const handleNext = async () => {
+    let fieldsToValidate: (keyof z.infer<typeof donationSchema>)[] = [];
+
+    switch (stage) {
+      case 1:
+        fieldsToValidate = ["amount"];
+        break;
+      case 2:
+        fieldsToValidate = [
+          "firstName",
+          "secondName",
+          "country",
+          "address",
+          "telephone",
+          "email",
+        ];
+        break;
+    }
+
+    const isValid = await trigger(fieldsToValidate);
+    if (isValid) setStage((s) => s + 1);
   };
 
   const handleBack = () => {
-    setStage((prevStage) => prevStage - 1);
+    setStage((s) => s - 1);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const { amount, email, firstName, secondName } = formData;
+  const onSubmit = async (data: z.infer<typeof donationSchema>) => {
+    const { amount, email, firstName, secondName } = data;
 
-    setLoading(true);
     try {
-      const response = await fetch("/api/create-plan", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: amount,
-          frequency: 1,
-          interval: "MONTH",
-        }),
-      });
+      setLoading(true);
+      const planId = await createPlan(amount)
+      const response = await createSubscriber(email, planId)
       const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Subscription creation error:", error);
+      const {subscription} = data;
+      console.log("Subscription:", subscription)
+
+      window.location.href = subscription.links.find(
+        (link: any) => link.rel === 'approve'
+      ).href;
+
+    if (data) {
+      console.log("hola mundo")
+      // router.push(data.subscription.approvalUrl);
+    } else {
+      throw new Error(data.message || "Failed to create subscription");
     }
-
-    // try {
-    //   const response = await fetch("/api/create-subscription", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ amount: finalAmount }),
-    //   });
-
-    //   const data = await response.json();
-
-    //   if (response.ok) {
-    //     router.push(data.approvalUrl);
-    //   } else {
-    //     throw new Error(data.message || "Failed to create subscription");
-    //   }
-    // } catch (error) {
-    //   console.error("Subscription creation error:", error);
-    // } finally {
-    //   setLoading(false);
-    // }
-
+    } catch (error) {
+      console.log(error)
+    }
+    finally{
+      setLoading(false)
+    }
     // sponsorCompleted(
     //   formData.email,
     //   formData.amount,
@@ -144,193 +137,225 @@ export default function SponsorForm({
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
       <Card className="w-full max-w-md">
-        <ProgressBarComponent stage={stage} />
-        
-        {stage === 1 && (
-          <>
-            <CardHeader>
-              <CardTitle className="text-cyan-500">
-                Sponsorship Amount
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                {predefinedAmounts.map((amount) => (
-                  <button
-                    key={amount}
-                    onClick={() => handleAmountChange(amount)}
-                    className={`h-20 flex items-center justify-center text-lg font-semibold rounded-[10px] transition-colors ${
-                      formData.amount === amount
-                        ? "bg-cyan-500 text-white"
-                        : "bg-gray-200 hover:bg-gray-200/80"
-                    }`}
-                    aria-pressed={formData.amount === amount}
-                  >
-                    ${amount}
-                  </button>
-                ))}
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="customAmount" className="text-cyan-500">
-                  Custom amount
-                </Label>
-                <Input
-                  id="customAmount"
-                  name="amount"
-                  type="number"
-                  placeholder="Enter custom amount"
-                  value={
-                    predefinedAmounts.includes(formData.amount)
-                      ? ""
-                      : formData.amount
-                  }
-                  onChange={handleInputChange}
-                  className="text-lg rounded-full border border-gray-400 focus:border-cyan-500"
-                />
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-center">
-              <Button
-                onClick={handleNext}
-                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-                disabled={!formData.amount}
-              >
-                Next
-              </Button>
-            </CardFooter>
-          </>
-        )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <ProgressBarComponent stage={stage} />
 
-        {stage === 2 && (
-          <>
-            <CardHeader>
-              <CardTitle className="text-cyan-500">Personal Details</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                    className="border border-gray-400 rounded-full"
-                  />
+          {stage === 1 && (
+            <>
+              <CardHeader>
+                <CardTitle className="text-cyan-500">
+                  Sponsorship Amount
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  {predefinedAmounts.map((amount) => (
+                    <button
+                      key={amount}
+                      onClick={() => handleAmountChange(amount)}
+                      className={`h-20 flex items-center justify-center text-lg font-semibold rounded-[10px] transition-colors ${
+                        form.watch("amount") === amount
+                          ? "bg-cyan-500 text-white"
+                          : "bg-gray-200 hover:bg-gray-200/80"
+                      }`}
+                    >
+                      ${amount}
+                    </button>
+                  ))}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="secondName">Second Name</Label>
+                  <Label htmlFor="customAmount" className="text-cyan-500">
+                    Custom amount
+                  </Label>
+
                   <Input
-                    id="secondName"
-                    name="secondName"
-                    placeholder="Second Name"
-                    value={formData.secondName}
-                    onChange={handleInputChange}
-                    required
-                    className="border border-gray-400 rounded-full"
+                    {...control.register("amount")}
+                    id="customAmount"
+                    type="number"
+                    placeholder="Enter custom amount"
+                    className="text-lg rounded-full border border-gray-400 focus:border-cyan-500"
                   />
+                  {errors.amount && (
+                    <p className="text-red-500 text-sm">
+                      {errors.amount.message}
+                    </p>
+                  )}
                 </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="country">Country</Label>
-                <Select
-                  name="country"
-                  onValueChange={handleSelectChange("country")}
+              </CardContent>
+              <CardFooter className="flex justify-center">
+                <Button
+                  onClick={handleNext}
+                  className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+                  disabled={!form.watch("amount")}
                 >
-                  <SelectTrigger className="border border-gray-400 rounded-full">
-                    <SelectValue placeholder="Select a country" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white">
-                    {countries.map((item: any, index: number) => {
-                      return (
-                        <SelectItem key={index} value={item.value}>
-                          {item.label}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="address">Address</Label>
-                <Input
-                  id="address"
-                  name="address"
-                  placeholder="123 Main St, City, State, ZIP"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  required
-                  className="border border-gray-400 rounded-full"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="telephone">Telephone Number</Label>
-                <Input
-                  id="telephone"
-                  name="telephone"
-                  type="tel"
-                  placeholder="+1 (555) 123-4567"
-                  value={formData.telephone}
-                  onChange={handleInputChange}
-                  required
-                  className="border border-gray-400 rounded-full"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="border border-gray-400 rounded-full"
-                />
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <Button
-                onClick={handleBack}
-                className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
-              >
-                Back
-              </Button>
-              <Button
-                onClick={handleNext}
-                className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
-              >
-                Next
-              </Button>
-            </CardFooter>
-          </>
-        )}
-        {stage === 3 && (
-          <>
-            <CardHeader>
-              <CardTitle className="text-cyan-500">Payment Details</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4"></CardContent>
-            <CardFooter className="flex justify-between">
-              <Button
-                onClick={handleBack}
-                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-              >
-                Back
-              </Button>
+                  Next
+                </Button>
+              </CardFooter>
+            </>
+          )}
 
-              <Button
-                onClick={handleSubmit}
-                className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-              >
-                Sponsor with ${formData.amount}
-              </Button>
-            </CardFooter>
-          </>
-        )}
+          {stage === 2 && (
+            <>
+              <CardHeader>
+                <CardTitle className="text-cyan-500">
+                  Personal Details
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="firstName">First Name</Label>
+                    <Input
+                      {...control.register("firstName")}
+                      id="firstName"
+                      placeholder="First Name"
+                      required
+                      className="border border-gray-400 rounded-full"
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-500 text-sm">
+                        {errors.firstName.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="secondName">Second Name</Label>
+                    <Input
+                      {...control.register("secondName")}
+                      id="secondName"
+                      placeholder="Second Name"
+                      required
+                      className="border border-gray-400 rounded-full"
+                    />
+                    {errors.secondName && (
+                      <p className="text-red-500 text-sm">
+                        {errors.secondName.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="country">Country</Label>
+                  <Controller
+                    name="country"
+                    control={control}
+                    render={({ field }) => (
+                      <>
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value}
+                        >
+                          <SelectTrigger className="border border-gray-400 rounded-full">
+                            <SelectValue placeholder="Select a country" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {countries.map((item: any) => (
+                              <SelectItem key={item.value} value={item.value}>
+                                {item.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        {errors.country && (
+                          <p className="text-red-500 text-sm">
+                            {errors.country.message}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="address">Address</Label>
+                  <Input
+                    {...control.register("address")}
+                    id="address"
+                    placeholder="123 Main St, City, State, ZIP"
+                    required
+                    className="border border-gray-400 rounded-full"
+                  />
+                  {errors.address && (
+                    <p className="text-red-500 text-sm">
+                      {errors.address.message}
+                    </p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="telephone">Telephone Number</Label>
+                  <Input
+                    {...control.register("telephone")}
+                    id="telephone"
+                    type="tel"
+                    placeholder="+1 (555) 123-4567"
+                    required
+                    className="border border-gray-400 rounded-full"
+                  />
+                  {errors.telephone && (
+                    <p className="text-red-500 text-sm">
+                      {errors.telephone.message}
+                    </p>
+                  )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    {...control.register("email")}
+                    id="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    required
+                    className="border border-gray-400 rounded-full"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+              </CardContent>
+              <CardFooter className="flex justify-between">
+                <Button
+                  onClick={handleBack}
+                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
+                >
+                  Back
+                </Button>
+                <Button
+                  onClick={handleNext}
+                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
+                >
+                  Next
+                </Button>
+              </CardFooter>
+            </>
+          )}
+          {stage === 3 && (
+            <>
+              <CardHeader>
+                <CardTitle className="text-cyan-500">Payment Details</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4"></CardContent>
+              <CardFooter className="flex justify-between">
+                <Button
+                  onClick={handleBack}
+                  className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+                >
+                  Back
+                </Button>
+
+                <Button
+                  type="submit"
+                  className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
+                  disabled={loading}
+                >
+                  {loading
+                    ? "Processing..."
+                    : `Sponsor with $${form.watch("amount")}`}
+                </Button>
+              </CardFooter>
+            </>
+          )}
+        </form>
       </Card>
     </div>
   );

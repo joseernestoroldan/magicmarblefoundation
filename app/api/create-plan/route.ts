@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const accessToken = await getPayPalAccessToken();
 
     const product = await axios.post(
-      `${process.env.PAYPAL_API_URL}/v1/catalogs/products`,
+      `${process.env.PAYPAL_API_BASE}/v1/catalogs/products`,
       {
         name: "MMF Sponsorship",
         description: "Sponsorship At MMF",
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     );
 
     const planResponse = await axios.post(
-      `${process.env.PAYPAL_API_URL}/v1/billing/plans`,
+      `${process.env.PAYPAL_API_BASE}/v1/billing/plans`,
       {
         product_id: "PROD-72Y53810X59013909",
         name: `Monthly Sponsorship for $${amount}`,

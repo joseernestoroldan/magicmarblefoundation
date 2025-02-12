@@ -250,3 +250,14 @@ export type WithYouTubeFrameProps = {
   hotSpotThird: HotSpot | null;
 };
 
+export type SponsorFormProps = {
+  name: string | null;
+  firstName: string | null;
+  secondName: string | null;
+  email: string | null;
+  country: string | null;
+  codeNumber: string | null;
+  number: string | null;
+  address: string | null;
+};
+
