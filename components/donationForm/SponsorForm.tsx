@@ -31,6 +31,7 @@ import {
   createPlan,
   createSubscriber,
 } from "@/lib/apiCalls";
+import { FaSortAmountDown } from "react-icons/fa";
 
 export default function SponsorForm({
   sessionUser,
@@ -100,14 +101,14 @@ export default function SponsorForm({
   };
 
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
-    const { amount, email, firstName, secondName } = data;
+    const { amount, email, firstName, secondName, codeNumber, telephone, address, country } = data;
 
     try {
       setLoading(true);
 
       const planId = await createPlan(amount);
       console.log(planId);
-      const response = await createSubscriber(email, planId, firstName, secondName);
+      const response = await createSubscriber(email, planId, firstName, secondName, amount);
       const data = await response.json();
       const { subscription } = data;
       console.log("Subscription:", subscription);
@@ -121,15 +122,6 @@ export default function SponsorForm({
     } finally {
       setLoading(false);
     }
-    // sponsorCompleted(
-    //   formData.email,
-    //   formData.amount,
-    //   formData.firstName,
-    //   formData.secondName,
-    //   formData.country,
-    //   formData.address,
-    //   formData.telephone
-    // );
   };
 
   return (

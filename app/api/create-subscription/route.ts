@@ -4,10 +4,10 @@ import { getPayPalAccessToken } from "../AccessToken";
 
 export async function POST(request: Request) {
   try {
-    const { planId, firstName, secondName, email } = await request.json();
+    const { planId, firstName, secondName, email, amount } = await request.json();
 
     // Validate input
-    if (!planId || !email || !firstName || !secondName) {
+    if (!planId || !email || !firstName || !secondName || !amount) {
       return NextResponse.json(
         { error: "Fields Missing" },
         { status: 400 }
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
           locale: "en-US",
           shipping_preference: "NO_SHIPPING",
           user_action: "SUBSCRIBE_NOW",
-          return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success-subscription`,
+          return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success-subscription?email=${email}&first_name=${firstName}&second_name=${secondName}&plan_id=${planId}&amount_number=${amount}`,
           cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel-subscription`,
         },
         subscriber: {
@@ -33,19 +33,6 @@ export async function POST(request: Request) {
             surname: secondName,
           },
           email_address: email,
-          // shipping_address: {
-          //   name: {
-          //     full_name: "John Doe",
-          //   },
-          //   address: {
-          //     address_line_1: "2211 N First Street",
-          //     address_line_2: "Building 17",
-          //     admin_area_2: "San Jose",
-          //     admin_area_1: "CA",
-          //     postal_code: "95131",
-          //     country_code: "US",
-          //   },
-          // },
         },
       },
       {
