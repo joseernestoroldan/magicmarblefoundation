@@ -24,8 +24,8 @@ export async function POST(request: Request) {
           locale: "en-US",
           shipping_preference: "NO_SHIPPING",
           user_action: "SUBSCRIBE_NOW",
-          return_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/success`,
-          cancel_url: `${process.env.NEXT_PUBLIC_PAYPAL_API_URL}/cancel`,
+          return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success-subscription`,
+          cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel-subscription`,
         },
         subscriber: {
           name: {
