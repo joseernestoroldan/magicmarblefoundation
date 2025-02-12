@@ -261,3 +261,57 @@ export type SponsorFormProps = {
   address: string | null;
 };
 
+
+export type PlanType = {
+  id: string;
+  version: number;
+  product_id: string;
+  name: string;
+  status: string;
+  description: string;
+  usage_type: string;
+  billing_cycles: {
+    pricing_scheme: {
+      version: number;
+      fixed_price: {
+        currency_code: string;
+        value: string; // Assuming the value is stored as a string (e.g., "20.0")
+      };
+      create_time: string; // ISO 8601 date-time string
+      update_time: string; // ISO 8601 date-time string
+    };
+    frequency: {
+      interval_unit: string; // e.g., "MONTH"
+      interval_count: number;
+    };
+    tenure_type: string; // e.g., "REGULAR"
+    sequence: number;
+    total_cycles: number;
+  }[];
+  payment_preferences: {
+    service_type: string; // e.g., "PREPAID"
+    auto_bill_outstanding: boolean;
+    setup_fee: {
+      currency_code: string;
+      value: string; // Assuming the value is stored as a string (e.g., "0.0")
+    };
+    setup_fee_failure_action: string; // e.g., "CONTINUE"
+    payment_failure_threshold: number;
+  };
+  quantity_supported: boolean;
+  payee: {
+    merchant_id: string;
+    display_data: {
+      business_email: string;
+    };
+  };
+  create_time: string; // ISO 8601 date-time string
+  update_time: string; // ISO 8601 date-time string
+  links: {
+    href: string;
+    rel: string;
+    method: string;
+    encType: string; // e.g., "application/json"
+  }[];
+};
+

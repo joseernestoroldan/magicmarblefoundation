@@ -27,7 +27,10 @@ import {
 import { useRouter } from "next/navigation";
 import { sponsorCompleted } from "@/actions/sponsor";
 import { SponsorFormProps } from "@/types/types";
-import { createPlan, createSubscriber } from "@/lib/apiCalls";
+import {
+  createPlan,
+  createSubscriber,
+} from "@/lib/apiCalls";
 
 export default function SponsorForm({
   sessionUser,
@@ -101,27 +104,22 @@ export default function SponsorForm({
 
     try {
       setLoading(true);
-      const planId = await createPlan(amount)
-      const response = await createSubscriber(email, planId)
+
+      const planId = await createPlan(amount);
+      console.log(planId);
+      const response = await createSubscriber(email, planId, firstName, secondName);
       const data = await response.json();
-      const {subscription} = data;
-      console.log("Subscription:", subscription)
+      const { subscription } = data;
+      console.log("Subscription:", subscription);
 
       window.location.href = subscription.links.find(
-        (link: any) => link.rel === 'approve'
+        (link: any) => link.rel === "approve"
       ).href;
-
-    if (data) {
-      console.log("hola mundo")
-      // router.push(data.subscription.approvalUrl);
-    } else {
-      throw new Error(data.message || "Failed to create subscription");
-    }
     } catch (error) {
-      console.log(error)
-    }
-    finally{
-      setLoading(false)
+      console.log(error);
+      throw new Error("Failed to create subscription");
+    } finally {
+      setLoading(false);
     }
     // sponsorCompleted(
     //   formData.email,

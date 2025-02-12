@@ -1,3 +1,5 @@
+import { PlanType } from "@/types/types";
+
 export const createPlan = async (amount: string) => {
   try {
     const response = await fetch("/api/create-plan", {
@@ -20,14 +22,14 @@ export const createPlan = async (amount: string) => {
   }
 };
 
-export const createSubscriber = async (email: string, planId: string) => {
+export const createSubscriber = async (email: string, planId: string, firstName: string, secondName: string) => {
   try {
     const response = await fetch("/api/create-subscription", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email: email, planId: planId }),
+      body: JSON.stringify({ email: email, planId: planId, firstName: firstName, secondName:secondName }),
     });
     
     if(response.ok) return response
@@ -37,3 +39,9 @@ export const createSubscriber = async (email: string, planId: string) => {
     throw new Error("Something went very wrong!")
   }
 };
+
+export const getPlans = async () => {
+    const data = await fetch("/api/query-all-plans")
+    const plans = await data.json()
+    return plans
+}

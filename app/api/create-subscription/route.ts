@@ -7,9 +7,9 @@ export async function POST(request: Request) {
     const { planId, firstName, secondName, email } = await request.json();
 
     // Validate input
-    if (!planId || !email) {
+    if (!planId || !email || !firstName || !secondName) {
       return NextResponse.json(
-        { error: "Plan ID is required" },
+        { error: "Fields Missing" },
         { status: 400 }
       );
     }
@@ -29,10 +29,10 @@ export async function POST(request: Request) {
         },
         subscriber: {
           name: {
-            given_name: "John",
-            surname: "Doe",
+            given_name: firstName,
+            surname: secondName,
           },
-          email_address: "customer@example.com",
+          email_address: email,
           // shipping_address: {
           //   name: {
           //     full_name: "John Doe",
