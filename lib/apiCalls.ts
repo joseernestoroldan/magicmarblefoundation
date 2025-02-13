@@ -57,3 +57,9 @@ export const getPlans = async () => {
   const plans = await data.json();
   return plans;
 };
+
+export const getPlan = async (id: string) => {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans/${id}`);
+  const plan = await data.json();
+  return plan;
+};

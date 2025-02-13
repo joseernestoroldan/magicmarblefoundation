@@ -1,7 +1,6 @@
 import axios from "axios";
 import { NextResponse, NextRequest } from "next/server";
 import { getPayPalAccessToken } from "../AccessToken";
-import { headers } from "next/headers";
 
 export async function GET() {
   const accessToken = await getPayPalAccessToken();
