@@ -1,13 +1,4 @@
-//  sponsorCompleted(
-//   formData.email,
-//   formData.amount,
-//   formData.firstName,
-//   formData.secondName,
-//   formData.country,
-//   formData.address,
-//   formData.telephone
-// );
-
+import { sponsorCompleted } from "@/actions/sponsor";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getPlan } from "@/lib/apiCalls";
 import { PlanType } from "@/types/types";
@@ -19,7 +10,10 @@ type SearchParams = {
   second_name?: string;
   plan_id?: string;
   email?: string;
-  amount_number?: string;
+  amount?: string;
+  telephone?: string;
+  country?: string;
+  address?: string;
 };
 
 export default async function SuccessSubscriptionPage({
@@ -27,36 +21,44 @@ export default async function SuccessSubscriptionPage({
 }: {
   searchParams: SearchParams;
 }) {
-  // Extract the subscription_id from searchParams
   const {
     subscription_id,
     first_name,
     second_name,
     plan_id,
     email,
-    amount_number,
+    amount,
+    telephone,
+    country,
+    address,
   } = searchParams;
-
 
   const subscriptionId = subscription_id || null;
   const firstName = first_name || null;
   const secondName = second_name || null;
   const planId = plan_id || null;
   const emailUser = email || null;
-  const amount = amount_number;
+  const telephoneUser = telephone || null;
+  const countryUser = country || null;
+  const addressUser = address || null;
+  const amountTotal = amount || null;
 
-  
+  const planDetails: PlanType = planId ? await getPlan(planId) : null;
+  const { description, status, name, id } = planDetails;
 
-  const planDetails: PlanType = planId ? await getPlan(planId) : null
-
-  console.log(planDetails)
- 
-
-const {create_time, description, status, name, id } = planDetails
-
+  await sponsorCompleted(
+    emailUser,
+    amountTotal,
+    firstName,
+    secondName,
+    telephoneUser,
+    addressUser,
+    countryUser,
+    subscriptionId
+  );
 
   return (
-<div className="h-auto text-cyan-500 w-full max-w-5xl mx-auto flex justify-center items-center flex-col">
+    <div className="h-auto text-cyan-500 w-full max-w-5xl mx-auto flex justify-center items-center flex-col">
       {/* Logo */}
       <div className="mb-8">
         <Image
@@ -69,7 +71,9 @@ const {create_time, description, status, name, id } = planDetails
       </div>
 
       {/* Success Message */}
-      <h1 className="text-2xl md:text-4xl font-bold mb-8">Subscription Successful!</h1>
+      <h1 className="text-2xl md:text-4xl font-bold mb-8">
+        Subscription Successful!
+      </h1>
 
       {/* Thank You Message */}
       <p className="text-xl md:text-2xl text-center font-bold mb-4">
@@ -84,19 +88,27 @@ const {create_time, description, status, name, id } = planDetails
       <div className="text-gray-500 text-xl mb-8">
         <p className="text-center">
           A subscription has been created under the ID:
-          <span className="font-extrabold text-2xl"> {subscriptionId}</span> for the
-          amount: $
-          <span className="font-extrabold text-2xl">{amount}</span> {" "} Monthly
+          <span className="font-extrabold text-2xl"> {subscriptionId}</span> for
+          the amount: $<span className="font-extrabold text-2xl">{amount}</span>{" "}
+          Monthly
         </p>
       </div>
 
       <Card className="rounded-2xl mb-4">
         <CardHeader className="text-2xl">Plan Details</CardHeader>
         <CardContent>
-          <p>Plan Name: <span className="text-gray-400">{name}</span></p>
-          <p>Description: <span className="text-gray-400">{description}</span></p>
-          <p>Status: <span className="text-gray-400">{status}</span></p>
-          <p>Plan Id: <span className="text-gray-400">{id}</span></p>
+          <p>
+            Plan Name: <span className="text-gray-400">{name}</span>
+          </p>
+          <p>
+            Description: <span className="text-gray-400">{description}</span>
+          </p>
+          <p>
+            Status: <span className="text-gray-400">{status}</span>
+          </p>
+          <p>
+            Plan Id: <span className="text-gray-400">{id}</span>
+          </p>
         </CardContent>
       </Card>
 

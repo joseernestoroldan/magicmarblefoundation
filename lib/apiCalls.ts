@@ -27,7 +27,10 @@ export const createSubscriber = async (
   planId: string,
   firstName: string,
   secondName: string,
-  amount: string
+  amount: string,
+  telephone: string,
+  address: string,
+  country: string,
 ) => {
   try {
     const response = await fetch("/api/create-subscription", {
@@ -40,11 +43,15 @@ export const createSubscriber = async (
         planId: planId,
         firstName: firstName,
         secondName: secondName,
-        amount: amount
+        amount: amount,
+        telephone: telephone,
+        country: country,
+        address: address,
       }),
     });
 
     if (response.ok) return response;
+
     throw new Error("Something went wrong");
   } catch (error) {
     console.error("Subscription creation error:", error);
@@ -53,13 +60,17 @@ export const createSubscriber = async (
 };
 
 export const getPlans = async () => {
-  const data = await fetch("/api/query-all-plans");
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans`
+  );
   const plans = await data.json();
   return plans;
 };
 
 export const getPlan = async (id: string) => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans/${id}`);
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans/${id}`
+  );
   const plan = await data.json();
   return plan;
 };
