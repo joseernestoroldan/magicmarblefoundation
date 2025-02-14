@@ -73,7 +73,6 @@ export const donationSchema = z.object({
   firstName: z.string().min(1, { message: "Name is required" }),
   secondName: z.string().min(1, { message: "Second name is required" }),
   country: z.string(),
-  codeNumber:z.string(),
   telephone: z.string(),
   address: z.string(),
 });
@@ -84,4 +83,8 @@ export const updateSchema = z.object({
   number: z.string(),
   address: z.string(),
   subscribed: z.boolean(),
+});
+
+export const emailSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
 });
