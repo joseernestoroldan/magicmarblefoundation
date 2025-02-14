@@ -3,37 +3,50 @@
 import { db } from "@/db";
 import { sendAdminSponsorEmail, sendSponsorEmail } from "@/lib/mail";
 
+const findSubscribed = async (id: string) => {
+  const idSubcription = await db.sponsor.findFirst({ where: { idSub: id } });
+  return idSubcription;
+};
+
 export const sponsorCompleted = async (
-  email: string,
-  totalValue: string,
-  firstName: string,
-  secondName: string,
-  country: string,
-  address: string,
-  telephone: string
+  email: string | null,
+  totalValue: string | null,
+  firstName: string | null,
+  secondName: string | null,
+  telephone: string | null,
+  address: string | null,
+  country: string | null,
+  idSubscription: string | null
 ) => {
+  const invoice = {
+    email,
+    totalValue,
+    firstName,
+    secondName,
+    country,
+    address,
+    telephone,
+  };
 
-    const invoice = {
-        email,
-        totalValue,
-        firstName,
-        secondName,
-        country,
-        address,
-        telephone,
-      };
+  if (idSubscription) {
+    const isSubscribed = await findSubscribed(idSubscription);
+    if (!isSubscribed) {
+      await db.sponsor.create({
+        data: {
+          email,
+          amount: totalValue,
+          firstName,
+          secondName,
+          idSub: idSubscription,
+          telephone,
+          address,
+          country,
+        },
+      });
+    }
+  }
 
-    await db.sponsor.create({data:{
-        email,
-        amount: totalValue,
-        firstName,
-        secondName,
-        country,
-        address,
-        telephone,
-    }})
-
-    await sendAdminSponsorEmail(invoice)
-    await sendSponsorEmail(invoice)
-  console.log("hola");
+  // await sendAdminSponsorEmail(invoice)
+  // await sendSponsorEmail(invoice)
+ 
 };
