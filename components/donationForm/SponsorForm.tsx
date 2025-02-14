@@ -25,12 +25,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
-import { sponsorCompleted } from "@/actions/sponsor";
 import { SponsorFormProps } from "@/types/types";
-import {
-  createPlan,
-  createSubscriber,
-} from "@/lib/apiCalls";
+import { createPlan, createSubscriber } from "@/lib/apiCalls";
 import { FaSortAmountDown } from "react-icons/fa";
 
 export default function SponsorForm({
@@ -52,7 +48,6 @@ export default function SponsorForm({
       firstName: firstName ?? "",
       secondName: secondName ?? "",
       country: country ?? "",
-      codeNumber: codeNumber ?? "",
       telephone: number ?? "",
       address: address ?? "",
       amount: "",
@@ -101,18 +96,32 @@ export default function SponsorForm({
   };
 
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
-    const { amount, email, firstName, secondName, codeNumber, telephone, address, country } = data;
+    const {
+      amount,
+      email,
+      firstName,
+      secondName,
+      telephone,
+      country,
+      address,
+      
+    } = data;
 
     try {
       setLoading(true);
-
       const planId = await createPlan(amount);
-      console.log(planId);
-      const response = await createSubscriber(email, planId, firstName, secondName, amount);
+      const response = await createSubscriber(
+        email,
+        planId,
+        firstName,
+        secondName,
+        amount,
+        telephone,
+        address,
+        country
+      );
       const data = await response.json();
       const { subscription } = data;
-      console.log("Subscription:", subscription);
-
       window.location.href = subscription.links.find(
         (link: any) => link.rel === "approve"
       ).href;
@@ -225,37 +234,6 @@ export default function SponsorForm({
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="country">Country</Label>
-                  <Controller
-                    name="country"
-                    control={control}
-                    render={({ field }) => (
-                      <>
-                        <Select
-                          onValueChange={field.onChange}
-                          value={field.value}
-                        >
-                          <SelectTrigger className="border border-gray-400 rounded-full">
-                            <SelectValue placeholder="Select a country" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {countries.map((item: any) => (
-                              <SelectItem key={item.value} value={item.value}>
-                                {item.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        {errors.country && (
-                          <p className="text-red-500 text-sm">
-                            {errors.country.message}
-                          </p>
-                        )}
-                      </>
-                    )}
-                  />
-                </div>
-                <div className="space-y-2">
                   <Label htmlFor="address">Address</Label>
                   <Input
                     {...control.register("address")}
@@ -269,6 +247,21 @@ export default function SponsorForm({
                       {errors.address.message}
                     </p>
                   )}
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="country">Country</Label>
+                  <Select onValueChange={(value) => setValue("country", value)}>
+                    <SelectTrigger className="border border-gray-400 rounded-full" >
+                      <SelectValue placeholder="Select a country" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white">
+                      {countries.map((item) => (
+                        <SelectItem key={item.value} value={item.value}>
+                          {item.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="telephone">Telephone Number</Label>
