@@ -101,7 +101,7 @@ model Sponsor {
   name       String?
   firstName  String?
   secondName String?
-  email      String? @unique 
+  email      String?  
   country    String?
   telephone  String?
   address    String?
