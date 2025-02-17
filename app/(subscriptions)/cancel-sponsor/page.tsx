@@ -1,37 +1,57 @@
 import FormSponsorCancel from "@/components/sponsor/FormSponsorCancel";
 import { db } from "@/db";
+import { deleteSubscription } from "@/lib/apiCalls";
+
 
 const findSubscriptions = async (email: string) => {
   const subscriptions = await db.sponsor.findMany({ where: { email } });
-  if (subscriptions.length === 0) return null;
   return subscriptions;
 };
 
-async function cancelSponsor({ email }: { email: string }) {
+async function findSubscription({ email }: { email: string }) {
   "use server";
-
   try {
-    console.log("Finding Subscriptions for:", email);
     const subscriptions = await findSubscriptions(email);
-    console.log("Subscriptions:", subscriptions);
-
-    // Example: Call an external API
-    // await fetch("https://api.example.com/cancel-sponsor", {
-    //   method: "POST",
-    //   body: JSON.stringify({ email }),
-    // });
-
-    return { success: true, message: `Subscriptions found ${email}`, subscriptions:subscriptions };
+    return {
+      success: true,
+      message: `Subscriptions found ${email}`,
+      subscriptions: subscriptions,
+    };
   } catch (error) {
     console.error("Error finding subscriptions:", error);
-    return { success: false, message: "Failed to fetch subscriptions", subscriptions:null };
+    return {
+      success: false,
+      message: "Failed to fetch subscriptions",
+      subscriptions: null,
+    };
+  }
+}
+
+async function cancelSubscription(idSub: string) {
+  "use server";
+  try {
+    const register = await db.sponsor.findFirst({ where: { idSub: idSub } });
+    if (!register) throw new Error("Subscription not found!!");
+    const id = register.id;
+    const response = await deleteSubscription(idSub);
+    if (!response.success) return {success: false, message: "Failed to cancel subscription"}
+    await db.sponsor.delete({ where: { id } });
+    
+
+    return { success: true, message: `Subscription cancelled ${id}` };
+  } catch (error) {
+    console.error("Error cancelling subscription:", error);
+    return { success: false, message: "something went wrong with the cancel subscription" };
   }
 }
 
 const CancelSponsorPage = async () => {
   return (
     <div className="flex flex-col items-center py-4 ">
-      <FormSponsorCancel cancelSponsor={cancelSponsor} />
+      <FormSponsorCancel
+        findSubscription={findSubscription}
+        cancelSubscription={cancelSubscription}
+      />
     </div>
   );
 };

@@ -20,16 +20,22 @@ type SubscriptionsType =
     }[]
   | null;
 
-type CancelSponsorFunction = (data: { email: string }) => Promise<{
+type FindSubscriptionFunction = (data: { email: string }) => Promise<{
   success: boolean;
   message: string;
   subscriptions: SubscriptionsType;
 }>;
 
+type CancelSubscriptionFunction = (
+  id: string
+) => Promise<{ success: boolean; message: string }>;
+
 export default function FormSponsorCancel({
-  cancelSponsor,
+  findSubscription,
+  cancelSubscription,
 }: {
-  cancelSponsor: CancelSponsorFunction;
+  findSubscription: FindSubscriptionFunction;
+  cancelSubscription: CancelSubscriptionFunction;
 }) {
   const {
     register,
@@ -42,7 +48,8 @@ export default function FormSponsorCancel({
   const [subscriptions, setSubscriptions] = useState<SubscriptionsType>(null);
 
   const onSubmit = async (data: any) => {
-    const response = await cancelSponsor(data);
+    const response = await findSubscription(data);
+    console.log(response.subscriptions)
     if (response.success) setSubscriptions(response.subscriptions);
     console.log(response.message);
   };
@@ -83,7 +90,7 @@ export default function FormSponsorCancel({
           Find my subscriptions
         </button>
       </form>
-      {subscriptions && (
+      {subscriptions && subscriptions.length !== 0 && (
         <div className="w-full max-w-xl flex flex-col">
           <h2 className="text-xl font-bold mt-4 text-gray-500 text-center">
             This are the products you are subscribed
@@ -91,14 +98,30 @@ export default function FormSponsorCancel({
           {subscriptions.map((sub) => (
             <div
               key={sub.id}
-              className="flex justify-between border border-gray-200 text-gray-500 p-4 rounded-lg mt-4"
+              className="flex justify-between items-center border border-gray-200 text-gray-500 p-4 rounded-lg mt-4"
             >
-              <p className="text-lg">ID: {sub.id}</p>
+              <p className="text-lg">ID: {sub.idSub}</p>
               <p className="text-lg">Amount: {sub.amount}</p>
+
+              {sub.idSub && (
+                <button
+                  className="bg-cyan-500 rounded-full hover:bg-cyan-400 text-white px-4 py-2"
+                  onClick={async () => {
+                    if (sub.idSub) {
+                      const response = await cancelSubscription(sub.idSub);
+                      if (response.success){ setSubscriptions(null);}
+                      console.log(response.message);
+                    }
+                  }}
+                >
+                  Cancel
+                </button>
+              )}
             </div>
           ))}
         </div>
       )}
+      { subscriptions && subscriptions.length === 0 && <p className="text-center text-gray-500 text-2xl font-bold my-8">No subscriptions found</p>}
     </div>
   );
 }

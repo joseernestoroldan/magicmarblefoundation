@@ -1,5 +1,3 @@
-import { PlanType } from "@/types/types";
-
 export const createPlan = async (amount: string) => {
   try {
     const response = await fetch("/api/create-plan", {
@@ -30,7 +28,7 @@ export const createSubscriber = async (
   amount: string,
   telephone: string,
   address: string,
-  country: string,
+  country: string
 ) => {
   try {
     const response = await fetch("/api/create-subscription", {
@@ -73,4 +71,23 @@ export const getPlan = async (id: string) => {
   );
   const plan = await data.json();
   return plan;
+};
+
+export const deleteSubscription = async (id: string) => {
+   try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cancel-subscription`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    });
+    if (response.ok) return { success: true, response };
+    throw new Error("Something went wrong");
+  } catch (error) {
+    console.error("Subscription cancellation error:", error);
+    return { success: false, error };
+  }
 };

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       address,
     } = await request.json();
 
-    // Validate input
+
     if (!planId || !email || !firstName || !secondName || !amount) {
       return NextResponse.json({ error: "Fields Missing" }, { status: 400 });
     }
@@ -32,8 +32,6 @@ export async function POST(request: Request) {
     urlSuccess.searchParams.append("telephone", telephone);
     urlSuccess.searchParams.append("country", country);
     urlSuccess.searchParams.append("address", address);
-
-    console.log(urlSuccess)
 
     const subscriptionResponse = await axios.post(
       `${process.env.PAYPAL_API_BASE}/v1/billing/subscriptions`,
