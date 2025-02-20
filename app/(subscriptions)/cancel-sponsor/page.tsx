@@ -1,5 +1,5 @@
 
-import FormSponsorCancel from "@/components/sponsor/FormSponsorCancel";
+import FormSponsorCancel from "@/components/sponsorsComponents/FormSponsorCancel";
 import { db } from "@/db";
 import { deleteSubscription } from "@/lib/apiCalls";
 

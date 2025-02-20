@@ -2,9 +2,9 @@ import { getOne } from "@/client";
 import {
   QueryType,
 } from "@/types/types";
-import { SponsorButton } from "@/components/sponsor/SponsorButton";
+import { SponsorButton } from "@/components/sponsorsComponents/SponsorButton";
 import Paragraphs from "@/components/parrafos/Paragraphs";
-import { SponsorGallery } from "../../../components/sponsor/SponsorGallery";
+import { SponsorGallery } from "../../../components/sponsorsComponents/SponsorGallery";
 
 const SponsorDynamicPage = async ({
   params: { id: _Id },
