@@ -4,7 +4,7 @@ import {
 } from "@/types/types";
 import { SponsorButton } from "@/components/sponsor/SponsorButton";
 import Paragraphs from "@/components/parrafos/Paragraphs";
-import { SponsorGallery } from "@/components/sponsor/SponsorGallery";
+import { SponsorGallery } from "../../../components/sponsor/SponsorGallery";
 
 const SponsorDynamicPage = async ({
   params: { id: _Id },
