@@ -261,7 +261,6 @@ export type SponsorFormProps = {
   address: string | null;
 };
 
-
 export type PlanType = {
   id: string;
   version: number;
@@ -315,3 +314,21 @@ export type PlanType = {
   }[];
 };
 
+export type GoogleDriveFile = {
+  mimeType: string;
+  webViewLink: string;
+  id: string;
+  name: string;
+  folderId: string;
+  folderName: string;
+};
+
+export type GoogleDriveResponse = {
+  data: GoogleDriveFile[];
+  success: boolean;
+};
+
+export type GroupedFiles = {
+  folderName: string;
+  files: GoogleDriveFile[];
+};

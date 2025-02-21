@@ -1,3 +1,5 @@
+import { GoogleDriveResponse } from "@/types/types";
+
 export const createPlan = async (amount: string) => {
   try {
     const response = await fetch("/api/create-plan", {
@@ -90,4 +92,10 @@ export const deleteSubscription = async (id: string) => {
     console.error("Subscription cancellation error:", error);
     return { success: false, error };
   }
+};
+
+export const fetchFiles = async (): Promise<GoogleDriveResponse> => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/documents`);
+  if (!response.ok) throw new Error('Failed to fetch files');
+  return response.json();
 };
