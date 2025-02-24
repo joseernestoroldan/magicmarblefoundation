@@ -15,7 +15,7 @@ export async function GET() {
 
     const folderResponse = await drive.files.list({
       q: "'11JIdhvvpGF3cTWjomHuS02eH8ZZ8zCOt' in parents",
-      fields: "files(id, name, webViewLink, mimeType, parents)",
+      fields: "files(id, name, webViewLink, mimeType, parents, thumbnailLink)",
     });
 
     if (!folderResponse.data.files || folderResponse.data.files.length === 0) {
@@ -29,7 +29,7 @@ export async function GET() {
       folders.map(async (folder) => {
         const fileResponse = await drive.files.list({
           q: `'${folder.id}' in parents`, // Fetch files inside this folder
-          fields: "files(id, name, webViewLink, mimeType)",
+          fields: "files(id, name, webViewLink, mimeType, thumbnailLink)",
         });
 
         if (!fileResponse.data.files || fileResponse.data.files.length === 0) {

@@ -321,6 +321,7 @@ export type GoogleDriveFile = {
   name: string;
   folderId: string;
   folderName: string;
+  thumbnailLink: string;
 };
 
 export type GoogleDriveResponse = {

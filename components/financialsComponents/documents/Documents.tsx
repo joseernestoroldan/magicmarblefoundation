@@ -38,7 +38,7 @@ const groupedFiles = data.reduce((acc: { [key: string]: any[] }, file) => {
                 <h2 className="text-4xl font-bold w-fit mb-4">{folder.folderName}</h2>
                 <ul className="">
                     {folder.files.map((file) => (
-                        <li key={file.id}>
+                        <li key={file.id} className="flex flex-row items-center justify-between">
                             <Link className="text-cyan-500 text-xl" href={file.webViewLink} target="_blank" rel="noreferrer">
                                 {file.name}
                             </Link>
