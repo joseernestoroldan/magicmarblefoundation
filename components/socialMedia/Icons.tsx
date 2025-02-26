@@ -3,6 +3,7 @@ import { LiaFacebook as FbIcon } from "react-icons/lia";
 import { LiaInstagram as IgIcon } from "react-icons/lia";
 import { TiSocialYoutubeCircular as YouTubeIcon } from "react-icons/ti";
 import { IoMdContact as ContactIcon } from "react-icons/io";
+import { AiFillTikTok as TikTokIcon } from "react-icons/ai";
 import { IconsProps } from "@/types/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,6 +22,10 @@ const links = [
     href: "https://www.youtube.com/@magicmarble2478",
     Icon: YouTubeIcon,
   },
+  {
+    href: "https://www.tiktok.com/@themagicmarble",
+    Icon: TikTokIcon,
+  },
 ];
 
 const Icons = ({ show, setShow, color, name }: IconsProps) => {
@@ -30,8 +35,7 @@ const Icons = ({ show, setShow, color, name }: IconsProps) => {
       {name && pathname !== "/profile" && (
         <Link
           className={`${color} hover:bg-zinc-200 hover:text-black text-sm underline border-2 rounded-[10px] h-[1.6rem] flex justify-center items-center px-2 border-[${color}]`}
-          href={"/profile"}
-        >
+          href={"/profile"}>
           Profile
         </Link>
       )}
