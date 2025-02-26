@@ -28,5 +28,20 @@
       scrollbar-color: rgb(125, 134, 148) rgb(179, 228, 179);
     }
 }
+
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
   
 
