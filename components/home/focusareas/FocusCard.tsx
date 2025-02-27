@@ -19,10 +19,10 @@ const FocusCard = ({ src, alt, title, body, _id }: FocusCardProps) => {
           />
         </div>
 
-        <h2 className="lg:text-2xl md:text-lg font-bold text-white h-10 my-4 ">
+        <h2 className="md:text-lg font-bold text-white h-10 my-4 text-center">
           {title}
         </h2>
-        <p className=" h-52 max-w-[300px] text-base lg:text-md font-medium indent-6 text-white text-justify">
+        <p className=" h-52 max-w-[300px] text-base lg:text-md font-medium indent-6 text-white text-center">
           {body}
         </p>
       </div>
