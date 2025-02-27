@@ -4,7 +4,7 @@ import Documents from "@/components/financialsComponents/documents/Documents";
 const FinancialsPage = async () => {
   return (
     <div className="w-full flex flex-col items-center">
-      <ChartsComponent/>
+      {/* <ChartsComponent/> */}
       <Documents />
     </div>
   );

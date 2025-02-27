@@ -31,14 +31,14 @@ const Documents = async () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center py-4 space-y-4">
-      <h1 className="text-center text-4xl font-bold">Financials History</h1>
+      <h1 className="text-center text-4xl font-bold text-gray-500">Financials History</h1>
       <div className="flex flex-row flex-wrap gap-4">
         {result.map((folder) => (
           <div
             key={folder.folderName}
             className="p-4 w-[300px] flex flex-col items-center justify-center"
           >
-            <h2 className="text-4xl font-bold w-fit mb-4">
+            <h2 className="text-4xl font-bold w-fit mb-4 text-gray-500 lowercase">
               {folder.folderName}
             </h2>
             <ul className="">

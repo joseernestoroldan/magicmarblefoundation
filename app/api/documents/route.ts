@@ -14,7 +14,7 @@ export async function GET() {
     const drive = google.drive({ version: "v3", auth });
 
     const folderResponse = await drive.files.list({
-      q: "'11JIdhvvpGF3cTWjomHuS02eH8ZZ8zCOt' in parents",
+      q: "'1Vg74UBkx9k1yBcCLVs6oTqNstmbgsH5x' in parents",
       fields: "files(id, name, webViewLink, mimeType, parents, thumbnailLink)",
     });
 
