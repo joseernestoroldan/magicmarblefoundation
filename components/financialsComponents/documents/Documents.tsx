@@ -31,35 +31,44 @@ const Documents = async () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col items-center py-4 space-y-4">
-      <h1 className="text-center text-4xl font-bold text-gray-500">Financials History</h1>
+      <h1 className="text-center text-4xl font-bold text-gray-500">
+        Financials Documents
+      </h1>
       <div className="flex flex-row flex-wrap gap-4">
-        {result.map((folder) => (
-          <div
-            key={folder.folderName}
-            className="p-4 w-[300px] flex flex-col items-center justify-center"
-          >
-            <h2 className="text-4xl font-bold w-fit mb-4 text-gray-500 lowercase">
-              {folder.folderName}
-            </h2>
-            <ul className="">
-              {folder.files.map((file) => (
-                <li
-                  key={file.id}
-                  className="flex flex-row items-center justify-between"
-                >
-                  <Link
-                    className="text-cyan-500 text-xl"
-                    href={file.webViewLink}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {file.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {result.map((folder) => {
+          console.log(folder.folderName)
+          console.log(folder.files)
+          if (folder.folderName !== "Other Documents") {
+            return (
+              <div
+                key={folder.folderName}
+                className="p-4 w-[300px] flex flex-col items-center justify-center">
+                <h2 className="text-4xl font-bold w-fit mb-4 text-gray-500 lowercase">
+                  {folder.folderName}
+                </h2>
+                <ul className="">
+                  {folder.files.map((file) => (
+                    <li
+                      key={file.id}
+                      className="flex flex-row items-center justify-between">
+                      <Link
+                        className="text-cyan-500 text-xl"
+                        href={file.webViewLink}
+                        target="_blank"
+                        rel="noreferrer">
+                        {file.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          } else {
+            return (
+              null
+            );
+          }
+        })}
       </div>
     </div>
   );
