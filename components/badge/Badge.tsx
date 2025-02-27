@@ -23,7 +23,7 @@ const Badge = ({ mode }: BadgeProps) => {
         href={"https://greatnonprofits.org/org/magic-marble-foundation"}
         target="_blank"
       >
-        <div className="w-[90px] h-[65px] relative inline-block lg:hidden">
+        <div className="w-[60px] h-[46px] sm:w-[90px] sm:h-[65px] relative inline-block lg:hidden">
           <Image src="/badge.png" alt="" fill priority />
         </div>
       </Link>

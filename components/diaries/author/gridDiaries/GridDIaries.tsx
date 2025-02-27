@@ -21,15 +21,13 @@ const GridDIaries = async ({diaries}: {diaries:QueryType[]}) => {
           />
         </div>
    
-          <Container>
-            <LayoutY>
-              <div className="flex flex-col flex-wrap md:flex-row items-center justify-center w-full space-y-0 max-w-5xl space-x-0">
+         
+              <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-center">
                 {diaries.map((diary: QueryType) => (
                   <Diary key={diary._id} diary ={diary}/>
                 ))}
               </div>
-            </LayoutY>
-          </Container>
+            
 
       </EnterSection>
     </HeadingCenterAnimation>

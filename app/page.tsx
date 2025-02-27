@@ -16,7 +16,7 @@ const HomePage = async () => {
   const diaries: QueryType[] | null = await getOrderedData("dairies", "2");
 
   return (
-    <div className="w-full flex-col justify-center items-center space-y-24">
+    <div className="w-full flex-col justify-center items-center space-y-24 overflow-hidden">
       <Banner />
 
       <ParallaxContainer bgImage="bg-map.png" opacity="0.1">
