@@ -22,7 +22,7 @@ const GridDIaries = async ({diaries}: {diaries:QueryType[]}) => {
         </div>
    
          
-              <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-center">
+              <div className="w-full max-w-5xl flex flex-col sm:flex-row items-center justify-center flex-nowrap sm:flex-wrap gap-4">
                 {diaries.map((diary: QueryType) => (
                   <Diary key={diary._id} diary ={diary}/>
                 ))}

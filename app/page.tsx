@@ -7,12 +7,10 @@ import Donations from "@/components/home/donations/Donations";
 import GridDIaries from "@/components/diaries/author/gridDiaries/GridDIaries";
 import { getOrderedData } from "@/client";
 import OurPartners from "@/components/ourpartners/OurPartners";
-import { QueryType} from "@/types/types";
-
+import { QueryType } from "@/types/types";
 
 const HomePage = async () => {
- 
-  const projects: QueryType[] | null =  await getOrderedData("projects", "5");
+  const projects: QueryType[] | null = await getOrderedData("projects", "5");
   const diaries: QueryType[] | null = await getOrderedData("dairies", "2");
 
   return (
