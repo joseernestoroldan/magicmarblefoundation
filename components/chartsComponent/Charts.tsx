@@ -123,7 +123,7 @@ export default function Charts() {
   return (
     <Card className="flex flex-col mx-auto border-none w-full shadow-none justify-center items-center min-h-[calc(100vh-160px)]">
       <CardHeader className="items-center pb-0">
-        <CardTitle className="text-gray-500 font-bold text-2xl sm:text-4xl mb-4">
+        <CardTitle className="text-cyan-500 font-bold text-2xl sm:text-4xl mb-12">
           How Donations Are Spent
         </CardTitle>
         <div className="flex justify-center items-center space-x-4">

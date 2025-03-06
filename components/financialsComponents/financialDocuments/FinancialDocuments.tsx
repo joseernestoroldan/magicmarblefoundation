@@ -49,7 +49,7 @@ const ListOfDocuments: React.FC<ListOfDocumentsProps> = React.memo(
 
     return (
       <div className="w-full max-w-2xl mx-auto flex flex-col items-center py-4 space-y-4">
-        <h1 className="text-center text-4xl font-bold text-gray-500">{title}</h1>
+        <h1 className="text-center text-4xl font-bold text-cyan-500">{title}</h1>
         <div className="flex flex-col gap-4">
           {reversedFolders.map((folder) => (
             <Folder
