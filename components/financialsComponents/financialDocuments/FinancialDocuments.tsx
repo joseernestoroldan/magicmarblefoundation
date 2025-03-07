@@ -14,7 +14,7 @@ type FinancialDocumentsProps = {
 const Folder: React.FC<FolderTypes> = React.memo(({ folderName, files }) => (
   <div className="p-4 w-[300px] flex flex-col items-center justify-center">
     {folderName === "other documents" && (
-      <h2 className="text-2xl font-bold w-fit mb-4 text-gray-500 lowercase underline">
+      <h2 className="text-xl sm:text-2xl font-bold w-fit mb-4 text-gray-500 lowercase underline">
         {folderName}
       </h2>
     )}
@@ -22,7 +22,7 @@ const Folder: React.FC<FolderTypes> = React.memo(({ folderName, files }) => (
       {files.map((file) => (
         <li key={file.id} className="flex flex-row items-center justify-between">
           <Link
-            className="text-cyan-500 text-lg font-bold underline hover:text-cyan-400"
+            className="text-cyan-500 text-base font-bold underline hover:text-cyan-400"
             href={file.webViewLink}
             target="_blank"
             rel="noreferrer"
@@ -49,7 +49,7 @@ const ListOfDocuments: React.FC<ListOfDocumentsProps> = React.memo(
 
     return (
       <div className="w-full max-w-2xl mx-auto flex flex-col items-center py-4 space-y-4">
-        <h1 className="text-center text-4xl font-bold text-cyan-500">{title}</h1>
+        <h1 className="text-center text-xl sm:text-2xl font-bold text-cyan-500">{title}</h1>
         <div className="flex flex-col gap-4">
           {reversedFolders.map((folder) => (
             <Folder

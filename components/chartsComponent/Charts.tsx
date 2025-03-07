@@ -67,78 +67,128 @@ export default function Charts() {
 
   // Reusable PieChart component
   const renderPieChart = (data: (typeof chartData)[keyof typeof chartData]) => (
-    <ChartContainer
-      config={chartConfig}
-      className="mx-auto max-h-[800px] px-0 w-full overflow-visible">
-      <PieChart>
-        <Pie
-          data={data}
-          dataKey="inversion"
-          labelLine={true}
-          paddingAngle={0.2}
-          innerRadius="50%"
-          stroke="rgb(229, 231, 235)"
-          strokeWidth={1}
-          label={({ payload, ...props }) => {
-            const formattedInversion = payload.inversion.toLocaleString(
-              "en-US",
-              {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 2,
-              }
-            );
+    <div>
+      <ChartContainer
+        config={chartConfig}
+        className="mx-auto max-h-[800px] px-0 w-full overflow-visible hidden min-[500px]:block">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="inversion"
+            labelLine={true}
+            paddingAngle={0.2}
+            innerRadius="50%"
+            stroke="rgb(229, 231, 235)"
+            strokeWidth={1}
+            label={({ payload, ...props }) => {
+              const formattedInversion = payload.inversion.toLocaleString(
+                "en-US",
+                {
+                  style: "currency",
+                  currency: "USD",
+                  minimumFractionDigits: 2,
+                }
+              );
 
-            return (
-              <g>
-                <text
-                  x={props.x}
-                  y={props.y + 10}
-                  textAnchor={props.textAnchor}
-                  dominantBaseline={props.dominantBaseline}
-                  fill="rgb(107, 114, 128)"
-                  fontSize={14}
-                  fontWeight="bold">
-                  {payload.category}
-                </text>
-                <text
-                  x={props.x}
-                  y={props.y - 10}
-                  textAnchor={props.textAnchor}
-                  dominantBaseline={props.dominantBaseline}
-                  fill="rgb(107, 114, 128)"
-                  fontSize={18}
-                  fontWeight="bold">
-                  {formattedInversion}
-                </text>
-              </g>
-            );
-          }}
-          nameKey="category"
-        />
-      </PieChart>
-    </ChartContainer>
+              return (
+                <g>
+                  <text
+                    x={props.x}
+                    y={props.y + 10}
+                    textAnchor={props.textAnchor}
+                    dominantBaseline={props.dominantBaseline}
+                    fill="rgb(107, 114, 128)"
+                    fontSize={window.innerWidth < 640 ? 10 : 14}
+                    fontWeight="bold">
+                    {payload.category}
+                  </text>
+                  <text
+                    x={props.x}
+                    y={props.y - 10}
+                    textAnchor={props.textAnchor}
+                    dominantBaseline={props.dominantBaseline}
+                    fill="rgb(107, 114, 128)"
+                    fontSize={window.innerWidth < 640 ? 14 : 18}
+                    fontWeight="bold">
+                    {formattedInversion}
+                  </text>
+                </g>
+              );
+            }}
+            nameKey="category"
+          />
+        </PieChart>
+      </ChartContainer>
+
+      <div className="w-full flex flex-col items-center min-[500px]:hidden">
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto max-h-[800px] min-h-[300px] px-0 w-full overflow-visible">
+          <PieChart>
+            <Pie
+              data={data}
+              dataKey="inversion"
+              labelLine={false}
+              paddingAngle={0.2}
+              innerRadius="50%"
+              stroke="rgb(229, 231, 235)"
+              strokeWidth={1}
+              nameKey="category"
+            />
+          </PieChart>
+        </ChartContainer>
+
+        {/* Table to show the information of each year */}
+        <div className="w-full mt-4">
+          <table className="w-full border border-black text-gray-500 text-xs">
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                    {item.category}
+                  </td>
+                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                    {item.inversion.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      minimumFractionDigits: 2,
+                    })}
+                  </td>
+                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                    <div
+                      className="w-8 h-8"
+                      style={{ backgroundColor: item.fill }}></div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 
   return (
-    <Card className="flex flex-col mx-auto border-none w-full shadow-none justify-center items-center min-h-[calc(100vh-160px)]">
+    <Card className="flex flex-col mx-auto border-none w-full shadow-none justify-center items-center min-h-[calc(100vh-160px)] ">
       <CardHeader className="items-center pb-0">
-        <CardTitle className="text-cyan-500 font-bold text-2xl sm:text-4xl mb-12">
+        <CardTitle className="text-cyan-500 font-bold text-xl sm:text-2xl mt-4 mb-12">
           How Donations Are Spent
         </CardTitle>
-        <div className="flex justify-center items-center space-x-4">
-            {Object.keys(chartData)
+        <div className="flex min-[500px]:flex-row flex-col  justify-center items-center min-[500px]:space-x-4 space-x-0 min-[500px]:space-y-0 space-y-4">
+          {Object.keys(chartData)
             .sort((a, b) => Number(b) - Number(a))
             .map((year) => (
               <button
-              key={year}
-              onClick={() =>
-              setSelectedYear(year as unknown as keyof typeof chartData)
-              }
-              className={`${
-              Number(selectedYear) === Number(year) ? "bg-cyan-500" : "bg-cyan-300"
-              } text-white font-bold rounded-full w-24 py-4`}>
-              {year}
+                key={year}
+                onClick={() =>
+                  setSelectedYear(year as unknown as keyof typeof chartData)
+                }
+                className={`${
+                  Number(selectedYear) === Number(year)
+                    ? "bg-cyan-500"
+                    : "bg-cyan-300"
+                } text-white font-bold rounded-full w-24 py-4`}>
+                {year}
               </button>
             ))}
         </div>
