@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import { donationSchema } from "@/schemas";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { countries } from "@/utils/countries";
 import { useState } from "react";
@@ -27,7 +27,6 @@ import {
 import { useRouter } from "next/navigation";
 import { SponsorFormProps } from "@/types/types";
 import { createPlan, createSubscriber } from "@/lib/apiCalls";
-import { FaSortAmountDown } from "react-icons/fa";
 
 export default function SponsorForm({
   sessionUser,
@@ -104,7 +103,6 @@ export default function SponsorForm({
       telephone,
       country,
       address,
-      
     } = data;
 
     try {
@@ -135,7 +133,7 @@ export default function SponsorForm({
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border-gray-200 rounded-[20px]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <ProgressBarComponent stage={stage} />
 
@@ -152,12 +150,11 @@ export default function SponsorForm({
                     <button
                       key={amount}
                       onClick={() => handleAmountChange(amount)}
-                      className={`h-20 flex items-center justify-center text-lg font-semibold rounded-[10px] transition-colors ${
+                      className={`h-20 flex items-center justify-center text-lg text-gray-500 font-semibold rounded-[10px] transition-colors ${
                         form.watch("amount") === amount
                           ? "bg-cyan-500 text-white"
                           : "bg-gray-200 hover:bg-gray-200/80"
-                      }`}
-                    >
+                      }`}>
                       ${amount}
                     </button>
                   ))}
@@ -185,8 +182,7 @@ export default function SponsorForm({
                 <Button
                   onClick={handleNext}
                   className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-                  disabled={!form.watch("amount")}
-                >
+                  disabled={!form.watch("amount")}>
                   Next
                 </Button>
               </CardFooter>
@@ -251,7 +247,7 @@ export default function SponsorForm({
                 <div className="space-y-2">
                   <Label htmlFor="country">Country</Label>
                   <Select onValueChange={(value) => setValue("country", value)}>
-                    <SelectTrigger className="border border-gray-400 rounded-full" >
+                    <SelectTrigger className="border border-gray-400 rounded-full">
                       <SelectValue placeholder="Select a country" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -299,14 +295,12 @@ export default function SponsorForm({
               <CardFooter className="flex justify-between">
                 <Button
                   onClick={handleBack}
-                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
-                >
+                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400">
                   Back
                 </Button>
                 <Button
                   onClick={handleNext}
-                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400"
-                >
+                  className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400">
                   Next
                 </Button>
               </CardFooter>
@@ -321,16 +315,14 @@ export default function SponsorForm({
               <CardFooter className="flex justify-between">
                 <Button
                   onClick={handleBack}
-                  className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-                >
+                  className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full">
                   Back
                 </Button>
 
                 <Button
                   type="submit"
                   className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
-                  disabled={loading}
-                >
+                  disabled={loading}>
                   {loading
                     ? "Processing..."
                     : `Sponsor with $${form.watch("amount")}`}
@@ -349,24 +341,21 @@ const ProgressBarComponent = ({ stage }: { stage: number }) => {
     <div className="flex justify-center items-center pb-6 pt-6">
       <div className="flex items-center justify-center">
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 1 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-        >
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 1 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}>
           <DollarSignIcon className="h-6 w-6" />
         </div>
         <div
           className={`w-16 h-1 ${stage >= 2 ? "bg-cyan-200" : "bg-gray-200"}`}
         />
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 2 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-        >
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 2 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}>
           <UserIcon className="h-6 w-6" />
         </div>
         <div
           className={`w-16 h-1 ${stage >= 3 ? "bg-cyan-200" : "bg-gray-200"}`}
         />
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 3 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}
-        >
+          className={`w-10 h-10 rounded-full flex items-center justify-center ${stage >= 3 ? "bg-cyan-500 text-white" : "bg-gray-200"}`}>
           <CreditCardIcon className="h-6 w-6" />
         </div>
       </div>

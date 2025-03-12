@@ -1,5 +1,4 @@
 "use client";
-
 import * as z from "zod";
 import { donationSchema } from "@/schemas";
 import { countries } from "@/utils/countries";
@@ -87,7 +86,7 @@ export default function DonationForm({
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md border-gray-200 rounded-[20px] shadow-md">
         <div className="flex justify-center mb-4 pt-6">
           <div className="flex items-center">
             <div
@@ -124,7 +123,7 @@ export default function DonationForm({
                   <button
                     key={amount}
                     onClick={() => handleAmountChange(amount)}
-                    className={`h-20 flex items-center justify-center text-lg font-semibold rounded-[10px] transition-colors ${
+                    className={`h-20 flex items-center justify-center text-lg text-gray-500 font-semibold rounded-[10px] transition-colors ${
                       formData.amount === amount
                         ? "bg-cyan-500 text-white"
                         : "bg-gray-200 hover:bg-gray-200/80"
