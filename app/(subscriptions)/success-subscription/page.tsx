@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getPlan } from "@/lib/apiCalls";
 import { PlanType } from "@/types/types";
 import Image from "next/image";
+import Link from "next/link";
 
 type SearchParams = {
   subscription_id?: string;
@@ -121,17 +122,18 @@ export default async function SuccessSubscriptionPage({
       </a>
 
       {/* Cancel Subscription Message */}
-      <div className="mt-8 text-gray-500 text-base px-4">
-        <p>
+      <div className="mt-8 text-gray-500 text-base px-4 text-center">
+        <p className="text-xs">
           If you wish to cancel your subscription now, please visit the{" "}
-          <a
+          <Link
             href="/cancel-sponsor"
             className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300"
           >
-            unsubscribe page
-          </a>
+            Unsubscribe Page
+          </Link>
           . Or unsubscribe whenever you want in Sponsor Section.
         </p>
+        <p className="text-xs">If you want to sponsor someone else please go to <Link  className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300" href={"/sponsors"}>Sponsors</Link> </p>
       </div>
     </div>
   );

@@ -1,8 +1,6 @@
-
 import FormSponsorCancel from "@/components/sponsorsComponents/FormSponsorCancel";
 import { db } from "@/db";
 import { deleteSubscription } from "@/lib/apiCalls";
-
 
 const findSubscriptions = async (email: string) => {
   const subscriptions = await db.sponsor.findMany({ where: { email } });
@@ -35,14 +33,16 @@ async function cancelSubscription(idSub: string) {
     if (!register) throw new Error("Subscription not found!!");
     const id = register.id;
     const response = await deleteSubscription(idSub);
-    if (!response.success) return {success: false, message: "Failed to cancel subscription"}
+    if (!response.success)
+      return { success: false, message: "Failed to cancel subscription" };
     await db.sponsor.delete({ where: { id } });
-    
-
     return { success: true, message: `Subscription cancelled ${id}` };
   } catch (error) {
     console.error("Error cancelling subscription:", error);
-    return { success: false, message: "something went wrong with the cancel subscription" };
+    return {
+      success: false,
+      message: "something went wrong with the cancel subscription",
+    };
   }
 }
 

@@ -49,6 +49,10 @@ export type ProjectsProps = {
   color: string;
 };
 
+export type ScrollPosition = {
+  x: number;
+}
+
 export type menuProps = {
   disposition: string;
   space: string;
@@ -139,11 +143,11 @@ export type BannerDonationProps = {
 };
 
 export type AdoptionsProps = {
-  adoptions: any;
+  adoptions: QueryType[]
 };
 
 export type SponsorProps = {
-  sponsors: any;
+  sponsors: QueryType[]
 };
 
 export type TopPicksProps = {

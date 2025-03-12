@@ -5,6 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { useState } from "react";
 
+const total2023 = 104728 + 37325;
+const total2022 = 134589 + 33680 + 6640;
+const total2021 = 39473 + 5623 + 2532;
+
 // Data for each year
 const chartData = {
   2023: [
@@ -12,11 +16,13 @@ const chartData = {
       category: "Animal Rights and Welfare",
       inversion: 104728,
       fill: "rgb(6, 182, 212)",
+      total: total2023,
     },
     {
       category: "Underserved Communities",
       inversion: 37325,
       fill: "rgb(8, 145, 178)",
+      total: total2023,
     },
   ],
   2022: [
@@ -24,26 +30,40 @@ const chartData = {
       category: "Animal Rights and Welfare",
       inversion: 134589,
       fill: "rgb(6, 182, 212)",
+      total: total2022,
     },
     {
       category: "Underserved Communities",
       inversion: 33680,
       fill: "rgb(8, 145, 178)",
+      total: total2022,
     },
-    { category: "Administrative", inversion: 6640, fill: "rgb(14, 116, 144)" },
+    {
+      category: "Administrative",
+      inversion: 6640,
+      fill: "rgb(14, 116, 144)",
+      total: total2022,
+    },
   ],
   2021: [
     {
       category: "Animal Rights and Welfare",
       inversion: 39473,
       fill: "rgb(6, 182, 212)",
+      total: total2021,
     },
     {
       category: "Underserved Communities",
       inversion: 5623,
       fill: "rgb(8, 145, 178)",
+      total: total2021,
     },
-    { category: "Administrative", inversion: 2532, fill: "rgb(14, 116, 144)" },
+    {
+      category: "Administrative",
+      inversion: 2532,
+      fill: "rgb(14, 116, 144)",
+      total: total2021,
+    },
   ],
 };
 
@@ -91,7 +111,25 @@ export default function Charts() {
               );
 
               return (
-                <g>
+                <g 
+                x ={props.x < 350 ? props.x - 20 : props.x + 20}
+                y ={props.y > 350 ? props.y - 20 : props.y + 20}
+                
+                >
+                  
+                  <text
+                    x={props.x + 20}
+                    y={props.y - 30}
+                    textAnchor={props.textAnchor}
+                    dominantBaseline={props.dominantBaseline}
+                    fill="rgb(107, 114, 128)"
+                    fontSize={window.innerWidth < 640 ? 14 : 20}
+                    fontWeight="bold"
+                    
+                    >
+                    {`${((payload.inversion / payload.total) * 100).toFixed(1)}%`}
+                  </text>
+
                   <text
                     x={props.x}
                     y={props.y + 10}
@@ -139,22 +177,26 @@ export default function Charts() {
         </ChartContainer>
 
         {/* Table to show the information of each year */}
+
         <div className="w-full mt-4">
           <table className="w-full border border-black text-gray-500 text-xs">
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
-                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                  <td
+                    className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
                     {item.category}
                   </td>
-                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                  <td
+                    className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
                     {item.inversion.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                       minimumFractionDigits: 2,
                     })}
                   </td>
-                  <td className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
+                  <td
+                    className={` font-bold p-2 ${index % 2 === 0 ? "bg-white" : "bg-cyan-100"}`}>
                     <div
                       className="w-8 h-8"
                       style={{ backgroundColor: item.fill }}></div>

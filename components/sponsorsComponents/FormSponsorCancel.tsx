@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { emailSchema } from "@/schemas";
 import { useState } from "react";
+import { toast } from "sonner";
+import { Toaster } from "../ui/sonner";
 
 type SubscriptionsType =
   | {
@@ -49,9 +51,7 @@ export default function FormSponsorCancel({
 
   const onSubmit = async (data: any) => {
     const response = await findSubscription(data);
-    console.log(response.subscriptions)
     if (response.success) setSubscriptions(response.subscriptions);
-    console.log(response.message);
   };
 
   return (
@@ -61,13 +61,11 @@ export default function FormSponsorCancel({
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 w-full max-w-xs"
-      >
+        className="space-y-4 w-full max-w-xs">
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
+            className="block text-sm font-medium text-gray-700">
             Email Address:
           </label>
           <input
@@ -85,8 +83,7 @@ export default function FormSponsorCancel({
 
         <button
           type="submit"
-          className="w-full rounded-full flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-medium text-white bg-cyan-500 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
-        >
+          className="w-full rounded-full flex justify-center py-2 px-4 border border-transparent shadow-sm text-base font-medium text-white bg-cyan-500 hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500">
           Find my subscriptions
         </button>
       </form>
@@ -98,8 +95,7 @@ export default function FormSponsorCancel({
           {subscriptions.map((sub) => (
             <div
               key={sub.id}
-              className="flex justify-between items-center border border-gray-200 text-gray-500 p-4 rounded-lg mt-4"
-            >
+              className="flex justify-between items-center border border-gray-200 text-gray-500 p-4 rounded-lg mt-4">
               <p className="text-lg">ID: {sub.idSub}</p>
               <p className="text-lg">Amount: {sub.amount}</p>
 
@@ -109,11 +105,22 @@ export default function FormSponsorCancel({
                   onClick={async () => {
                     if (sub.idSub) {
                       const response = await cancelSubscription(sub.idSub);
-                      if (response.success){ setSubscriptions(null);}
+                      if (response.success) {
+                        setSubscriptions(
+                          (prev) =>
+                            prev?.filter((s) => s.idSub !== sub.idSub) || []
+                        );
+
+                        toast("Subscription Cancelled", {
+                          classNames: {
+                            toast:
+                              "bg-cyan-100 text-cyan-500 border border-cyan-500",
+                          },
+                        });
+                      }
                       console.log(response.message);
                     }
-                  }}
-                >
+                  }}>
                   Cancel
                 </button>
               )}
@@ -121,7 +128,12 @@ export default function FormSponsorCancel({
           ))}
         </div>
       )}
-      { subscriptions && subscriptions.length === 0 && <p className="text-center text-gray-500 text-2xl font-bold my-8">No subscriptions found</p>}
+      {subscriptions && subscriptions.length === 0 && (
+        <p className="text-center text-gray-500 text-2xl font-bold my-8">
+          No subscriptions found
+        </p>
+      )}
+      <Toaster />
     </div>
   );
 }

@@ -25,7 +25,7 @@ const Paragraphs = ({ contenido, sizeText, mdSizeText, indent }: { contenido: Bl
           return (
             <div key={index}>
               <div
-                className={`space-y-2 text-gray-500 font-semibold text-justify text-wrap w-full ${textSize} ${isBullet ? "list-item list-disc" : ""}`}
+                className={`space-y-2 text-gray-500 font-normal text-justify text-wrap w-full ${textSize} ${isBullet ? "list-item list-disc" : ""}`}
               >
               {isNumbered && <span>{numberParagraph}.</span>}  {text}
               </div>

@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     const planResponse = await axios.post(
       `${process.env.PAYPAL_API_BASE}/v1/billing/plans`,
       {
-        product_id: "PROD-72Y53810X59013909",
+        product_id: "PROD-27728994K2454980X",
         name: `Monthly Sponsorship for $${amount}`,
         description: "A subscription plan with monthly billing.",
         billing_cycles: [
