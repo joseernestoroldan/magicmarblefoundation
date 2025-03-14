@@ -128,7 +128,7 @@ export default function Charts() {
                     textAnchor={props.textAnchor}
                     dominantBaseline={props.dominantBaseline}
                     fill="rgb(255, 255, 255)"
-                    fontSize={window.innerWidth < 768 ? 10 : 14}
+                    fontSize={window.innerWidth < 768 ? 12 : 14}
                     fontWeight="bold">
                     {`${((payload.inversion / payload.total) * 100).toFixed(1)}%`}
                    
