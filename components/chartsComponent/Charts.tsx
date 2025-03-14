@@ -4,6 +4,8 @@ import { Pie, PieChart } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { useState } from "react";
+import { Exo_2 } from "next/font/google";
+import { X } from "lucide-react";
 
 const total2023 = 104728 + 37325;
 const total2022 = 134589 + 33680 + 6640;
@@ -90,8 +92,8 @@ export default function Charts() {
     <div>
       <ChartContainer
         config={chartConfig}
-        className="mx-auto max-h-[800px] px-0 w-full overflow-visible hidden min-[500px]:block">
-        <PieChart>
+        className="mx-auto max-h-[800px] min-w-[300px] min-h-[300px] px-0 w-full overflow-visible hidden sm:block">
+        <PieChart className="min-w-[300px] min-h-[300px] w-full">
           <Pie
             data={data}
             dataKey="inversion"
@@ -101,6 +103,10 @@ export default function Charts() {
             stroke="rgb(229, 231, 235)"
             strokeWidth={1}
             label={({ payload, ...props }) => {
+              console.log(props);
+              const RADIAN = Math.PI / 180;
+              const radius = props.innerRadius + (props.outerRadius - props.innerRadius) * 0.5;
+              const X_OFFSET = props.x < props.cx ? 20 : -20;
               const formattedInversion = payload.inversion.toLocaleString(
                 "en-US",
                 {
@@ -111,23 +117,21 @@ export default function Charts() {
               );
 
               return (
-                <g 
-                x ={props.x < 350 ? props.x - 20 : props.x + 20}
-                y ={props.y > 350 ? props.y - 20 : props.y + 20}
-                
-                >
-                  
+                <g>
                   <text
-                    x={props.x + 20}
-                    y={props.y - 30}
+                    // x={props.x < props.cx ? props.x  : props.x }
+                    // y={props.y < props.cy ? props.y   : props.y }
+
+                    x = {props.cx + radius * Math.cos(-props.midAngle * RADIAN) + X_OFFSET}
+                    y = {props.cy + radius * Math.sin(-props.midAngle * RADIAN)}
+                    
                     textAnchor={props.textAnchor}
                     dominantBaseline={props.dominantBaseline}
-                    fill="rgb(107, 114, 128)"
-                    fontSize={window.innerWidth < 640 ? 14 : 20}
-                    fontWeight="bold"
-                    
-                    >
+                    fill="rgb(255, 255, 255)"
+                    fontSize={window.innerWidth < 768 ? 10 : 14}
+                    fontWeight="bold">
                     {`${((payload.inversion / payload.total) * 100).toFixed(1)}%`}
+                   
                   </text>
 
                   <text
@@ -158,10 +162,10 @@ export default function Charts() {
         </PieChart>
       </ChartContainer>
 
-      <div className="w-full flex flex-col items-center min-[500px]:hidden">
+      <div className="w-full flex flex-col items-center sm:hidden">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto max-h-[800px] min-h-[300px] px-0 w-full overflow-visible">
+          className="mx-auto min-w-[300px] max-h-[800px] min-h-[300px] px-0 w-full overflow-visible">
           <PieChart>
             <Pie
               data={data}
