@@ -16,8 +16,7 @@ const MenuDropdowns = () => {
     <div className="hidden flex-row space-x-3 font-medium items-center lg:flex">
       <Link
         href={"/"}
-        className={`${pathname === "/" ? "hidden" : "inline-block"}`}
-      >
+        className={`${pathname === "/" ? "hidden" : "inline-block"}`}>
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Home
         </div>
@@ -28,16 +27,14 @@ const MenuDropdowns = () => {
           <button
             className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium"
             onMouseOver={() => setIsOpenAbout(true)}
-            onMouseLeave={() => setIsOpenAbout(false)}
-          >
+            onMouseLeave={() => setIsOpenAbout(false)}>
             About
           </button>
         </PopoverTrigger>
         <PopoverContent
           onMouseOver={() => setIsOpenAbout(true)}
           onMouseLeave={() => setIsOpenAbout(false)}
-          className="bg-white bg-opacity-90 border border-gray-200"
-        >
+          className="bg-white bg-opacity-90 border border-gray-200">
           <Link href={"/about"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               About Us
@@ -71,8 +68,7 @@ const MenuDropdowns = () => {
 
       <Link
         href={"/gallery"}
-        className={`${pathname === "/gallery" ? "hidden" : "inline-block"}`}
-      >
+        className={`${pathname === "/gallery" ? "hidden" : "inline-block"}`}>
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Gallery
         </div>
@@ -83,16 +79,14 @@ const MenuDropdowns = () => {
           <button
             className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium"
             onMouseEnter={() => setIsOpenChange(true)}
-            onMouseLeave={() => setIsOpenChange(false)}
-          >
+            onMouseLeave={() => setIsOpenChange(false)}>
             Be The Change
           </button>
         </PopoverTrigger>
         <PopoverContent
           onMouseEnter={() => setIsOpenChange(true)}
           onMouseLeave={() => setIsOpenChange(false)}
-          className="bg-white bg-opacity-90 border border-200"
-        >
+          className="bg-white bg-opacity-90 border border-200">
           <Link href={"/adoptions"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Adopt
@@ -115,8 +109,7 @@ const MenuDropdowns = () => {
 
       <Link
         href={"/grantees"}
-        className={`${pathname === "/grantees" ? "hidden" : "inline-block"}`}
-      >
+        className={`${pathname === "/grantees" ? "hidden" : "inline-block"}`}>
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
           Our Grantees
         </div>
@@ -124,8 +117,7 @@ const MenuDropdowns = () => {
 
       <Link
         href={"/paddyfield"}
-        className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}
-      >
+        className={`${pathname === "/paddyfield" ? "hidden" : "inline-block"}`}>
         <div className="text-nowrap cursor-pointer hover:drop-shadow-md  text-green-400 hover:text-gray-500 text-lg font-medium bg-transparent">
           Paddy Field
         </div>
