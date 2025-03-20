@@ -8,11 +8,11 @@ const PrivacyPolicyPage = () => {
         Last Updated: March 17, 2025
       </p>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
-        Magic Marble Foundation ("Magic Marble Foundation," "we," "our," or
-        "us") is committed to protecting your privacy. This Privacy Policy
+        Magic Marble Foundation (&quot; Magic Marble Foundation,&quot; &quot;we,&quot; &quot;our,&quot; or
+          &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy
         explains how information about you is collected, used, and disclosed by
         Magic Marble Foundation when you use our website, mobile application, or
-        other online products and services (collectively, "Services") or
+        other online products and services (collectively, &quot;Services&quot;) or
         otherwise interact with us. Magic Marble Foundation is a Michigan-based
         nonprofit organization dedicated to [your mission statement here].
       </p>
