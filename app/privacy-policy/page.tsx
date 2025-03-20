@@ -8,13 +8,22 @@ const PrivacyPolicyPage = () => {
         Last Updated: March 17, 2025
       </p>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
-        Magic Marble Foundation (&quot; Magic Marble Foundation,&quot; &quot;we,&quot; &quot;our,&quot; or
-          &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy
-        explains how information about you is collected, used, and disclosed by
-        Magic Marble Foundation when you use our website, mobile application, or
-        other online products and services (collectively, &quot;Services&quot;) or
-        otherwise interact with us. Magic Marble Foundation is a Michigan-based
-        nonprofit organization dedicated to [your mission statement here].
+        Magic Marble Foundation (&quot; Magic Marble Foundation,&quot;
+        &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
+        protecting your privacy. This Privacy Policy explains how information
+        about you is collected, used, and disclosed by Magic Marble Foundation
+        when you use our website, mobile application, or other online products
+        and services (collectively, &quot;Services&quot;) or otherwise interact
+        with us. Magic Marble Foundation is a Michigan-based nonprofit
+        organization dedicated to mobilize empathy for all
+        species and the world we share, fostering compassionate action that
+        honors the interconnection between humans, animals, and ecosystems.
+        Through our initiatives, we create sustainable solutions that protect
+        vulnerable beings, restore natural environments, and inspire communities
+        to embrace their role as stewards of our collective home. By recognizing
+        the inherent dignity of all life forms, we work toward a world where
+        empathy drives decision-making and shapes a more just,
+        harmonious future for all.
       </p>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
         We may change this Privacy Policy from time to time. If we make changes,
@@ -188,14 +197,14 @@ const PrivacyPolicyPage = () => {
       </h2>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
         The Services may offer social sharing features and other integrated
-        tools (such as the Facebook "Like" button), which let you share actions
-        you take on our Services with other media, and vice versa. Your use of
-        such features enables the sharing of information with your friends or
-        the public, depending on the settings you establish with the entity that
-        provides the social sharing feature. For more information about the
-        purpose and scope of data collection and processing in connection with
-        social sharing features, please visit the privacy policies of the
-        entities that provide these features.
+        tools (such as the Facebook &quot;Like&quot; button), which let you
+        share actions you take on our Services with other media, and vice versa.
+        Your use of such features enables the sharing of information with your
+        friends or the public, depending on the settings you establish with the
+        entity that provides the social sharing feature. For more information
+        about the purpose and scope of data collection and processing in
+        connection with social sharing features, please visit the privacy
+        policies of the entities that provide these features.
       </p>
       <h2 className="text-cyan-500 uppercase font-bold text-2xl">SECURITY</h2>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
@@ -218,7 +227,9 @@ const PrivacyPolicyPage = () => {
         for legitimate business purposes. We may also retain cached or archived
         copies of information about you for a certain period.
       </p>
-      <h3 className="text-cyan-500 uppercase font-bold text-lg w-full">Cookies</h3>
+      <h3 className="text-cyan-500 uppercase font-bold text-lg w-full">
+        Cookies
+      </h3>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
         Most web browsers are set to accept cookies by default. If you prefer,
         you can usually choose to set your browser to remove or reject browser
