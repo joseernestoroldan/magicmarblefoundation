@@ -11,8 +11,7 @@ export default function UnderConstruction() {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
-          clearInterval(interval)
-          return 100
+          return 0 // Reset to 0 when it reaches 100%
         }
         return prev + 1
       })
@@ -22,7 +21,7 @@ export default function UnderConstruction() {
   }, [])
 
   return (
-    <div className="flex min-[100vh - 100px] flex-col items-center justify-center bg-white p-4 mt-16 text-center">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-white p-4 text-center">
       <div className="max-w-md space-y-6">
         <div className="flex items-center justify-center space-x-2">
           <Loader2 className="h-10 w-10 animate-spin text-cyan-500" />
@@ -40,7 +39,7 @@ export default function UnderConstruction() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <p className="text-sm text-gray-500">{progress}% completed</p>
+        <p className="text-sm text-gray-500">Loading...</p>
 
         <div className="flex justify-center pt-4">
           <Link
