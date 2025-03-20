@@ -17,7 +17,7 @@ const PrivacyPolicyPage = () => {
         with us. Magic Marble Foundation is a Michigan-based nonprofit
         organization dedicated to mobilize empathy for all
         species and the world we share, fostering compassionate action that
-        honors the interconnection between humans, animals, and ecosystems.
+        honors the interconnection between humans, non-humans, and ecosystems.
         Through our initiatives, we create sustainable solutions that protect
         vulnerable beings, restore natural environments, and inspire communities
         to embrace their role as stewards of our collective home. By recognizing
@@ -242,7 +242,7 @@ const PrivacyPolicyPage = () => {
       <p className="text-black w-full text-base font-medium text-justify indent-6">
         You may opt out of receiving promotional communications from Magic
         Marble Foundation by following the instructions in those communications
-        or by emailing us at [contact email address]. If you opt out, we may
+        or by emailing us at info@magicmarblefoundation.org. If you opt out, we may
         still send you non-promotional communications, such as those about your
         account or our ongoing business relations.
       </p>
