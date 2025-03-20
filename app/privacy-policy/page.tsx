@@ -247,7 +247,7 @@ const PrivacyPolicyPage = () => {
         account or our ongoing business relations.
       </p>
       <h2 className="text-cyan-500 uppercase font-bold text-2xl">
-        MICHIGAN RESIDENTS`&apos; PRIVACY RIGHTS
+        MICHIGAN RESIDENTS&apos; PRIVACY RIGHTS
       </h2>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
         As a Michigan-based organization, Magic Marble Foundation complies with
@@ -271,7 +271,7 @@ const PrivacyPolicyPage = () => {
         info@MagicMarbleFoundation.org
       </p>
       <h2 className="text-cyan-500 uppercase font-bold text-2xl">
-        CHILDREN`&apos;S PRIVACY
+        CHILDREN&apos;S PRIVACY
       </h2>
       <p className="text-gray-500 w-full text-base font-medium text-justify indent-6">
         Our Services are not intended for children under 13 years of age. We do
