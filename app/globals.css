@@ -43,5 +43,45 @@
     @apply bg-background text-foreground;
     }
 }
+
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate3d(0, 1, 1, 0deg);
+    opacity: 0;
+    
+   
+  }
+  100% {
+    transform: rotate3d(0, 1, 1, 360deg);
+    opacity: 0.2;
+    
+   
+  }
+}
+
+@keyframes spin-slow-reverse {
+  0% {
+   
+    transform: rotate3d(0, 1, 1, 360deg);
+    
+
+  }
+  100% {
+    
+    transform: rotate3d(0, 1, 1, 0deg);
+    
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+  transform-origin: center;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 6s linear infinite;
+  transform-origin: center;
+}
   
 

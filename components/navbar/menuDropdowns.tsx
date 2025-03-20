@@ -87,13 +87,15 @@ const MenuDropdowns = () => {
           onMouseEnter={() => setIsOpenChange(true)}
           onMouseLeave={() => setIsOpenChange(false)}
           className="bg-white bg-opacity-90 border border-200">
-          <Link href={"/adoptions"}>
+          <Link href={"/underconstruction"}>
+          {/* <Link href={"/adoptions"}> */}
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Adopt
             </div>
           </Link>
 
-          <Link href={"/sponsors"}>
+          <Link href={"/underconstruction"}>
+          {/* <Link href={"/sponsors"}> */}
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Sponsor
             </div>
