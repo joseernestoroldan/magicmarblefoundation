@@ -287,7 +287,7 @@ const PrivacyPolicyPage = () => {
       </p>
       <div className="flex flex-col items-center py-8 bg-gray-50 border border-cyan-200 w-full space-y-4 rounded-2xl">
         <p className="text-black font-bold ">Magic Marble Foundation</p>
-        <p className="text-black text-wrap mx-auto w-[200px] sm:w-[400px] text-center">
+        <p className="text-black font-bold text-wrap mx-auto w-[200px] sm:w-[400px] text-center">
           455 E. Eisenhower Parkway #355 Ann Arbor, Michigan, 48108 USA
         </p>
         <div className="flex flex-col items-center justify-center">
