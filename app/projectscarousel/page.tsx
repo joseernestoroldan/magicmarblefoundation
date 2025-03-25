@@ -15,6 +15,7 @@ import Link from "next/link";
 import Button from "@/components/button/Button";
 import EnterSection from "@/components/animations/enterSection/EnterSection";
 import EnterElement from "@/components/animations/enterElement/EnterElement";
+import MakeDonation from "@/components/donations/MakeDonation";
 
 const ProjectsCarouselPage = async () => {
   const projects = await getAllData("projects");
@@ -40,18 +41,17 @@ const ProjectsCarouselPage = async () => {
                         <Card className=" border-0 rounded-2xl">
                           <CardContent className="flex aspect-video items-center justify-center p-0 w-full h-[600px] border-0 rounded-2xl">
                             <div className="text-4xl font-semibold w-full h-full relative">
-                              <div className="absolute z-10 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-5 bottom-10  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
-                                <div className=" bg-black bg-opacity-70 w-[300px] min-[425px]:w-[400px] p-4 rounded-2xl space-y-4">
+                              <div className="absolute z-10 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-0 bottom-0  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
+                                <div className=" bg-black bg-opacity-40 w-full pt-4 rounded-b-2xl space-y-4">
                                   <h1 className="text-white text-lg min-[425px]:text-xl font-bold w-full text-center">
                                     {project.title}
                                   </h1>
-                                  <p className="text-white text-base min-[425px]:text-base font-medium text-wrap w-full indent-4">
+                                  <p className="text-white text-base min-[425px]:text-base font-medium text-wrap text-center w-full indent-4">
                                     {project.description}
                                   </p>
-                                  <div className="flex justify-around items-center">
+                                  <div className="flex justify-between items-center max-w-md mx-auto">
                                     <Link
-                                      href={`projects/project/${project._id}`}
-                                    >
+                                      href={`projects/project/${project._id}`}>
                                       <p className="text-cyan-300 text-sm font-bold underline">
                                         About This Project
                                       </p>
@@ -63,12 +63,9 @@ const ProjectsCarouselPage = async () => {
                                     </Link>
                                   </div>
                                   <div className="m-4 flex justify-center">
-                                  <Link href={"/donations"}>
-                                    <Button>Donate</Button>
-                                  </Link>
+                                    <MakeDonation/>
+                                  </div>
                                 </div>
-                                </div>
-                   
                               </div>
 
                               <Image
