@@ -52,6 +52,11 @@ const MenuDropdowns = () => {
               Financials
             </div>
           </Link>
+          <Link href={"/privacy-policy"}>
+            <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
+              Privacy Policy
+            </div>
+          </Link>
 
           <Link href={"/diaries"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">

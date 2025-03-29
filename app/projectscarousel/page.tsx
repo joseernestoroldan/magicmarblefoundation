@@ -42,8 +42,8 @@ const ProjectsCarouselPage = async () => {
                           <CardContent className="flex aspect-video items-center justify-center p-0 w-full h-[600px] border-0 rounded-2xl">
                             <div className="text-4xl font-semibold w-full h-full relative">
                               <div className="absolute z-10 left-1/2 -translate-x-1/2 md:-translate-x-0 md:left-0 bottom-0  flex flex-col md:flex-row justify-start md:justify-between items-center w-full">
-                                <div className=" bg-black bg-opacity-40 w-full pt-4 rounded-b-2xl space-y-4">
-                                  <h1 className="text-white text-lg min-[425px]:text-xl font-bold w-full text-center">
+                                <div className="bg-gradient-to-b from-transparent to-black bg-opacity-40 w-full pt-4 rounded-b-2xl space-y-4">
+                                  <h1 className="text-white text-xl min-[425px]:text-xl font-bold w-full text-center">
                                     {project.title}
                                   </h1>
                                   <p className="text-white text-base min-[425px]:text-base font-medium text-wrap text-center w-full indent-4">
@@ -52,12 +52,12 @@ const ProjectsCarouselPage = async () => {
                                   <div className="flex justify-between items-center max-w-md mx-auto">
                                     <Link
                                       href={`projects/project/${project._id}`}>
-                                      <p className="text-cyan-300 text-sm font-bold underline">
+                                      <p className="text-cyan-300 text-base font-bold underline">
                                         About This Project
                                       </p>
                                     </Link>
                                     <Link href={`projects`}>
-                                      <p className="text-cyan-300 text-sm  font-bold underline">
+                                      <p className="text-cyan-300 text-base  font-bold underline">
                                         More Projects
                                       </p>
                                     </Link>
