@@ -52,12 +52,6 @@ const MenuDropdowns = () => {
               Financials
             </div>
           </Link>
-          <Link href={"/privacy-policy"}>
-            <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
-              Privacy Policy
-            </div>
-          </Link>
-
           <Link href={"/diaries"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Magic Diaries
@@ -66,6 +60,11 @@ const MenuDropdowns = () => {
           <Link href={"/newsletter"}>
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Newsletter
+            </div>
+          </Link>
+          <Link href={"/privacy-policy"}>
+            <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
+              Privacy Policy
             </div>
           </Link>
         </PopoverContent>
@@ -93,14 +92,14 @@ const MenuDropdowns = () => {
           onMouseLeave={() => setIsOpenChange(false)}
           className="bg-white bg-opacity-90 border border-200">
           <Link href={"/underconstruction"}>
-          {/* <Link href={"/adoptions"}> */}
+            {/* <Link href={"/adoptions"}> */}
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Adopt
             </div>
           </Link>
 
           <Link href={"/underconstruction"}>
-          {/* <Link href={"/sponsors"}> */}
+            {/* <Link href={"/sponsors"}> */}
             <div className="text-nowrap cursor-pointer hover:drop-shadow-md rounded-lg text-cyan-500 hover:text-gray-500 text-lg font-medium">
               Sponsor
             </div>
