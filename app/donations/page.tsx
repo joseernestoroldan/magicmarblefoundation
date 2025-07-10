@@ -23,7 +23,7 @@ const DonationsPage = () => {
         {/* Heading */}
         <div className="space-y-2">
           <h1 className="text-2xl text-gray-900 font-bold">
-            Page Temporarily Unavailable
+            Donation Portal Temporarily Closed
           </h1>
           <div className="w-80 h-0.5 bg-cyan-500 mx-auto"></div>
         </div>
