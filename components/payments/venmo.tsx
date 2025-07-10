@@ -9,7 +9,7 @@ const Venmo = () => {
         "https://account.venmo.com/payment-link?recipients=magicmarble&txn=pay"
       }
     >
-      <button className="flex space-x-4 rounded-xl bg-white m-4 justify-center items-center h-12 w-52 border ">
+      <button className="flex space-x-4 rounded-xl bg-white justify-center items-center h-12 w-52 border border-blue-400 ">
         <Image height={50} width={150} src="/venmo.webp" alt="paypal"/>
       </button>
     </Link>

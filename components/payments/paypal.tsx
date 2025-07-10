@@ -5,7 +5,7 @@ import Image from "next/image";
 const Paypal = () => {
   return (
     <Link href={"https://www.paypal.com/donate?hosted_button_id=8LVLMN3NBRABS"}>
-      <button className="flex space-x-4 rounded-xl bg-yellow-400 m-4  justify-center items-center h-12 w-52">
+      <button className="flex space-x-4 rounded-xl bg-yellow-400  justify-center items-center h-12 w-52">
         <Image src="/paypal.webp" width={20} height={20} alt="paypal" />
 
         <p className="italic text-xl">
