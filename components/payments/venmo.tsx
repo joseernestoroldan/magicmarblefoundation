@@ -7,11 +7,12 @@ const Venmo = () => {
     <Link
       href={
         "https://account.venmo.com/payment-link?recipients=magicmarble&txn=pay"
-      }
-    >
-      <button className="flex space-x-4 rounded-xl bg-white justify-center items-center h-12 w-52 border border-blue-400 ">
-        <Image height={50} width={150} src="/venmo.webp" alt="paypal"/>
-      </button>
+      }>
+      <div className=" w-60 h-60 border border-gray-300 flex flex-col justify-center items-center rounded-[10px] space-y-4 hover:bg-gray-50">
+        <button className="flex space-x-4 rounded-xl bg-white justify-center items-center h-12 w-52 border border-blue-400 ">
+          <Image height={50} width={150} src="/venmo.webp" alt="paypal" />
+        </button>
+      </div>
     </Link>
   );
 };
