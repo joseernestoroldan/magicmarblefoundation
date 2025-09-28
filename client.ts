@@ -99,6 +99,12 @@ export const getOne = async (myquery: string) => {
     _createdAt,
 }`;
   const data: QueryType[] | null = await getData(query);
+  const [result] = data || [];
+  let children = result?.contenido?.map((item) => item.children) || [];
+  let marks = children.flat().map((item) => item.marks);
+  console.log(marks.flat());
+
+
   return data;
 };
 
