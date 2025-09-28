@@ -71,7 +71,7 @@ export default function App() {
           Under Maintenance
         </h1>
         <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg">
-          We're currently performing some scheduled maintenance. We'll be back online shortly. Thank you for your patience!
+          We are currently performing some scheduled maintenance. We will be back online shortly. Thank you for your patience!
         </p>
         <a
           href="/"
