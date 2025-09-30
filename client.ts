@@ -94,8 +94,6 @@ export const getOne = async (myquery: string) => {
     "hotSpotFourth": fourthImage.hotspot,
     author,
     contenido,
-    instructions,
-    ingredients,
     _createdAt,
 }`;
   const data: QueryType[] | null = await getData(query);
