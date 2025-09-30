@@ -8,8 +8,8 @@ import Dates from "@/components/date/Date";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { QueryType } from "@/types/types";
-import Paragraphs from "@/components/parrafos/Paragraphs";
-
+import Content from "@/components/parrafos/Content";
+// import Paragraphs from "@/components/parrafos/Paragraphs";
 
 export async function generateMetadata(
   { params: { id: _Id } }: { params: { id: string } },
@@ -85,8 +85,7 @@ const DiaryPage = async ({
 
               {mainImage && (
                 <div
-                  className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}
-                >
+                  className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}>
                   <Image
                     className={`object-cover`}
                     src={mainImage}
@@ -99,11 +98,13 @@ const DiaryPage = async ({
               )}
             </div>
 
-            {contenido && (
+            {/* {contenido && (
               <div className="w-full pt-8">
                 <Paragraphs contenido={contenido} />
               </div>
-            )}
+            )} */}
+
+            {contenido && <Content contenido={contenido} />}
           </div>
           <div className="w-full py-8 flex flex-row justify-center md:justify-end">
             {author && <Author data={data} />}

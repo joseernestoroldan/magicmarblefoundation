@@ -100,11 +100,6 @@ export const getOne = async (myquery: string) => {
 }`;
   const data: QueryType[] | null = await getData(query);
   const [result] = data || [];
-  let children = result?.contenido?.map((item) => item.children) || [];
-  let marks = children.flat().map((item) => item.marks);
-  console.log(marks.flat());
-
-
   return data;
 };
 
@@ -145,7 +140,7 @@ export const suscription = client
   .subscribe((update) => {
     const coment = update.result?._id;
     console.log("resultado:", coment);
-    console.log("email sent");
+    console.log("Document update performed");
   });
 
 export const UpdateSuscriptionStatus = async (

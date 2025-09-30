@@ -191,6 +191,7 @@ export type Block = {
   markDefs: any[];
   _key: string;
   listItem: string | null;
+  level: number;
 };
 
 type Crop = {
