@@ -185,13 +185,19 @@ export type QueryType = {
 };
 
 export type Block = {
+    _key: string;
+  _type: string;
   children: Children;
-  _type: "block";
+  markDefs: MarkDef[];
   style: Style;
-  markDefs: any[];
-  _key: string;
   listItem: string | null;
   level: number;
+};
+
+type MarkDef = {
+  _key: string;
+  _type: string;
+  href: string;
 };
 
 type Crop = {
@@ -212,12 +218,14 @@ export type HotSpot = {
 
 type Style = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
 
-type Children = {
-  _type: string;
-  marks: any[];
-  text: string;
+type Children = Child[];
+
+type Child = {
   _key: string;
-}[];
+  _type: string;
+  marks: string[];
+  text: string;
+};
 
 export type ModePhoto = "gallery" | "cover";
 

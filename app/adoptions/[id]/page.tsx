@@ -1,6 +1,6 @@
 import { getOne } from "@/client";
 import CarouselVertical from "@/components/sponsorsComponents/CarouselVertical";
-import Paragraphs from "@/components/parrafos/Paragraphs";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 import Image from "next/image";
 import Link from "next/link";
 

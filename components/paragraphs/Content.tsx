@@ -1,39 +1,14 @@
+import { Block } from "@/types/types";
 import Link from "next/link";
 
-type BlockContent = {
-  _key: string;
-  _type: string;
-  children: Children;
-  markDefs: MarkDef[];
-  style: Style;
-  listItem: string | null;
-  level: number;
-};
 
-type MarkDef = {
-  _key: string;
-  _type: string;
-  href: string;
-};
-
-type Children = Child[];
-
-type Child = {
-  _key: string;
-  _type: string;
-  marks: string[];
-  text: string;
-};
-
-type Style = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
-
-const Content = ({ contenido }: { contenido: BlockContent[] }) => {
+const Content = ({ contenido }: { contenido: Block[] }) => {
   console.log("++++++++++++++++++++++++++++++++++");
   console.log(contenido);
 
   return (
     <div className="w-full">
-      {contenido.map((paragraph: BlockContent, index: number) => {
+      {contenido.map((paragraph: Block, index: number) => {
         let spanNumber = paragraph.children.length;
         let style = paragraph.style;
         let isH1 = style === "h1";

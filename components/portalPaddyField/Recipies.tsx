@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 
 const Recipies = async () => {
-  const recipies: QueryType[] = await getAllData("recipies2");
+  const recipies: QueryType[] = await getAllData("recipes");
 
   return (
     <div className="max-w-6xl w-full mx-auto flex flex-col items-center space-y-8">

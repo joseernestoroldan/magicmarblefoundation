@@ -1,9 +1,9 @@
 import { getOne } from "@/client";
-import Parrafos from "@/components/parrafos/Parrafos";
 import Image from "next/image";
 
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { HotSpot, ModePhoto, QueryType } from "@/types/types";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 
 const PortalPaddyFieldPage = async ({
   params: { id: _Id },
@@ -46,7 +46,7 @@ const PortalPaddyFieldPage = async ({
         )}
 
         <div className="mx-auto w-full flex flex-col justify-center">
-          {contenido !== null && <Parrafos contenido={contenido} />}
+          {contenido !== null && <Paragraphs contenido={contenido} />}
         </div>
         {!youtubeLink && (
           <div className="flex flex-col items-center w-full space-y-8">

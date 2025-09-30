@@ -1,6 +1,6 @@
 import { getOne } from "@/client";
 import { DialogBox } from "@/components/dialogBox/DialogBox";
-import Paragraphs from "@/components/parrafos/Paragraphs";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { HotSpot, QueryType } from "@/types/types";
 import Image from "next/image";
 
@@ -12,10 +12,8 @@ const RecipiePage = async ({
   const query: QueryType[] | null = await getOne(_Id);
   if (!query) return null;
   const [data] = query;
-  const {} = data;
   const {
-    ingredients,
-    instructions,
+    contenido,
     mainImage,
     secondImage,
     thirdImage,
@@ -49,18 +47,9 @@ const RecipiePage = async ({
         </div>
       </div>
       <div className=" w-3/5 flex flex-col justify-start space-y-4 px-12">
-        {ingredients && (
+        {contenido && (
           <Paragraphs
-            contenido={ingredients}
-            sizeText="text-[16px]"
-            mdSizeText="text-[18px]"
-          />
-        )}
-        {instructions && (
-          <Paragraphs
-            contenido={instructions}
-            sizeText="text-[16px]"
-            mdSizeText="text-[18px]"
+            contenido={contenido}
           />
         )}
       </div>

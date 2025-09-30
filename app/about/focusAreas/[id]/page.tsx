@@ -2,7 +2,7 @@ import { getOne } from "@/client";
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
 import Container from "@/components/layouts/container/Container";
-import Paragraphs from "@/components/parrafos/Paragraphs";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { QueryType } from "@/types/types";
 import Image from "next/image";
 

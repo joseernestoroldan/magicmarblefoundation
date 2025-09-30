@@ -3,7 +3,7 @@ import {
   QueryType,
 } from "@/types/types";
 import { SponsorButton } from "@/components/sponsorsComponents/SponsorButton";
-import Paragraphs from "@/components/parrafos/Paragraphs";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { SponsorGallery } from "../../../components/sponsorsComponents/SponsorGallery";
 
 const SponsorDynamicPage = async ({

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const MoreRecipiesPage = async () => {
-    const recipies: QueryType[] = await getAllData('recipies2')
+    const recipies: QueryType[] = await getAllData('recipes')
     
   return (
     

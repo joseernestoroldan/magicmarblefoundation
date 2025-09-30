@@ -1,5 +1,5 @@
 import { getOne } from "@/client";
-import Parrafos from "@/components/parrafos/Parrafos";
+import Paragraphs from "@/components/paragraphs/Paragraphs";
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
 import Image from "next/image";
@@ -34,7 +34,7 @@ const page = async ({ params: { id: _Id } }: { params: { id: string } }) => {
             textSize="text-2xl md:text-3xl lg:text-3xl"
             center="flex items-center justify-center"
           />
-          {contenido && <Parrafos contenido={contenido} />}
+          {contenido && <Paragraphs contenido={contenido} />}
         </div>
       </div>
     </HeadingCenterAnimation>
