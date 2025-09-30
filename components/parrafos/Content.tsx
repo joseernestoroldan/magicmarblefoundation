@@ -30,7 +30,7 @@ type Style = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal" | "blockquote";
 const Content = ({ contenido }: { contenido: BlockContent[] }) => {
   console.log("++++++++++++++++++++++++++++++++++");
   console.log(contenido);
-  let list_number
+
   return (
     <div className="w-full">
       {contenido.map((paragraph: BlockContent, index: number) => {
@@ -86,7 +86,7 @@ const Content = ({ contenido }: { contenido: BlockContent[] }) => {
                   );
                 } else {
                   return (
-                    <Link key={item._key} className="text-cyan-500" href={paragraph.markDefs[0].href}>
+                    <Link key={item._key} className="text-cyan-500 break-all" href={paragraph.markDefs[0].href}>
                       {paragraph.markDefs[0].href}
                     </Link>
                   );
