@@ -18,21 +18,21 @@ const FocusArea = async ({
   return (
     <HeadingCenterAnimation>
       <Container>
-        <div className="flex flex-col justify-center w-full h-auto">
-          <div className="flex flex-col space-y-10 justify-center items-center lg:pt-20">
+        <div className="flex flex-col justify-center w-full h-auto pt-8 lg:pt-0">
+          <div className="flex flex-col space-y-1 justify-center items-center">
             <Heading
               title={title}
               color="text-cyan-500"
               shadow=""
-              textSize="text-4xl"
+              textSize="text-2xl lg:text-4xl"
               center="flex items-center justify-center"
             />
             {mainImage && (
               <div
-                className={`w-full h-[200px] md:h-[500px] lg:h-[700px] relative overflow-hidden rounded-2xl`}
+                className={`w-full h-[400px] md:h-[500px] relative overflow-hidden rounded-[5px]`}
               >
                 <Image
-                  className={`object-contain object-top rounded-2xl`}
+                  className={`object-cover object-center rounded-2xl`}
                   src={mainImage}
                   fill
                   alt=""

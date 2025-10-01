@@ -23,7 +23,7 @@ const Paragraphs = ({ contenido }: { contenido: Block[] }) => {
   const groups = groupBlocks(contenido);
 
   return (
-    <div className="w-full pt-8">
+    <div className="w-full pt-4">
       {groups.map((group, groupIndex) => {
         const isBullet = group.type === "bullet";
         const isNumbered = group.type === "number";
