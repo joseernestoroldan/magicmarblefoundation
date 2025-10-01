@@ -10,7 +10,6 @@ import Image from "next/image";
 import { QueryType } from "@/types/types";
 import Paragraphs from "@/components/paragraphs/Paragraphs";
 
-
 export async function generateMetadata(
   { params: { id: _Id } }: { params: { id: string } },
   parent: ResolvingMetadata
@@ -72,7 +71,7 @@ const DiaryPage = async ({
 
             <div className="w-full">
               {data.publishedAt && (
-                <div className="w-full flex justify-end items-center">
+                <div className="w-full flex justify-end items-center py-4 italic">
                   <Dates
                     hour={myDate.hour}
                     day={myDate.day}
@@ -85,7 +84,7 @@ const DiaryPage = async ({
 
               {mainImage && (
                 <div
-                  className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-2xl bg-blue-300`}>
+                  className={`w-[100%] h-[250px] md:h-[500px] lg:h-[600px] mx-auto relative overflow-hidden rounded-[5px] bg-blue-300`}>
                   <Image
                     className={`object-cover`}
                     src={mainImage}
@@ -100,7 +99,7 @@ const DiaryPage = async ({
 
             {contenido && <Paragraphs contenido={contenido} />}
           </div>
-          <div className="w-full py-8 flex flex-row justify-center md:justify-end">
+          <div className="w-full py-8 flex flex-row justify-center lg:justify-end">
             {author && <Author data={data} />}
           </div>
         </div>
