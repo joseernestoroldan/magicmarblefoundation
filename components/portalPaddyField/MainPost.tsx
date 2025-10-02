@@ -7,27 +7,29 @@ const MainPost = ({ paddyFields }: { paddyFields: QueryType[] }) => {
   const { _id, mainImage, title, description, hotSpotMain } = mainArticle;
   const x = (hotSpotMain?.x ?? 0.5) * 100;
   const y = (hotSpotMain?.y ?? 0.5) * 100;
+
   return (
-    <div className="w-full flex flex-col space-y-8">
-      
-        <Link href={`paddyfield/${_id}`}>
-          <div className="bg-gray-400 h-[50vh] w-full rounded-[10px] relative overflow-hidden hover:brightness-75 cursor-pointer">
-            <Image
-              src={mainImage ?? "/no-profile.webp"}
-              className="object-cover"
-              alt="portal paddy field"
-              fill
-              style={{ objectPosition: `${x}% ${y}%` }}
-            />
-            <div className="h-[20vh] w-[300px] rounded-tr-[5px] sm:w-[500px] bottom-0 bg-green-950 absolute bg-opacity-60 flex flex-col space-y-4 justify-center items-center p-4">
-              <h2 className="w-[300px] text-white text-xl font-bold">
-                {title}
-              </h2>
-              <p className="w-[300px] text-white text-base">{description}</p>
-            </div>
+    <div className="w-full flex flex-col">
+      <Link href={`paddyfield/${_id}`}>
+        <div className="relative h-[50vh] w-full rounded-[5px] overflow-hidden group shadow-lg">
+          <Image
+            src={mainImage ?? "/no-profile.webp"}
+            alt="portal paddy field"
+            fill
+            priority
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            style={{ objectPosition: `${x}% ${y}%` }}
+          />
+          <div className="absolute bottom-0 w-full sm:w-[500px] bg-green-950 bg-opacity-60 backdrop-blur-sm p-6 rounded-tr-[5px] flex flex-col gap-3">
+            <h2 className="text-white text-base sm:text-xl font-bold leading-snug">
+              {title}
+            </h2>
+            <p className="text-white text-sm sm:text-base line-clamp-3">
+              {description}
+            </p>
           </div>
-        </Link>
-      
+        </div>
+      </Link>
     </div>
   );
 };

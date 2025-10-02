@@ -19,7 +19,7 @@ const PaddyFieldList = ({
   const posts = getPosts(lengthPosts);
 
   return (
-    <div className="w-1/3 flex flex-col space-y-6 px-4 h-auto">
+    <div className="w-1/3 flex flex-col space-y-6 pt-6 px-4 h-auto bg-gray-500/10 rounded-[10px]">
       <h2 className="text-2xl text-gray-500 font-semibold text-center">
         Recent Entries
       </h2>
@@ -30,9 +30,9 @@ const PaddyFieldList = ({
 
         return (
           <Link key={index} href={`paddyfield/${item._id}`}>
-            <div className="bg-white p-4 rounded-[10px] w-full h-[118px] hidden md:flex items-center bg-opacity-50">
+            <div className="bg-gray-500 p-4 rounded-[10px] w-full h-[118px] hidden md:flex items-center bg-opacity-10 hover:bg-opacity-30 hover:scale-x-105 transition-all ease-in-out duration-500">
               <div>
-                <p className="text-gray-500 text-base font-semibold">
+                <p className="text-gray-500 text-sm font-bold">
                   {item.title}
                 </p>
                 <Dates

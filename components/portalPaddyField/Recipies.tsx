@@ -8,43 +8,23 @@ const Recipies = async () => {
   const recipies: QueryType[] = await getAllData("recipes");
 
   return (
-    <div className="max-w-6xl w-full mx-auto flex flex-col items-center space-y-8">
-      <h2 className="text-gray-500 text-3xl font-bold">Recipies</h2>
-      <div className="w-full flex flex-row justify-between items-center paddyfield-scroll2">
-        {recipies.length > 0 && (
+    <section className="max-w-7xl w-full rounded-[5px] mx-auto flex flex-col items-center space-y-8 p-4 bg-gray-500/10">
+      <h2 className="text-2xl font-bold text-gray-700">Recipes</h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        {recipies.slice(0, 4).map((r) => (
           <RecipieComponent
-            _id={recipies[0]._id}
-            mainImage={recipies[0].mainImage}
-            title={recipies[0].title}
-            description={recipies[0].description}
+            key={r._id}
+            _id={r._id}
+            mainImage={r.mainImage}
+            title={r.title}
+            description={r.description}
           />
-        )}
-        {recipies.length > 1 && (
-          <RecipieComponent
-            _id={recipies[1]._id}
-            mainImage={recipies[1].mainImage}
-            title={recipies[1].title}
-            description={recipies[1].description}
-          />
-        )}
-        {recipies.length > 2 && (
-          <RecipieComponent
-            _id={recipies[2]._id}
-            mainImage={recipies[2].mainImage}
-            title={recipies[2].title}
-            description={recipies[2].description}
-          />
-        )}
-        {recipies.length > 3 && (
-          <RecipieComponent
-            _id={recipies[3]._id}
-            mainImage={recipies[3].mainImage}
-            title={recipies[3].title}
-            description={recipies[3].description}
-          />
-        )}
+        ))}
       </div>
-    </div>
+      <div className="w-full py-0 text-gray-500 underline text-sm font-bold text-center">
+        <Link href={"/paddyfield/morerecipies"}>Get More Recipies</Link>
+      </div>
+    </section>
   );
 };
 
@@ -54,30 +34,27 @@ const RecipieComponent = ({
   _id,
   mainImage,
   title,
-  description,
 }: {
   _id: string;
   mainImage: string | null;
   title: string | null;
   description: string | null;
-}) => {
-  return (
-    <Link href={`/paddyfield/morerecipies/${_id}`}>
-      <div className="w-[260px] h-[260px] group bg-gray-500 rounded-[10px]">
-        <div className="w-full h-full bg-gray-400 relative rounded-[5px] overflow-hidden hover:brightness-75 cursor-pointer">
-          <Image
-            src={mainImage || "/logo.jpg"}
-            alt="recipies portal paddy field"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute w-full h-1/3 bg-black bg-opacity-50 bottom-0 flex flex-col justify-center items-center">
-            <h3 className="text-white text-lg font-medium px-1 text-center">
-              {title}
-            </h3>
-          </div>
+}) => (
+  <Link href={`/paddyfield/morerecipies/${_id}`}>
+    <div className="w-[260px] h-[260px] rounded-lg overflow-hidden shadow-md group">
+      <div className="relative w-full h-full">
+        <Image
+          src={mainImage || "/logo.jpg"}
+          alt="recipes portal paddy field"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute bottom-0 w-full bg-black bg-opacity-60 p-3 flex justify-center items-center">
+          <h3 className="text-white text-lg font-semibold text-center line-clamp-2">
+            {title}
+          </h3>
         </div>
       </div>
-    </Link>
-  );
-};
+    </div>
+  </Link>
+);

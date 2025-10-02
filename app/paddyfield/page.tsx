@@ -13,21 +13,19 @@ const PaddyFieldPage = async () => {
   return (
     <div className="w-full bg-gradient-to-b from-white via-green-300 to-white flex flex-col items-center">
       <h1 className="text-4xl font-bold text-gray-500">Paddy Field</h1>
-      <div className="w-full max-w-7xl mx-auto flex flex-col mt-8">
-        <div className="w-full max-w-7xl flex flex-col md:flex-row">
-          <div className="flex flex-col w-full md:w-2/3">
+      <div className="w-full max-w-7xl mx-auto flex flex-col space-y-4 mt-8">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row md:space-x-4">
+          <div className="flex flex-col w-full md:w-2/3 bg-gray-500/10 p-4 rounded-[5px]">
             <MainPost paddyFields={paddyFields} />
             <ReelPosts paddyFieldPosts={paddyFields} />
-            <div className="w-full py-8 text-gray-500 underline text-xl font-bold">
+            <div className="w-full py-8 text-gray-500 underline text-sm font-bold text-center">
               <Link href={"/paddyfield/morearticles"}>Read More Articles</Link>
             </div>
           </div>
           <PaddyFieldList paddyFieldPosts={paddyFields} />
         </div>
         <Recipies />
-            <div className="w-full py-8 text-gray-500 underline text-xl font-bold">
-              <Link href={"/paddyfield/morerecipies"}>Get More Recipies</Link>
-            </div>
+
         <TopPicks />
       </div>
     </div>
