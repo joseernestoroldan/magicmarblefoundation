@@ -49,10 +49,10 @@ const Infobar = ({ name }: InfoProps) => {
 
               {name && (
                 <Link
-                  className="text-nowrap"
+                  className="text-wrap text-center text-base md:text-xs font-light"
                   href={`${process.env.NEXT_PUBLIC_APP_URL}/login`}
                 >
-                  Sign In
+                  Welcome {name}
                 </Link>
               )}
 
