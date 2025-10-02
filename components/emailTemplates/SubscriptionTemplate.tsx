@@ -47,6 +47,7 @@ const SubscriptionTemplate = (
       >
         <img
           src={image}
+          alt="magic marble foundation"
           style={{
             borderRadius: "5px",
             marginRight: "12px",
