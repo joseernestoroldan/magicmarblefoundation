@@ -1,5 +1,4 @@
 "use client";
-
 import Heading from "@/components/headings/heading";
 import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCenterAnimation";
 import Paypal from "@/components/payments/paypal";
@@ -10,7 +9,7 @@ import Link from "next/link";
 
 const DonationsPage = () => {
   return (
-    <div className="flex flex-col-reverse lg:flex-row">
+    <div className="flex flex-col-reverse lg:flex-row w-full max-w-7xl mx-auto">
       <div className="w-full lg:w-1/2 p-0 hidden md:flex justify-center items-center">
         <div className="w-full relative p-0 md:pt-10 lg:pt-24 flex justify-center items-center">
           <div className="w-full flex flex-col justify-center  items-stretch ">
@@ -29,7 +28,7 @@ const DonationsPage = () => {
               title="Help Us Help Them"
               color="text-cyan-500"
               shadow=""
-              textSize="text-2xl lg:text-5xl"
+              textSize="text-3xl"
               center="flex justify-center"
             />
           </HeadingCenterAnimation>
@@ -44,7 +43,6 @@ const DonationsPage = () => {
           most.
         </p>
         <div className="flex flex-col md:flex-row w-full bg-white justify-center items-center md:space-x-4">
-         
           <Paypal />
           {/* <CreditCard /> */}
           <Venmo />
