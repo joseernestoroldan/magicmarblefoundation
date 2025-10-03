@@ -77,6 +77,16 @@ export const donationSchema = z.object({
   address: z.string(),
 });
 
+export const sponsorSchema = z.object({
+  amount: z.string(),
+  email: z.string().email().min(1, { message: "Email is required" }),
+  firstName: z.string().min(1, { message: "Name is required" }),
+  lastName: z.string().min(1, { message: "Second name is required" }),
+  country: z.string(),
+  number: z.string(),
+  address: z.string(),
+});
+
 export const updateSchema = z.object({
   country: z.string(),
   codeNumber: z.string(),

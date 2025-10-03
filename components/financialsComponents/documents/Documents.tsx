@@ -1,4 +1,4 @@
-import { fetchFiles } from "@/lib/apiCalls";
+import { fetchFiles } from "@/app/lib/apiCalls";
 import { GroupedFiles } from "@/types/types";
 import FinancialDocuments from "../financialDocuments/FinancialDocuments";
 

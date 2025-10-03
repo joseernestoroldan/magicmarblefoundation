@@ -70,7 +70,6 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("PayPal API error:", error);
     return NextResponse.json(
       { message: "Failed to create subscription aqui", success: false },
       { status: 500 }

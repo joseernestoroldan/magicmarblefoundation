@@ -24,9 +24,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
 import { SponsorFormProps } from "@/types/types";
-import { createPlan, createSubscriber } from "@/lib/apiCalls";
+import { createPlan, createSubscriber } from "@/app/lib/apiCalls";
 
 export default function SponsorForm({
   sessionUser,
@@ -35,7 +34,6 @@ export default function SponsorForm({
 }) {
   const [stage, setStage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const { email, firstName, secondName, country, codeNumber, number, address } =
     sessionUser;
@@ -107,7 +105,10 @@ export default function SponsorForm({
 
     try {
       setLoading(true);
+
       const planId = await createPlan(amount);
+      console.log("======================================================")
+      console.log("planId", planId);
       const response = await createSubscriber(
         email,
         planId,
@@ -134,7 +135,7 @@ export default function SponsorForm({
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
       <Card className="w-full max-w-md border-gray-200 rounded-[20px]">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={() => handleSubmit(onSubmit)}>
           <ProgressBarComponent stage={stage} />
 
           {stage === 1 && (
@@ -181,6 +182,7 @@ export default function SponsorForm({
               <CardFooter className="flex justify-center">
                 <Button
                   onClick={handleNext}
+                  type="button"
                   className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full"
                   disabled={!form.watch("amount")}>
                   Next
@@ -295,11 +297,13 @@ export default function SponsorForm({
               <CardFooter className="flex justify-between">
                 <Button
                   onClick={handleBack}
+                  type="button"
                   className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400">
                   Back
                 </Button>
                 <Button
                   onClick={handleNext}
+                  type="button"
                   className="w-36 px-8 bg-cyan-500 text-white rounded-full hover:bg-cyan-400">
                   Next
                 </Button>

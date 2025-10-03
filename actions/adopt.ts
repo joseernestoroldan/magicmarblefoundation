@@ -2,7 +2,7 @@
 import * as z from "zod";
 import { adoptionSchema } from "@/schemas";
 import { db } from "@/db";
-import { sendAdminAdoptingEmail, sendUserAdoptingEmail } from "@/lib/mail";
+import { sendAdminAdoptingEmail, sendUserAdoptingEmail } from "@/app/lib/mail";
 
 
 export const adopt = async (values: z.infer<typeof adoptionSchema>, animalId:string, animalName:string, animalImage: string) => {

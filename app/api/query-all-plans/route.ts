@@ -3,9 +3,10 @@ import { NextResponse, NextRequest } from "next/server";
 import { getPayPalAccessToken } from "../AccessToken";
 
 export async function GET() {
-  const accessToken = await getPayPalAccessToken();
+  
 
   try {
+    const accessToken = await getPayPalAccessToken();
     const plans = await axios.get(
       `${process.env.PAYPAL_API_BASE}/v1/billing/plans`,
       {
@@ -23,7 +24,6 @@ export async function GET() {
 
    return NextResponse.json(plans.data)
   } catch (error) {
-    console.log(error)
     return NextResponse.json("Something went wrong!!")
 
   }

@@ -1,4 +1,6 @@
+export const dynamic = "force-dynamic";
 import ChartsComponent from "@/components/chartsComponent/ChartsComponent";
+
 import Documents from "@/components/financialsComponents/documents/Documents";
 
 const FinancialsPage = async () => {

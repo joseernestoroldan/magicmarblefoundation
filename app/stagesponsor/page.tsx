@@ -1,12 +1,13 @@
+export const dynamic = "force-dynamic";
+
 import SponsorForm from "@/components/donationForm/SponsorForm";
+import SponsorFormb from "@/components/donationForm/SponsorFormBeta";
 import { getUserById } from "@/data/user";
-import { getSessionId } from "@/lib/sessions";
+import { getSessionId } from "@/app/lib/sessions";
 import React from "react";
 
 const StagePaymentPage = async () => {
   const userId = await getSessionId();
-  // const session = await auth();
-  // const userId = session?.user.id;
 
   const getUser = async () => {
     if (!userId) {
@@ -45,7 +46,7 @@ const StagePaymentPage = async () => {
       };
     }
     return {
-      email:null,
+      email: null,
       firstName: null,
       secondName: null,
       country: null,
@@ -56,11 +57,12 @@ const StagePaymentPage = async () => {
     };
   };
 
-  const sessionUser = await  getSessionUser();
+  const sessionUser = await getSessionUser();
 
   return (
     <div className="w-full max-w-5xl mx-auto">
       <SponsorForm sessionUser={sessionUser} />
+      <SponsorFormb />
     </div>
   );
 };

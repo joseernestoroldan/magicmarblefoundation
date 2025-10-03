@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export default function SubscriptionSuccess() {
     return (
       <div className="max-w-md mx-auto mt-10 p-6 bg-green-100 rounded-lg">

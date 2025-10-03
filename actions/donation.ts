@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import { sendAdminDonateEmail, sendDonatorEmail } from "@/lib/mail";
+import { sendAdminDonateEmail, sendDonatorEmail } from "@/app/lib/mail";
 
 export const donationCompleted = async (
   email: string,

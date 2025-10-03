@@ -2,8 +2,6 @@ import axios from "axios";
 import { NextResponse, NextRequest } from "next/server";
 import { getPayPalAccessToken } from "../AccessToken";
 
-
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -88,7 +86,6 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error(error);
     return NextResponse.json(
       { success: false, error: "Failed to create PayPal plan" },
       { status: 500 }

@@ -3,9 +3,9 @@ import * as z from "zod";
 import { loginSchema } from "@/schemas";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
-import { GenerateVerificationToken } from "@/lib/tokens";
+import { GenerateVerificationToken } from "@/app/lib/tokens";
 import { getUserByEmail } from "@/data/user";
-import { sendVerificationEmail } from "@/lib/mail";
+import { sendVerificationEmail } from "@/app/lib/mail";
 
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const validatedFields = loginSchema.safeParse(values);

@@ -37,7 +37,7 @@ import { FormSuccess } from "@/components/auth/formSuccess/FormSuccess";
 
 import { ImSpinner9 } from "react-icons/im";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/app/lib/utils";
 import { CheckIcon } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
 import { adopt } from "@/actions/adopt";

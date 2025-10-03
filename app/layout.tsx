@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/Footer";
 import localFont from "next/font/local";
-import { getNameSession, getSessionId } from "@/lib/sessions";
+import { getNameSession, getSessionId } from "@/app/lib/sessions";
 import Badge from "@/components/badge/Badge";
 import { Open_Sans } from "next/font/google";
 

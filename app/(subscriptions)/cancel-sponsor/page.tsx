@@ -1,6 +1,7 @@
+export const dynamic = "force-dynamic";
 import FormSponsorCancel from "@/components/sponsorsComponents/FormSponsorCancel";
 import { db } from "@/db";
-import { deleteSubscription } from "@/lib/apiCalls";
+import { deleteSubscription } from "@/app/lib/apiCalls";
 
 const findSubscriptions = async (email: string) => {
   const subscriptions = await db.sponsor.findMany({ where: { email } });

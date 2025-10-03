@@ -50,7 +50,7 @@ export async function GET() {
 
     return NextResponse.json({data: allFiles, success: true}, {status: 200});
   } catch (error) {
-    console.error("Google Drive API Error:", error);
+   
     return NextResponse.json(
       { error: "Failed to fetch documents. Please try again later.", success: false },
       { status: 500 }

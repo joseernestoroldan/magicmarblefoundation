@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { auth } from '@/auth';
 import DonationForm from '@/components/donationForm/DonationForm'
 import { getUserById } from '@/data/user';
