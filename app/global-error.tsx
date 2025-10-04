@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Error({
   error,
@@ -35,12 +36,12 @@ export default function Error({
               >
                 Try again
               </button>
-              <a
+              <Link
                 href="/"
                 className="text-sm font-semibold text-cyan-500 hover:text-cyan-600"
               >
                 Go back home <span aria-hidden="true">&rarr;</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

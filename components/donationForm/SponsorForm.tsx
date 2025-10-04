@@ -93,6 +93,7 @@ export default function SponsorForm({
   };
 
   const onSubmit = async (data: z.infer<typeof donationSchema>) => {
+    console.log("submitted data:", data);
     const {
       amount,
       email,
@@ -135,7 +136,7 @@ export default function SponsorForm({
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-transparent">
       <Card className="w-full max-w-md border-gray-200 rounded-[20px]">
-        <form onSubmit={() => handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <ProgressBarComponent stage={stage} />
 
           {stage === 1 && (
@@ -150,6 +151,7 @@ export default function SponsorForm({
                   {predefinedAmounts.map((amount) => (
                     <button
                       key={amount}
+                      type="button"
                       onClick={() => handleAmountChange(amount)}
                       className={`h-20 flex items-center justify-center text-lg text-gray-500 font-semibold rounded-[10px] transition-colors ${
                         form.watch("amount") === amount
@@ -319,6 +321,7 @@ export default function SponsorForm({
               <CardFooter className="flex justify-between">
                 <Button
                   onClick={handleBack}
+                  type="button"
                   className="w-36 px-8 bg-cyan-500 hover:bg-cyan-400 text-white rounded-full">
                   Back
                 </Button>

@@ -1,29 +1,27 @@
 import { GoogleDriveResponse } from "@/types/types";
 
-// Crear un plan de suscripción
 export const createPlan = async (amount: string) => {
   try {
     const response = await fetch("/api/create-plan", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        amount,
+        amount: amount,
         frequency: 1,
         interval: "MONTH",
       }),
     });
-
-    if (!response.ok) throw new Error("Error creating plan");
-
     const data = await response.json();
-    return data.plan?.id;
+    console.log(data);
+    const planId = data.plan.id;
+    return planId;
   } catch (error) {
     console.error("Subscription creation error:", error);
-    throw error;
   }
 };
 
-// Crear un suscriptor
 export const createSubscriber = async (
   email: string,
   planId: string,
@@ -37,63 +35,67 @@ export const createSubscriber = async (
   try {
     const response = await fetch("/api/create-subscription", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        email,
-        planId,
-        firstName,
-        secondName,
-        amount,
-        telephone,
-        country,
-        address,
+        email: email,
+        planId: planId,
+        firstName: firstName,
+        secondName: secondName,
+        amount: amount,
+        telephone: telephone,
+        country: country,
+        address: address,
       }),
     });
 
-    if (!response.ok) throw new Error("Error creating subscription");
+    if (response.ok) return response;
 
-    return await response.json();
+    throw new Error("Something went wrong");
   } catch (error) {
     console.error("Subscription creation error:", error);
-    throw error;
+    throw new Error("Something went very wrong!");
   }
 };
 
-// Obtener todos los planes
 export const getPlans = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans`);
-  if (!res.ok) throw new Error("Failed to fetch plans");
-  return res.json();
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans`
+  );
+  const plans = await data.json();
+  return plans;
 };
 
-// Obtener un plan específico
 export const getPlan = async (id: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans/${id}`);
-  if (!res.ok) throw new Error("Failed to fetch plan");
-  return res.json();
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/query-all-plans/${id}`
+  );
+  const plan = await data.json();
+  return plan;
 };
 
-// Eliminar suscripción
 export const deleteSubscription = async (id: string) => {
-  try {
+   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cancel-subscription`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
     });
-
-    if (!response.ok) throw new Error("Error cancelling subscription");
-
-    return { success: true, response };
+    if (response.ok) return { success: true, response };
+    throw new Error("Something went wrong");
   } catch (error) {
     console.error("Subscription cancellation error:", error);
     return { success: false, error };
   }
 };
 
-// Fetch de documentos en Google Drive
 export const fetchFiles = async (): Promise<GoogleDriveResponse> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/documents`);
-  if (!res.ok) throw new Error("Failed to fetch files");
-  return res.json();
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/documents`);
+  if (!response.ok) throw new Error('Failed to fetch files');
+  return response.json();
 };

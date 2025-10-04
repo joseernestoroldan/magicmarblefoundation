@@ -115,12 +115,12 @@ export default async function SuccessSubscriptionPage({
       </Card>
 
       {/* Go Home Button */}
-      <a
+      <Link
         href="/"
         className="bg-cyan-500 rounded-full text-white px-6 py-3 font-bold text-lg hover:bg-cyan-600 transition duration-300"
       >
         Go Home
-      </a>
+      </Link>
 
       {/* Cancel Subscription Message */}
       <div className="mt-8 text-gray-500 text-base px-4 text-center">

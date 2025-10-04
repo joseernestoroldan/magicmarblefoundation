@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 const DetailsPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const user = await db.user.findUnique({ where: { id } });
-  console.log(user);
+
   return (
     <div className="w-full max-w-5xl mx-auto h-[80vh] flex flex-col justify-center items-center">
       <div className="w-full max-w-5xl mx-auto h-[50vh] border border-gray-200 p-16 rounded-[10px] flex flex-col justify-center space-y-4">

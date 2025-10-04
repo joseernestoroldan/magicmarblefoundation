@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
       );
     }
     const accessToken = await getPayPalAccessToken();
+   
 
     const product = await axios.post(
       `${process.env.PAYPAL_API_BASE}/v1/catalogs/products`,
@@ -34,6 +35,8 @@ export async function POST(request: NextRequest) {
         },
       }
     );
+
+    console.log("product:", product);
 
     const planResponse = await axios.post(
       `${process.env.PAYPAL_API_BASE}/v1/billing/plans`,
