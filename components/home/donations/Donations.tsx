@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Button } from "../../ui/button";
-import EnterElement from "@/components/animations/enterElement/EnterElement";
 import Link from "next/link";
 import BannerDonation from "./BannerDonation";
 import BannerAnimation from "./BannerAnimation";

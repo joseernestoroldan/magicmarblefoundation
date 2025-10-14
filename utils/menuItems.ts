@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const menuItems = [
   { title: "Home", link: "/" },
   { title: "Projects", link: "/projectscarousel" },
