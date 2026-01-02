@@ -6,12 +6,14 @@ import Link from "next/link";
 import { logout } from "@/actions/logout";
 import { useRouter } from "next/navigation";
 import Badge from "../badge/Badge";
+import { QueryType } from "@/types/types";
 
 type InfoProps = {
   name: string | null;
+  chimpData: QueryType[]
 };
 
-const Infobar = ({ name }: InfoProps) => {
+const Infobar = ({ name, chimpData }: InfoProps) => {
   const [show, setShow] = useState(false);
   const router = useRouter();
 
@@ -38,6 +40,7 @@ const Infobar = ({ name }: InfoProps) => {
                   color="text-gray-200"
                   show={show}
                   setShow={setShow}
+                  chimpData={chimpData}
                 />
               </div>
               <div

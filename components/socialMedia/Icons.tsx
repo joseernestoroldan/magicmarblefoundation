@@ -8,6 +8,7 @@ import { IconsProps } from "@/types/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconType } from "react-icons/lib";
+import ChimpPopover from "../chimpPopover/ChimpPopover";
 
 const links = [
   {
@@ -28,7 +29,7 @@ const links = [
   },
 ];
 
-const Icons = ({ show, setShow, color, name }: IconsProps) => {
+const Icons = ({ show, setShow, color, name, chimpData }: IconsProps) => {
   const pathname = usePathname();
   return (
     <div className="w-full flex flex-row justify-between items-center">
@@ -53,6 +54,8 @@ const Icons = ({ show, setShow, color, name }: IconsProps) => {
         className={`text-4xl ${color} inline-block md:hidden`}
         onClick={() => setShow(!show)}
       />
+
+      {chimpData && <ChimpPopover chimpData={chimpData}/>}
     </div>
   );
 };

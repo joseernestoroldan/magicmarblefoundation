@@ -6,6 +6,7 @@ import Logo from "../logo/Logo";
 import MenuDropdowns from "./menuDropdowns";
 import Badge from "../badge/Badge";
 import ToggleSidebar from "../sidebar/ToggleSidebar";
+import { getAllData } from "@/client";
 
 type NavbarProps = {
   name: string | null;
@@ -13,9 +14,12 @@ type NavbarProps = {
 
 const Navbar = async ({ name }: NavbarProps) => {
 
+  const chimpData = await getAllData("chimp");
+  console.log(chimpData)
+
   return (
     <div className="w-full sticky top-0 left-0 right-0 z-20 bg-white">
-      <Infobar name={name} />
+      <Infobar name={name} chimpData={chimpData} />
       <Container>
         <div className="w-full flex justify-between items-center">
           <Logo />

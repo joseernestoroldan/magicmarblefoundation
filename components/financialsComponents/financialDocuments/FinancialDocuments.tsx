@@ -22,7 +22,7 @@ const Folder: React.FC<FolderTypes> = React.memo(({ folderName, files }) => (
       {files.map((file) => (
         <li key={file.id} className="flex flex-row items-center justify-between">
           <Link
-            className="text-cyan-500 text-base font-bold underline hover:text-cyan-400"
+            className="text-cyan-500 text-base font-bold underline hover:text-cyan-400 text-center"
             href={file.webViewLink}
             target="_blank"
             rel="noreferrer"

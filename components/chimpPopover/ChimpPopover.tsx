@@ -60,23 +60,23 @@ const ChimpPopover = ({ chimpData }: chimpPopoverProps) => {
           </button>
         </PopoverTrigger>
         <PopoverContent className="w-80 sm:w-[400px] bg-gray-800 rounded-l-[5px] bg-opacity-90">
-          <div className="text-white text-lg text-center py-4">
+          <div className="text-white text-base underline font-semibold text-center pt-4">
             This Are The Newest Chimps
           </div>
           <div className="text-white text-base px-4 py-4">
             {chimpData.map((item: any, index: number) => {
               const date = stringToDate(item._createdAt);
               return (
-                <div className="py-4" key={index}>
+                <div className="py-1" key={index}>
                   {item.chimpLink && (
-                    <p className="font-normal text-lg">
-                      {date.month} | {date.year}
+                    <p className="font-medium text-base italic">
+                      {date.month} | {date.year}:
                     </p>
                   )}
 
                   {item.chimpLink && (
                     <Link href={item.chimpLink}>
-                      <p className="font-semibold text-lg">{item.title}</p>
+                      <p className="font-semibold text-base">{item.title}</p>
                     </Link>
                   )}
                 </div>
