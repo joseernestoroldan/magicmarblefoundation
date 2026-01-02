@@ -134,7 +134,7 @@ export type IconsProps = {
   show?: boolean;
   setShow?: any;
   name: string | null;
-  chimpData: QueryType[]
+  chimpData?: QueryType[]
 };
 
 export type BannerDonationProps = {
