@@ -14,16 +14,15 @@ import Button from "../button/Button";
 
 export function CarouselPlugin({ images }: carouselProps) {
   const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true }),
   );
 
   return (
     <Carousel
       plugins={[plugin.current]}
       className="w-full"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.play}
-    >
+      onMouseEnter={() => plugin.current.stop()}
+      onMouseLeave={() => plugin.current.play()}>
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
@@ -33,10 +32,10 @@ export function CarouselPlugin({ images }: carouselProps) {
                   <SpanMessage>
                     {image.message}
                     <Link href={`/projects/project/${image.link}`}>
-                        <p className="text-cyan-400 text-xl font-bold underline ">
-                          Learn More
-                        </p>
-                      </Link>
+                      <p className="text-cyan-400 text-xl font-bold underline ">
+                        Learn More
+                      </p>
+                    </Link>
                   </SpanMessage>
                   <div className="flex flex-col items-center justify-center">
                     <Link href={"/donations"}>

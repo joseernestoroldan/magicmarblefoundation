@@ -15,7 +15,6 @@ type NavbarProps = {
 const Navbar = async ({ name }: NavbarProps) => {
 
   const chimpData = await getAllData("chimp");
-  console.log(chimpData)
 
   return (
     <div className="w-full sticky top-0 left-0 right-0 z-20 bg-white">
