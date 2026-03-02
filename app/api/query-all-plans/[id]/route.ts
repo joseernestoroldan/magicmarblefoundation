@@ -2,14 +2,15 @@ import axios from "axios";
 import { NextResponse, NextRequest } from "next/server";
 import { getPayPalAccessToken } from "../../AccessToken";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string }}) {
-
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const accessToken = await getPayPalAccessToken();
 
-  const {id} = params
-  
+  const { id } = await params;
+
   console.log("id:", id);
- 
 
   try {
     const response = await axios.get(
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }
+      },
     );
 
     return NextResponse.json(response.data);

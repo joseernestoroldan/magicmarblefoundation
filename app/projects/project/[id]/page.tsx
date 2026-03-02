@@ -5,7 +5,8 @@ import HeadingCenterAnimation from "@/components/headingsAnimations/HeadingCente
 import Image from "next/image";
 import { QueryType } from "@/types/types";
 
-const page = async ({ params: { id: _Id } }: { params: { id: string } }) => {
+const page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id: _Id } = await params;
   const query: QueryType[] | null = await getOne(_Id);
   if (!query) return null;
   const [data] = query;

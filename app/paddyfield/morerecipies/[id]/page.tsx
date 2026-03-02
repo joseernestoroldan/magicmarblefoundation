@@ -4,11 +4,8 @@ import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { HotSpot, QueryType } from "@/types/types";
 import Image from "next/image";
 
-const RecipiePage = async ({
-  params: { id: _Id },
-}: {
-  params: { id: string };
-}) => {
+const RecipiePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id: _Id } = await params;
   const query: QueryType[] | null = await getOne(_Id);
   if (!query) return null;
   const [data] = query;
@@ -47,11 +44,7 @@ const RecipiePage = async ({
         </div>
       </div>
       <div className=" w-3/5 flex flex-col justify-start space-y-4 px-12">
-        {contenido && (
-          <Paragraphs
-            contenido={contenido}
-          />
-        )}
+        {contenido && <Paragraphs contenido={contenido} />}
       </div>
     </div>
   );

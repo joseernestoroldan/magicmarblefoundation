@@ -5,10 +5,11 @@ import Image from "next/image";
 import { QueryType } from "@/types/types";
 
 export default async function PhotoPage({
-  params: { id: _Id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id: _Id } = await params;
   const query: QueryType[] | null = await getOne(_Id);
   const [photo] = query;
   const { mainImage, description, title } = photo;

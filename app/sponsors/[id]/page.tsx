@@ -1,16 +1,15 @@
 import { getOne } from "@/client";
-import {
-  QueryType,
-} from "@/types/types";
+import { QueryType } from "@/types/types";
 import { SponsorButton } from "@/components/sponsorsComponents/SponsorButton";
 import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { SponsorGallery } from "../../../components/sponsorsComponents/SponsorGallery";
 
 const SponsorDynamicPage = async ({
-  params: { id: _Id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) => {
+  const { id: _Id } = await params;
   const query: QueryType[] = await getOne(_Id);
   const [data] = query;
   const {
@@ -56,6 +55,3 @@ const SponsorDynamicPage = async ({
 };
 
 export default SponsorDynamicPage;
-
-
-

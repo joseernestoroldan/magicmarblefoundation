@@ -5,11 +5,12 @@ import InfoPhoto from "@/components/gallery/infoPhoto/InfoPhoto";
 import { QueryType } from "@/types/types";
 
 export default async function PhotoModal({
-  params: { id: _Id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const query:QueryType[] | null = await getOne(_Id);
+  const { id: _Id } = await params;
+  const query: QueryType[] | null = await getOne(_Id);
   const [photo] = query;
   const { mainImage, description, title } = photo;
 

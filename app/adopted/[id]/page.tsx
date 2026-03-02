@@ -5,11 +5,8 @@ import Image from "next/image";
 import SessionAdoptionForm from "@/components/adoptions/sessionAdoptionForm/SessionAdoptionForm";
 import { getUserById } from "@/data/user";
 
-const AdoptedPage = async ({
-  params: { id: _Id },
-}: {
-  params: { id: string };
-}) => {
+const AdoptedPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id: _Id } = await params;
   const session = await auth();
   const userId = session?.user.id;
 
@@ -36,7 +33,6 @@ const AdoptedPage = async ({
 
   return (
     <div className="w-full max-w-5xl flex flex-col items-center mx-auto space-y-16">
-    
       <div className="w-[100px] aspect-square rounded-[50%] bg-gray-500 relative overflow-hidden">
         <Image
           src={candidate.mainImage ?? "/no-profile.webp"}
@@ -52,20 +48,18 @@ const AdoptedPage = async ({
       </div>
       <h1 className="text-cyan-500 text-4xl">Adopt {candidate.title}</h1>
       <div className="w-full flex justify-center max-w-lg">
-        
-          <SessionAdoptionForm
-            email={user?.email}
-            firstName={user?.firstName}
-            secondName={user?.secondName}
-            country={user?.country}
-            codeNumber={user?.codeNumber}
-            number={user?.number}
-            address={user?.address}
-            animalName={candidate.title}
-            animalId={_Id}
-            animalImage={candidate.mainImage ?? "/no-profile.webp"}
-          />
-       
+        <SessionAdoptionForm
+          email={user?.email}
+          firstName={user?.firstName}
+          secondName={user?.secondName}
+          country={user?.country}
+          codeNumber={user?.codeNumber}
+          number={user?.number}
+          address={user?.address}
+          animalName={candidate.title}
+          animalId={_Id}
+          animalImage={candidate.mainImage ?? "/no-profile.webp"}
+        />
       </div>
       {/* <p>Adopted {_Id}</p>
       <p>User {userId}</p> */}

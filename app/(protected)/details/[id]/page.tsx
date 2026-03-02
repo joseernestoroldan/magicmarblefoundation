@@ -1,8 +1,8 @@
 import { db } from "@/db";
 import { FaCheck } from "react-icons/fa";
 
-const DetailsPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const DetailsPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
   const user = await db.user.findUnique({ where: { id } });
 
   return (
@@ -44,13 +44,11 @@ const DetailsPage = async ({ params }: { params: { id: string } }) => {
         </div>
 
         <div className="flex justify-start items-center gap-x-16 text-gray-500 text-xl capitalize ">
-          {user?.subscribed ? (
+          {user?.subscribed ?
             <div className="flex items-center gap-x-2">
               <FaCheck /> <p>User Suscribed to the newsletter</p>
             </div>
-          ) : (
-            ""
-          )}
+          : ""}
         </div>
       </div>
     </div>

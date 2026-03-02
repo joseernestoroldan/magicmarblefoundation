@@ -4,17 +4,27 @@ import Paragraphs from "@/components/paragraphs/Paragraphs";
 import Image from "next/image";
 import Link from "next/link";
 
-
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { QueryType } from "@/types/types";
 
 const AdoptionDynamicPage = async ({
-  params: { id: _Id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) => {
+  const { id: _Id } = await params;
   const [data]: QueryType[] = await getOne(_Id);
-  const { _id, mainImage, secondImage, thirdImage, title, description, hotSpotMain, youtubeLink, contenido } = data;
+  const {
+    _id,
+    mainImage,
+    secondImage,
+    thirdImage,
+    title,
+    description,
+    hotSpotMain,
+    youtubeLink,
+    contenido,
+  } = data;
 
   const url = data?.youtubeLink || "";
 
@@ -33,8 +43,7 @@ const AdoptionDynamicPage = async ({
                 className="absolute top-0 left-0 w-full h-full"
                 src={videoEmbedUrl}
                 title="Magic Marble Foundation"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
             </div>
             <div className="w-full h-min flex">
               <div className="w-full flex flex-row justify-center items-center space-x-2">
@@ -115,14 +124,12 @@ const AdoptionDynamicPage = async ({
             <div className="h-[20vh] w-[60%] md:flex hidden md:flex-row justify-center items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
               <Link
                 href={`/adopted/${_Id}`}
-                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-              >
+                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center">
                 Adopt
               </Link>
               <Link
                 href={"/stagepayment"}
-                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-              >
+                className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center">
                 Donate
               </Link>
             </div>
@@ -147,8 +154,7 @@ const AdoptionDynamicPage = async ({
       <div className="h-[20vh] w-full flex flex-col md:hidden justify-center items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
         <Link
           href={`/adopted/${_Id}`}
-          className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center"
-        >
+          className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px] text-center">
           Adopt
         </Link>
         <button className="bg-cyan-500 text-white rounded-full py-2 w-full max-w-[170px]">

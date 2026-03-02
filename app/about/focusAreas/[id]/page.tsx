@@ -6,14 +6,10 @@ import Paragraphs from "@/components/paragraphs/Paragraphs";
 import { QueryType } from "@/types/types";
 import Image from "next/image";
 
-
-const FocusArea = async ({
-  params: { id: _Id },
-}: {
-  params: { id: string };
-}) => {
+const FocusArea = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id: _Id } = await params;
   const [data]: QueryType[] = await getOne(_Id);
-  const{title, mainImage, contenido} = data
+  const { title, mainImage, contenido } = data;
 
   return (
     <HeadingCenterAnimation>
@@ -29,8 +25,7 @@ const FocusArea = async ({
             />
             {mainImage && (
               <div
-                className={`w-full h-[400px] md:h-[500px] relative overflow-hidden rounded-[5px]`}
-              >
+                className={`w-full h-[400px] md:h-[500px] relative overflow-hidden rounded-[5px]`}>
                 <Image
                   className={`object-cover object-center rounded-2xl`}
                   src={mainImage}

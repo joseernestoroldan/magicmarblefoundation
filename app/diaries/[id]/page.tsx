@@ -11,9 +11,10 @@ import { QueryType } from "@/types/types";
 import Paragraphs from "@/components/paragraphs/Paragraphs";
 
 export async function generateMetadata(
-  { params: { id: _Id } }: { params: { id: string } },
-  parent: ResolvingMetadata
+  { params }: { params: Promise<{ id: string }> },
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
+  const { id: _Id } = await params;
   const query: QueryType[] | null = await getOne(_Id);
   if (!query) return { title: "" };
   const [data] = query;
@@ -37,11 +38,8 @@ export async function generateMetadata(
   };
 }
 
-const DiaryPage = async ({
-  params: { id: _Id },
-}: {
-  params: { id: string };
-}) => {
+const DiaryPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id: _Id } = await params;
   let textSize;
   const query: QueryType[] | null = await getOne(_Id);
   if (!query) return null;

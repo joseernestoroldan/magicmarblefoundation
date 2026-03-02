@@ -6,13 +6,14 @@ import { HotSpot, ModePhoto, QueryType } from "@/types/types";
 import Paragraphs from "@/components/paragraphs/Paragraphs";
 
 const PortalPaddyFieldPage = async ({
-  params: { id: _Id },
+  params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) => {
-  const query : QueryType[] | null = await getOne(_Id);
+  const { id: _Id } = await params;
+  const query: QueryType[] | null = await getOne(_Id);
   const [data] = query;
- 
+
   const {
     contenido,
     title,
@@ -26,7 +27,6 @@ const PortalPaddyFieldPage = async ({
     hotSpotThird,
     hotSpotFourth,
   } = data;
-
 
   const url = youtubeLink || "";
   const urlParts = url.split("?v=");
@@ -104,11 +104,9 @@ const PhotoComponent = ({
   return (
     <Dialog>
       <DialogTrigger
-        className={`w-full ${mode === "cover" ? "max-w-3xl" : "max-w-[200px]"}`}
-      >
+        className={`w-full ${mode === "cover" ? "max-w-3xl" : "max-w-[200px]"}`}>
         <div
-          className={`w-full ${mode === "cover" ? "aspect-video" : "aspect-square"} bg-gray-200 relative rounded-[10px] overflow-hidden`}
-        >
+          className={`w-full ${mode === "cover" ? "aspect-video" : "aspect-square"} bg-gray-200 relative rounded-[10px] overflow-hidden`}>
           <Image
             src={image}
             alt={"portal paddy field"}

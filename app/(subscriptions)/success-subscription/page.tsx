@@ -21,8 +21,9 @@ type SearchParams = {
 export default async function SuccessSubscriptionPage({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }) {
+  const resolvedSearchParams = await searchParams;
   const {
     subscription_id,
     first_name,
@@ -33,7 +34,7 @@ export default async function SuccessSubscriptionPage({
     telephone,
     country,
     address,
-  } = searchParams;
+  } = resolvedSearchParams;
 
   const subscriptionId = subscription_id || null;
   const firstName = first_name || null;
@@ -56,7 +57,7 @@ export default async function SuccessSubscriptionPage({
     telephoneUser,
     addressUser,
     countryUser,
-    subscriptionId
+    subscriptionId,
   );
 
   return (
@@ -117,8 +118,7 @@ export default async function SuccessSubscriptionPage({
       {/* Go Home Button */}
       <Link
         href="/"
-        className="bg-cyan-500 rounded-full text-white px-6 py-3 font-bold text-lg hover:bg-cyan-600 transition duration-300"
-      >
+        className="bg-cyan-500 rounded-full text-white px-6 py-3 font-bold text-lg hover:bg-cyan-600 transition duration-300">
         Go Home
       </Link>
 
@@ -128,13 +128,19 @@ export default async function SuccessSubscriptionPage({
           If you wish to cancel your subscription now, please visit the{" "}
           <Link
             href="/cancel-sponsor"
-            className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300"
-          >
+            className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300">
             Unsubscribe Page
           </Link>
           . Or unsubscribe whenever you want in Sponsor Section.
         </p>
-        <p className="text-xs">If you want to sponsor someone else please go to <Link  className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300" href={"/sponsors"}>Sponsors</Link> </p>
+        <p className="text-xs">
+          If you want to sponsor someone else please go to{" "}
+          <Link
+            className="text-cyan-500 font-bold underline hover:text-cyan-600 transition duration-300"
+            href={"/sponsors"}>
+            Sponsors
+          </Link>{" "}
+        </p>
       </div>
     </div>
   );
