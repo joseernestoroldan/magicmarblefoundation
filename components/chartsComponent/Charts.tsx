@@ -182,7 +182,7 @@ export default function Charts() {
 
         {/* Table to show the information of each year */}
 
-        <div className="w-full mt-4">
+        <div className="w-full mt-1">
           <table className="w-full border border-black text-gray-500 text-xs">
             <tbody>
               {data.map((item, index) => (
@@ -217,10 +217,10 @@ export default function Charts() {
   return (
     <Card className="flex flex-col mx-auto border-none w-full shadow-none justify-center items-center min-h-[calc(100vh-160px)] ">
       <CardHeader className="items-center pb-0">
-        <CardTitle className="text-cyan-500 font-bold text-xl sm:text-2xl mt-4 mb-12">
+        <CardTitle className="text-cyan-500 font-bold text-xl sm:text-2xl mt-4 mb-4">
           How Donations Are Spent
         </CardTitle>
-        <div className="flex min-[500px]:flex-row flex-col  justify-center items-center min-[500px]:space-x-4 space-x-0 min-[500px]:space-y-0 space-y-4">
+        <div className="flex flex-row  justify-center items-center min-[440px]:space-x-4 space-x-1">
           {Object.keys(chartData)
             .sort((a, b) => Number(b) - Number(a))
             .map((year) => (
@@ -233,7 +233,7 @@ export default function Charts() {
                   Number(selectedYear) === Number(year)
                     ? "bg-cyan-500"
                     : "bg-cyan-300"
-                } text-white font-bold rounded-full w-24 py-4`}>
+                } text-white font-bold rounded-full w-20 py-1 sm:py-2 transition-colors duration-300 text-xs sm:text-sm`}>
                 {year}
               </button>
             ))}
